@@ -25,7 +25,7 @@ TODO: Write history
 
 ## Credits
 Invicta Studios:
-<<<<<<< HEAD
+HEAD
 Tomás Carreras
 Enric-Guillem Durán
 Núria Lamonja
