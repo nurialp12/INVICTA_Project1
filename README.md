@@ -27,7 +27,7 @@ Invicta Studios:
 Tomás Carreras
 Enric-Guillem Durán
 Núria Lamonja
-Alex López
+Alex Lopez
 
 
 ## License
