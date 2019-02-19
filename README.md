@@ -1,4 +1,4 @@
-﻿# Fatal Fury
+﻿# Project Name
 TODO: Write a project description
 Recreation of the the game Fatal Fury.
 
