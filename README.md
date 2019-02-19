@@ -2,15 +2,15 @@
 TODO: Write a project description
 
 
-##Installation
+## Installation
 TODO: Describe the installation process
 
 
-##Usage
+## Usage
 TODO: Write usage instructions
 
 
-##Contributing
+## Contributing
 1. Fork it!
 2. Create your feature branch: 'git checkout -b my-new-feature'
 3. Commit your changes: 'git commit -am 'Add some feature' '
@@ -18,11 +18,11 @@ TODO: Write usage instructions
 5. Submit a pull request :D
 
 
-##History
+## History
 TODO: Write history
 
 
-##Credits
+## Credits
 Invicta Studios:
 Tomás Carreras
 Enric-Guillem Durán
@@ -30,5 +30,5 @@ Núria Lamonja
 Alex López
 
 
-##License
+## License
 TODO: Write license
