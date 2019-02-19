@@ -1,5 +1,6 @@
 ﻿# Fatal Fury
 TODO: Write a project description
+Recreation of the the game Fatal Fury.
 
 
 ## Installation
@@ -24,11 +25,14 @@ TODO: Write history
 
 ## Credits
 Invicta Studios:
-Tomás Carreras
-Enric-Guillem Durán
-Núria Lamonja
-Alex López
+Tomás Carreras,
+Enric-Guillem Durán,
+Núria Lamonja,
+Alex López,
 
 
 ## License
 TODO: Write license
+
+
+# he editado algo
