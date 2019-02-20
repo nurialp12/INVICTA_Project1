@@ -1,4 +1,4 @@
-﻿# Project Name
+﻿# Fatal Fury
 TODO: Write a project description
 Recreation of the the game Fatal Fury.
 
@@ -25,14 +25,13 @@ TODO: Write history
 
 ## Credits
 Invicta Studios:
-Tomás Carreras,
-Enric-Guillem Durán,
-Núria Lamonja,
-Alex López,
+HEAD
+Tomás Carreras
+Enric-Guillem Durán
+Núria Lamonja
+Alex Lopez
 
 
 ## License
 TODO: Write license
 
-
-# he editado algo
