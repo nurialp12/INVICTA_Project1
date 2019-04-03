@@ -104,7 +104,7 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
-	graphics = App->textures->Load("ryu.png"); // arcade version
+	graphics = App->textures->Load("spritesTerryBogard.png"); // arcade version
 
 	//////////////////// HERE ////////////////////
 
