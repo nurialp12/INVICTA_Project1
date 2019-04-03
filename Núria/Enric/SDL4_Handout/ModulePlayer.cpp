@@ -7,7 +7,7 @@
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
-//////// TODO: acabar animacions, fer que graphics2 funcioni, que avanci Terry
+//////// TODO: acabar animacions (que salti, canviar la velocitat, canviar Backwards), Terry s'enfonsa a l'avançar
 
 ModulePlayer::ModulePlayer()
 {
@@ -33,7 +33,7 @@ ModulePlayer::ModulePlayer()
 	//TerryForward.frames.PushBack({/**/, /**/, /**/, /**/});
 	
 	TerryForward.PushBack({ 20, 277, 61, 104 });
-	TerryForward.PushBack({ 95, 274, 71, 107 });
+	TerryForward.PushBack({ 95, 274, 61 /*71*/, 107 });
 	TerryForward.PushBack({ 177, 275, 61, 106 });
 	TerryForward.PushBack({ 251, 278, 61, 61 });
 	TerryForward.speed = 0.2f;
@@ -96,7 +96,7 @@ bool ModulePlayer::Start()
 
 	graphics = App->textures->Load("spritesTerryBogard.png");
 
-	graphics2 = App->textures->Load("TerryAvanzar + SaltoEstatico + Patada + Retroceder.png");
+	graphics2 = App->textures->Load("TerryAvanzar+SaltoEstatico+Patada+Retroceder.png");
 	
 
 	return ret;
@@ -155,16 +155,18 @@ update_status ModulePlayer::Update()
 
 	//}
 
-	//if (current_animation = &TerryKick)
-	//{
-	//	App->render->Blit(graphics2, Terryposition.x, Terryposition.y - r.h, &r);
+	if ((current_animation == (&TerryKick)) || current_animation == (&TerryJump) || current_animation == (&TerryForward) || current_animation == (&TerryBackwards)/*current_animation == (&TerryKick || &TerryJump || &TerryForward || &TerryBackwards)*/)
+	{
+		App->render->Blit(graphics2, Terryposition.x, Terryposition.y - r.h, &r);
 
-	//}
+	}
 
 
-
-	App->render->Blit(graphics, Terryposition.x, Terryposition.y - r.h, &r);
-	App->render->Blit(graphics2, Terryposition.x, Terryposition.y - r.h, &r);	
+	else
+	{
+		App->render->Blit(graphics, Terryposition.x, Terryposition.y - r.h, &r);
+	}
+	
 
 
 	return UPDATE_CONTINUE;
