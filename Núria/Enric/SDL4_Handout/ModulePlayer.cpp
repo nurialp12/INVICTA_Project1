@@ -7,7 +7,7 @@
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
-//////// TODO: acabar animacions (que salti, canviar la velocitat, canviar Backwards), Terry s'enfonsa a l'avançar
+//////// TODO: acabar animacions (que salti, canviar la velocitat, canviar Backwards), Terry s'enfonsa a l'avançar, el Punch (per algun motiu) té part del peu del següent sprite
 
 ModulePlayer::ModulePlayer()
 {
