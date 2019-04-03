@@ -48,4 +48,4 @@ public:
 	Particle explosion;
 };
 
-#endif // __MODULEPARTICLES_H__
+#endif // __MODULEPARTICLES_H__#pragma once

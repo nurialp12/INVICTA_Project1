@@ -62,7 +62,7 @@
     <ClInclude Include="ModuleIni.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="..\SDL6_Handout\ModuleParticles.h">
+    <ClInclude Include="ModuleParticles.h">
       <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
@@ -106,7 +106,7 @@
     <ClCompile Include="ModuleIni.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="..\SDL6_Handout\ModuleParticles.cpp">
+    <ClCompile Include="ModuleParticles.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
