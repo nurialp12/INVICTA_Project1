@@ -7,6 +7,8 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleScene2.h"
+#include "ModuleParticles.h"
+#include "ModuleCollision.h"
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
@@ -64,10 +66,16 @@ bool ModuleScene1::Start()
 
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->Enable();
+	App->particles->Enable();
+	App->collisions->Enable();
+
+	// TODO 1: Add colliders for the first columns of the level
+	App->collisions->AddCollider({ 0, 0, 10, 300 }, COLLIDER_WALL);
+	App->collisions->AddCollider({ 650, 0, 10, 300 }, COLLIDER_WALL);
 	return true;
 }
 
-// UnLoad assets
+// Unload assets
 bool ModuleScene1::CleanUp()
 {
 	graphics = nullptr;

@@ -59,7 +59,7 @@ update_status ModuleEnd::Update()
 
 	
 	
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(App->end_game, App->ini, 2.5);
 	}
