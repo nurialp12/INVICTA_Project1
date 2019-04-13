@@ -45,7 +45,7 @@ private:
 
 public:
 
-	Particle explosion;
+	Particle terryenergy;
 };
 
 #endif // __MODULEPARTICLES_H__#pragma once

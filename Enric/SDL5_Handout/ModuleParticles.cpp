@@ -22,17 +22,15 @@ bool ModuleParticles::Start()
 	LOG("Loading particles");
 	graphics = App->textures->Load("spritesTerryBogard.png");
 
-	// Explosion particle
-	explosion.anim.PushBack({ 274, 296, 33, 30 });
-	explosion.anim.PushBack({ 313, 296, 33, 30 });
-	explosion.anim.PushBack({ 346, 296, 33, 30 });
-	explosion.anim.PushBack({ 382, 296, 33, 30 });
-	explosion.anim.PushBack({ 419, 296, 33, 30 });
-	explosion.anim.PushBack({ 457, 296, 33, 30 });
-	explosion.anim.loop = false;
-	explosion.anim.speed = 0.3f;
-
 	// TODO 2: Create the template for a new particle "laser"
+	terryenergy.anim.PushBack({ 973, 695, 22, 105 });
+	terryenergy.anim.PushBack({ 951, 695, 44, 105 });
+	terryenergy.anim.PushBack({ 929, 695, 66, 105 });
+	terryenergy.anim.PushBack({ 917, 695, 88, 105 });
+	terryenergy.anim.PushBack({ 895, 695, 120, 105 });
+	terryenergy.anim.loop = false;
+	terryenergy.anim.speed = 0.05f;
+	terryenergy.speed.x = 2;
 
 	return true;
 }
