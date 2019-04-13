@@ -26,11 +26,14 @@ bool ModuleParticles::Start()
 	terryenergy.anim.PushBack({ 973, 695, 22, 105 });
 	terryenergy.anim.PushBack({ 951, 695, 44, 105 });
 	terryenergy.anim.PushBack({ 929, 695, 66, 105 });
-	terryenergy.anim.PushBack({ 917, 695, 88, 105 });
-	terryenergy.anim.PushBack({ 895, 695, 120, 105 });
+	terryenergy.anim.PushBack({ 910, 695, 88, 105 });
+	terryenergy.anim.PushBack({ 887, 695, 120, 105 });
+	terryenergy.anim.PushBack({ 887, 695, 120, 105 });
+	terryenergy.anim.PushBack({ 887, 695, 120, 105 });
+	terryenergy.anim.PushBack({ 887, 695, 120, 105 });
 	terryenergy.anim.loop = false;
 	terryenergy.anim.speed = 0.05f;
-	terryenergy.speed.x = 2;
+	terryenergy.speed.x = 1;
 
 	return true;
 }

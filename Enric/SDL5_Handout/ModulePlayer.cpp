@@ -113,7 +113,7 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN)
 	{
-		App->particles->AddParticle(App->particles->terryenergy, terryposition.x+3, terryposition.y);
+		App->particles->AddParticle(App->particles->terryenergy, terryposition.x+40, terryposition.y-105);
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN)
