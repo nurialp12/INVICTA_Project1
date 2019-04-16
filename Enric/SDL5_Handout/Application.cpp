@@ -11,21 +11,23 @@
 #include "ModuleIni.h"
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
+#include "ModuleAudio.h"
 
 Application::Application()
 {
 	modules[0] = window = new ModuleWindow();
 	modules[1] = render = new ModuleRender();
 	modules[2] = input = new ModuleInput();
-	modules[3] = textures = new ModuleTextures();
-	modules[4] = scene_2 = new ModuleScene2();
-	modules[5] = scene_1 = new ModuleScene1();
-	modules[6] = end_game = new ModuleEnd();
-	modules[7] = ini = new ModuleIni();
-	modules[8] = player = new ModulePlayer();
-	modules[9] = fade = new ModuleFadeToBlack();
-	modules[10] = particles = new ModuleParticles();
-	modules[11] = collisions = new ModuleCollision();
+	modules[3] = audio = new ModuleAudio();
+	modules[4] = textures = new ModuleTextures();
+	modules[5] = scene_2 = new ModuleScene2();
+	modules[6] = scene_1 = new ModuleScene1();
+	modules[7] = end_game = new ModuleEnd();
+	modules[8] = ini = new ModuleIni();
+	modules[9] = player = new ModulePlayer();
+	modules[10] = fade = new ModuleFadeToBlack();
+	modules[11] = particles = new ModuleParticles();
+	modules[12] = collisions = new ModuleCollision();
 	
 }	
 

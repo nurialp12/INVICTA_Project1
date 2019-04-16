@@ -9,6 +9,7 @@
 #include "ModuleEnd.h"
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
+#include "ModuleAudio.h"
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
@@ -57,6 +58,9 @@ bool ModuleScene2::Start()
 	// TODO 1: Add colliders for the first columns of the level
 	App->collisions->AddCollider({ 0, 0, 10, 300 }, COLLIDER_WALL);
 	App->collisions->AddCollider({ 650, 0, 10, 300 }, COLLIDER_WALL);
+
+	App->audio->PlayMusic("honda.ogg");
+
 	return ret;
 }
 
