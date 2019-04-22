@@ -26,7 +26,7 @@ public:
 	Animation terrykick;
 	Animation terrypunch;
 	iPoint terryposition;
-	//Collider* col;
+	Collider* col;
 	bool gmode = false;
 };
 

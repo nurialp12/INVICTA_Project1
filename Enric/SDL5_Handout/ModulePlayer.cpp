@@ -17,7 +17,7 @@ ModulePlayer::ModulePlayer()
 	terryposition.y = 220;
 
 	// TODO 2: Add a collider to the player
-//	col = App->collisions->AddCollider({ 0, 0, 32, 15 }, COLLIDER_PLAYER, App->player);
+	col = App->collisions->AddCollider({ 0, 0, 32, 15 }, COLLIDER_PLAYER, App->player);
 
 	// idle animation of Terry
 	terryidle.PushBack({ 7, 14, 60, 90 });
@@ -88,17 +88,23 @@ update_status ModulePlayer::Update()
 {
 	Animation* current_animation = &terryidle;
 
-	int speed = 1;
+	int speed = 3;
 
 	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
-		current_animation = &terryforward;
-		terryposition.x += speed;
+		if (terryposition.x < 570)
+		{
+			current_animation = &terryforward;
+			terryposition.x += speed;
+		}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
-		current_animation = &terrybackward;
-		terryposition.x -= speed;
+		if (terryposition.x > 0)
+		{
+			current_animation = &terrybackward;
+			terryposition.x -= speed;
+		}
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_REPEAT)
