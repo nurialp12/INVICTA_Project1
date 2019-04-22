@@ -1,6 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleScene1.h"
+#include "ModuleScene2.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
@@ -61,7 +62,7 @@ update_status ModuleIni::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(App->ini, App->scene_1, 2.5);
+		App->fade->FadeToBlack(App->ini, App->scene_2, 2.5);
 	}
 
 
