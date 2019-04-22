@@ -41,7 +41,7 @@ bool ModuleAudio::PlayFX(const char* path)
 		return false;
 	}
 
-	Mix_PlayChannel(-1, fx, -1);
+	Mix_PlayChannel(-1, fx, 0);
 	return true;
 }
 
