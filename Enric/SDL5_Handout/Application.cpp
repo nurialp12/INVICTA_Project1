@@ -12,6 +12,7 @@
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "ModuleAudio.h"
+#include "ModuleFonts.h"
 
 Application::Application()
 {
@@ -28,7 +29,7 @@ Application::Application()
 	modules[10] = fade = new ModuleFadeToBlack();
 	modules[11] = particles = new ModuleParticles();
 	modules[12] = collisions = new ModuleCollision();
-	
+	modules[13] = fonts = new ModuleFonts();
 }	
 
 Application::~Application()
@@ -47,6 +48,7 @@ bool Application::Init()
 	scene_2->Disable();
 	scene_1->Disable();
 	end_game->Disable();
+	collisions->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

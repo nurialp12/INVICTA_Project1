@@ -59,13 +59,13 @@ update_status ModuleRender::Update()
 		camera.y -= speed;
 	
 	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
-		if (camera.x < 0)
+		if (camera.x < 0 && App->player->destroyed == false)
 		{
 			camera.x += speed;
 		}
 
 	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-		if (camera.x > -490)
+		if (camera.x > -490 && App->player->destroyed == false)
 		{
 			camera.x -= speed;
 		}

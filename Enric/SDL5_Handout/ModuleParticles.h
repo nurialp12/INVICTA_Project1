@@ -12,6 +12,7 @@ struct SDL_Texture;
 
 struct Particle
 {
+	Collider* collider = nullptr;
 	Animation anim;
 	uint fx = 0;
 	iPoint position;

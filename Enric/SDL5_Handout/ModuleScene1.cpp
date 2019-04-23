@@ -15,8 +15,6 @@
 #pragma comment( lib, "SDL/libx86/SDL2main.lib" )
 
 
-
-
 ModuleScene1::ModuleScene1()
 {
 	// bus

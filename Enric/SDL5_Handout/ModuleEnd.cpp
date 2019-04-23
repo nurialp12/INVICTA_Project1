@@ -33,7 +33,8 @@ bool ModuleEnd::Start()
 	graphics = App->textures->Load("game_over.png");
 
 	// TODO 1: Enable (and properly disable) the player module
-
+	App->render->camera.x = App->render->camera.y = 0;
+	App->player->destroyed = true;
 	return ret;
 }
 

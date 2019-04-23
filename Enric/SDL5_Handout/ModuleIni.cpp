@@ -33,7 +33,7 @@ bool ModuleIni::Start()
 	graphics = App->textures->Load("start_game.png");
 
 	// TODO 1: Enable (and properly disable) the player module
-
+	App->player->destroyed = true;
 	return ret;
 }
 

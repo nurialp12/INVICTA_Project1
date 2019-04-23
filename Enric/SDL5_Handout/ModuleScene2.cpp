@@ -56,8 +56,7 @@ bool ModuleScene2::Start()
 	App->collisions->Enable();
 
 	// TODO 1: Add colliders for the first columns of the level
-	App->collisions->AddCollider({ 0, 0, 10, 300 }, COLLIDER_WALL);
-	App->collisions->AddCollider({ 650, 0, 10, 300 }, COLLIDER_WALL);
+	
 
 	App->audio->PlayMusic("music/Haremar religion/Haremar religion.ogg");
 
