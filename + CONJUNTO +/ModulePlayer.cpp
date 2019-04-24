@@ -180,7 +180,6 @@ update_status ModulePlayer::Update()
 	}*/
 
 
-
 	int speed = 1;
 
 	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
@@ -203,16 +202,31 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &TerryJump;
-		
-		/*int lastTime = 0;
 
-				PROBANDO SDL_GETTICKS()
+		/*Terryposition.y = 100;*/
+		//if (Terryposition.y == 100)
+		//{
+		//	Terryposition.y = 85;
+		//}
 
-		for (int currentTime = SDL_GetTicks(); currentTime > lastTime + 2000; lastTime = currentTime)*/
+		//if (Terryposition.y == 85)
+		//{
+		//	Terryposition.y = 115;
+		//}
+		/*Terryposition.y -= speed;*/					////NO PUJA XD
 
-		Terryposition.y -= speed;
-	
-			////NO PUJA XD
+
+		//if ()
+		//{
+		//	Terryposition.y = Terryposition.y + 15;
+		//}
+
+		//else if ()
+		//{
+		//	Terryposition.y = Terryposition.y - 15;
+		//}
+
+
 
 		/*FER QUE PER LES DUES PRIEMERES ANIMACIONS PUGI X PÍXELS I LES DUES ÚLTIMES QUE ELS BAIXI*/
 
@@ -311,6 +325,25 @@ update_status ModulePlayer::Update()
 		else
 		{
 			App->render->Blit(graphics, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
+		}
+
+		if (current_animation == (&TerryJump))
+		{
+			if (Terryposition.y == 115)
+			{
+				Terryposition.y = 85;
+			}
+
+			else if (Terryposition.y == 85)
+			{
+				Terryposition.y = 55;
+			}
+
+			else if (Terryposition.y == 55)
+			{
+				Terryposition.y = 115;
+			}
+
 		}
 		//App->render->Blit(graphics, terryposition.x, terryposition.y, &(current_animation->GetCurrentFrame()));
 		//App->render->Blit(graphics, terry2position.x, terry2position.y, &(current_animation->GetCurrentFrame()));
