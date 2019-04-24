@@ -47,14 +47,9 @@ ModulePlayer::ModulePlayer()
 
 	//TerryBackwards.frames.PushBack({/**/, /**/, /**/, /**/});
 
-	//TerryBackwards.PushBack({ 441, 275, 57, 106 });
-	//TerryBackwards.speed = 0.1f;
+	TerryBackwards.PushBack({ 441, 275, 57, 106 });
+	TerryBackwards.speed = 0.1f;
 
-	TerryForward.PushBack({ 251, 278, 61, 61 });
-	TerryForward.PushBack({ 177, 275, 61, 106 });
-	TerryForward.PushBack({ 95, 274, 61 /*71*/, 107 });
-	TerryForward.PushBack({ 20, 277, 61, 104 });
-	TerryForward.speed = 0.1f;
 
 
 	// jump animation of Terry				//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
@@ -104,9 +99,9 @@ bool ModulePlayer::Start()
 	bool ret = true;
 
 	graphics = App->textures->Load("spritesTerryBogard.png");
-	graphics2 = App->textures->Load("TerryAvanzar+SaltoEstatico+Patada+Retroceder.png");
+	graphics2 = App->textures->Load("spritesTerryBogard2extres.png");
 
-	/////TODO NOW/////
+
 
 	destroyed = false;
 	Terryposition.x = 150;
@@ -130,6 +125,7 @@ bool ModulePlayer::CleanUp()
 	LOG("Unloading player");
 
 	App->textures->Unload(graphics);
+	App->textures->Unload(graphics2);
 	App->fonts->UnLoad(font_score);
 	if (col)
 		col->to_delete = true;
@@ -144,7 +140,7 @@ update_status ModulePlayer::Update()
 {
 	Animation* current_animation = &Terryidle;
 
-	int speed = 3;
+	int speed = 1;
 
 	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
@@ -163,10 +159,10 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &TerryJump;
-		Terryposition.y += speed;					////NO PUJA XD
+		Terryposition.y -= speed;					////NO PUJA XD
 
 		/*FER QUE PER LES DUES PRIEMERES ANIMACIONS PUGI X PÍXELS I LES DUES ÚLTIMES QUE ELS BAIXI*/
 
@@ -224,7 +220,7 @@ update_status ModulePlayer::Update()
 
 	// TODO 3: Update collider position to player position
 	col->rect.x = Terryposition.x;
-	col->rect.y = Terryposition.y-100;
+	col->rect.y = Terryposition.y;
 	col2->rect.x = Terry2position.x;
 	col2->rect.y = Terry2position.y;
 
