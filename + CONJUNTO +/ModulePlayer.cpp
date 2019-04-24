@@ -140,7 +140,53 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	Animation* current_animation = &Terryidle;
+	p2Qeue<terry_inputs> inputs;
+	terry_states current_state = ST_UNKNOWN;
+
+	Animation* current_animation;
+
+	while (external_input(inputs))
+	{
+
+		internal_input(inputs);
+
+		terry_states state = process_fsm(inputs);
+
+		if (state != current_state)
+		{
+			switch (state)
+			{
+			case ST_IDLE:
+				Animation* current_animation = &Terryidle;
+				break;
+			case ST_WALK_FORWARD:
+				break;
+			case ST_WALK_BACKWARD:
+				break;
+			case ST_JUMP_NEUTRAL:
+				break;
+			case ST_JUMP_FORWARD:
+				break;
+			case ST_JUMP_BACKWARD:
+				break;
+			case ST_CROUCH:
+				break;
+			case ST_PUNCH_CROUCH:
+				break;
+			case ST_PUNCH_STANDING:
+				break;
+			case ST_PUNCH_NEUTRAL_JUMP:
+				break;
+			case ST_PUNCH_FORWARD_JUMP:;
+				break;
+			case ST_PUNCH_BACKWARD_JUMP:
+				break;
+			}
+		}
+		current_state = state;
+	}
+
+
 
 	int speed = 1;
 
@@ -366,7 +412,7 @@ void ModulePlayer::internal_input(p2Qeue<terry_inputs>& inputs)
 	}
 }
 
-terry_states ModulePlayer::process_fsm(p2Qeue<terry_inputs>& inputs)
+ModulePlayer::terry_states ModulePlayer::process_fsm(p2Qeue<terry_inputs>& inputs)
 {
 	static terry_states state = ST_IDLE;
 	terry_inputs last_input;
