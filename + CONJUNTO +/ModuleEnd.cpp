@@ -4,6 +4,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleIni.h"
@@ -36,6 +37,7 @@ bool ModuleEnd::Start()
 	// TODO 1: Enable (and properly disable) the player module
 	App->render->camera.x = App->render->camera.y = 0;
 	App->player->destroyed = true;
+	App->player2->destroyed = true;
 	App->particles->Disable();
 	return ret;
 }

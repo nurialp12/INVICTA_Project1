@@ -1,5 +1,5 @@
-#ifndef __ModulePlayer_H__
-#define __ModulePlayer_H__
+#ifndef __ModulePlayer2_H__
+#define __ModulePlayer2_H__
 
 #include "Module.h"
 #include "Animation.h"
@@ -12,11 +12,11 @@
 
 struct SDL_Texture;
 
-class ModulePlayer : public Module
+class ModulePlayer2 : public Module
 {
 public:
-	ModulePlayer();
-	~ModulePlayer();
+	ModulePlayer2();
+	~ModulePlayer2();
 
 	bool Start();
 	update_status Update();
@@ -38,11 +38,10 @@ public:
 	Animation Terry2Punch;
 	iPoint Terry2position;
 	Collider* col;
-	Collider* col2;
 	bool gmode = false;
 	bool destroyed = false;
 
-	enum terry_states
+	enum terry2_states
 	{
 		ST_UNKNOWN,
 
@@ -60,7 +59,7 @@ public:
 		ST_PUNCH_CROUCH
 	};
 
-	enum terry_inputs
+	enum terry2_inputs
 	{
 		IN_LEFT_DOWN,
 		IN_LEFT_UP,
@@ -79,9 +78,9 @@ public:
 	Uint32 jump_timer = 0;
 	Uint32 punch_timer = 0;
 
-	bool external_input(p2Qeue<terry_inputs>& inputs);
-	void internal_input(p2Qeue<terry_inputs>& inputs);
-	terry_states process_fsm(p2Qeue<terry_inputs>& inputs);
+	/*bool external_input(p2Qeue<terry2_inputs>& inputs);
+	void internal_input(p2Qeue<terry2_inputs>& inputs);
+	terry2_states process_fsm(p2Qeue<terry2_inputs>& inputs);*/
 };
 
 #endif

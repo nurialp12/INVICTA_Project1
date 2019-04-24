@@ -114,7 +114,6 @@ bool ModulePlayer::Start()
 
 	// TODO 2: Add a collider to the player
 	col = App->collisions->AddCollider({ 0, 0, 60, 92 }, COLLIDER_PLAYER, App->player);
-	col2 = App->collisions->AddCollider({ 0, 0, 60, 92 }, COLLIDER_ENEMY, App->player);
 
 	// TODO 0: Notice how a font is loaded and the meaning of all its arguments 
 	font_score = App->fonts->Load("fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
@@ -131,8 +130,6 @@ bool ModulePlayer::CleanUp()
 	App->fonts->UnLoad(font_score);
 	if (col)
 		col->to_delete = true;
-	if (col2)
-		col2->to_delete = true;
 
 	return true;
 }
@@ -143,9 +140,9 @@ update_status ModulePlayer::Update()
 	p2Qeue<terry_inputs> inputs;
 	terry_states current_state = ST_UNKNOWN;
 
-	Animation* current_animation;
+	Animation* current_animation = &Terryidle;
 
-	while (external_input(inputs))
+	/*while (external_input(inputs))
 	{
 
 		internal_input(inputs);
@@ -157,7 +154,7 @@ update_status ModulePlayer::Update()
 			switch (state)
 			{
 			case ST_IDLE:
-				Animation* current_animation = &Terryidle;
+				current_animation = &Terryidle;
 				break;
 			case ST_WALK_FORWARD:
 				break;
@@ -184,7 +181,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 		current_state = state;
-	}
+	}*/
 
 
 
@@ -311,244 +308,244 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 }
 
-bool ModulePlayer::external_input(p2Qeue<terry_inputs>& inputs)
-{
-	static bool left = false;
-	static bool right = false;
-	static bool down = false;
-	static bool up = false;
-
-	SDL_Event event;
-
-	while (SDL_PollEvent(&event) != 0)
-	{
-		if (event.type == SDL_KEYUP && event.key.repeat == 0)
-		{
-			switch (event.key.keysym.sym)
-			{
-			case SDLK_ESCAPE:
-				return false;
-				break;
-			case SDLK_DOWN:
-				inputs.Push(IN_CROUCH_UP);
-				down = false;
-				break;
-			case SDLK_UP:
-				up = false;
-				break;
-			case SDLK_LEFT:
-				inputs.Push(IN_LEFT_UP);
-				left = false;
-				break;
-			case SDLK_RIGHT:
-				inputs.Push(IN_RIGHT_UP);
-				right = false;
-				break;
-			}
-		}
-		if (event.type == SDL_KEYDOWN && event.key.repeat == 0)
-		{
-			switch (event.key.keysym.sym)
-			{
-			case SDLK_SPACE:
-				inputs.Push(IN_X);
-				break;
-			case SDLK_UP:
-				up = true;
-				break;
-			case SDLK_DOWN:
-				down = true;
-				break;
-			case SDLK_LEFT:
-				left = true;
-				break;
-			case SDLK_RIGHT:
-				right = true;
-				break;
-			}
-		}
-	}
-
-	if (left && right)
-		inputs.Push(IN_LEFT_AND_RIGHT);
-	{
-		if (left)
-			inputs.Push(IN_LEFT_DOWN);
-		if (right)
-			inputs.Push(IN_RIGHT_DOWN);
-	}
-
-	if (up && down)
-		inputs.Push(IN_JUMP_AND_CROUCH);
-	else
-	{
-		if (down)
-			inputs.Push(IN_CROUCH_DOWN);
-		if (up)
-			inputs.Push(IN_JUMP);
-	}
-
-	return true;
-}
-
-void ModulePlayer::internal_input(p2Qeue<terry_inputs>& inputs)
-{
-	if (jump_timer > 0)
-	{
-		if (SDL_GetTicks() - jump_timer > JUMP_TIME)
-		{
-			inputs.Push(IN_JUMP_FINISH);
-			jump_timer = 0;
-		}
-	}
-
-	if (punch_timer > 0)
-	{
-		if (SDL_GetTicks() - punch_timer > PUNCH_TIME)
-		{
-			inputs.Push(IN_PUNCH_FINISH);
-			punch_timer = 0;
-		}
-	}
-}
-
-ModulePlayer::terry_states ModulePlayer::process_fsm(p2Qeue<terry_inputs>& inputs)
-{
-	static terry_states state = ST_IDLE;
-	terry_inputs last_input;
-
-	while (inputs.Pop(last_input))
-	{
-		switch (state)
-		{
-		case ST_IDLE:
-		{
-			switch (last_input)
-			{
-			case IN_RIGHT_DOWN: state = ST_WALK_FORWARD; break;
-			case IN_LEFT_DOWN: state = ST_WALK_BACKWARD; break;
-			case IN_JUMP: state = ST_JUMP_NEUTRAL; jump_timer = SDL_GetTicks();  break;
-			case IN_CROUCH_DOWN: state = ST_CROUCH; break;
-			case IN_X: state = ST_PUNCH_STANDING; punch_timer = SDL_GetTicks();  break;
-			}
-		}
-		break;
-
-		case ST_WALK_FORWARD:
-		{
-			switch (last_input)
-			{
-			case IN_RIGHT_UP: state = ST_IDLE; break;
-			case IN_LEFT_AND_RIGHT: state = ST_IDLE; break;
-			case IN_JUMP: state = ST_JUMP_FORWARD; jump_timer = SDL_GetTicks();  break;
-			case IN_CROUCH_DOWN: state = ST_CROUCH; break;
-			}
-		}
-		break;
-
-		case ST_WALK_BACKWARD:
-		{
-			switch (last_input)
-			{
-			case IN_LEFT_UP: state = ST_IDLE; break;
-			case IN_LEFT_AND_RIGHT: state = ST_IDLE; break;
-			case IN_JUMP: state = ST_JUMP_BACKWARD; jump_timer = SDL_GetTicks();  break;
-			case IN_CROUCH_DOWN: state = ST_CROUCH; break;
-			}
-		}
-		break;
-
-		case ST_JUMP_NEUTRAL:
-		{
-			switch (last_input)
-			{
-			case IN_JUMP_FINISH: state = ST_IDLE; break;
-			case IN_X: state = ST_PUNCH_NEUTRAL_JUMP; punch_timer = SDL_GetTicks(); break;
-			}
-		}
-		break;
-
-		case ST_JUMP_FORWARD:
-		{
-			switch (last_input)
-			{
-				// TODO: Add links
-			case IN_JUMP_FINISH: state = ST_IDLE; break;
-			case IN_X: state = ST_PUNCH_FORWARD_JUMP; punch_timer = SDL_GetTicks(); break;
-			}
-		}
-		break;
-
-		case ST_JUMP_BACKWARD:
-		{
-			switch (last_input)
-			{
-				// TODO: Add Links
-			case IN_JUMP_FINISH: state = ST_IDLE; break;
-			case IN_X: state = ST_PUNCH_BACKWARD_JUMP; punch_timer = SDL_GetTicks(); break;
-			}
-		}
-		break;
-
-		case ST_PUNCH_NEUTRAL_JUMP:
-		{
-			switch (last_input)
-			{
-				// TODO: Add Links
-			case IN_JUMP_FINISH: state = ST_IDLE; break;
-			}
-		}
-		break;
-
-		case ST_PUNCH_FORWARD_JUMP:
-		{
-			switch (last_input)
-			{
-				// TODO: Add Links
-			case IN_JUMP_FINISH: state = ST_IDLE; break;
-			}
-		}
-		break;
-
-		case ST_PUNCH_BACKWARD_JUMP:
-		{
-			switch (last_input)
-			{
-				// TODO: Add Links
-			case IN_JUMP_FINISH: state = ST_IDLE; break;
-			}
-		}
-		break;
-
-		case ST_PUNCH_STANDING:
-		{
-			switch (last_input)
-			{
-				// TODO: Add Links
-			case IN_PUNCH_FINISH: state = ST_IDLE; break;
-			}
-		}
-		break;
-
-		case ST_CROUCH:
-		{
-			switch (last_input)
-			{
-				// TODO: Add Links
-
-			}
-		}
-		break;
-		case ST_PUNCH_CROUCH:
-		{
-			switch (last_input)
-			{
-				// TODO: Add Links
-			}
-		}
-		break;
-		}
-	}
-
-	return state;
-}
+//bool ModulePlayer::external_input(p2Qeue<terry_inputs>& inputs)
+//{
+//	static bool left = false;
+//	static bool right = false;
+//	static bool down = false;
+//	static bool up = false;
+//
+//	SDL_Event event;
+//
+//	while (SDL_PollEvent(&event) != 0)
+//	{
+//		if (event.type == SDL_KEYUP && event.key.repeat == 0)
+//		{
+//			switch (event.key.keysym.sym)
+//			{
+//			case SDLK_ESCAPE:
+//				return false;
+//				break;
+//			case SDLK_DOWN:
+//				inputs.Push(IN_CROUCH_UP);
+//				down = false;
+//				break;
+//			case SDLK_UP:
+//				up = false;
+//				break;
+//			case SDLK_LEFT:
+//				inputs.Push(IN_LEFT_UP);
+//				left = false;
+//				break;
+//			case SDLK_RIGHT:
+//				inputs.Push(IN_RIGHT_UP);
+//				right = false;
+//				break;
+//			}
+//		}
+//		if (event.type == SDL_KEYDOWN && event.key.repeat == 0)
+//		{
+//			switch (event.key.keysym.sym)
+//			{
+//			case SDLK_SPACE:
+//				inputs.Push(IN_X);
+//				break;
+//			case SDLK_UP:
+//				up = true;
+//				break;
+//			case SDLK_DOWN:
+//				down = true;
+//				break;
+//			case SDLK_LEFT:
+//				left = true;
+//				break;
+//			case SDLK_RIGHT:
+//				right = true;
+//				break;
+//			}
+//		}
+//	}
+//
+//	if (left && right)
+//		inputs.Push(IN_LEFT_AND_RIGHT);
+//	{
+//		if (left)
+//			inputs.Push(IN_LEFT_DOWN);
+//		if (right)
+//			inputs.Push(IN_RIGHT_DOWN);
+//	}
+//
+//	if (up && down)
+//		inputs.Push(IN_JUMP_AND_CROUCH);
+//	else
+//	{
+//		if (down)
+//			inputs.Push(IN_CROUCH_DOWN);
+//		if (up)
+//			inputs.Push(IN_JUMP);
+//	}
+//
+//	return true;
+//}
+//
+//void ModulePlayer::internal_input(p2Qeue<terry_inputs>& inputs)
+//{
+//	if (jump_timer > 0)
+//	{
+//		if (SDL_GetTicks() - jump_timer > JUMP_TIME)
+//		{
+//			inputs.Push(IN_JUMP_FINISH);
+//			jump_timer = 0;
+//		}
+//	}
+//
+//	if (punch_timer > 0)
+//	{
+//		if (SDL_GetTicks() - punch_timer > PUNCH_TIME)
+//		{
+//			inputs.Push(IN_PUNCH_FINISH);
+//			punch_timer = 0;
+//		}
+//	}
+//}
+//
+//ModulePlayer::terry_states ModulePlayer::process_fsm(p2Qeue<terry_inputs>& inputs)
+//{
+//	static terry_states state = ST_IDLE;
+//	terry_inputs last_input;
+//
+//	while (inputs.Pop(last_input))
+//	{
+//		switch (state)
+//		{
+//		case ST_IDLE:
+//		{
+//			switch (last_input)
+//			{
+//			case IN_RIGHT_DOWN: state = ST_WALK_FORWARD; break;
+//			case IN_LEFT_DOWN: state = ST_WALK_BACKWARD; break;
+//			case IN_JUMP: state = ST_JUMP_NEUTRAL; jump_timer = SDL_GetTicks();  break;
+//			case IN_CROUCH_DOWN: state = ST_CROUCH; break;
+//			case IN_X: state = ST_PUNCH_STANDING; punch_timer = SDL_GetTicks();  break;
+//			}
+//		}
+//		break;
+//
+//		case ST_WALK_FORWARD:
+//		{
+//			switch (last_input)
+//			{
+//			case IN_RIGHT_UP: state = ST_IDLE; break;
+//			case IN_LEFT_AND_RIGHT: state = ST_IDLE; break;
+//			case IN_JUMP: state = ST_JUMP_FORWARD; jump_timer = SDL_GetTicks();  break;
+//			case IN_CROUCH_DOWN: state = ST_CROUCH; break;
+//			}
+//		}
+//		break;
+//
+//		case ST_WALK_BACKWARD:
+//		{
+//			switch (last_input)
+//			{
+//			case IN_LEFT_UP: state = ST_IDLE; break;
+//			case IN_LEFT_AND_RIGHT: state = ST_IDLE; break;
+//			case IN_JUMP: state = ST_JUMP_BACKWARD; jump_timer = SDL_GetTicks();  break;
+//			case IN_CROUCH_DOWN: state = ST_CROUCH; break;
+//			}
+//		}
+//		break;
+//
+//		case ST_JUMP_NEUTRAL:
+//		{
+//			switch (last_input)
+//			{
+//			case IN_JUMP_FINISH: state = ST_IDLE; break;
+//			case IN_X: state = ST_PUNCH_NEUTRAL_JUMP; punch_timer = SDL_GetTicks(); break;
+//			}
+//		}
+//		break;
+//
+//		case ST_JUMP_FORWARD:
+//		{
+//			switch (last_input)
+//			{
+//				// TODO: Add links
+//			case IN_JUMP_FINISH: state = ST_IDLE; break;
+//			case IN_X: state = ST_PUNCH_FORWARD_JUMP; punch_timer = SDL_GetTicks(); break;
+//			}
+//		}
+//		break;
+//
+//		case ST_JUMP_BACKWARD:
+//		{
+//			switch (last_input)
+//			{
+//				// TODO: Add Links
+//			case IN_JUMP_FINISH: state = ST_IDLE; break;
+//			case IN_X: state = ST_PUNCH_BACKWARD_JUMP; punch_timer = SDL_GetTicks(); break;
+//			}
+//		}
+//		break;
+//
+//		case ST_PUNCH_NEUTRAL_JUMP:
+//		{
+//			switch (last_input)
+//			{
+//				// TODO: Add Links
+//			case IN_JUMP_FINISH: state = ST_IDLE; break;
+//			}
+//		}
+//		break;
+//
+//		case ST_PUNCH_FORWARD_JUMP:
+//		{
+//			switch (last_input)
+//			{
+//				// TODO: Add Links
+//			case IN_JUMP_FINISH: state = ST_IDLE; break;
+//			}
+//		}
+//		break;
+//
+//		case ST_PUNCH_BACKWARD_JUMP:
+//		{
+//			switch (last_input)
+//			{
+//				// TODO: Add Links
+//			case IN_JUMP_FINISH: state = ST_IDLE; break;
+//			}
+//		}
+//		break;
+//
+//		case ST_PUNCH_STANDING:
+//		{
+//			switch (last_input)
+//			{
+//				// TODO: Add Links
+//			case IN_PUNCH_FINISH: state = ST_IDLE; break;
+//			}
+//		}
+//		break;
+//
+//		case ST_CROUCH:
+//		{
+//			switch (last_input)
+//			{
+//				// TODO: Add Links
+//
+//			}
+//		}
+//		break;
+//		case ST_PUNCH_CROUCH:
+//		{
+//			switch (last_input)
+//			{
+//				// TODO: Add Links
+//			}
+//		}
+//		break;
+//		}
+//	}
+//
+//	return state;
+//}
