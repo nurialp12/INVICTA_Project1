@@ -82,9 +82,9 @@ public:
 	Uint32 jump_timer = 0;
 	Uint32 punch_timer = 0;
 
-	//bool external_input(p2Qeue<terry_inputs>& inputs);
-	//void internal_input(p2Qeue<terry_inputs>& inputs);
-	//terry_states process_fsm(p2Qeue<terry_inputs>& inputs);
+	bool external_input(p2Qeue<terry_inputs>& inputs);
+	void internal_input(p2Qeue<terry_inputs>& inputs);
+	terry_states process_fsm(p2Qeue<terry_inputs>& inputs);
 };
 
 #endif
