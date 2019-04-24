@@ -39,6 +39,7 @@ public:
 	iPoint Terryposition;
 	//iPoint Terry2position;
 	Collider* col;
+	Collider* col3;
 	bool gmode = false;
 	bool destroyed = false;
 

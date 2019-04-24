@@ -103,15 +103,13 @@ bool ModulePlayer::Start()
 	graphics = App->textures->Load("spritesTerryBogard.png");
 	graphics2 = App->textures->Load("spritesTerryBogard2extres.png");
 
-
-
 	destroyed = false;
 	Terryposition.x = 150;
 	Terryposition.y = 115;
 	score = 0;
 
 	// TODO 2: Add a collider to the player
-	col = App->collisions->AddCollider({ 0, 0, 60, 92 }, COLLIDER_PLAYER, App->player);
+	col = App->collisions->AddCollider({ 0, 0, 30, 103 }, COLLIDER_PLAYER, App->player);
 
 	// TODO 0: Notice how a font is loaded and the meaning of all its arguments 
 	font_score = App->fonts->Load("fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
@@ -232,6 +230,7 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &TerryPunch;
+		col3 = App->collisions->AddCollider({ Terryposition.x+45, Terryposition.y+10, 43, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_REPEAT)
@@ -243,6 +242,7 @@ update_status ModulePlayer::Update()
 	{
 		App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 40, Terryposition.y);
 		App->audio->PlayFX("FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
+	
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN)
@@ -262,8 +262,9 @@ update_status ModulePlayer::Update()
 	}
 
 	// TODO 3: Update collider position to player position
-	col->rect.x = Terryposition.x;
+	col->rect.x = Terryposition.x+15;
 	col->rect.y = Terryposition.y;
+	
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
