@@ -229,8 +229,8 @@ update_status ModulePlayer::Update()
 	col2->rect.y = Terry2position.y;
 
 	//collider punch position
-	col3->rect.x = terryposition.x-10;
-	col3->rect.y = terryposition.y-10;
+	col3->rect.x = Terryposition.x-20;
+	col3->rect.y = Terryposition.y-20;
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
