@@ -8,6 +8,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleIni.h"
 #include "SDL/include/SDL.h"
+#include "ModuleParticles.h"
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
 #pragma comment( lib, "SDL/libx86/SDL2main.lib" )
 
@@ -35,6 +36,7 @@ bool ModuleEnd::Start()
 	// TODO 1: Enable (and properly disable) the player module
 	App->render->camera.x = App->render->camera.y = 0;
 	App->player->destroyed = true;
+	App->particles->Disable();
 	return ret;
 }
 
