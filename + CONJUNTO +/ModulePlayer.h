@@ -37,7 +37,7 @@ public:
 	Animation TerryKick;
 	Animation TerryPunch;
 	iPoint Terryposition;
-	iPoint Terry2position;
+	//iPoint Terry2position;
 	Collider* col;
 	Collider* col2;
 	bool gmode = false;

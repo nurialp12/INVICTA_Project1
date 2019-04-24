@@ -108,8 +108,8 @@ bool ModulePlayer::Start()
 	destroyed = false;
 	Terryposition.x = 150;
 	Terryposition.y = 115;
-	Terry2position.x = 300;
-	Terry2position.y = 115;
+	//Terry2position.x = 300;
+	//Terry2position.y = 115;
 	score = 0;
 
 	// TODO 2: Add a collider to the player
@@ -188,12 +188,12 @@ update_status ModulePlayer::Update()
 	//	}
 	//}
 
-	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &TerryPunch;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_X] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &TerryKick;
 	}
@@ -223,8 +223,8 @@ update_status ModulePlayer::Update()
 	// TODO 3: Update collider position to player position
 	col->rect.x = Terryposition.x;
 	col->rect.y = Terryposition.y;
-	col2->rect.x = Terry2position.x;
-	col2->rect.y = Terry2position.y;
+	//col2->rect.x = Terry2position.x;
+	//col2->rect.y = Terry2position.y;
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
@@ -235,13 +235,13 @@ update_status ModulePlayer::Update()
 		if ((current_animation == (&TerryKick)) || current_animation == (&TerryJump) || current_animation == (&TerryForward) || current_animation == (&TerryBackwards)/*current_animation == (&TerryKick || &TerryJump || &TerryForward || &TerryBackwards)*/)
 		{
 			App->render->Blit(graphics2, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
-			App->render->Blit(graphics2, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
+			//App->render->Blit(graphics2, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
 		}
 
 		else
 		{
 			App->render->Blit(graphics, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
-			App->render->Blit(graphics, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
+			//App->render->Blit(graphics, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
 		}
 		//App->render->Blit(graphics, terryposition.x, terryposition.y, &(current_animation->GetCurrentFrame()));
 		//App->render->Blit(graphics, terry2position.x, terry2position.y, &(current_animation->GetCurrentFrame()));
