@@ -6,6 +6,7 @@
 #include "ModuleScene1.h"
 #include "ModuleScene2.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleEnd.h"
 #include "ModuleIni.h"
@@ -13,6 +14,7 @@
 #include "ModuleCollision.h"
 #include "ModuleAudio.h"
 #include "ModuleFonts.h"
+
 
 Application::Application()
 {
@@ -26,10 +28,11 @@ Application::Application()
 	modules[7] = end_game = new ModuleEnd();
 	modules[8] = ini = new ModuleIni();
 	modules[9] = player = new ModulePlayer();
-	modules[10] = fade = new ModuleFadeToBlack();
-	modules[11] = particles = new ModuleParticles();
-	modules[12] = collisions = new ModuleCollision();
-	modules[13] = fonts = new ModuleFonts();
+	modules[10] = player2 = new ModulePlayer2();
+	modules[11] = fade = new ModuleFadeToBlack();
+	modules[12] = particles = new ModuleParticles();
+	modules[13] = collisions = new ModuleCollision();
+	modules[14] = fonts = new ModuleFonts();
 }	
 
 Application::~Application()

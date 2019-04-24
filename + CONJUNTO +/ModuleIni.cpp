@@ -5,6 +5,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleIni.h"
@@ -34,6 +35,7 @@ bool ModuleIni::Start()
 
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->destroyed = true;
+	App->player2->destroyed = true;
 	return ret;
 }
 

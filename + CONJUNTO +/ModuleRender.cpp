@@ -5,6 +5,7 @@
 #include "ModuleInput.h"
 #include "SDL/include/SDL.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 
 ModuleRender::ModuleRender() : Module()
 {

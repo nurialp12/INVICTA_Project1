@@ -39,7 +39,6 @@ public:
 	iPoint Terryposition;
 	//iPoint Terry2position;
 	Collider* col;
-	Collider* col2;
 	bool gmode = false;
 	bool destroyed = false;
 
@@ -80,9 +79,9 @@ public:
 	Uint32 jump_timer = 0;
 	Uint32 punch_timer = 0;
 
-	bool external_input(p2Qeue<terry_inputs>& inputs);
-	void internal_input(p2Qeue<terry_inputs>& inputs);
-	terry_states process_fsm(p2Qeue<terry_inputs>& inputs);
+	//bool external_input(p2Qeue<terry_inputs>& inputs);
+	//void internal_input(p2Qeue<terry_inputs>& inputs);
+	//terry_states process_fsm(p2Qeue<terry_inputs>& inputs);
 };
 
 #endif
