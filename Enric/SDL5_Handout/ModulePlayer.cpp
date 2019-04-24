@@ -90,6 +90,7 @@ bool ModulePlayer::Start()
 	// TODO 2: Add a collider to the player
 	col = App->collisions->AddCollider({ 0, 0, 60, 92 }, COLLIDER_PLAYER, App->player);
 	col2 = App->collisions->AddCollider({ 0, 0, 60, 92 }, COLLIDER_ENEMY, App->player);
+	col3 = App->collisions->AddCollider({ 0, 0, 60, 92 }, COLLIDER_PLAYER_SHOT, App->player);
 
 	// TODO 0: Notice how a font is loaded and the meaning of all its arguments 
 	font_score = App->fonts->Load("fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
