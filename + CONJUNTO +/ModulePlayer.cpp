@@ -203,7 +203,16 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &TerryJump;
-		Terryposition.y -= speed;					////NO PUJA XD
+		
+		/*int lastTime = 0;
+
+				PROBANDO SDL_GETTICKS()
+
+		for (int currentTime = SDL_GetTicks(); currentTime > lastTime + 2000; lastTime = currentTime)*/
+
+		Terryposition.y -= speed;
+	
+			////NO PUJA XD
 
 		/*FER QUE PER LES DUES PRIEMERES ANIMACIONS PUGI X PÍXELS I LES DUES ÚLTIMES QUE ELS BAIXI*/
 
