@@ -9,35 +9,15 @@ TODO: Describe the installation process
 
 
 ## Usage
-TODO: Write usage instructions
 
-#### TEMPORAL
-	A move left
-	S crouch
-	D move right
-	W jump
-	P punch
-	K kick
-	T throw
-
-Flechas: camera
-
-DEBUG:
-	F1 collisions
-	F2 direct win
-	F3 direct lose
-	F4 direct tie
-	F5 god mode
-
-#### FINAL
 	PLAYER 1
 	A move left
 	S crouch
 	D move right
 	W jump
-	F punch
-	G kick
-	H throw
+	Z punch
+	X kick
+			C throw
 
 	PLAYER 2
 	LEFT KEY move left
@@ -46,7 +26,8 @@ DEBUG:
 	UP KEY jump
 	I punch
 	O kick
-	P throw
+			P throw
+
 
 DEBUG:
 	F1 collisions
@@ -58,6 +39,7 @@ DEBUG:
 	F6 direct win (PLAYER 2)
 	F7 direct lose (PLAYER 2)
 	F8 god mode (PLAYER 2)
+
 
 
 ## Contributing
