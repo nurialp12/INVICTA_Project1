@@ -47,8 +47,14 @@ ModulePlayer::ModulePlayer()
 
 	//TerryBackwards.frames.PushBack({/**/, /**/, /**/, /**/});
 
-	TerryBackwards.PushBack({ 441, 275, 57, 106 });
-	TerryBackwards.speed = 0.1f;
+	//TerryBackwards.PushBack({ 441, 275, 57, 106 });
+	//TerryBackwards.speed = 0.1f;
+
+	TerryForward.PushBack({ 251, 278, 61, 61 });
+	TerryForward.PushBack({ 177, 275, 61, 106 });
+	TerryForward.PushBack({ 95, 274, 61 /*71*/, 107 });
+	TerryForward.PushBack({ 20, 277, 61, 104 });
+	TerryForward.speed = 0.1f;
 
 
 	// jump animation of Terry				//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
@@ -104,9 +110,9 @@ bool ModulePlayer::Start()
 
 	destroyed = false;
 	Terryposition.x = 150;
-	Terryposition.y = 215;
+	Terryposition.y = 115;
 	Terry2position.x = 300;
-	Terry2position.y = 110;
+	Terry2position.y = 115;
 	score = 0;
 
 	// TODO 2: Add a collider to the player
@@ -231,7 +237,7 @@ update_status ModulePlayer::Update()
 
 		if ((current_animation == (&TerryKick)) || current_animation == (&TerryJump) || current_animation == (&TerryForward) || current_animation == (&TerryBackwards)/*current_animation == (&TerryKick || &TerryJump || &TerryForward || &TerryBackwards)*/)
 		{
-			App->render->Blit(graphics2, Terryposition.x, Terryposition.y - r.h, &r);
+			App->render->Blit(graphics2, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
 			App->render->Blit(graphics2, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
 
 		}
@@ -239,7 +245,7 @@ update_status ModulePlayer::Update()
 
 		else
 		{
-			App->render->Blit(graphics, Terryposition.x, Terryposition.y - r.h, &r);
+			App->render->Blit(graphics, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
 			App->render->Blit(graphics, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
 
 		}
