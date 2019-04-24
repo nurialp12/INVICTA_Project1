@@ -22,16 +22,18 @@ public:
 public:
 
 	SDL_Texture* graphics = nullptr;
+	SDL_Texture* graphics2 = nullptr;
 	int font_score = -1;
 	char score_text[10];
 	uint score = 0;
-	Animation terryidle;
-	Animation terryforward;
-	Animation terrybackward;
-	Animation terrykick;
-	Animation terrypunch;
-	iPoint terryposition;
-	iPoint terry2position;
+	Animation Terryidle;
+	Animation TerryForward;
+	Animation TerryBackwards;
+	Animation TerryJump;
+	Animation TerryKick;
+	Animation TerryPunch;
+	iPoint Terryposition;
+	iPoint Terry2position;
 	Collider* col;
 	Collider* col2;
 	bool gmode = false;
