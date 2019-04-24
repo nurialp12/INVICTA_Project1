@@ -38,6 +38,8 @@ public:
 	Collider* col2;
 	bool gmode = false;
 	bool destroyed = false;
+
+
 };
 
 #endif
