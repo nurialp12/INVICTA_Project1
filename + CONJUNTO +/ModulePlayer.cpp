@@ -230,13 +230,35 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &TerryPunch;
-		col3 = App->collisions->AddCollider({ Terryposition.x+45, Terryposition.y+10, 43, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
+	{
+		colp = App->collisions->AddCollider({ Terryposition.x + 45, Terryposition.y + 10, 43, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_UP)
+	{
+		if (colp)
+			colp->to_delete = true;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &TerryKick;
 	}
+
+	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN)
+	{
+		colk = App->collisions->AddCollider({ Terryposition.x + 45, Terryposition.y + 38, 55, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_UP)
+	{
+		if (colk)
+			colk->to_delete = true;
+	}
+
 
 	if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN)
 	{
