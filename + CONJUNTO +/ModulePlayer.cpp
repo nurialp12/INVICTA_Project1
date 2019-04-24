@@ -39,9 +39,9 @@ ModulePlayer::ModulePlayer()
 	//TerryForward.frames.PushBack({/**/, /**/, /**/, /**/});
 
 	TerryForward.PushBack({ 20, 277, 61, 104 });
-	TerryForward.PushBack({ 95, 274, 61 /*71*/, 107 });
+	TerryForward.PushBack({ 95, 274, 71, 107 });
 	TerryForward.PushBack({ 177, 275, 61, 106 });
-	TerryForward.PushBack({ 251, 278, 61, 61 });
+	TerryForward.PushBack({ 251, 278, 61, 103 });
 	TerryForward.speed = 0.1f;
 
 
