@@ -4,6 +4,16 @@
 #include "SDL/include/SDL_rect.h"
 #define MAX_FRAMES 25
 
+
+////NÚRIA
+//enum class FacingDirection
+//{
+//	None,
+//	Left,
+//	Right
+//};
+
+
 class Animation
 {
 public:
@@ -15,6 +25,9 @@ private:
 	float current_frame;
 	int last_frame = 0;
 	int loops = 0;
+
+	////NÚRIA
+	//FacingDirection direction;
 
 public:
 
@@ -44,6 +57,14 @@ public:
 	{
 		current_frame = 0;
 	}
+
+	////NÚRIA
+	//Animation(FacingDirection direction);
+
+	//void SetDirection(FacingDirection dir);
+	//FacingDirection GetDirection() const;
+
+
 };
 
 #endif
