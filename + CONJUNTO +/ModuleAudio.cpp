@@ -3,8 +3,33 @@
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
+//NÚRIA
+#include "Globals.h"
+#include "Application.h"
+#include "ModuleInput.h"
+
+
+
 bool ModuleAudio::PlayMusic(const char* path)
 {
+
+	//NÚRIA
+	if (App->input->keyboard[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN)
+	{
+		if (mute == false)
+		{
+			LOG("MUTE");
+			mute = true;
+		}
+		else
+		{
+			LOG("UNMUTE");
+			mute = false;
+		}
+
+	}
+
+
 	if (music)
 	{
 		Mix_FreeMusic(music);
@@ -30,6 +55,25 @@ bool ModuleAudio::PlayMusic(const char* path)
 
 bool ModuleAudio::PlayFX(const char* path)
 {
+
+	//NÚRIA
+	if (App->input->keyboard[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN)
+	{
+		if (mute == false)
+		{
+			LOG("MUTE FX");
+			mutefx = true;
+		}
+		else
+		{
+			LOG("UNMUTE FX");
+			mutefx = false;
+		}
+
+	}
+
+
+
 	if (fx)
 	{
 		Mix_FreeChunk(fx);
