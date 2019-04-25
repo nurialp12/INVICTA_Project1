@@ -144,7 +144,8 @@ update_status ModulePlayer2::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 	{
-		if (Terry2position.x < 570)
+		if (Terry2position.x < 570 &&
+			Terry2position.x * 2 - 260 < -(App->render->camera.x - App->render->camera.w))
 		{
 			current_animation = &Terry2Forward;
 			Terry2position.x += speed;
@@ -152,12 +153,14 @@ update_status ModulePlayer2::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 	{
-		if (Terry2position.x > 0)
+		if (Terry2position.x > 0 &&
+			Terry2position.x * 2 > -App->render->camera.x)
 		{
 			current_animation = &Terry2Backwards;
 			Terry2position.x -= speed;
 		}
 	}
+
 
 	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
 	{

@@ -184,7 +184,8 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
-		if (Terryposition.x < 570)
+		if (Terryposition.x < 570 &&
+			Terryposition.x * 2 - 260 < -(App->render->camera.x - App->render->camera.w))
 		{
 			current_animation = &TerryForward;
 			Terryposition.x += speed;
@@ -192,7 +193,8 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
-		if (Terryposition.x > 0)
+		if (Terryposition.x > 0 &&
+			Terryposition.x * 2 > -App->render->camera.x)
 		{
 			current_animation = &TerryBackwards;
 			Terryposition.x -= speed;
