@@ -17,7 +17,7 @@ Enjoy!
 
 	PLAYER 1
 	A move left
-	S crouch
+			S crouch
 	D move right
 	W jump
 	Z punch
@@ -26,7 +26,7 @@ Enjoy!
 
 	PLAYER 2
 	LEFT KEY move left
-	DOWN KEY crouch
+			DOWN KEY crouch
 	RIGHT KEY move right
 	UP KEY jump
 	I punch
@@ -36,14 +36,17 @@ Enjoy!
 
 DEBUG:
 	F1 collisions
-	F2 direct win (PLAYER 1)
-	F3 direct lose (PLAYER 1)
-	F4 direct tie
+			F2 direct win (PLAYER 1)
+			F3 direct lose (PLAYER 1)
+			F4 direct tie
 	F5 god mode (PLAYER 1)
 
-	F6 direct win (PLAYER 2)
-	F7 direct lose (PLAYER 2)
+			F6 direct win (PLAYER 2)
+			F7 direct lose (PLAYER 2)
 	F8 god mode (PLAYER 2)
+
+			F9 mute/unmute sound
+			F10 mute/unmute FX
 
 
 
