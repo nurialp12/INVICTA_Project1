@@ -7,7 +7,7 @@
 #include "ModulePlayer2.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleEnd.h"
+#include "ModuleSceneEnd.h"
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "ModuleAudio.h"

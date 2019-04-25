@@ -7,8 +7,8 @@
 #include "SDL/include/SDL_timer.h"
 #include "ModuleScene2.h"
 #include "ModuleScene1.h"
-#include "ModuleEnd.h"
-#include "ModuleIni.h"
+#include "ModuleSceneEnd.h"
+#include "ModuleSceneIni.h"
 #include "ModuleAudio.h"
 
 ModuleFadeToBlack::ModuleFadeToBlack()

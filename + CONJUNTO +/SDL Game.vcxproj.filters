@@ -56,12 +56,6 @@
     <ClInclude Include="ModuleScene1.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleEnd.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleIni.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleParticles.h">
       <Filter>Modules</Filter>
     </ClInclude>
@@ -78,6 +72,12 @@
       <Filter>Containers</Filter>
     </ClInclude>
     <ClInclude Include="ModulePlayer2.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneIni.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneEnd.h">
       <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
@@ -115,12 +115,6 @@
     <ClCompile Include="ModuleScene1.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleEnd.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleIni.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleParticles.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
@@ -134,6 +128,12 @@
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModulePlayer2.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneIni.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneEnd.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>

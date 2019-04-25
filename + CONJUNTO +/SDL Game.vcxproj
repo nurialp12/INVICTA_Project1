@@ -77,10 +77,10 @@
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="ModuleCollision.h" />
-    <ClInclude Include="ModuleEnd.h" />
+    <ClInclude Include="ModuleSceneEnd.h" />
     <ClInclude Include="ModuleFadeToBlack.h" />
     <ClInclude Include="ModuleFonts.h" />
-    <ClInclude Include="ModuleIni.h" />
+    <ClInclude Include="ModuleSceneIni.h" />
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModuleParticles.h" />
     <ClInclude Include="ModulePlayer.h" />
@@ -99,10 +99,10 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleCollision.cpp" />
-    <ClCompile Include="ModuleEnd.cpp" />
+    <ClCompile Include="ModuleSceneEnd.cpp" />
     <ClCompile Include="ModuleFadeToBlack.cpp" />
     <ClCompile Include="ModuleFonts.cpp" />
-    <ClCompile Include="ModuleIni.cpp" />
+    <ClCompile Include="ModuleSceneIni.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
     <ClCompile Include="ModulePlayer.cpp" />

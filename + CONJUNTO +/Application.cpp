@@ -8,8 +8,8 @@
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleEnd.h"
-#include "ModuleIni.h"
+#include "ModuleSceneEnd.h"
+#include "ModuleSceneIni.h"
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "ModuleAudio.h"
@@ -25,8 +25,8 @@ Application::Application()
 	modules[4] = textures = new ModuleTextures();
 	modules[5] = scene_2 = new ModuleScene2();
 	modules[6] = scene_1 = new ModuleScene1();
-	modules[7] = end_game = new ModuleEnd();
-	modules[8] = ini = new ModuleIni();
+	modules[7] = end_game = new ModuleSceneEnd();
+	modules[8] = ini = new ModuleSceneIni();
 	modules[9] = player = new ModulePlayer();
 	modules[10] = player2 = new ModulePlayer2();
 	modules[11] = fade = new ModuleFadeToBlack();
