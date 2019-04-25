@@ -30,6 +30,7 @@ ModuleEnd::~ModuleEnd()
 // Load assets
 bool ModuleEnd::Start()
 {
+	
 	LOG("Loading background assets");
 	bool ret = true;
 	graphics = App->textures->Load("game_over.png");
