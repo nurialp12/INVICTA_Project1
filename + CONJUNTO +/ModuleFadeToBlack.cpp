@@ -9,6 +9,7 @@
 #include "ModuleScene1.h"
 #include "ModuleEnd.h"
 #include "ModuleIni.h"
+#include "ModuleAudio.h"
 
 ModuleFadeToBlack::ModuleFadeToBlack()
 {
@@ -42,7 +43,7 @@ update_status ModuleFadeToBlack::Update()
 			if(now >= total_time)
 			{
 				// TODO 2: enable / disable the modules received when FadeToBlacks() gets called
-				
+				App->audio->StopMusic();
 				moduleoff->Disable();
 				moduleon->Enable();
 				// ---
