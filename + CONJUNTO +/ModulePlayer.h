@@ -19,7 +19,6 @@ public:
 	~ModulePlayer();
 
 	bool Start();
-	update_status PreUpdate();
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
@@ -37,7 +36,6 @@ public:
 	Animation TerryJump;
 	Animation TerryKick;
 	Animation TerryPunch;
-	Animation TerryPW;
 	iPoint Terryposition;
 	//iPoint Terry2position;
 	Collider* col;
