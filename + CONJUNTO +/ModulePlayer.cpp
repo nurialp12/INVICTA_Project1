@@ -267,6 +267,10 @@ update_status ModulePlayer::Update()
 		if (colp)
 			colp->to_delete = true;
 	}
+	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN)
+	{
+		Terryposition.x += 5;
+	}
 
 	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_REPEAT)
 	{
