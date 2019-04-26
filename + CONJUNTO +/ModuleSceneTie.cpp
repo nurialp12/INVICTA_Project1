@@ -1,6 +1,6 @@
 #include "Globals.h"
 #include "Application.h"
-#include "ModuleSceneEnd.h"
+#include "ModuleSceneTie.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
@@ -15,22 +15,22 @@
 
 
 
-ModuleSceneEnd::ModuleSceneEnd()
+ModuleSceneTie::ModuleSceneTie()
 {
 
 	background = { 110, 150, 500, 400 };
 }
 
-	
 
 
-ModuleSceneEnd::~ModuleSceneEnd()
+
+ModuleSceneTie::~ModuleSceneTie()
 {}
 
 // Load assets
-bool ModuleSceneEnd::Start()
+bool ModuleSceneTie::Start()
 {
-	
+
 	LOG("Loading background assets");
 	bool ret = true;
 	graphics = App->textures->Load("game_over.png");
@@ -44,7 +44,7 @@ bool ModuleSceneEnd::Start()
 }
 
 // Load assets
-bool ModuleSceneEnd::CleanUp()
+bool ModuleSceneTie::CleanUp()
 {
 
 	graphics = nullptr;
@@ -57,17 +57,17 @@ bool ModuleSceneEnd::CleanUp()
 }
 
 // Update: draw background
-update_status ModuleSceneEnd::Update()
+update_status ModuleSceneTie::Update()
 {
 	// Draw everything --------------------------------------	
 	App->render->Blit(graphics, 0, 0, &background);
-	
 
-	
-	
+
+
+
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(App->end_game, App->ini, 2.5);
+		App->fade->FadeToBlack(App->tie, App->ini, 2.5);
 	}
 
 

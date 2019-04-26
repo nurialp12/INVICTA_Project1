@@ -262,7 +262,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY)
 	{
-		App->fade->FadeToBlack((Module*)App->scene_2, (Module*)App->end_game);
+		App->fade->FadeToBlack((Module*)App->scene_2, (Module*)App->end_game1);
 	}
 }
 

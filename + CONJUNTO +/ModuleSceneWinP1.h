@@ -5,11 +5,11 @@
 
 struct SDL_Texture;
 
-class ModuleSceneEnd : public Module
+class ModuleSceneWinP1 : public Module
 {
 public:
-	ModuleSceneEnd();
-	~ModuleSceneEnd();
+	ModuleSceneWinP1();
+	~ModuleSceneWinP1();
 
 	bool Start();
 	update_status Update();

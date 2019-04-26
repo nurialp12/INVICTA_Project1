@@ -7,9 +7,12 @@
 #include "SDL/include/SDL_timer.h"
 #include "ModuleScene2.h"
 #include "ModuleScene1.h"
-#include "ModuleSceneEnd.h"
+#include "ModuleSceneWinP1.h"
+#include "ModuleSceneWinP2.h"
+#include "ModuleSceneTie.h"
 #include "ModuleSceneIni.h"
 #include "ModuleAudio.h"
+#include "ModuleCollision.h"
 
 ModuleFadeToBlack::ModuleFadeToBlack()
 {
@@ -44,6 +47,7 @@ update_status ModuleFadeToBlack::Update()
 			{
 				// TODO 2: enable / disable the modules received when FadeToBlacks() gets called
 				App->audio->StopMusic();
+				App->collisions->Disable();
 				moduleoff->Disable();
 				moduleon->Enable();
 				// ---
