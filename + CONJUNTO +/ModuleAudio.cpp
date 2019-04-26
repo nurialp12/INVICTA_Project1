@@ -88,7 +88,7 @@ bool ModuleAudio::PlayFX(const char* path)
 {
 
 	//NÚRIA
-	if (App->input->keyboard[SDL_SCANCODE_F10] == KEY_STATE::KEY_DOWN)
+	/*if (App->input->keyboard[SDL_SCANCODE_F10] == KEY_STATE::KEY_DOWN)
 	{
 		if (mutefx == false)
 		{
@@ -101,22 +101,27 @@ bool ModuleAudio::PlayFX(const char* path)
 			mutefx = false;
 		}
 
-	}
+	}*/
 
 
 
-	if (fx)
+	if (fx[cont])
 	{
-		Mix_FreeChunk(fx);
+		Mix_FreeChunk(fx[cont]);
 	}
-	fx = Mix_LoadWAV(path);
+	fx[cont] = Mix_LoadWAV(path);
 	if (!fx)
 	{
 		LOG("Fx %s could not load. Mix_Error: %s\n", path, Mix_GetError());
 		return false;
 	}
 
-	Mix_PlayChannel(-1, fx, 0);
+	Mix_PlayChannel(-1, fx[cont], 0);
+	++cont;
+	if (cont == 10)
+	{
+		cont = 0;
+	}
 	return true;
 }
 
@@ -154,10 +159,14 @@ bool ModuleAudio::CleanUp()
 	{
 		Mix_FreeMusic(music);
 	}
-	if (fx)
+	for (int i = 0; i < 10; ++i)
 	{
-		Mix_FreeChunk(fx);
+		if (fx[i])
+		{
+			Mix_FreeChunk(fx[i]);
+		}
 	}
+	
 
 	Mix_CloseAudio();
 	Mix_Quit();
