@@ -77,7 +77,8 @@
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="ModuleCollision.h" />
-    <ClInclude Include="ModuleSceneEnd.h" />
+    <ClInclude Include="ModuleSceneTie.h" />
+    <ClInclude Include="ModuleSceneWinP1.h" />
     <ClInclude Include="ModuleFadeToBlack.h" />
     <ClInclude Include="ModuleFonts.h" />
     <ClInclude Include="ModuleSceneIni.h" />
@@ -88,6 +89,7 @@
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleScene2.h" />
     <ClInclude Include="ModuleScene1.h" />
+    <ClInclude Include="ModuleSceneWinP2.h" />
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="p2Point.h" />
@@ -99,7 +101,8 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleCollision.cpp" />
-    <ClCompile Include="ModuleSceneEnd.cpp" />
+    <ClCompile Include="ModuleSceneTie.cpp" />
+    <ClCompile Include="ModuleSceneWinP1.cpp" />
     <ClCompile Include="ModuleFadeToBlack.cpp" />
     <ClCompile Include="ModuleFonts.cpp" />
     <ClCompile Include="ModuleSceneIni.cpp" />
@@ -110,6 +113,7 @@
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleScene2.cpp" />
     <ClCompile Include="ModuleScene1.cpp" />
+    <ClCompile Include="ModuleSceneWinP2.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
   </ItemGroup>

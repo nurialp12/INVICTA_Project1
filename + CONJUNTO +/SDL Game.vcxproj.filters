@@ -77,7 +77,13 @@
     <ClInclude Include="ModuleSceneIni.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleSceneEnd.h">
+    <ClInclude Include="ModuleSceneWinP1.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneWinP2.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneTie.h">
       <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
@@ -133,7 +139,13 @@
     <ClCompile Include="ModuleSceneIni.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleSceneEnd.cpp">
+    <ClCompile Include="ModuleSceneWinP1.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneWinP2.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneTie.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>

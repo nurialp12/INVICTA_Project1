@@ -36,8 +36,12 @@ public:
 	Animation Terry2Jump;
 	Animation Terry2Kick;
 	Animation Terry2Punch;
+	Animation Terry2PW;
+
 	iPoint Terry2position;
 	Collider* col;
+	Collider* colp;
+	Collider* colk;
 	bool gmode = false;
 	bool destroyed = false;
 

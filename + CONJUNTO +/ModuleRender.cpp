@@ -51,12 +51,12 @@ update_status ModuleRender::PreUpdate()
 
 update_status ModuleRender::Update()	
 {
-	int speed = 3;
+	int speed = 1;
 
-	if(App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+	if(App->input->keyboard[SDL_SCANCODE_COMMA] == KEY_STATE::KEY_REPEAT)
 		camera.y += speed;
 
-	if(App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+	if(App->input->keyboard[SDL_SCANCODE_PERIOD] == KEY_STATE::KEY_REPEAT)
 		camera.y -= speed;
 	
 	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT )

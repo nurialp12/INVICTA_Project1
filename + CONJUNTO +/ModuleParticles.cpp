@@ -93,12 +93,23 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Uint32
 	p->position.x = x;
 	p->position.y = y;
 
-	p->col = App->collisions->AddCollider({ x,y,p->anim.GetCurrentFrame().w,p->anim.GetCurrentFrame().h }, COLLIDER_PLAYER_SHOT, this);
+	p->col = App->collisions->AddCollider({ x,y-4,p->anim.GetCurrentFrame().w,p->anim.GetCurrentFrame().h }, COLLIDER_PLAYER_SHOT, this);
 
 
 	active[last_particle++] = p;
 }
+void ModuleParticles::AddEnemyParticle(const Particle& particle, int x, int y, Uint32 delay)
+{
+	Particle* p = new Particle(particle);
+	p->born = SDL_GetTicks() + delay;
+	p->position.x = x;
+	p->position.y = y;
 
+	p->col = App->collisions->AddCollider({ x,y - 4,p->anim.GetCurrentFrame().w,p->anim.GetCurrentFrame().h }, COLLIDER_ENEMY_SHOT, this);
+
+
+	active[last_particle++] = p;
+}
 // -------------------------------------------------------------
 // -------------------------------------------------------------
 
