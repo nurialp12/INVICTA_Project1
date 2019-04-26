@@ -141,7 +141,7 @@ bool ModulePlayer::CleanUp()
 
 	return true;
 }
-
+//update_status ModulePlayer::PreUpdate() { return UPDATE_CONTINUE; };
 // Update: draw background
 update_status ModulePlayer::Update()
 {
@@ -188,7 +188,9 @@ update_status ModulePlayer::Update()
 				break;
 			}
 		}
-		current_state = state;*/
+		current_state = state;
+		}*/
+
 
 
 
