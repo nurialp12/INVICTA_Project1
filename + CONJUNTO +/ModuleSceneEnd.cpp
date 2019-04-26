@@ -1,13 +1,13 @@
 #include "Globals.h"
 #include "Application.h"
-#include "ModuleEnd.h"
+#include "ModuleSceneEnd.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleIni.h"
+#include "ModuleSceneIni.h"
 #include "SDL/include/SDL.h"
 #include "ModuleParticles.h"
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
@@ -15,7 +15,7 @@
 
 
 
-ModuleEnd::ModuleEnd()
+ModuleSceneEnd::ModuleSceneEnd()
 {
 
 	background = { 110, 150, 500, 400 };
@@ -24,12 +24,13 @@ ModuleEnd::ModuleEnd()
 	
 
 
-ModuleEnd::~ModuleEnd()
+ModuleSceneEnd::~ModuleSceneEnd()
 {}
 
 // Load assets
-bool ModuleEnd::Start()
+bool ModuleSceneEnd::Start()
 {
+	
 	LOG("Loading background assets");
 	bool ret = true;
 	graphics = App->textures->Load("game_over.png");
@@ -43,7 +44,7 @@ bool ModuleEnd::Start()
 }
 
 // Load assets
-bool ModuleEnd::CleanUp()
+bool ModuleSceneEnd::CleanUp()
 {
 
 	graphics = nullptr;
@@ -56,7 +57,7 @@ bool ModuleEnd::CleanUp()
 }
 
 // Update: draw background
-update_status ModuleEnd::Update()
+update_status ModuleSceneEnd::Update()
 {
 	// Draw everything --------------------------------------	
 	App->render->Blit(graphics, 0, 0, &background);

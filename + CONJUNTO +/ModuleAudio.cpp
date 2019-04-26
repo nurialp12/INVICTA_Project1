@@ -32,6 +32,10 @@ bool ModuleAudio::PlayMusic(const char* path)
 
 	if (music)
 	{
+		while (!Mix_FadeOutMusic(3000) && Mix_PlayingMusic()) {
+			// wait for any fades to complete
+			SDL_Delay(90);
+		}
 		Mix_FreeMusic(music);
 	}
 
@@ -43,13 +47,25 @@ bool ModuleAudio::PlayMusic(const char* path)
 		return false;
 	}
 
-	if (Mix_PlayMusic(music, -1) < 0)
-	{
-		LOG("Music %s could not play. Mix_Error: %s\n", path, Mix_GetError());
+	if (Mix_FadeInMusic(music, -1, 2000) == -1) {
+		LOG("Mix_FadeInMusic: %s\n", Mix_GetError());
 		return false;
 	}
 
 	LOG("Succesfully playing %s\n", path);
+	return true;
+}
+
+bool ModuleAudio::StopMusic()
+{
+	if (music)
+	{
+		while (!Mix_FadeOutMusic(3000) && Mix_PlayingMusic()) {
+			// wait for any fades to complete
+			SDL_Delay(90);
+		}
+		Mix_FreeMusic(music);
+	}
 	return true;
 }
 

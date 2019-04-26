@@ -8,14 +8,14 @@
 #include "ModulePlayer2.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleIni.h"
+#include "ModuleSceneIni.h"
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
 #pragma comment( lib, "SDL/libx86/SDL2main.lib" )
 
 
 
-ModuleIni::ModuleIni()
+ModuleSceneIni::ModuleSceneIni()
 {
 	background = { 0, 0, 300, 150 };
 }
@@ -23,11 +23,11 @@ ModuleIni::ModuleIni()
 
 
 
-ModuleIni::~ModuleIni()
+ModuleSceneIni::~ModuleSceneIni()
 {}
 
 // Load assets
-bool ModuleIni::Start()
+bool ModuleSceneIni::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
@@ -40,7 +40,7 @@ bool ModuleIni::Start()
 }
 
 // Load assets
-bool ModuleIni::CleanUp()
+bool ModuleSceneIni::CleanUp()
 {
 
 	graphics = nullptr;
@@ -53,7 +53,7 @@ bool ModuleIni::CleanUp()
 }
 
 // Update: draw background
-update_status ModuleIni::Update()
+update_status ModuleSceneIni::Update()
 {
 	// Draw everything --------------------------------------	
 	App->render->Blit(graphics, 35, 35, &background);

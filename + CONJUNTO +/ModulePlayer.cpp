@@ -196,14 +196,28 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
+<<<<<<< HEAD
 		current_animation = &TerryForward;
 		if (Terryposition.x < 570)
+=======
+		if (Terryposition.x < 570 &&
+			Terryposition.x * 2 - 260 < -(App->render->camera.x - App->render->camera.w))
+		{
+			current_animation = &TerryForward;
+>>>>>>> 24eba54ef35fb6fc15b294e280f9467fb2f38c63
 			Terryposition.x += speed;
 	}
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
+<<<<<<< HEAD
 		current_animation = &TerryBackwards;
 		if (Terryposition.x > 0)
+=======
+		if (Terryposition.x > 0 &&
+			Terryposition.x * 2 > -App->render->camera.x)
+		{
+			current_animation = &TerryBackwards;
+>>>>>>> 24eba54ef35fb6fc15b294e280f9467fb2f38c63
 			Terryposition.x -= speed;
 	}
 
@@ -273,6 +287,10 @@ update_status ModulePlayer::Update()
 	{
 		if (colp)
 			colp->to_delete = true;
+	}
+	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN)
+	{
+		Terryposition.x += 5;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_REPEAT)

@@ -5,11 +5,11 @@
 
 struct SDL_Texture;
 
-class ModuleIni : public Module
+class ModuleSceneIni : public Module
 {
 public:
-	ModuleIni();
-	~ModuleIni();
+	ModuleSceneIni();
+	~ModuleSceneIni();
 
 	bool Start();
 	update_status Update();
