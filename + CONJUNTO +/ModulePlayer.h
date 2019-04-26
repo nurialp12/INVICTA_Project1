@@ -37,6 +37,7 @@ public:
 	Animation TerryJump;
 	Animation TerryKick;
 	Animation TerryPunch;
+	Animation TerryPW;
 	iPoint Terryposition;
 	//iPoint Terry2position;
 	Collider* col;
