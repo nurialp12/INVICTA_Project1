@@ -34,6 +34,9 @@ Enjoy!
 			P throw
 
 
+, to move up the camera
+. to move down the camera
+
 DEBUG:
 	F1 collisions
 			F2 direct win (PLAYER 1)
