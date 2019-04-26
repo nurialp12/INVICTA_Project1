@@ -2,7 +2,7 @@
 
 		Jump
 
-		Fix sprites
+Fix sprites
 
 		Mirror
 
