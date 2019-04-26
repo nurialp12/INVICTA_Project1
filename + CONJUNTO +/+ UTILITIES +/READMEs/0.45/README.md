@@ -39,13 +39,13 @@ Space to change screens
 
 DEBUG:
 	F1 collisions
-			F2 direct win (PLAYER 1)
-			F3 direct lose (PLAYER 1)
-			F4 direct tie (PLAYER 1 WINS)
+	F2 direct win (PLAYER 1)
+	F3 direct lose (PLAYER 1)
+	F4 direct tie (PLAYER 1 WINS)
 	F5 god mode (PLAYER 1)
 
-			F6 direct win (PLAYER 2)
-			F7 direct lose (PLAYER 2)
+	F6 direct win (PLAYER 2)
+	F7 direct lose (PLAYER 2)
 	F8 god mode (PLAYER 2)
 
 	F9 mute/unmute sound
