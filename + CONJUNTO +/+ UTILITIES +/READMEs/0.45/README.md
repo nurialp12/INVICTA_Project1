@@ -20,9 +20,10 @@ Enjoy!
 			S crouch
 	D move right
 	W jump
-	Z punch
-	X kick
-			C throw
+	F punch
+	G kick
+	H Power Wave
+	
 
 	PLAYER 2
 	LEFT KEY move left
@@ -31,22 +32,24 @@ Enjoy!
 	UP KEY jump
 	I punch
 	O kick
-			P throw
+	P Power Wave
+	
+Space to change screens
 
 
 DEBUG:
 	F1 collisions
 			F2 direct win (PLAYER 1)
 			F3 direct lose (PLAYER 1)
-			F4 direct tie
+			F4 direct tie (PLAYER 1 WINS)
 	F5 god mode (PLAYER 1)
 
 			F6 direct win (PLAYER 2)
 			F7 direct lose (PLAYER 2)
 	F8 god mode (PLAYER 2)
 
-			F9 mute/unmute sound
-			F10 mute/unmute FX
+	F9 mute/unmute sound
+
 
 
 
@@ -92,7 +95,7 @@ TODO: Write history
 		c) Player (not Player 2) can collide with something in the environment 
 		d) God Mode for Player (not Player 2)
 	Removed:
-	Note: Object non enxistent in the game has been created to implement b)'s purpose.
+	Note: The collider is going to be Player 2 in b).
 
 0.45 
 	Added:
