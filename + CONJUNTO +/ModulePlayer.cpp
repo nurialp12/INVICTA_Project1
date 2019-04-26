@@ -129,7 +129,7 @@ bool ModulePlayer::CleanUp()
 
 	return true;
 }
-
+//update_status ModulePlayer::PreUpdate() { return UPDATE_CONTINUE; };
 // Update: draw background
 update_status ModulePlayer::Update()
 {
@@ -177,7 +177,9 @@ update_status ModulePlayer::Update()
 			}
 		}
 		current_state = state;
-	}*/
+		}*/
+
+
 
 
 	int speed = 1;
@@ -199,167 +201,211 @@ update_status ModulePlayer::Update()
 			current_animation = &TerryBackwards;
 			Terryposition.x -= speed;
 		}
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
-	{
-		current_animation = &TerryJump;
-
-		/*Terryposition.y = 100;*/
-		//if (Terryposition.y == 100)
-		//{
-		//	Terryposition.y = 85;
-		//}
-
-		//if (Terryposition.y == 85)
-		//{
-		//	Terryposition.y = 115;
-		//}
-		/*Terryposition.y -= speed;*/					////NO PUJA XD
 
 
-		//if ()
-		//{
-		//	Terryposition.y = Terryposition.y + 15;
-		//}
-
-		//else if ()
-		//{
-		//	Terryposition.y = Terryposition.y - 15;
-		//}
-
-
-
-		/*FER QUE PER LES DUES PRIEMERES ANIMACIONS PUGI X PÍXELS I LES DUES ÚLTIMES QUE ELS BAIXI*/
-
-
-	}
-
-	//if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
-	//{
-	//	if (terry2position.x < 570)
-	//	{
-	//		current_animation = &terryforward;
-	//		terryposition.x += speed;
-	//	}
-	//}
-	//if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
-	//{
-	//	if (terry2position.x > 0)
-	//	{
-	//		current_animation = &terrybackward;
-	//		terry2position.x -= speed;
-	//	}
-	//}
-
-	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_REPEAT)
-	{
-		current_animation = &TerryPunch;
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
-	{
-		colp = App->collisions->AddCollider({ Terryposition.x + 45, Terryposition.y + 10, 43, 20 }, COLLIDER_PLAYER_SHOT, App->player);
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_UP)
-	{
-		if (colp)
-			colp->to_delete = true;
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_REPEAT)
-	{
-		current_animation = &TerryKick;
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN)
-	{
-		colk = App->collisions->AddCollider({ Terryposition.x + 45, Terryposition.y + 38, 55, 20 }, COLLIDER_PLAYER_SHOT, App->player);
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_UP)
-	{
-		if (colk)
-			colk->to_delete = true;
-	}
-
-
-	if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN)
-	{
-		App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 40, Terryposition.y);
-		App->audio->PlayFX("FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
-	
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN)
-	{
-		if (gmode == false)
+		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 		{
-			LOG("Starting GOD MODE");
-			gmode = true;
-			col->to_delete = true;
-		}
-		else
-		{
-			LOG("GOD MODE off");
-			col = App->collisions->AddCollider({ 0, 0, 60, 92 }, COLLIDER_PLAYER, App->player);
-			gmode = false;
-		}
-	}
+			current_animation = &TerryJump;
 
-	// TODO 3: Update collider position to player position
-	col->rect.x = Terryposition.x+15;
-	col->rect.y = Terryposition.y;
-	
 
-	// Draw everything --------------------------------------
-	SDL_Rect r = current_animation->GetCurrentFrame();
+			/*Terryposition.y = 100;*/
+			//if (Terryposition.y == 100)
+			//{
+			//	Terryposition.y = 85;
+			//}
 
-	// Draw everything --------------------------------------
-	if (destroyed == false)
-	{
-		if ((current_animation == (&TerryKick)) || current_animation == (&TerryJump) || current_animation == (&TerryForward) || current_animation == (&TerryBackwards)/*current_animation == (&TerryKick || &TerryJump || &TerryForward || &TerryBackwards)*/)
-		{
-			App->render->Blit(graphics2, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
+			//if (Terryposition.y == 85)
+			//{
+			//	Terryposition.y = 115;
+			//}
+			/*Terryposition.y -= speed;*/					////NO PUJA XD
+
+
+			//if ()
+			//{
+			//	Terryposition.y = Terryposition.y + 15;
+			//}
+
+			//else if ()
+			//{
+			//	Terryposition.y = Terryposition.y - 15;
+			//}
+
+
+
+//////<<<<<<< HEAD
+//////	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
+//////	{
+//////		colp = App->collisions->AddCollider({ Terryposition.x + 45, Terryposition.y + 10, 43, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+//////	}
+//////
+//////	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_UP)
+//////	{
+//////		if (colp)
+//////			colp->to_delete = true;
+//////	}
+//////=======
+//////			/*FER QUE PER LES DUES PRIEMERES ANIMACIONS PUGI X PÍXELS I LES DUES ÚLTIMES QUE ELS BAIXI*/
+//////
+//////>>>>>>> 8898bcf3d472681ce79380f3d7fac76a0b67d0c7
+
 		}
 
-		else
+//////<<<<<<< HEAD
+//////	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN)
+//////	{
+//////		colk = App->collisions->AddCollider({ Terryposition.x + 45, Terryposition.y + 38, 55, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+//////	}
+//////=======
+//////		//if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+//////		//{
+//////		//	if (terry2position.x < 570)
+//////		//	{
+//////		//		current_animation = &terryforward;
+//////		//		terryposition.x += speed;
+//////		//	}
+//////		//}
+//////		//if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+//////		//{
+//////		//	if (terry2position.x > 0)
+//////		//	{
+//////		//		current_animation = &terrybackward;
+//////		//		terry2position.x -= speed;
+//////		//	}
+//////		//}
+//////>>>>>>> 8898bcf3d472681ce79380f3d7fac76a0b67d0c7
+
+		if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_REPEAT)
 		{
-			App->render->Blit(graphics, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
+			current_animation = &TerryPunch;
 		}
 
-		if (current_animation == (&TerryJump))
+//////<<<<<<< HEAD
+//////
+//////	if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN)
+//////	{
+//////		App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 40, Terryposition.y);
+//////		App->audio->PlayFX("FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
+//////	
+//////	}
+//////=======
+//////		if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
+//////		{
+//////			colp = App->collisions->AddCollider({ Terryposition.x + 45, Terryposition.y + 20, 43, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+//////		}
+//////>>>>>>> 8898bcf3d472681ce79380f3d7fac76a0b67d0c7
+
+		if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_UP)
 		{
-			if (Terryposition.y == 115)
+			if (colp)
+				colp->to_delete = true;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN)
+		{
+			Terryposition.x += 5;
+		}
+
+//////<<<<<<< HEAD
+//////	// TODO 3: Update collider position to player position
+//////	col->rect.x = Terryposition.x+15;
+//////	col->rect.y = Terryposition.y;
+//////	
+//////=======
+//////		if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_REPEAT)
+//////		{
+//////			current_animation = &TerryKick;
+//////		}
+//////>>>>>>> 8898bcf3d472681ce79380f3d7fac76a0b67d0c7
+
+		if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN)
+		{
+			colk = App->collisions->AddCollider({ Terryposition.x + 45, Terryposition.y + 48, 55, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+		}
+
+		if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_UP)
+		{
+			if (colk)
+				colk->to_delete = true;
+		}
+
+		if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN)
+		{
+			App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 40, Terryposition.y + 12);
+			App->audio->PlayFX("FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
+		}
+		if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT)
+		{
+			current_animation = &TerryPW;
+		}
+
+		if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN)
+		{
+			if (gmode == false)
 			{
-				Terryposition.y = 85;
+				LOG("Starting GOD MODE");
+				gmode = true;
+				col->to_delete = true;
+			}
+			else
+			{
+				LOG("GOD MODE off");
+				col = App->collisions->AddCollider({ 0, 0, 60, 92 }, COLLIDER_PLAYER, App->player);
+				gmode = false;
+			}
+		}
+
+		// TODO 3: Update collider position to player position
+		col->rect.x = Terryposition.x + 15;
+		col->rect.y = Terryposition.y + 10;
+
+
+		// Draw everything --------------------------------------
+		SDL_Rect r = current_animation->GetCurrentFrame();
+
+		// Draw everything --------------------------------------
+		if (destroyed == false)
+		{
+			if ((current_animation == (&TerryKick)) || current_animation == (&TerryJump) || current_animation == (&TerryForward) || current_animation == (&TerryBackwards)/*current_animation == (&TerryKick || &TerryJump || &TerryForward || &TerryBackwards)*/)
+			{
+				App->render->Blit(graphics2, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
 			}
 
-			else if (Terryposition.y == 85)
+			else
 			{
-				Terryposition.y = 55;
+				App->render->Blit(graphics, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
 			}
 
-			else if (Terryposition.y == 55)
+			if (current_animation == (&TerryJump))
 			{
-				Terryposition.y = 115;
-			}
+				if (Terryposition.y == 115)
+				{
+					Terryposition.y = 85;
+				}
 
+				else if (Terryposition.y == 85)
+				{
+					Terryposition.y = 55;
+				}
+
+				else if (Terryposition.y == 55)
+				{
+					Terryposition.y = 115;
+				}
+
+			}
+			//App->render->Blit(graphics, terryposition.x, terryposition.y, &(current_animation->GetCurrentFrame()));
+			//App->render->Blit(graphics, terry2position.x, terry2position.y, &(current_animation->GetCurrentFrame()));
 		}
-		//App->render->Blit(graphics, terryposition.x, terryposition.y, &(current_animation->GetCurrentFrame()));
-		//App->render->Blit(graphics, terry2position.x, terry2position.y, &(current_animation->GetCurrentFrame()));
+
+		// Draw UI (score) --------------------------------------
+		sprintf_s(score_text, 10, "%7d", score);
+
+		// TODO 3: Blit the text of the score in at the bottom of the screen
+		App->fonts->BlitText(0, 150, font_score, "HelloWorld");
+
+		return UPDATE_CONTINUE;
 	}
-
-	// Draw UI (score) --------------------------------------
-	sprintf_s(score_text, 10, "%7d", score);
-
-	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(0, 150, font_score, "HelloWorld");
-
-	return UPDATE_CONTINUE;
 }
-
 // TODO 4: Detect collision with a player.
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
