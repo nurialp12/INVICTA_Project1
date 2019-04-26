@@ -19,7 +19,6 @@ public:
 	~ModulePlayer();
 
 	bool Start();
-
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
