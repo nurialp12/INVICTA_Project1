@@ -14,20 +14,21 @@ bool ModuleAudio::PlayMusic(const char* path)
 {
 
 	//NÚRIA
-	if (App->input->keyboard[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN)
-	{
-		if (mute == false)
-		{
-			LOG("MUTE");
-			mute = true;
-		}
-		else
-		{
-			LOG("UNMUTE");
-			mute = false;
-		}
+	//if (App->input->keyboard[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN)
+	//{
+	//	if (mute == false)
+	//	{
+	//		LOG("MUTE");
+	//		mute = true;
+	//	}
+	//	else
+	//	{
+	//		LOG("UNMUTE");
+	//		mute = false;
+	//		
+	//	}
 
-	}
+	//}
 
 
 	if (music)
@@ -69,13 +70,27 @@ bool ModuleAudio::StopMusic()
 	return true;
 }
 
+void ModuleAudio::MuteMusic(const char* path)
+{
+	if (!mute)
+	{
+		Mix_FreeMusic(music);
+		mute = true;
+	}
+	else
+	{
+		App->audio->PlayMusic(path);
+		mute = false;
+	}
+}
+
 bool ModuleAudio::PlayFX(const char* path)
 {
 
 	//NÚRIA
-	if (App->input->keyboard[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_F10] == KEY_STATE::KEY_DOWN)
 	{
-		if (mute == false)
+		if (mutefx == false)
 		{
 			LOG("MUTE FX");
 			mutefx = true;
@@ -125,7 +140,7 @@ bool ModuleAudio::Init()
 		return false;
 	}
 
-	if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 	{
 		LOG("SDL_MIXER could not initialize! SDL_MIXER Error: %s\n", Mix_GetError());
 		return false;

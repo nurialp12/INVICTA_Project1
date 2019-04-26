@@ -13,6 +13,7 @@ class ModuleAudio : public Module
 public:
 	bool PlayMusic(const char* path);
 	bool StopMusic();
+	void MuteMusic(const char* path);
 	//size_t LoadFx(const char* path);
 	//bool PlayFx(size_t fx);
 	bool PlayFX(const char* path);

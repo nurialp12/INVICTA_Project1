@@ -90,6 +90,13 @@ update_status ModuleScene2::Update()
 	//App->render->Blit(graphics, 305, 136, &(water.GetCurrentFrame())); // water animation
 	//App->render->Blit(graphics, 0, -16, &roof, 0.75f);
 
+
+	if (App->input->keyboard[SDL_SCANCODE_F9] == 1)
+	{
+		App->audio->MuteMusic("music/Haremar religion/Haremar religion.ogg");
+	}
+
+
 	// TODO 3: make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
