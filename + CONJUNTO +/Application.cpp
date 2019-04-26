@@ -8,7 +8,9 @@
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleSceneEnd.h"
+#include "ModuleSceneWinP1.h"
+#include "ModuleSceneWinP2.h"
+#include "ModuleSceneTie.h"
 #include "ModuleSceneIni.h"
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
@@ -25,14 +27,16 @@ Application::Application()
 	modules[4] = textures = new ModuleTextures();
 	modules[5] = scene_2 = new ModuleScene2();
 	modules[6] = scene_1 = new ModuleScene1();
-	modules[7] = end_game = new ModuleSceneEnd();
-	modules[8] = ini = new ModuleSceneIni();
-	modules[9] = player = new ModulePlayer();
-	modules[10] = player2 = new ModulePlayer2();
-	modules[11] = fade = new ModuleFadeToBlack();
-	modules[12] = particles = new ModuleParticles();
-	modules[13] = collisions = new ModuleCollision();
-	modules[14] = fonts = new ModuleFonts();
+	modules[7] = end_game1 = new ModuleSceneWinP1();
+	modules[8] = end_game2 = new ModuleSceneWinP2();
+	modules[9] = tie = new ModuleSceneTie();
+	modules[10] = ini = new ModuleSceneIni();
+	modules[11] = player = new ModulePlayer();
+	modules[12] = player2 = new ModulePlayer2();
+	modules[13] = fade = new ModuleFadeToBlack();
+	modules[14] = particles = new ModuleParticles();
+	modules[15] = collisions = new ModuleCollision();
+	modules[16] = fonts = new ModuleFonts();
 }	
 
 Application::~Application()
@@ -51,7 +55,9 @@ bool Application::Init()
 	// Disable the map that you do not start with
 	scene_2->Disable();
 	scene_1->Disable();
-	end_game->Disable();
+	end_game1->Disable();
+	end_game2->Disable();
+	tie->Disable();
 	collisions->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
