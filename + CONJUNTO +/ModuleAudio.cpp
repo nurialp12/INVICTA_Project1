@@ -3,39 +3,10 @@
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
-//NÚRIA
-#include "Globals.h"
-#include "Application.h"
-#include "ModuleInput.h"
-
-
-
 bool ModuleAudio::PlayMusic(const char* path)
 {
-
-	//NÚRIA
-	if (App->input->keyboard[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN)
-	{
-		if (mute == false)
-		{
-			LOG("MUTE");
-			mute = true;
-		}
-		else
-		{
-			LOG("UNMUTE");
-			mute = false;
-		}
-
-	}
-
-
 	if (music)
 	{
-		while (!Mix_FadeOutMusic(3000) && Mix_PlayingMusic()) {
-			// wait for any fades to complete
-			SDL_Delay(90);
-		}
 		Mix_FreeMusic(music);
 	}
 
@@ -47,8 +18,9 @@ bool ModuleAudio::PlayMusic(const char* path)
 		return false;
 	}
 
-	if (Mix_FadeInMusic(music, -1, 2000) == -1) {
-		LOG("Mix_FadeInMusic: %s\n", Mix_GetError());
+	if (Mix_PlayMusic(music, -1) < 0)
+	{
+		LOG("Music %s could not play. Mix_Error: %s\n", path, Mix_GetError());
 		return false;
 	}
 
@@ -56,40 +28,8 @@ bool ModuleAudio::PlayMusic(const char* path)
 	return true;
 }
 
-bool ModuleAudio::StopMusic()
-{
-	if (music)
-	{
-		while (!Mix_FadeOutMusic(3000) && Mix_PlayingMusic()) {
-			// wait for any fades to complete
-			SDL_Delay(90);
-		}
-		Mix_FreeMusic(music);
-	}
-	return true;
-}
-
 bool ModuleAudio::PlayFX(const char* path)
 {
-
-	//NÚRIA
-	if (App->input->keyboard[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN)
-	{
-		if (mute == false)
-		{
-			LOG("MUTE FX");
-			mutefx = true;
-		}
-		else
-		{
-			LOG("UNMUTE FX");
-			mutefx = false;
-		}
-
-	}
-
-
-
 	if (fx)
 	{
 		Mix_FreeChunk(fx);

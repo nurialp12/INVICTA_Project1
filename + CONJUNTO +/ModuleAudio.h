@@ -2,7 +2,6 @@
 
 #include "Module.h"
 
-
 struct _Mix_Music;
 typedef _Mix_Music Mix_Music;
 
@@ -12,15 +11,9 @@ class ModuleAudio : public Module
 {
 public:
 	bool PlayMusic(const char* path);
-	bool StopMusic();
 	//size_t LoadFx(const char* path);
 	//bool PlayFx(size_t fx);
 	bool PlayFX(const char* path);
-
-	//NÚRIA
-	bool mute = false;
-	bool mutefx = false;
-
 
 	bool Init() override;
 	bool CleanUp() override;

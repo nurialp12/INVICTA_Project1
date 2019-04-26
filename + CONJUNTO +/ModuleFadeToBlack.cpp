@@ -7,9 +7,8 @@
 #include "SDL/include/SDL_timer.h"
 #include "ModuleScene2.h"
 #include "ModuleScene1.h"
-#include "ModuleSceneEnd.h"
-#include "ModuleSceneIni.h"
-#include "ModuleAudio.h"
+#include "ModuleEnd.h"
+#include "ModuleIni.h"
 
 ModuleFadeToBlack::ModuleFadeToBlack()
 {
@@ -43,7 +42,7 @@ update_status ModuleFadeToBlack::Update()
 			if(now >= total_time)
 			{
 				// TODO 2: enable / disable the modules received when FadeToBlacks() gets called
-				App->audio->StopMusic();
+				
 				moduleoff->Disable();
 				moduleon->Enable();
 				// ---

@@ -6,15 +6,13 @@
 #include "ModuleScene1.h"
 #include "ModuleScene2.h"
 #include "ModulePlayer.h"
-#include "ModulePlayer2.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleSceneEnd.h"
-#include "ModuleSceneIni.h"
+#include "ModuleEnd.h"
+#include "ModuleIni.h"
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "ModuleAudio.h"
 #include "ModuleFonts.h"
-
 
 Application::Application()
 {
@@ -25,14 +23,13 @@ Application::Application()
 	modules[4] = textures = new ModuleTextures();
 	modules[5] = scene_2 = new ModuleScene2();
 	modules[6] = scene_1 = new ModuleScene1();
-	modules[7] = end_game = new ModuleSceneEnd();
-	modules[8] = ini = new ModuleSceneIni();
+	modules[7] = end_game = new ModuleEnd();
+	modules[8] = ini = new ModuleIni();
 	modules[9] = player = new ModulePlayer();
-	modules[10] = player2 = new ModulePlayer2();
-	modules[11] = fade = new ModuleFadeToBlack();
-	modules[12] = particles = new ModuleParticles();
-	modules[13] = collisions = new ModuleCollision();
-	modules[14] = fonts = new ModuleFonts();
+	modules[10] = fade = new ModuleFadeToBlack();
+	modules[11] = particles = new ModuleParticles();
+	modules[12] = collisions = new ModuleCollision();
+	modules[13] = fonts = new ModuleFonts();
 }	
 
 Application::~Application()
@@ -47,7 +44,6 @@ bool Application::Init()
 
 	// Player will be enabled on the first update of a new scene
 	player->Disable();
-	player2->Disable();
 	// Disable the map that you do not start with
 	scene_2->Disable();
 	scene_1->Disable();
