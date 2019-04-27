@@ -30,7 +30,10 @@ private:
 	//FacingDirection direction;
 
 public:
-
+	void resetLoops(int a)
+	{
+		loops = a;
+	}
 	void PushBack(const SDL_Rect& rect)
 	{
 		frames[last_frame++] = rect;

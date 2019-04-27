@@ -208,8 +208,8 @@ update_status ModuleSceneIni::Update()
 		App->render->Blit(graphics, -10, 0, &(background.GetCurrentFrame()), 0.70f);
 	}
 
-	
-	
+	App->render->camera.x = 0;
+	App->render->camera.y = 0;
 
 
 	if (background.Finished())

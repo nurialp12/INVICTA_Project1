@@ -63,7 +63,8 @@ update_status ModuleSceneTie::Update()
 	// Draw everything --------------------------------------	
 	App->render->Blit(graphics, 0, 0, &background);
 
-
+	App->render->camera.x = 0;
+	App->render->camera.y = 0;
 
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)

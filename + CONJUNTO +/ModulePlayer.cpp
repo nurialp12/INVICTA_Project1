@@ -14,13 +14,16 @@
 #include "SDL\include\SDL.h"
 #include <stdio.h>
 
-
+int speed = 2;
+bool airkick = true;
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModulePlayer::ModulePlayer()
 {
 
-	life = { 15, 69, 166, 75 };
+	lifebar = { 15, 69, 166, 75 };
+	life1 = { 10, 77, 1, 6 };
+	life2 = { 11, 77, 4, 6 };
 
 	// idle animation of Terry							//spritesTerryBogard.png
 
@@ -92,6 +95,7 @@ ModulePlayer::ModulePlayer()
 	TerryPunch.PushBack({ 435, 910, 71, 112 });
 	TerryPunch.PushBack({ 507, 912, 62, 112 });
 	TerryPunch.PushBack({ 574, 912, 97, 112 });
+	TerryPunch.loop = true;
 	TerryPunch.speed = 0.1f;
 
 	// POWER WAVE animation of Terrry
@@ -201,6 +205,9 @@ bool ModulePlayer::Start()
 	Terryposition.y = 100;
 	score = 0;
 
+	current_animation = &Terryidle;
+	currentstate = ST_IDLE;
+
 	// TODO 2: Add a collider to the player
 	col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
 
@@ -230,15 +237,61 @@ bool ModulePlayer::CleanUp()
 
 update_status ModulePlayer::PreUpdate()
 {
-	inputTerry.A_DOWN = App->input->keyboard[SDL_SCANCODE_A] == KEY_DOWN;
-	inputTerry.D_DOWN = App->input->keyboard[SDL_SCANCODE_D] == KEY_DOWN;
-	inputTerry.S_DOWN = App->input->keyboard[SDL_SCANCODE_S] == KEY_DOWN;
-	inputTerry.W_DOWN = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN;
+	inputTerry.A_DOWN = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT;
+	inputTerry.D_DOWN = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT;
+	inputTerry.S_DOWN = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT;
+	inputTerry.W_DOWN = App->input->keyboard[SDL_SCANCODE_W] == KEY_REPEAT;
 	inputTerry.F_DOWN = App->input->keyboard[SDL_SCANCODE_F] == KEY_DOWN;
 	inputTerry.G_DOWN = App->input->keyboard[SDL_SCANCODE_G] == KEY_DOWN;
 	inputTerry.H_DOWN = App->input->keyboard[SDL_SCANCODE_H] == KEY_DOWN;
 
 
+	/*{
+		if (currentstate == ST_PUNCH_STANDING)
+		{
+			if (current_animation->Finished())
+			{
+				currentstate = ST_IDLE;
+				if (colp)
+					colp->to_delete = true;
+				TerryPunch.Reset();
+				LOG("PUNCH TO IDLE");
+			}
+			LOG("PUNCH");
+		}
+
+		if (currentstate == ST_KICK_STANDING)
+		{
+			if (current_animation->Finished())
+			{
+				currentstate = ST_IDLE;
+				TerryKick.Reset();
+				LOG("KICK TO IDLE");
+			}
+			LOG("KICK");
+		}
+		if (currentstate == ST_JUMP_NEUTRAL)
+		{
+			if (current_animation->Finished())
+			{
+				currentstate = ST_IDLE;
+				TerryJump.Reset();
+				LOG("JUMPNEUTRAL TO IDLE");
+			}
+			LOG("JUMPNEUTRAL");
+		}
+		if (currentstate == ST_POWER_WAVE)
+		{
+			if (current_animation->Finished())
+			{
+				currentstate = ST_IDLE;
+				TerryPW.Reset();
+				LOG("POWERWAVE TO IDLE");
+			}
+			LOG("POWERWAVE");
+		}
+	}
+*/
 	SDL_Event event;
 
 	while (SDL_PollEvent(&event) != 0)
@@ -277,48 +330,8 @@ update_status ModulePlayer::PreUpdate()
 		}
 	}
 
-	if (currentstate == ST_PUNCH_STANDING)
-	{
-		if (current_animation->Finished())
-		{
-			currentstate = ST_IDLE;
-			TerryPunch.Reset();
-			LOG("PUNCH TO IDLE");
-		}
-		LOG("PUNCH");
-	}
-	if (currentstate == ST_KICK_STANDING)
-	{
-		if (current_animation->Finished())
-		{
-			currentstate = ST_IDLE;
-			TerryKick.Reset();
-			LOG("KICK TO IDLE");
-		}
-		LOG("KICK");
-	}
-	if (currentstate == ST_JUMP_NEUTRAL)
-	{
-		if (current_animation->Finished())
-		{
-			currentstate = ST_IDLE;
-			TerryJump.Reset();
-			LOG("JUMPNEUTRAL TO IDLE");
-		}
-		LOG("JUMPNEUTRAL");
-	}
-	if (currentstate == ST_POWER_WAVE)
-	{
-		if (current_animation->Finished())
-		{
-			currentstate = ST_IDLE;
-			TerryPW.Reset();
-			LOG("POWERWAVE TO IDLE");
-		}
-		LOG("POWERWAVE");
-	}
-
-	if (currentstate == ST_IDLE)
+	
+	/*if (currentstate == ST_IDLE)
 	{
 
 		if (inputTerry.F_DOWN) 
@@ -326,47 +339,66 @@ update_status ModulePlayer::PreUpdate()
 			currentstate = ST_PUNCH_STANDING;
 			LOG("IDLE TO PUNCH");
 		}
-	}
-	/*
-	if (currentstate == jumpstate) {
-		if (airkick) {
-			if (inputplayer1.I_active) {
-				currentstate = jumppunchstate;
-			}
-
-			if (inputplayer1.K_active) {
-				currentstate = jumpkickstate;
-			}
+		if (inputTerry.G_DOWN)
+		{
+			currentstate = ST_KICK_STANDING;
+			LOG("IDLE TO KICK");
 		}
-		/*if (current_animation->Finished()) {
-			jump.Reset();
-			currentstate = idlestate;
-			LOG("JUMP TO IDLE");
-		}*/
-	
+		if (inputTerry.H_DOWN)
+		{
+			currentstate = ST_POWER_WAVE;
+			App->audio->PlayFX("FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
 
+			LOG("IDLE TO POWERWAVE");
+		}
+	}
+*/
 	return UPDATE_CONTINUE;
 }
+float gravity = 1;
 
 update_status ModulePlayer::Update()
 {
-	current_animation = &Terryidle;
 
-	/*switch (currentstate) {
+
+	/*switch (currentstate) 
+	{
 	case ST_IDLE:
 		current_animation = &Terryidle;
+
 		LOG("IDLE ANIMATION ACTIVE");
+		break;
+
+	case ST_JUMP_NEUTRAL:
+		current_animation = &TerryJump;
+
+		Terryposition.y -= speed * gravity;
+
+		if (Terryposition.y <= 150)
+		{
+			gravity = -1;
+		}
+
+		else if (Terryposition.y == 220) 
+		{
+			TerryJump.Reset();
+			airkick = true;
+			currentstate = ST_IDLE;
+			gravity = 1;
+		}
+		LOG("JUMP ANIMATION ACTIVE");
 		break;
 
 	case ST_PUNCH_STANDING:
 		current_animation = &TerryPunch;
+
 		LOG("PUNCH ANIMATION ACTIVE");
 		break;
 	
 
 	}*/
 
-	int speed = 1;
+	/*int speed = 1;
 
 	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
@@ -387,58 +419,84 @@ update_status ModulePlayer::Update()
 			Terryposition.x -= speed;
 		}
 	}
-
-	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+	*/
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
 	{
 		current_animation = &TerryJump;
+		Terryposition.y -= (speed * gravity);
+
+		if (Terryposition.y <= 50)
+		{
+			gravity = -1;
+		}
+
+		else if (Terryposition.y == 130)
+		{
+			TerryJump.Reset();
+			airkick = true;
+			currentstate = ST_IDLE;
+			gravity = 1;
+		}
+		currentstate = ST_IDLE;
+		current_animation = &Terryidle;
+		Terryidle.Reset();
 	}
 
 	//PUNCH
-	/*if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
 	{
+		currentstate = ST_PUNCH_STANDING;
 		current_animation = &TerryPunch;
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN)
-	{
 		colp = App->collisions->AddCollider({ Terryposition.x + 45, Terryposition.y + 20, 43, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_UP)
+	if (TerryPunch.Finished() == true)
 	{
 		if (colp)
 			colp->to_delete = true;
-	}*/
+
+		TerryPunch.resetLoops(0);
+		currentstate = ST_IDLE;
+		current_animation = &Terryidle;
+		TerryPunch.Reset();
+
+	}
 
 	//KICK
-	if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
 	{
+		currentstate = ST_KICK_STANDING;
 		current_animation = &TerryKick;
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN)
-	{
 		colk = App->collisions->AddCollider({ Terryposition.x + 45, Terryposition.y + 48, 55, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+		Terryposition.x += 5;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_UP)
+	if (TerryKick.Finished() == true)
 	{
 		if (colk)
 			colk->to_delete = true;
+
+		TerryKick.resetLoops(0);
+		currentstate = ST_IDLE;
+		current_animation = &Terryidle;
+		TerryKick.Reset();
+
 	}
+
+	
 
 	//POWER WAVE
 
-	if (App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_DOWN)
-	{
+	//if (App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_DOWN)
+	//{
 
-		App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 40, Terryposition.y+12);
-		App->audio->PlayFX("FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
-	}
-	if (App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_REPEAT)
-	{
-		current_animation = &TerryPW;
-	}
+	//	App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 40, Terryposition.y+12);
+	//	App->audio->PlayFX("FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
+	//}
+	//if (App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_REPEAT)
+	//{
+	//	current_animation = &TerryPW;
+	//}
 
 
 	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN)
@@ -456,8 +514,104 @@ update_status ModulePlayer::Update()
 			gmode = false;
 		}
 	}
+	
+	App->render->Blit(UI, 0, 0, &lifebar, 0);
+	if (life_score >= 4)
+	{
+		App->render->Blit(UI, 26, 26, &life1, 0);
+		App->render->Blit(UI, 27, 26, &life2, 0);
+	}
+	if (life_score >= 8)
+	{
+		App->render->Blit(UI, 31, 26, &life2, 0);
+	}
+	if (life_score >= 12)
+	{
+		App->render->Blit(UI, 35, 26, &life2, 0);
+	}
+	if (life_score >= 16)
+	{
+		App->render->Blit(UI, 39, 26, &life2, 0);
+	}
+	if (life_score >= 20)
+	{
+		App->render->Blit(UI, 43, 26, &life2, 0);
+	}
+	if (life_score >= 24)
+	{
+		App->render->Blit(UI, 47, 26, &life2, 0);
+	}
+	if (life_score >= 28)
+	{
+		App->render->Blit(UI, 51, 26, &life2, 0);
+	}
+	if (life_score >= 32)
+	{
+		App->render->Blit(UI, 55, 26, &life2, 0);
+	}
+	if (life_score >= 36)
+	{
+		App->render->Blit(UI, 59, 26, &life2, 0);
+	}
+	if (life_score >= 40)
+	{
+		App->render->Blit(UI, 63, 26, &life2, 0);
+	}
+	if (life_score >= 44)
+	{
+		App->render->Blit(UI, 67, 26, &life2, 0);
+	}
+	if (life_score >= 48)
+	{
+		App->render->Blit(UI, 71, 26, &life2, 0);
+	}
+	if (life_score >= 52)
+	{
+		App->render->Blit(UI, 75, 26, &life2, 0);
+	}
+	if (life_score >= 56)
+	{
+		App->render->Blit(UI, 79, 26, &life2, 0);
+	}
+	if (life_score >= 60)
+	{
+		App->render->Blit(UI, 83, 26, &life2, 0);
+	}
+	if (life_score >= 64)
+	{
+		App->render->Blit(UI, 87, 26, &life2, 0);
+	}
+	if (life_score >= 68)
+	{
+		App->render->Blit(UI, 91, 26, &life2, 0);
+	}
+	if (life_score >= 72)
+	{
+		App->render->Blit(UI, 95, 26, &life2, 0);
+	}
+	if (life_score >= 76)
+	{
+		App->render->Blit(UI, 99, 26, &life2, 0);
+	}
+	if (life_score >= 80)
+	{
+		App->render->Blit(UI, 103, 26, &life2, 0);
+	}
+	if (life_score >= 84)
+	{
+		App->render->Blit(UI, 107, 26, &life2, 0);
+	}
+	if (life_score >= 88)
+	{
+		App->render->Blit(UI, 111, 26, &life2, 0);
+	}
+	if (life_score >= 92)
+	{
+		App->render->Blit(UI, 115, 26, &life2, 0);
+		App->render->Blit(UI, 119, 26, &life1, 0);
+	}
+	
 
-	App->render->Blit(UI, 0, 0, &life, 0);
 	// TODO 3: Update collider position to player position
 	col->rect.x = Terryposition.x + 15;
 	col->rect.y = Terryposition.y + 10;
