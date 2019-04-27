@@ -1,7 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleScene1.h"
-#include "ModuleScene2.h"
+#include "ModuleSceneIntro.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
@@ -190,7 +190,7 @@ bool ModuleSceneIni::CleanUp()
 
 	graphics = nullptr;
 	SDL_DestroyTexture(App->textures->Load("Neo_Geo.png"));
-	//App->audio->CleanUp();
+	App->audio->CleanUp();
 	LOG("Unloading ini stage");
 
 
@@ -215,14 +215,14 @@ update_status ModuleSceneIni::Update()
 	if (background.Finished())
 	{
 		finished = true;
-		App->fade->FadeToBlack(App->ini, App->scene_2, 2.5);
+		App->fade->FadeToBlack(App->ini, App->intro, 2.5);
 		App->audio->StopMusic();
 	}
 
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(App->ini, App->scene_2, 2.5);
+		App->fade->FadeToBlack(App->ini, App->intro, 2.5);
 	}
 
 

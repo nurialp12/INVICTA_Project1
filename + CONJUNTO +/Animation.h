@@ -2,7 +2,7 @@
 #define __ANIMATION_H__
 
 #include "SDL/include/SDL_rect.h"
-#define MAX_FRAMES 200
+#define MAX_FRAMES 700
 
 
 ////NÚRIA
