@@ -202,8 +202,8 @@ bool ModulePlayer2::Start()
 	destroyed = false;
 	//Terryposition.x = 150;
 	//Terryposition.y = 115;
-	Terry2position.x = 300;
-	Terry2position.y = 105;
+	Terry2position.x = 215 + (250);
+	Terry2position.y = 100;
 	score = 0;
 
 	// TODO 2: Add a collider to the player
