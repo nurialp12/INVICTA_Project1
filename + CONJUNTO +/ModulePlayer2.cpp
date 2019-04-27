@@ -240,12 +240,20 @@ update_status ModulePlayer2::Update()
 	if (Terry2position.x < App->player->Terryposition.x) { mirror2 = false; }
 	else { mirror2 = true; }
 
-	Animation* current_animation = &Terry2idleM;
-
+	Animation* current_animation = NULL;
 
 	//NO ENTRA EN EL BUCLE DE IDLE
-	if (mirror2) { Animation* current_animation = &Terry2idleM; }
-	else { Animation* current_animation = &Terry2idle; }
+	if (true)
+	{
+
+		if (mirror2) { current_animation = &Terry2idleM; }
+
+		else { current_animation = &Terry2idle; }
+
+
+	}
+	
+	
 
 
 	int speed = 1;
