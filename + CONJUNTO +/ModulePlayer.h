@@ -23,14 +23,24 @@ enum terry_states
 	ST_JUMP_FORWARD,
 	ST_JUMP_BACKWARD,
 	ST_CROUCH,
+	ST_POWER_WAVE,
 	ST_PUNCH_STANDING,
 	ST_PUNCH_NEUTRAL_JUMP,
 	ST_PUNCH_FORWARD_JUMP,
 	ST_PUNCH_BACKWARD_JUMP,
-	ST_PUNCH_CROUCH
+	ST_PUNCH_CROUCH,
+	ST_KICK_STANDING
 };
 
 struct InputP1 {
+	bool A_DOWN; //LEFT
+	bool S_DOWN; //CROUCH
+	bool D_DOWN; //RIGHT
+	bool W_DOWN; //JUMP
+	bool F_DOWN; //PUNCH
+	bool G_DOWN; //KICK
+	bool H_DOWN; //POEWER WAVE                             ¡¡¡PROVISIONAL!!!
+	/*
 	bool IN_LEFT_DOWN;
 	bool IN_LEFT_UP;
 	bool IN_RIGHT_DOWN;
@@ -46,6 +56,7 @@ struct InputP1 {
 	bool IN_PUNCH_FINISH;
 	bool IN_KICK;
 	bool IN_KICK_FINISH;
+	*/
 };
 
 class ModulePlayer : public Module
@@ -86,7 +97,7 @@ public:
 	Uint32 jump_timer = 0;
 	Uint32 punch_timer = 0;
 
-	InputP1 inputterry;
+	InputP1 inputTerry;
 	terry_states currentstate;
 };
 

@@ -254,9 +254,7 @@ update_status ModulePlayer2::Update()
 		}
 	}
 
-	// TODO 3: Update collider position to player position
-	//col->rect.x = Terryposition.x;
-	//col->rect.y = Terryposition.y;
+	//Terry2 position
 	col->rect.x = Terry2position.x + 15;
 	col->rect.y = Terry2position.y + 10;
 
@@ -268,16 +266,13 @@ update_status ModulePlayer2::Update()
 	{
 		if ((current_animation == (&Terry2Kick)) || current_animation == (&Terry2Jump) || current_animation == (&Terry2Forward) || current_animation == (&Terry2Backwards)/*current_animation == (&TerryKick || &TerryJump || &TerryForward || &TerryBackwards)*/)
 		{
-			//App->render->Blit(graphics2, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
 			App->render->Blit(graphics2, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
 		}
 
 		else
 		{
-			//App->render->Blit(graphics, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
 			App->render->Blit(graphics, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
 		}
-		//App->render->Blit(graphics, terryposition.x, terryposition.y, &(current_animation->GetCurrentFrame()));
 		//App->render->Blit(graphics, terry2position.x, terry2position.y, &(current_animation->GetCurrentFrame()));
 	}
 
