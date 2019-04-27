@@ -109,6 +109,16 @@ ModulePlayer2::ModulePlayer2()
 	Terry2PW.speed = 0.1f;
 
 
+	//DAMAGED BY PUNCH
+	Terry2DP.PushBack({ 0, 912, 59, 112 });
+	Terry2DP.PushBack({ 64, 912, 67, 112 });
+	Terry2DP.speed = 0.1f;
+
+	//DAMAGED BY KICK
+
+	Terry2DK.PushBack({ 136, 912, 63, 112 });
+	Terry2DK.PushBack({ 211, 912, 68, 112 });
+	Terry2DK.speed = 0.1f;
 
 
 	//MIRROR -----------------------------------------------------------------------------------------

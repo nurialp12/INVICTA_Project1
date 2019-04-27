@@ -15,9 +15,10 @@
 #include <stdio.h>
 
 int speed =1;
+float stantardDMG = 11.5;
 int jumpspeed = 60;
-
 bool airkick = true;
+
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModulePlayer::ModulePlayer()
@@ -103,7 +104,6 @@ ModulePlayer::ModulePlayer()
 	TerryPunch.PushBack({ 435, 910, 71, 112 });
 	TerryPunch.PushBack({ 507, 912, 62, 112 });
 	TerryPunch.PushBack({ 574, 912, 97, 112 });
-	TerryPunch.loop = true;
 	TerryPunch.speed = 0.1f;
 
 	// POWER WAVE animation of Terrry
@@ -116,6 +116,47 @@ ModulePlayer::ModulePlayer()
 	TerryPW.PushBack({ 262, 683, 65, 112 });
 	TerryPW.PushBack({ 198, 683, 60, 112 });
 	TerryPW.speed = 0.1f;
+
+	//DAMAGED BY PUNCH
+
+	TerryDP.PushBack({ 0, 912, 59, 112 });
+	TerryDP.PushBack({ 64, 912, 67, 112 });
+	TerryDP.speed = 0.1f;
+
+	//DAMAGED BY Kick
+
+	TerryDK.PushBack({ 136, 912, 63, 112 });
+	TerryDK.PushBack({ 211, 912, 68, 112 });
+	TerryDK.speed = 0.1f;
+
+
+	//CROUCH
+	TerryCrouch.PushBack({ 0, 0, 0, 0 }); 
+	TerryCrouch.PushBack({ 0, 0, 0, 0 });
+
+	//JUMPFORWARD
+	TerryJumpForward.PushBack({ 0, 0, 0, 0 });
+	TerryJumpForward.PushBack({ 0, 0, 0, 0 });
+	TerryJumpForward.PushBack({ 0, 0, 0, 0 });
+	TerryJumpForward.PushBack({ 0, 0, 0, 0 });
+	TerryJumpForward.PushBack({ 0, 0, 0, 0 });
+	TerryJumpForward.PushBack({ 0, 0, 0, 0 });
+	TerryJumpForward.PushBack({ 0, 0, 0, 0 });
+
+	//JUMPBACKWARDS
+	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
+	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
+	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
+	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
+	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
+	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
+	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
+
+	//CROUCHPUNCH
+	TerryCrouchPunch.PushBack({ 279, 959, 56, 65 }); //Charge
+	TerryCrouchPunch.PushBack({ 416, 960, 49, 64 }); //Riposte
+	TerryCrouchPunch.PushBack({ 335, 961, 81, 63 }); //Punch
+	TerryCrouchPunch.PushBack({ 416, 960, 49, 64 }); //Riposte
 
 
 
@@ -437,6 +478,19 @@ update_status ModulePlayer::Update()
 		Terryposition.y = 100;
 		TerryJump.Reset();
 	}
+
+	//CROUCH
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
+	{
+		currentstate = ST_CROUCH;
+		current_animation = &TerryCrouch;
+	}
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP && currentstate == ST_CROUCH)
+	{
+		currentstate = ST_IDLE;
+		current_animation = &Terryidle;
+	}
+
 	//PUNCH
 	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
 	{
@@ -617,7 +671,7 @@ update_status ModulePlayer::Update()
 	// Draw everything --------------------------------------
 	if (destroyed == false)
 	{
-		if ((current_animation == (&TerryKick)) || current_animation == (&TerryJump) || current_animation == (&TerryForward) || current_animation == (&TerryBackwards)/*current_animation == (&TerryKick || &TerryJump || &TerryForward || &TerryBackwards)*/)
+		if ((current_animation == (&TerryKick)) || current_animation == (&TerryJump) || current_animation == (&TerryForward) || current_animation == (&TerryBackwards) || current_animation == &TerryDP || current_animation==&TerryDP /*current_animation == (&TerryKick || &TerryJump || &TerryForward || &TerryBackwards)*/)
 		{
 			App->render->Blit(graphics2, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
 		}
@@ -662,8 +716,8 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY)
+	if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_ENEMY)
 	{
-		//App->fade->FadeToBlack((Module*)App->scene_2, (Module*)App->end_game2);
+		life_score -= stantardDMG;
 	}
 }
