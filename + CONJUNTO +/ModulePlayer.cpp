@@ -90,7 +90,7 @@ ModulePlayer::ModulePlayer()
 	TerryKick.PushBack({ 138, 134, 44, 112 });
 	TerryKick.PushBack({ 200, 138, 118, 112 });
 	TerryKick.PushBack({ 331, 138, 64, 112 });
-	TerryKick.speed = 0.01f;
+	TerryKick.speed = 0.1f;
 
 
 	// PUNCH animation of Terry							//spritesTerryBogard.png
@@ -499,6 +499,7 @@ update_status ModulePlayer::Update()
 		TerryPunch.Reset();
 
 	}
+
 	//CROUCH
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
 	{
@@ -507,7 +508,7 @@ update_status ModulePlayer::Update()
 		if (col)
 			col->to_delete = true;
 
-		colc = App->collisions->AddCollider({ Terryposition.x + 10, Terryposition.y + 50, 40, 60 }, COLLIDER_PLAYER, App->player);
+		colc = App->collisions->AddCollider({ Terryposition.x + 13, Terryposition.y + 50, 36, 60 }, COLLIDER_PLAYER, App->player);
 	}
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP && currentstate == ST_CROUCH)
 	{
@@ -518,14 +519,12 @@ update_status ModulePlayer::Update()
 		col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
 	}
 
-
-
 	//CROUCHPUNCH
 	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && currentstate == ST_CROUCH)
 	{
 		currentstate = ST_PUNCH_CROUCH;
 		current_animation = &TerryCrouchPunch;
-		colcp = App->collisions->AddCollider({ Terryposition.x + 65, Terryposition.y + 20, 43, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+		colcp = App->collisions->AddCollider({ Terryposition.x + 50, Terryposition.y + 55, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 	}
 	if (TerryCrouchPunch.Finished() == true)
 	{
@@ -536,7 +535,6 @@ update_status ModulePlayer::Update()
 		currentstate = ST_CROUCH;
 		current_animation = &TerryCrouch;
 		TerryCrouchPunch.Reset();
-
 	}
 	//KICK
 	if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
