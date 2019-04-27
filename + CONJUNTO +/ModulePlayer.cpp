@@ -14,7 +14,9 @@
 #include "SDL\include\SDL.h"
 #include <stdio.h>
 
-int speed = 2;
+int speed =1;
+int jumpspeed = 30;
+
 bool airkick = true;
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -70,7 +72,8 @@ ModulePlayer::ModulePlayer()
 	TerryJump.PushBack({ 535, 12, 53, 125 });
 	TerryJump.PushBack({ 598, 22, 59, 105 });
 	TerryJump.PushBack({ 667, 33, 59, 94 });
-	TerryJump.speed = 0.1f;
+	TerryJump.PushBack({ 667, 33, 59, 94 });
+	TerryJump.speed = 0.06f;
 
 
 	// KICK animation of Terry							//spritesTerryBogard2extres.png
@@ -359,89 +362,74 @@ float gravity = 1;
 
 update_status ModulePlayer::Update()
 {
-
-
-	/*switch (currentstate) 
+	//MOVE FORWARD
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
 	{
-	case ST_IDLE:
-		current_animation = &Terryidle;
-
-		LOG("IDLE ANIMATION ACTIVE");
-		break;
-
-	case ST_JUMP_NEUTRAL:
-		current_animation = &TerryJump;
-
-		Terryposition.y -= speed * gravity;
-
-		if (Terryposition.y <= 150)
-		{
-			gravity = -1;
-		}
-
-		else if (Terryposition.y == 220) 
-		{
-			TerryJump.Reset();
-			airkick = true;
-			currentstate = ST_IDLE;
-			gravity = 1;
-		}
-		LOG("JUMP ANIMATION ACTIVE");
-		break;
-
-	case ST_PUNCH_STANDING:
-		current_animation = &TerryPunch;
-
-		LOG("PUNCH ANIMATION ACTIVE");
-		break;
-	
-
-	}*/
-
-	/*int speed = 1;
-
-	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-	{
+		currentstate = ST_WALK_FORWARD;
 		current_animation = &TerryForward;
-		if (Terryposition.x < 570 &&
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && currentstate == ST_WALK_FORWARD)
+	{
+		if (Terryposition.x < 700 &&
 			Terryposition.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w))
 		{
 			Terryposition.x += speed;
 		}
 	}
-
-	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP && currentstate == ST_WALK_FORWARD)
 	{
+		currentstate = ST_IDLE;
+		current_animation = &Terryidle;
+	}
+	
+	//MOVE BACKWARD
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
+	{
+		currentstate = ST_WALK_BACKWARD;
 		current_animation = &TerryBackwards;
+	}
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && currentstate == ST_WALK_BACKWARD)
+	{
 		if (Terryposition.x > 0 &&
 			Terryposition.x * 2 > -App->render->camera.x)
 		{
 			Terryposition.x -= speed;
 		}
 	}
-	*/
-	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_UP && currentstate == ST_WALK_BACKWARD)
 	{
-		current_animation = &TerryJump;
-		Terryposition.y -= (speed * gravity);
-
-		if (Terryposition.y <= 50)
-		{
-			gravity = -1;
-		}
-
-		else if (Terryposition.y == 130)
-		{
-			TerryJump.Reset();
-			airkick = true;
-			currentstate = ST_IDLE;
-			gravity = 1;
-		}
 		currentstate = ST_IDLE;
 		current_animation = &Terryidle;
-		Terryidle.Reset();
 	}
 
+	//JUMP
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
+	{
+		currentstate = ST_JUMP_NEUTRAL;
+		current_animation = &TerryJump;
+
+		Terryposition.y -= jumpspeed;
+
+		if (Terryposition.y == 80)
+		{
+			jumpspeed = -30;
+		}
+
+		if (Terryposition.y == 120)
+		{
+			jumpspeed = 30;
+		}
+
+	}
+
+	if (TerryJump.Finished() == true || Terryposition.y==120)
+	{
+		TerryJump.resetLoops(0);
+		currentstate = ST_IDLE;
+		current_animation = &Terryidle;
+		TerryJump.Reset();
+	}
 	//PUNCH
 	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
 	{
