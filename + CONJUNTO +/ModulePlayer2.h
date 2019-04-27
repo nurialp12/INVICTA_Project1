@@ -35,6 +35,8 @@ public:
 	int font_score = -1;
 	char score_text[10];
 	uint score = 0;
+	Animation* current_animation;
+
 	Animation Terry2idle;
 	Animation Terry2Forward;
 	Animation Terry2Backwards;
@@ -42,7 +44,8 @@ public:
 	Animation Terry2Kick;
 	Animation Terry2Punch;
 	Animation Terry2PW;
-
+	Animation Terry2DP;
+	Animation Terry2DK;
 
 	SDL_Texture* graphicsM = nullptr;
 	SDL_Texture* graphics2M = nullptr;
