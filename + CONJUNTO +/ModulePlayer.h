@@ -97,6 +97,7 @@ public:
 	Animation TerryJumpForward;
 	Animation TerryJumpBackwards;
 	Animation TerryCrouchPunch;
+	Animation TerryCrouchKick;
 
 	SDL_Texture* graphicsM = nullptr;
 	SDL_Texture* graphics2M = nullptr;
@@ -114,6 +115,9 @@ public:
 	Collider* col;
 	Collider* colp;
 	Collider* colk;
+	Collider* colc;
+	Collider* colcp;
+	Collider* colck;
 
 	bool gmode = false;
 	bool destroyed = false;
