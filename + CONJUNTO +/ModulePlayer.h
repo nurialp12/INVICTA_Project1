@@ -65,7 +65,10 @@ public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* graphics2 = nullptr;
 	SDL_Texture* UI = nullptr;
-	SDL_Rect life;
+	SDL_Rect lifebar;
+	SDL_Rect life1;
+	SDL_Rect life2;
+	int life_score = 92;
 	int font_score = -1;
 	char score_text[10];
 	uint score = 0;
