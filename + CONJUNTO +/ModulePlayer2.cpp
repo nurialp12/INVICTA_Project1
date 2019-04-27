@@ -563,7 +563,7 @@ update_status ModulePlayer2::Update()
 	sprintf_s(score_text, 10, "%7d", score);
 
 	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(0, 150, font_score, "HelloWorld");
+	//App->fonts->BlitText(0, 150, font_score, "1");
 
 	return UPDATE_CONTINUE;
 }
