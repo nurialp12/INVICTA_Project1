@@ -10,6 +10,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleSceneIni.h"
 #include "SDL/include/SDL.h"
+#include "ModuleAudio.h"
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
 #pragma comment( lib, "SDL/libx86/SDL2main.lib" )
 
@@ -66,36 +67,68 @@ ModuleSceneIni::ModuleSceneIni()
 	background.PushBack({ 304, 2016, 303, 224 });
 	background.PushBack({ 608, 2016, 303, 224 });
 	background.PushBack({ 912, 2016, 303, 224 });
+	background.PushBack({ 912, 2016, 303, 224 });
+	background.PushBack({ 1216, 2016, 303, 224 });
 	background.PushBack({ 1216, 2016, 303, 224 });
 	background.PushBack({ 0, 2240, 303, 224 });
+	background.PushBack({ 0, 2240, 303, 224 });
+	background.PushBack({ 304, 2240, 303, 224 });
 	background.PushBack({ 304, 2240, 303, 224 });
 	background.PushBack({ 608, 2240, 303, 224 });
+	background.PushBack({ 608, 2240, 303, 224 });
+	background.PushBack({ 912, 2240, 303, 224 });
 	background.PushBack({ 912, 2240, 303, 224 });
 	background.PushBack({ 1216, 2240, 303, 224 });
+	background.PushBack({ 1216, 2240, 303, 224 });
+	background.PushBack({ 0, 2464, 303, 224 });
 	background.PushBack({ 0, 2464, 303, 224 });
 	background.PushBack({ 304, 2464, 303, 224 });
+	background.PushBack({ 304, 2464, 303, 224 });
+	background.PushBack({ 608, 2464, 303, 224 });
 	background.PushBack({ 608, 2464, 303, 224 });
 	background.PushBack({ 912, 2464, 303, 224 });
+	background.PushBack({ 912, 2464, 303, 224 });
+	background.PushBack({ 1216, 2464, 303, 224 });
 	background.PushBack({ 1216, 2464, 303, 224 });
 	background.PushBack({ 0, 2688, 303, 224 });
+	background.PushBack({ 0, 2688, 303, 224 });
+	background.PushBack({ 304, 2688, 303, 224 });
 	background.PushBack({ 304, 2688, 303, 224 });
 	background.PushBack({ 608, 2688, 303, 224 });
+	background.PushBack({ 608, 2688, 303, 224 });
+	background.PushBack({ 912, 2688, 303, 224 });
 	background.PushBack({ 912, 2688, 303, 224 });
 	background.PushBack({ 1216, 2688, 303, 224 });
+	background.PushBack({ 1216, 2688, 303, 224 });
+	background.PushBack({ 0, 2912, 303, 224 });
 	background.PushBack({ 0, 2912, 303, 224 });
 	background.PushBack({ 304, 2912, 303, 224 });
+	background.PushBack({ 304, 2912, 303, 224 });
+	background.PushBack({ 608, 2912, 303, 224 });
 	background.PushBack({ 608, 2912, 303, 224 });
 	background.PushBack({ 912, 2912, 303, 224 });
+	background.PushBack({ 912, 2912, 303, 224 });
+	background.PushBack({ 1216, 2912, 303, 224 });
 	background.PushBack({ 1216, 2912, 303, 224 });
 	background.PushBack({ 0, 3136, 303, 224 });
+	background.PushBack({ 0, 3136, 303, 224 });
+	background.PushBack({ 304, 3136, 303, 224 });
 	background.PushBack({ 304, 3136, 303, 224 });
 	background.PushBack({ 608, 3136, 303, 224 });
+	background.PushBack({ 608, 3136, 303, 224 });
+	background.PushBack({ 912, 3136, 303, 224 });
 	background.PushBack({ 912, 3136, 303, 224 });
 	background.PushBack({ 1216, 3136, 303, 224 });
+	background.PushBack({ 1216, 3136, 303, 224 });
+	background.PushBack({ 0, 3360, 303, 224 });
 	background.PushBack({ 0, 3360, 303, 224 });
 	background.PushBack({ 304, 3360, 303, 224 });
+	background.PushBack({ 304, 3360, 303, 224 });
+	background.PushBack({ 608, 3360, 303, 224 });
 	background.PushBack({ 608, 3360, 303, 224 });
 	background.PushBack({ 912, 3360, 303, 224 });
+	background.PushBack({ 912, 3360, 303, 224 });
+	background.PushBack({ 1216, 3360, 303, 224 });
 	background.PushBack({ 1216, 3360, 303, 224 });
 	background.PushBack({ 0, 3584, 303, 224 });
 	background.PushBack({ 304, 3584, 303, 224 });
@@ -113,10 +146,24 @@ ModuleSceneIni::ModuleSceneIni()
 	background.PushBack({ 912, 4032, 303, 224 });
 	background.PushBack({ 1216, 4032, 303, 224 });
 	background.PushBack({ 0, 4256, 303, 224 });
-	background.speed = 0.25f;
+	background.PushBack({ 0, 4256, 303, 224 });
+	background.PushBack({ 0, 4256, 303, 224 });
+	background.PushBack({ 0, 4256, 303, 224 });
+	background.PushBack({ 0, 4256, 303, 224 });
+	background.PushBack({ 0, 4256, 303, 224 });
+	background.PushBack({ 0, 4256, 303, 224 });
+	background.PushBack({ 0, 4256, 303, 224 });
+	background.PushBack({ 0, 4256, 303, 224 });
+	background.PushBack({ 0, 4256, 303, 224 });
+	background.PushBack({ 0, 4256, 303, 224 });
+	background.PushBack({ 0, 4256, 303, 224 });
+	background.PushBack({ 0, 4256, 303, 224 });
+	background.speed = 0.45f;
+
+
 }
 
-
+bool finished = false;
 
 
 ModuleSceneIni::~ModuleSceneIni()
@@ -129,7 +176,7 @@ bool ModuleSceneIni::Start()
 	
 	bool ret = true;
 	graphics = App->textures->Load("Neo_Geo.png");
-
+	App->audio->PlayMusic("music/Neo_Geo/Neo_Geo.ogg");
 
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->destroyed = true;
@@ -143,7 +190,7 @@ bool ModuleSceneIni::CleanUp()
 
 	graphics = nullptr;
 	SDL_DestroyTexture(App->textures->Load("Neo_Geo.png"));
-
+	//App->audio->CleanUp();
 	LOG("Unloading ini stage");
 
 
@@ -154,12 +201,22 @@ bool ModuleSceneIni::CleanUp()
 update_status ModuleSceneIni::Update()
 {
 	// Draw everything --------------------------------------	
-	App->render->Blit(graphics, -10, 0, &(background.GetCurrentFrame()), 0.70f);
+	//App->render->Blit(graphics, -10, 0, &background1);
+
+	if (!finished)
+	{
+		App->render->Blit(graphics, -10, 0, &(background.GetCurrentFrame()), 0.70f);
+	}
+
+	
+	
 
 
 	if (background.Finished())
 	{
+		finished = true;
 		App->fade->FadeToBlack(App->ini, App->scene_2, 2.5);
+		App->audio->StopMusic();
 	}
 
 
