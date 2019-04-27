@@ -75,6 +75,8 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* graphics2 = nullptr;
+	SDL_Texture* UI = nullptr;
+	SDL_Rect life;
 	int font_score = -1;
 	char score_text[10];
 	uint score = 0;
@@ -86,6 +88,20 @@ public:
 	Animation TerryKick;
 	Animation TerryPunch;
 	Animation TerryPW;
+
+
+	SDL_Texture* graphicsM = nullptr;
+	SDL_Texture* graphics2M = nullptr;
+	Animation TerryidleM;
+	Animation TerryForwardM;
+	Animation TerryBackwardsM;
+	Animation TerryJumpM;
+	Animation TerryKickM;
+	Animation TerryPunchM;
+	Animation TerryPWM;
+	bool mirror = false;
+
+
 	iPoint Terryposition;
 	Collider* col;
 	Collider* colp;
