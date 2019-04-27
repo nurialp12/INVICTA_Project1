@@ -242,7 +242,7 @@ update_status ModulePlayer2::Update()
 
 	Animation* current_animation = NULL;
 
-	//NO ENTRA EN EL BUCLE DE IDLE
+	
 	if (true)
 	{
 
@@ -254,8 +254,6 @@ update_status ModulePlayer2::Update()
 	}
 	
 	
-
-
 	int speed = 1;
 	
 
@@ -284,7 +282,7 @@ update_status ModulePlayer2::Update()
 
 		}
 
-	}
+	} 
 
 
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)

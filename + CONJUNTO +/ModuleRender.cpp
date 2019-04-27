@@ -9,7 +9,7 @@
 
 ModuleRender::ModuleRender() : Module()
 {
-	camera.x = -480;
+	camera.x = /*-48*/0;
 	camera.y = 0;
 	camera.w = SCREEN_WIDTH;
 	camera.h = SCREEN_HEIGHT;

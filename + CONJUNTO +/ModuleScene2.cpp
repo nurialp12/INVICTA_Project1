@@ -88,6 +88,10 @@ update_status ModuleScene2::Update()
 	//App->render->Blit(graphics, 0, 160, &ground);
 	App->render->Blit(graphics, 0, 0, &(background.GetCurrentFrame()), 0.70f); // back of the room
 	
+	App->render->camera.x = -480;
+	App->render->camera.y = 0;
+
+
 	//App->render->Blit(graphics, 280, 125, &foreground);
 	//App->render->Blit(graphics, 305, 136, &(water.GetCurrentFrame())); // water animation
 	//App->render->Blit(graphics, 0, -16, &roof, 0.75f);
