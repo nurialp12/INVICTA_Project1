@@ -35,7 +35,9 @@ ModulePlayer::ModulePlayer()
 	Terryidle.speed = 0.1f;
 
 
-	// WALK FORWARD animation of Terry					//spritesTerryBogard2extres.png
+
+	// WALK FORWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
+
 
 	//TerryForward.frames.PushBack({/**/, /**/, /**/, /**/});
 
@@ -228,13 +230,13 @@ bool ModulePlayer::CleanUp()
 
 update_status ModulePlayer::PreUpdate()
 {
-	inputterry.IN_LEFT_DOWN = App->input->keyboard[SDL_SCANCODE_A] == KEY_DOWN;
-	inputterry.IN_RIGHT_DOWN = App->input->keyboard[SDL_SCANCODE_D] == KEY_DOWN;
-	inputterry.IN_CROUCH_DOWN = App->input->keyboard[SDL_SCANCODE_S] == KEY_DOWN;
-	inputterry.IN_JUMP = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN;
-	inputterry.IN_PUNCH = App->input->keyboard[SDL_SCANCODE_I] == KEY_DOWN;
-	inputterry.IN_KICK = App->input->keyboard[SDL_SCANCODE_O] == KEY_DOWN;
-	inputterry.IN_X = App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN;
+	inputTerry.A_DOWN = App->input->keyboard[SDL_SCANCODE_A] == KEY_DOWN;
+	inputTerry.D_DOWN = App->input->keyboard[SDL_SCANCODE_D] == KEY_DOWN;
+	inputTerry.S_DOWN = App->input->keyboard[SDL_SCANCODE_S] == KEY_DOWN;
+	inputTerry.W_DOWN = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN;
+	inputTerry.F_DOWN = App->input->keyboard[SDL_SCANCODE_F] == KEY_DOWN;
+	inputTerry.G_DOWN = App->input->keyboard[SDL_SCANCODE_G] == KEY_DOWN;
+	inputTerry.H_DOWN = App->input->keyboard[SDL_SCANCODE_H] == KEY_DOWN;
 
 
 	SDL_Event event;
@@ -274,75 +276,94 @@ update_status ModulePlayer::PreUpdate()
 			}
 		}
 	}
-	//{
-//	if (currentstate == punchlight) {
 
-//		if (current_animation->Finished()) {
+	if (currentstate == ST_PUNCH_STANDING)
+	{
+		if (current_animation->Finished())
+		{
+			currentstate = ST_IDLE;
+			TerryPunch.Reset();
+			LOG("PUNCH TO IDLE");
+		}
+		LOG("PUNCH");
+	}
+	if (currentstate == ST_KICK_STANDING)
+	{
+		if (current_animation->Finished())
+		{
+			currentstate = ST_IDLE;
+			TerryKick.Reset();
+			LOG("KICK TO IDLE");
+		}
+		LOG("KICK");
+	}
+	if (currentstate == ST_JUMP_NEUTRAL)
+	{
+		if (current_animation->Finished())
+		{
+			currentstate = ST_IDLE;
+			TerryJump.Reset();
+			LOG("JUMPNEUTRAL TO IDLE");
+		}
+		LOG("JUMPNEUTRAL");
+	}
+	if (currentstate == ST_POWER_WAVE)
+	{
+		if (current_animation->Finished())
+		{
+			currentstate = ST_IDLE;
+			TerryPW.Reset();
+			LOG("POWERWAVE TO IDLE");
+		}
+		LOG("POWERWAVE");
+	}
 
-//			currentstate = idlestate;
-//			lightPunch.Reset();
-//			//lightPunch.Reset();
-//			LOG("PUNCH TO IDLE");
+	if (currentstate == ST_IDLE)
+	{
 
-//		}
-//		LOG("PUNCH");
-//	}
+		if (inputTerry.F_DOWN) 
+		{
+			currentstate = ST_PUNCH_STANDING;
+			LOG("IDLE TO PUNCH");
+		}
+	}
+	/*
+	if (currentstate == jumpstate) {
+		if (airkick) {
+			if (inputplayer1.I_active) {
+				currentstate = jumppunchstate;
+			}
 
-//	if (currentstate == kicklight) {
+			if (inputplayer1.K_active) {
+				currentstate = jumpkickstate;
+			}
+		}
+		/*if (current_animation->Finished()) {
+			jump.Reset();
+			currentstate = idlestate;
+			LOG("JUMP TO IDLE");
+		}*/
+	
 
-//		if (current_animation->Finished()) {
-
-//			currentstate = idlestate;
-//			lightKick.Reset();
-//			LOG("KICK TO IDLE");
-//		}
-//	}
-
-//	if (currentstate == jumpstate) {
-//		if (airkick) {
-//			if (inputplayer1.I_active) {
-//				currentstate = jumppunchstate;
-//			}
-
-//			if (inputplayer1.K_active) {
-//				currentstate = jumpkickstate;
-//			}
-//		}
-//		/*if (current_animation->Finished()) {
-//			jump.Reset();
-//			currentstate = idlestate;
-//			LOG("JUMP TO IDLE");
-//		}*/
-//	}
-//}
 	return UPDATE_CONTINUE;
 }
 
 update_status ModulePlayer::Update()
 {
-	current_animation = &Terryidle;
 
-	//switch (currentstate) {
-	//case jumpfalling:
+	switch (currentstate) {
+	case ST_IDLE:
+		current_animation = &Terryidle;
+		LOG("IDLE ANIMATION ACTIVE");
+		break;
 
-	//	current_animation = &jump;
+	case ST_PUNCH_STANDING:
+		current_animation = &TerryPunch;
+		LOG("PUNCH ANIMATION ACTIVE");
+		break;
+	
 
-	//	position.y -= speed * gravity;
-
-
-	//	if (position.y <= 150)
-	//	{
-	//		gravity = -1;
-	//	}
-
-	//	else if (position.y == 220) {
-	//		jump.Reset();
-	//		airkick = true;
-	//		currentstate = idlestate;
-	//		gravity = 1;
-	//	}
-	//	LOG("JUMPFALLING ANIMATION ACTIVE");
-	//	break;
+	}
 
 	int speed = 1;
 
@@ -372,7 +393,7 @@ update_status ModulePlayer::Update()
 	}
 
 	//PUNCH
-	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_REPEAT)
+	/*if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &TerryPunch;
 	}
@@ -386,7 +407,7 @@ update_status ModulePlayer::Update()
 	{
 		if (colp)
 			colp->to_delete = true;
-	}
+	}*/
 
 	//KICK
 	if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_REPEAT)
@@ -491,6 +512,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY)
 	{
-		App->fade->FadeToBlack((Module*)App->scene_2, (Module*)App->end_game2);
+		//App->fade->FadeToBlack((Module*)App->scene_2, (Module*)App->end_game2);
 	}
 }
