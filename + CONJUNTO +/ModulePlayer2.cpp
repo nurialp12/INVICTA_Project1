@@ -218,7 +218,7 @@ bool ModulePlayer2::Start()
 	Terry2position.y = 100;
 	score = 0;
 
-	//current_animation = &Terry2idle;			// ESTO ESTÁ EN ModulePlayer.cpp --> va conjuntamente 
+	current_animation = &Terry2idle;			// ESTO ESTÁ EN ModulePlayer.cpp --> va conjuntamente 
 
 
 	// TODO 2: Add a collider to the player
@@ -255,7 +255,7 @@ update_status ModulePlayer2::Update()
 	if (Terry2position.x < App->player->Terryposition.x) { mirror2 = false; }
 	else { mirror2 = true; }
 
-	Animation* current_animation = NULL;
+	//Animation* current_animation = NULL;
 
 	
 	if (true)

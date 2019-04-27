@@ -35,10 +35,9 @@ Enjoy!
 	P Power Wave
 	
 Space to change screens
-
-
 , to move up the camera
 . to move down the camera
+ESC to leave the game
 
 DEBUG:
 	F1 collisions
@@ -52,8 +51,6 @@ DEBUG:
 	F8 god mode (PLAYER 2)
 
 	F9 mute/unmute sound
-
-
 
 
 ## Contributing
