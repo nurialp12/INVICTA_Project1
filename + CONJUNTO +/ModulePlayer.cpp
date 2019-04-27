@@ -15,7 +15,7 @@
 #include <stdio.h>
 
 int speed =1;
-int jumpspeed = 30;
+int jumpspeed = 60;
 
 bool airkick = true;
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
@@ -70,10 +70,15 @@ ModulePlayer::ModulePlayer()
 	//TerryJump.frames.PushBack({/**/, /**/, /**/, /**/});
 
 	TerryJump.PushBack({ 535, 12, 53, 125 });
+	//TerryJump.PushBack({ 535, 12, 53, 125 }); //EXTRA
 	TerryJump.PushBack({ 598, 22, 59, 105 });
-	TerryJump.PushBack({ 667, 33, 59, 94 });
-	TerryJump.PushBack({ 667, 33, 59, 94 });
-	TerryJump.speed = 0.06f;
+	//TerryJump.PushBack({ 667, 33, 59, 94 });
+	//TerryJump.PushBack({ 667, 33, 59, 94 }); //EXTRA
+	//TerryJump.PushBack({ 667, 33, 59, 94 }); //EXTRA
+	//TerryJump.PushBack({ 667, 33, 59, 94 }); //EXTRA
+	TerryJump.PushBack({ 598, 22, 59, 105 }); //EXTRA
+	TerryJump.PushBack({ 535, 12, 53, 125 }); //EXTRA
+	TerryJump.speed = /*0.06*/0.1f;
 
 
 	// KICK animation of Terry							//spritesTerryBogard2extres.png
@@ -84,7 +89,7 @@ ModulePlayer::ModulePlayer()
 	TerryKick.PushBack({ 138, 134, 44, 112 });
 	TerryKick.PushBack({ 200, 138, 118, 112 });
 	TerryKick.PushBack({ 331, 138, 64, 112 });
-	TerryKick.speed = 0.1f;
+	TerryKick.speed = 0.01f;
 
 
 	// PUNCH animation of Terry							//spritesTerryBogard.png
@@ -413,21 +418,23 @@ update_status ModulePlayer::Update()
 
 		if (Terryposition.y == 80)
 		{
-			jumpspeed = -30;
+			jumpspeed = -60;
 		}
 
 		if (Terryposition.y == 120)
 		{
-			jumpspeed = 30;
+			jumpspeed = 60;
 		}
+
 
 	}
 
-	if (TerryJump.Finished() == true || Terryposition.y==120)
+	if (TerryJump.Finished() == true || Terryposition.y==80)
 	{
 		TerryJump.resetLoops(0);
 		currentstate = ST_IDLE;
 		current_animation = &Terryidle;
+		Terryposition.y = 100;
 		TerryJump.Reset();
 	}
 	//PUNCH
@@ -620,7 +627,7 @@ update_status ModulePlayer::Update()
 			App->render->Blit(graphics, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
 		}
 
-		if (current_animation == (&TerryJump))
+		/*if (current_animation == (&TerryJump))
 		{
 			if (Terryposition.y == 115)
 			{
@@ -637,7 +644,9 @@ update_status ModulePlayer::Update()
 				Terryposition.y = 115;
 			}
 
-		}
+		}*/
+
+
 		//App->render->Blit(graphics, terryposition.x, terryposition.y, &(current_animation->GetCurrentFrame()));
 		//App->render->Blit(graphics, terry2position.x, terry2position.y, &(current_animation->GetCurrentFrame()));
 	}
