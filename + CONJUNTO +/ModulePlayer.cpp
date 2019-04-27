@@ -350,8 +350,9 @@ update_status ModulePlayer::PreUpdate()
 
 update_status ModulePlayer::Update()
 {
+	current_animation = &Terryidle;
 
-	switch (currentstate) {
+	/*switch (currentstate) {
 	case ST_IDLE:
 		current_animation = &Terryidle;
 		LOG("IDLE ANIMATION ACTIVE");
@@ -363,7 +364,7 @@ update_status ModulePlayer::Update()
 		break;
 	
 
-	}
+	}*/
 
 	int speed = 1;
 
