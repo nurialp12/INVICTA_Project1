@@ -18,7 +18,7 @@ public:
 public:
 
 	SDL_Texture* graphics = nullptr;
-	SDL_Rect background;
+	Animation background;
 
 
 };
