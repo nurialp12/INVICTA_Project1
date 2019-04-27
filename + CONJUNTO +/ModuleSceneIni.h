@@ -18,6 +18,11 @@ public:
 public:
 
 	SDL_Texture* graphics = nullptr;
+
+	//SDL_Texture* graphics2 = nullptr;
+	//SDL_Texture* graphicsM = nullptr;
+	//SDL_Texture* graphics2M = nullptr;
+
 	Animation background;
 
 

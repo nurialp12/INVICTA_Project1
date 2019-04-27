@@ -19,6 +19,7 @@ public:
 	~ModulePlayer2();
 
 	bool Start();
+	//update_status PreUpdate();					// ESTO ESTÁ EN ModulePlayer.h
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
@@ -35,6 +36,7 @@ public:
 	int font_score = -1;
 	char score_text[10];
 	uint score = 0;
+	//Animation* current_animation = NULL;			// ESTO ESTÁ EN ModulePlayer.h
 	Animation Terry2idle;
 	Animation Terry2Forward;
 	Animation Terry2Backwards;

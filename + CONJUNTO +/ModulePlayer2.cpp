@@ -195,8 +195,8 @@ bool ModulePlayer2::Start()
 	graphics2 = App->textures->Load("spritesTerryBogard2extres.png");
 
 
-	graphicsM = App->textures->Load("spritesTerryBogard.png");
-	graphics2M = App->textures->Load("spritesTerryBogard2extres.png");
+	graphicsM = App->textures->Load("spritesTerryBogard.png"); //spritesTerryBogardMIRROR
+	graphics2M = App->textures->Load("spritesTerryBogard2extres.png"); //spritesTerryBogard2extresMIRROR
 
 	UI = App->textures->Load("UI.png");
 
@@ -207,6 +207,9 @@ bool ModulePlayer2::Start()
 	Terry2position.x = 215 + (250);
 	Terry2position.y = 100;
 	score = 0;
+
+	//current_animation = &Terry2idle;			// ESTO ESTÁ EN ModulePlayer.cpp --> va conjuntamente 
+
 
 	// TODO 2: Add a collider to the player
 	col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_ENEMY, App->player2);
