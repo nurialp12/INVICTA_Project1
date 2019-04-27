@@ -21,7 +21,7 @@ ModulePlayer::ModulePlayer()
 {
 
 
-	// idle animation of Terry					//spritesTerryBogard.png
+	// idle animation of Terry							//spritesTerryBogard.png
 
 	//Terryidle.PushBack({ 428, 915, 79, 109 });
 	//Terryidle.PushBack({ 505, 915, 68, 105 });
@@ -34,7 +34,7 @@ ModulePlayer::ModulePlayer()
 	Terryidle.speed = 0.1f;
 
 
-	// WALK FORWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
+	// WALK FORWARD animation of Terry					//spritesTerryBogard2extres.png
 
 	//TerryForward.frames.PushBack({/**/, /**/, /**/, /**/});
 
@@ -45,7 +45,7 @@ ModulePlayer::ModulePlayer()
 	TerryForward.speed = 0.1f;
 
 
-	// WALK BACKWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
+	// WALK BACKWARD animation of Terry					//spritesTerryBogard2extres.png
 
 	//TerryBackwards.frames.PushBack({/**/, /**/, /**/, /**/});
 
@@ -57,7 +57,7 @@ ModulePlayer::ModulePlayer()
 
 
 
-	// JUMP animation of Terry				//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
+	// JUMP animation of Terry							//spritesTerryBogard2extres.png
 
 	//TerryJump.frames.PushBack({/**/, /**/, /**/, /**/});
 
@@ -67,7 +67,7 @@ ModulePlayer::ModulePlayer()
 	TerryJump.speed = 0.1f;
 
 
-	// KICK animation of Terry				//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
+	// KICK animation of Terry							//spritesTerryBogard2extres.png
 
 	//TerryKick.frames.PushBack({/**/, /**/, /**/, /**/});
 	TerryKick.PushBack({ 20, 122, 49, 112 });
@@ -78,7 +78,7 @@ ModulePlayer::ModulePlayer()
 	TerryKick.speed = 0.1f;
 
 
-	// PUNCH animation of Terry					//spritesTerryBogard.png
+	// PUNCH animation of Terry							//spritesTerryBogard.png
 
 	//TerryPunch.frames.PushBack({/**/, /**/, /**/, /**/});
 	//TerryPunch.PushBack({ 428, 915, 79, 109 });
@@ -101,6 +101,77 @@ ModulePlayer::ModulePlayer()
 	TerryPW.PushBack({ 262, 683, 65, 112 });
 	TerryPW.PushBack({ 198, 683, 60, 112 });
 	TerryPW.speed = 0.1f;
+
+
+
+	//MIRROR -----------------------------------------------------------------------------------------
+
+		// idle animation of Terry							//spritesTerryBogardMIRROR.png
+
+	TerryidleM.PushBack({ 27, 910, 60, 112 });
+	TerryidleM.PushBack({ 95, 911, 61, 112 });
+	TerryidleM.PushBack({ 164, 910, 60, 112 });
+	TerryidleM.PushBack({ 95, 911, 61, 112 });
+	TerryidleM.speed = 0.1f;
+
+
+	// WALK FORWARD animation of Terry					//spritesTerryBogard2extresMIRROR.png
+
+	TerryForwardM.PushBack({ 20, 269, 61, 112 });
+	TerryForwardM.PushBack({ 95, 269, 71, 112 });
+	TerryForwardM.PushBack({ 177, 269, 61, 112 });
+	TerryForwardM.PushBack({ 251, 269, 61, 112 });
+	TerryForwardM.speed = 0.1f;
+
+
+	// WALK BACKWARD animation of Terry					//spritesTerryBogard2extresMIRROR.png
+
+	TerryBackwardsM.PushBack({ 382, 266, 60, 112 });
+	TerryBackwardsM.PushBack({ 442, 268, 55, 112 });
+	TerryBackwardsM.PushBack({ 497, 270, 56, 112 });
+	TerryBackwardsM.PushBack({ 553, 268, 57, 112 });
+	TerryBackwardsM.speed = 0.1f;
+
+	
+	// JUMP animation of Terry							//spritesTerryBogard2extresMIRROR.png
+
+	TerryJumpM.PushBack({ 535, 12, 53, 125 });
+	TerryJumpM.PushBack({ 598, 22, 59, 105 });
+	TerryJumpM.PushBack({ 667, 33, 59, 94 });
+	TerryJumpM.speed = 0.1f;
+
+
+	// KICK animation of Terry							//spritesTerryBogard2extresMIRROR.png
+
+	TerryKickM.PushBack({ 20, 122, 49, 112 });
+	TerryKickM.PushBack({ 73, 138, 59, 112 });
+	TerryKickM.PushBack({ 138, 134, 44, 112 });
+	TerryKickM.PushBack({ 200, 138, 118, 112 });
+	TerryKickM.PushBack({ 331, 138, 64, 112 });
+	TerryKickM.speed = 0.1f;
+
+
+	// PUNCH animation of Terry							//spritesTerryBogardMIRROR.png
+
+	TerryPunchM.PushBack({ 435, 910, 71, 112 });
+	TerryPunchM.PushBack({ 507, 912, 62, 112 });
+	TerryPunchM.PushBack({ 574, 912, 97, 112 });
+	TerryPunchM.speed = 0.1f;
+
+
+	// POWER WAVE animation of Terrry
+
+	TerryPWM.PushBack({ 623, 683, 51, 112 });
+	TerryPWM.PushBack({ 550, 683, 54, 112 });
+	TerryPWM.PushBack({ 485, 683, 60, 112 });
+	TerryPWM.PushBack({ 402, 682, 79, 112 });
+	TerryPWM.PushBack({ 330, 682, 67, 112 });
+	TerryPWM.PushBack({ 262, 683, 65, 112 });
+	TerryPWM.PushBack({ 198, 683, 60, 112 });
+	TerryPWM.speed = 0.1f;
+
+
+
 }
 
 
@@ -116,6 +187,10 @@ bool ModulePlayer::Start()
 
 	graphics = App->textures->Load("spritesTerryBogard.png");
 	graphics2 = App->textures->Load("spritesTerryBogard2extres.png");
+
+	graphicsM = App->textures->Load("spritesTerryBogardMIRROR.png");
+	graphics2M = App->textures->Load("spritesTerryBogard2extresMIRROR.png");
+
 
 	destroyed = false;
 	Terryposition.x = 150;
@@ -137,6 +212,11 @@ bool ModulePlayer::CleanUp()
 
 	App->textures->Unload(graphics);
 	App->textures->Unload(graphics2);
+
+	App->textures->Unload(graphicsM);
+	App->textures->Unload(graphics2M);
+
+
 	App->fonts->UnLoad(font_score);
 	if (col)
 		col->to_delete = true;

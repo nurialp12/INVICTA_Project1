@@ -38,6 +38,19 @@ public:
 	Animation Terry2Punch;
 	Animation Terry2PW;
 
+
+	SDL_Texture* graphicsM = nullptr;
+	SDL_Texture* graphics2M = nullptr;
+	Animation Terry2idleM;
+	Animation Terry2ForwardM;
+	Animation Terry2BackwardsM;
+	Animation Terry2JumpM;
+	Animation Terry2KickM;
+	Animation Terry2PunchM;
+	Animation Terry2PWM;
+	bool mirror2 = true;
+
+
 	iPoint Terry2position;
 	Collider* col;
 	Collider* colp;
