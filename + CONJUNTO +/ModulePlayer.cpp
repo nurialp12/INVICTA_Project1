@@ -212,7 +212,7 @@ bool ModulePlayer::Start()
 	col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
 
 	// TODO 0: Notice how a font is loaded and the meaning of all its arguments 
-	font_score = App->fonts->Load("fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
+	font_score = App->fonts->Load("fonts/scorenums.png", "1234567890", 1);
 	return ret;
 }
 
@@ -655,10 +655,10 @@ update_status ModulePlayer::Update()
 	}
 
 	// Draw UI (score) --------------------------------------
-	sprintf_s(score_text, 10, "%7d", score);
+	//sprintf_s(score_text, 10, "%7d", score);
 
 	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(0, 150, font_score, "HelloWorld");
+	App->fonts->BlitText(10, 150, font_score, "546");
 
 	return UPDATE_CONTINUE;
 }
