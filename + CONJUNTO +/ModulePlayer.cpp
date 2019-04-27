@@ -20,6 +20,7 @@
 ModulePlayer::ModulePlayer()
 {
 
+	life = { 15, 69, 166, 75 };
 
 	// idle animation of Terry							//spritesTerryBogard.png
 
@@ -187,6 +188,7 @@ bool ModulePlayer::Start()
 
 	graphics = App->textures->Load("spritesTerryBogard.png");
 	graphics2 = App->textures->Load("spritesTerryBogard2extres.png");
+	UI = App->textures->Load("UI.png");
 
 	graphicsM = App->textures->Load("spritesTerryBogardMIRROR.png");
 	graphics2M = App->textures->Load("spritesTerryBogard2extresMIRROR.png");
@@ -348,7 +350,7 @@ update_status ModulePlayer::Update()
 	{
 		current_animation = &TerryForward;
 		if (Terryposition.x < 570 &&
-			Terryposition.x * 2 - 260 < -(App->render->camera.x - App->render->camera.w))
+			Terryposition.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w))
 		{
 			Terryposition.x += speed;
 		}
@@ -433,6 +435,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
+	App->render->Blit(UI, 0, 0, &life, 0);
 	// TODO 3: Update collider position to player position
 	col->rect.x = Terryposition.x + 15;
 	col->rect.y = Terryposition.y + 10;
