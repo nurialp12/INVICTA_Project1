@@ -21,7 +21,9 @@ bool airkick = true;
 ModulePlayer::ModulePlayer()
 {
 
-	life = { 15, 69, 166, 75 };
+	lifebar = { 15, 69, 166, 75 };
+	life1 = { 10, 77, 1, 6 };
+	life2 = { 11, 77, 4, 6 };
 
 	// idle animation of Terry							//spritesTerryBogard.png
 
@@ -512,8 +514,104 @@ update_status ModulePlayer::Update()
 			gmode = false;
 		}
 	}
+	
+	App->render->Blit(UI, 0, 0, &lifebar, 0);
+	if (life_score >= 4)
+	{
+		App->render->Blit(UI, 26, 26, &life1, 0);
+		App->render->Blit(UI, 27, 26, &life2, 0);
+	}
+	if (life_score >= 8)
+	{
+		App->render->Blit(UI, 31, 26, &life2, 0);
+	}
+	if (life_score >= 12)
+	{
+		App->render->Blit(UI, 35, 26, &life2, 0);
+	}
+	if (life_score >= 16)
+	{
+		App->render->Blit(UI, 39, 26, &life2, 0);
+	}
+	if (life_score >= 20)
+	{
+		App->render->Blit(UI, 43, 26, &life2, 0);
+	}
+	if (life_score >= 24)
+	{
+		App->render->Blit(UI, 47, 26, &life2, 0);
+	}
+	if (life_score >= 28)
+	{
+		App->render->Blit(UI, 51, 26, &life2, 0);
+	}
+	if (life_score >= 32)
+	{
+		App->render->Blit(UI, 55, 26, &life2, 0);
+	}
+	if (life_score >= 36)
+	{
+		App->render->Blit(UI, 59, 26, &life2, 0);
+	}
+	if (life_score >= 40)
+	{
+		App->render->Blit(UI, 63, 26, &life2, 0);
+	}
+	if (life_score >= 44)
+	{
+		App->render->Blit(UI, 67, 26, &life2, 0);
+	}
+	if (life_score >= 48)
+	{
+		App->render->Blit(UI, 71, 26, &life2, 0);
+	}
+	if (life_score >= 52)
+	{
+		App->render->Blit(UI, 75, 26, &life2, 0);
+	}
+	if (life_score >= 56)
+	{
+		App->render->Blit(UI, 79, 26, &life2, 0);
+	}
+	if (life_score >= 60)
+	{
+		App->render->Blit(UI, 83, 26, &life2, 0);
+	}
+	if (life_score >= 64)
+	{
+		App->render->Blit(UI, 87, 26, &life2, 0);
+	}
+	if (life_score >= 68)
+	{
+		App->render->Blit(UI, 91, 26, &life2, 0);
+	}
+	if (life_score >= 72)
+	{
+		App->render->Blit(UI, 95, 26, &life2, 0);
+	}
+	if (life_score >= 76)
+	{
+		App->render->Blit(UI, 99, 26, &life2, 0);
+	}
+	if (life_score >= 80)
+	{
+		App->render->Blit(UI, 103, 26, &life2, 0);
+	}
+	if (life_score >= 84)
+	{
+		App->render->Blit(UI, 107, 26, &life2, 0);
+	}
+	if (life_score >= 88)
+	{
+		App->render->Blit(UI, 111, 26, &life2, 0);
+	}
+	if (life_score >= 92)
+	{
+		App->render->Blit(UI, 115, 26, &life2, 0);
+		App->render->Blit(UI, 119, 26, &life1, 0);
+	}
+	
 
-	App->render->Blit(UI, 0, 0, &life, 0);
 	// TODO 3: Update collider position to player position
 	col->rect.x = Terryposition.x + 15;
 	col->rect.y = Terryposition.y + 10;

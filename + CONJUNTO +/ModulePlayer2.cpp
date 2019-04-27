@@ -23,7 +23,9 @@
 ModulePlayer2::ModulePlayer2()
 {
 
-	life = { 180, 69, 117, 80 };
+	lifebar = { 180, 69, 117, 80 };
+	life1 = { 10, 77, 1, 6 };
+	life2 = { 11, 77, 4, 6 };
 
 	// idle animation of Terry2					//spritesTerry2Bogard.png
 
@@ -240,14 +242,20 @@ update_status ModulePlayer2::Update()
 	if (Terry2position.x < App->player->Terryposition.x) { mirror2 = false; }
 	else { mirror2 = true; }
 
-	Animation* current_animation = &Terry2idleM;
+	Animation* current_animation = NULL;
+
+	
+	if (true)
+	{
+
+		if (mirror2) { current_animation = &Terry2idleM; }
+
+		else { current_animation = &Terry2idle; }
 
 
-	//NO ENTRA EN EL BUCLE DE IDLE
-	if (mirror2) { Animation* current_animation = &Terry2idleM; }
-	else { Animation* current_animation = &Terry2idle; }
-
-
+	}
+	
+	
 	int speed = 1;
 	
 
@@ -276,7 +284,7 @@ update_status ModulePlayer2::Update()
 
 		}
 
-	}
+	} 
 
 
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
@@ -406,7 +414,101 @@ update_status ModulePlayer2::Update()
 	}
 
 
-	App->render->Blit(UI, 165, 0, &life, 0);
+	App->render->Blit(UI, 165, 0, &lifebar, 0);
+	if (life_score >= 4)
+	{
+ 		App->render->Blit(UI, 170, 26, &life1, 0);
+		App->render->Blit(UI, 171, 26, &life2, 0);
+	}
+	if (life_score >= 8)
+	{
+		App->render->Blit(UI, 175, 26, &life2, 0);
+	}
+	if (life_score >= 12)
+	{
+		App->render->Blit(UI, 179, 26, &life2, 0);
+	}
+	if (life_score >= 16)
+	{
+		App->render->Blit(UI, 183, 26, &life2, 0);
+	}
+	if (life_score >= 20)
+	{
+		App->render->Blit(UI, 187, 26, &life2, 0);
+	}
+	if (life_score >= 24)
+	{
+		App->render->Blit(UI, 191, 26, &life2, 0);
+	}
+	if (life_score >= 28)
+	{
+		App->render->Blit(UI, 195, 26, &life2, 0);
+	}
+	if (life_score >= 32)
+	{
+		App->render->Blit(UI, 199, 26, &life2, 0);
+	}
+	if (life_score >= 36)
+	{
+		App->render->Blit(UI, 203, 26, &life2, 0);
+	}
+	if (life_score >= 40)
+	{
+		App->render->Blit(UI, 207, 26, &life2, 0);
+	}
+	if (life_score >= 44)
+	{
+		App->render->Blit(UI, 211, 26, &life2, 0);
+	}
+	if (life_score >= 48)
+	{
+		App->render->Blit(UI, 215, 26, &life2, 0);
+	}
+	if (life_score >= 52)
+	{
+		App->render->Blit(UI, 219, 26, &life2, 0);
+	}
+	if (life_score >= 56)
+	{
+		App->render->Blit(UI, 223, 26, &life2, 0);
+	}
+	if (life_score >= 60)
+	{
+		App->render->Blit(UI, 227, 26, &life2, 0);
+	}
+	if (life_score >= 64)
+	{
+		App->render->Blit(UI, 231, 26, &life2, 0);
+	}
+	if (life_score >= 68)
+	{
+		App->render->Blit(UI, 235, 26, &life2, 0);
+	}
+	if (life_score >= 72)
+	{
+		App->render->Blit(UI, 239, 26, &life2, 0);
+	}
+	if (life_score >= 76)
+	{
+		App->render->Blit(UI, 243, 26, &life2, 0);
+	}
+	if (life_score >= 80)
+	{
+		App->render->Blit(UI, 247, 26, &life2, 0);
+	}
+	if (life_score >= 84)
+	{
+		App->render->Blit(UI, 251, 26, &life2, 0);
+	}
+	if (life_score >= 88)
+	{
+		App->render->Blit(UI, 255, 26, &life2, 0);
+	}
+	if (life_score >= 92)
+	{
+		App->render->Blit(UI, 259, 26, &life2, 0);
+		App->render->Blit(UI, 263, 26, &life1, 0);
+	}
 
 	// TODO 3: Update collider position to player position
 	//col->rect.x = Terryposition.x;
