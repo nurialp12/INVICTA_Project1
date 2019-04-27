@@ -14,8 +14,11 @@
 #include "SDL\include\SDL.h"
 #include <stdio.h>
 
-int speed = 2;
+int speed =1;
+float stantardDMG = 11.5;
+int jumpspeed = 60;
 bool airkick = true;
+
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModulePlayer::ModulePlayer()
@@ -68,9 +71,15 @@ ModulePlayer::ModulePlayer()
 	//TerryJump.frames.PushBack({/**/, /**/, /**/, /**/});
 
 	TerryJump.PushBack({ 535, 12, 53, 125 });
+	//TerryJump.PushBack({ 535, 12, 53, 125 }); //EXTRA
 	TerryJump.PushBack({ 598, 22, 59, 105 });
-	TerryJump.PushBack({ 667, 33, 59, 94 });
-	TerryJump.speed = 0.1f;
+	//TerryJump.PushBack({ 667, 33, 59, 94 });
+	//TerryJump.PushBack({ 667, 33, 59, 94 }); //EXTRA
+	//TerryJump.PushBack({ 667, 33, 59, 94 }); //EXTRA
+	//TerryJump.PushBack({ 667, 33, 59, 94 }); //EXTRA
+	TerryJump.PushBack({ 598, 22, 59, 105 }); //EXTRA
+	TerryJump.PushBack({ 535, 12, 53, 125 }); //EXTRA
+	TerryJump.speed = /*0.06*/0.1f;
 
 
 	// KICK animation of Terry							//spritesTerryBogard2extres.png
@@ -95,7 +104,6 @@ ModulePlayer::ModulePlayer()
 	TerryPunch.PushBack({ 435, 910, 71, 112 });
 	TerryPunch.PushBack({ 507, 912, 62, 112 });
 	TerryPunch.PushBack({ 574, 912, 97, 112 });
-	TerryPunch.loop = true;
 	TerryPunch.speed = 0.1f;
 
 	// POWER WAVE animation of Terrry
@@ -108,6 +116,59 @@ ModulePlayer::ModulePlayer()
 	TerryPW.PushBack({ 262, 683, 65, 112 });
 	TerryPW.PushBack({ 198, 683, 60, 112 });
 	TerryPW.speed = 0.1f;
+
+	//DAMAGED BY PUNCH
+
+	TerryDP.PushBack({ 0, 912, 59, 112 });
+	TerryDP.PushBack({ 64, 912, 67, 112 });
+	TerryDP.speed = 0.1f;
+
+	//DAMAGED BY KICK
+
+	TerryDK.PushBack({ 136, 912, 63, 112 });
+	TerryDK.PushBack({ 211, 912, 68, 112 });
+	TerryDK.speed = 0.1f;
+
+
+	//CROUCH
+	TerryCrouch.PushBack({ 0, 0, 0, 0 }); 
+	TerryCrouch.PushBack({ 0, 0, 0, 0 });
+	TerryCrouch.speed = 0.1f;
+
+	//JUMPFORWARD
+	TerryJumpForward.PushBack({ 0, 0, 0, 0 });
+	TerryJumpForward.PushBack({ 0, 0, 0, 0 });
+	TerryJumpForward.PushBack({ 0, 0, 0, 0 });
+	TerryJumpForward.PushBack({ 0, 0, 0, 0 });
+	TerryJumpForward.PushBack({ 0, 0, 0, 0 });
+	TerryJumpForward.PushBack({ 0, 0, 0, 0 });
+	TerryJumpForward.PushBack({ 0, 0, 0, 0 });
+	TerryJumpForward.speed = 0.1f;
+
+	//JUMPBACKWARDS
+	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
+	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
+	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
+	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
+	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
+	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
+	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
+	TerryJumpBackwards.speed = 0.1f;
+
+	//CROUCHPUNCH
+	TerryCrouchPunch.PushBack({ 279, 912, 56, 112 }); //Charge
+	TerryCrouchPunch.PushBack({ 416, 912, 49, 112 }); //Riposte
+	TerryCrouchPunch.PushBack({ 335, 912, 81, 112 }); //Punch
+	TerryCrouchPunch.PushBack({ 416, 912, 49, 112 }); //Riposte x2
+	TerryCrouchPunch.speed = 0.1f;
+
+
+	//CROUCHKICK
+	TerryCrouchKick.PushBack({ 0, 0, 0, 0 }); //Charge
+	TerryCrouchKick.PushBack({ 0, 0, 0, 0 }); //Riposte
+	TerryCrouchKick.PushBack({ 0, 0, 0, 0 }); //Punch
+	TerryCrouchKick.PushBack({ 0, 0, 0, 0 }); //Riposte x2
+	TerryCrouchKick.speed = 0.1f;
 
 
 
@@ -204,15 +265,15 @@ bool ModulePlayer::Start()
 	Terryposition.x = 5 + (250);
 	Terryposition.y = 100;
 	score = 0;
+	col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
 
 	current_animation = &Terryidle;
 	currentstate = ST_IDLE;
 
 	// TODO 2: Add a collider to the player
-	col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
 
 	// TODO 0: Notice how a font is loaded and the meaning of all its arguments 
-	font_score = App->fonts->Load("fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
+	font_score = App->fonts->Load("fonts/scorenums.png", "1234567890", 1);
 	return ret;
 }
 
@@ -359,87 +420,65 @@ float gravity = 1;
 
 update_status ModulePlayer::Update()
 {
-
-
-	/*switch (currentstate) 
+	//MOVE FORWARD
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
 	{
-	case ST_IDLE:
-		current_animation = &Terryidle;
-
-		LOG("IDLE ANIMATION ACTIVE");
-		break;
-
-	case ST_JUMP_NEUTRAL:
-		current_animation = &TerryJump;
-
-		Terryposition.y -= speed * gravity;
-
-		if (Terryposition.y <= 150)
-		{
-			gravity = -1;
-		}
-
-		else if (Terryposition.y == 220) 
-		{
-			TerryJump.Reset();
-			airkick = true;
-			currentstate = ST_IDLE;
-			gravity = 1;
-		}
-		LOG("JUMP ANIMATION ACTIVE");
-		break;
-
-	case ST_PUNCH_STANDING:
-		current_animation = &TerryPunch;
-
-		LOG("PUNCH ANIMATION ACTIVE");
-		break;
-	
-
-	}*/
-
-	/*int speed = 1;
-
-	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-	{
+		currentstate = ST_WALK_FORWARD;
 		current_animation = &TerryForward;
-		if (Terryposition.x < 570 &&
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && currentstate == ST_WALK_FORWARD)
+	{
+		if (Terryposition.x < 700 &&
 			Terryposition.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w))
 		{
 			Terryposition.x += speed;
 		}
 	}
-
-	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP && currentstate == ST_WALK_FORWARD)
 	{
+		currentstate = ST_IDLE;
+		current_animation = &Terryidle;
+	}
+	
+	//MOVE BACKWARD
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
+	{
+		currentstate = ST_WALK_BACKWARD;
 		current_animation = &TerryBackwards;
+	}
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && currentstate == ST_WALK_BACKWARD)
+	{
 		if (Terryposition.x > 0 &&
 			Terryposition.x * 2 > -App->render->camera.x)
 		{
 			Terryposition.x -= speed;
 		}
 	}
-	*/
-	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_UP && currentstate == ST_WALK_BACKWARD)
 	{
-		current_animation = &TerryJump;
-		Terryposition.y -= (speed * gravity);
-
-		if (Terryposition.y <= 50)
-		{
-			gravity = -1;
-		}
-
-		else if (Terryposition.y == 130)
-		{
-			TerryJump.Reset();
-			airkick = true;
-			currentstate = ST_IDLE;
-			gravity = 1;
-		}
 		currentstate = ST_IDLE;
 		current_animation = &Terryidle;
-		Terryidle.Reset();
+	}
+
+	//JUMP
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
+	{
+		currentstate = ST_JUMP_NEUTRAL;
+		current_animation = &TerryJump;
+		Terryposition.y -= jumpspeed;
+		if (Terryposition.y == 80)
+			jumpspeed = -60;
+		if (Terryposition.y == 120)
+			jumpspeed = 60;
+	}
+	if (TerryJump.Finished() == true || Terryposition.y==80)
+	{
+		TerryJump.resetLoops(0);
+		currentstate = ST_IDLE;
+		current_animation = &Terryidle;
+		Terryposition.y = 100;
+		TerryJump.Reset();
 	}
 
 	//PUNCH
@@ -449,7 +488,6 @@ update_status ModulePlayer::Update()
 		current_animation = &TerryPunch;
 		colp = App->collisions->AddCollider({ Terryposition.x + 45, Terryposition.y + 20, 43, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 	}
-
 	if (TerryPunch.Finished() == true)
 	{
 		if (colp)
@@ -462,6 +500,42 @@ update_status ModulePlayer::Update()
 
 	}
 
+	//CROUCH
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
+	{
+		currentstate = ST_CROUCH;
+		current_animation = &TerryCrouch;
+		if (col)
+			col->to_delete = true;
+
+		colc = App->collisions->AddCollider({ Terryposition.x + 13, Terryposition.y + 50, 36, 60 }, COLLIDER_PLAYER, App->player);
+	}
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP && currentstate == ST_CROUCH)
+	{
+		currentstate = ST_IDLE;
+		current_animation = &Terryidle;
+		if (colc)
+			colc->to_delete = true;
+		col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
+	}
+
+	//CROUCHPUNCH
+	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && currentstate == ST_CROUCH)
+	{
+		currentstate = ST_PUNCH_CROUCH;
+		current_animation = &TerryCrouchPunch;
+		colcp = App->collisions->AddCollider({ Terryposition.x + 50, Terryposition.y + 55, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+	}
+	if (TerryCrouchPunch.Finished() == true)
+	{
+		if (colcp)
+			colcp->to_delete = true;
+
+		TerryCrouchPunch.resetLoops(0);
+		currentstate = ST_CROUCH;
+		current_animation = &TerryCrouch;
+		TerryCrouchPunch.Reset();
+	}
 	//KICK
 	if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
 	{
@@ -622,7 +696,7 @@ update_status ModulePlayer::Update()
 	// Draw everything --------------------------------------
 	if (destroyed == false)
 	{
-		if ((current_animation == (&TerryKick)) || current_animation == (&TerryJump) || current_animation == (&TerryForward) || current_animation == (&TerryBackwards)/*current_animation == (&TerryKick || &TerryJump || &TerryForward || &TerryBackwards)*/)
+		if ((current_animation == (&TerryKick)) || current_animation == (&TerryJump) || current_animation == (&TerryForward) || current_animation == (&TerryBackwards) || current_animation == &TerryDP || current_animation==&TerryDP || current_animation==&TerryCrouchPunch /*current_animation == (&TerryKick || &TerryJump || &TerryForward || &TerryBackwards)*/)
 		{
 			App->render->Blit(graphics2, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
 		}
@@ -632,7 +706,7 @@ update_status ModulePlayer::Update()
 			App->render->Blit(graphics, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
 		}
 
-		if (current_animation == (&TerryJump))
+		/*if (current_animation == (&TerryJump))
 		{
 			if (Terryposition.y == 115)
 			{
@@ -649,24 +723,26 @@ update_status ModulePlayer::Update()
 				Terryposition.y = 115;
 			}
 
-		}
+		}*/
+
+
 		//App->render->Blit(graphics, terryposition.x, terryposition.y, &(current_animation->GetCurrentFrame()));
 		//App->render->Blit(graphics, terry2position.x, terry2position.y, &(current_animation->GetCurrentFrame()));
 	}
 
 	// Draw UI (score) --------------------------------------
-	sprintf_s(score_text, 10, "%7d", score);
+	//sprintf_s(score_text, 10, "%7d", score);
 
 	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(0, 150, font_score, "HelloWorld");
+	App->fonts->BlitText(10, 150, font_score, "546");
 
 	return UPDATE_CONTINUE;
 }
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY)
+	if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_ENEMY)
 	{
-		//App->fade->FadeToBlack((Module*)App->scene_2, (Module*)App->end_game2);
+		life_score -= stantardDMG;
 	}
 }

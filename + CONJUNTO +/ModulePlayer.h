@@ -79,7 +79,7 @@ public:
 	SDL_Rect lifebar;
 	SDL_Rect life1;
 	SDL_Rect life2;
-	int life_score = 92;
+	float life_score = 92;
 	int font_score = -1;
 	char score_text[10];
 	uint score = 0;
@@ -91,7 +91,13 @@ public:
 	Animation TerryKick;
 	Animation TerryPunch;
 	Animation TerryPW;
-
+	Animation TerryDP;
+	Animation TerryDK;
+	Animation TerryCrouch;
+	Animation TerryJumpForward;
+	Animation TerryJumpBackwards;
+	Animation TerryCrouchPunch;
+	Animation TerryCrouchKick;
 
 	SDL_Texture* graphicsM = nullptr;
 	SDL_Texture* graphics2M = nullptr;
@@ -109,6 +115,9 @@ public:
 	Collider* col;
 	Collider* colp;
 	Collider* colk;
+	Collider* colc;
+	Collider* colcp;
+	Collider* colck;
 
 	bool gmode = false;
 	bool destroyed = false;
