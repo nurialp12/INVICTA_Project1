@@ -9,7 +9,7 @@
 
 ModuleRender::ModuleRender() : Module()
 {
-	camera.x = /*-48*/0;
+	camera.x = -480 /*0*/;
 	camera.y = 0;
 	camera.w = SCREEN_WIDTH;
 	camera.h = SCREEN_HEIGHT;
@@ -47,8 +47,11 @@ update_status ModuleRender::PreUpdate()
 {
 	SDL_RenderClear(renderer);
 
+	
+
 	return update_status::UPDATE_CONTINUE;
 }
+
 
 update_status ModuleRender::Update()	
 {
@@ -69,7 +72,7 @@ update_status ModuleRender::Update()
 		}
 
 	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-		if (camera.x > -490 && App->player->destroyed == false &&
+		if (camera.x > -900 /*-490*/ && App->player->destroyed == false &&
 			App->player2->Terry2position.x*2 > -camera.x &&
 			App->input->keyboard[SDL_SCANCODE_RIGHT] != KEY_STATE::KEY_REPEAT)
 		{
@@ -84,7 +87,7 @@ update_status ModuleRender::Update()
 		}
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
-		if (camera.x > -490 && App->player->destroyed == false &&
+		if (camera.x > -900 /*-490*/ && App->player->destroyed == false &&
 			App->player->Terryposition.x * 2 > -camera.x)
 		{
 			camera.x -= speed;

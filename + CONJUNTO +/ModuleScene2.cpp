@@ -53,6 +53,9 @@ bool ModuleScene2::Start()
 	bool ret = true;
 	graphics = App->textures->Load("Pao_Pao_Cafe.png");
 
+	App->render->camera.x = -480;
+	App->render->camera.y = 0;
+
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->Enable();
 	App->player2->Enable();
@@ -88,8 +91,10 @@ update_status ModuleScene2::Update()
 	//App->render->Blit(graphics, 0, 160, &ground);
 	App->render->Blit(graphics, 0, 0, &(background.GetCurrentFrame()), 0.70f); // back of the room
 	
-	App->render->camera.x = -480;
-	App->render->camera.y = 0;
+
+	//NÚRIA: BLOQUEA LA CÁMARA EN EL CENTRO DURANTE EL PAOPAO
+	//App->render->camera.x = -480;
+	//App->render->camera.y = 0;
 
 
 	//App->render->Blit(graphics, 280, 125, &foreground);

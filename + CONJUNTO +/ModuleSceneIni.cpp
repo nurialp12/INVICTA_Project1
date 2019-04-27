@@ -58,7 +58,8 @@ update_status ModuleSceneIni::Update()
 	// Draw everything --------------------------------------	
 	App->render->Blit(graphics, 35, 35, &background);
 
-
+	App->render->camera.x = 0;
+	App->render->camera.y = 0;
 
 
 
