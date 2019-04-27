@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
+#include"ModuleScene2.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleSceneIni.h"
@@ -68,7 +69,7 @@ update_status ModuleSceneWinP1::Update()
 	
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(App->end_game1, App->ini, 2.5);
+		App->fade->FadeToBlack(App->end_game1, App->scene_2, 2.5);
 	}
 
 
