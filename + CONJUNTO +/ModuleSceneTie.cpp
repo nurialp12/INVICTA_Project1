@@ -34,7 +34,7 @@ bool ModuleSceneTie::Start()
 
 	LOG("Loading background assets");
 	bool ret = true;
-	graphics = App->textures->Load("game_over.png");
+	graphics = App->textures->Load("Assets/Sprites/game_over.png");
 
 	// TODO 1: Enable (and properly disable) the player module
 	App->render->camera.x = App->render->camera.y = 0;
@@ -49,7 +49,7 @@ bool ModuleSceneTie::CleanUp()
 {
 
 	graphics = nullptr;
-	SDL_DestroyTexture(App->textures->Load("game_over.png"));
+	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/game_over.png"));
 
 	LOG("Unloading end stage");
 

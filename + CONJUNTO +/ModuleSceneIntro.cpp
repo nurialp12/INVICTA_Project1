@@ -105,8 +105,8 @@ bool ModuleSceneIntro::Start()
 	bool ret = true;
 	
 
-	graphics = App->textures->Load("Intro7.png");
-	App->audio->PlayMusic("music/Fatal Fury Intro/Fatal Fury Intro.ogg", 0);
+	graphics = App->textures->Load("Assets/Sprites/Intro7.png");
+	App->audio->PlayMusic("Assets/music/Fatal Fury Intro/Fatal Fury Intro.ogg", 0);
 
 	// TODO 1: Enable (and properly disable) the player module
 	App->render->camera.x = 0;
@@ -123,7 +123,7 @@ bool ModuleSceneIntro::CleanUp()
 	graphics = nullptr;
 	
 	
-	SDL_DestroyTexture(App->textures->Load("Intro7.png"));
+	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Intro7.png"));
 
 	//App->audio->CleanUp();
 	LOG("Unloading intro stage");

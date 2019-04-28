@@ -197,13 +197,13 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 	bool ret = true;
-	graphics = App->textures->Load("spritesTerryBogard.png");
-	graphics2 = App->textures->Load("spritesTerryBogard2extres.png");
+	graphics = App->textures->Load("Assets/Sprites/spritesTerryBogard.png");
+	graphics2 = App->textures->Load("Assets/Sprites/spritesTerryBogard2extres.png");
 
-	graphicsM = App->textures->Load("spritesTerryBogardMIRROR.png");
-	graphics2M = App->textures->Load("spritesTerryBogard2extresMIRROR.png");
+	graphicsM = App->textures->Load("Assets/Sprites/spritesTerryBogardMIRROR.png");
+	graphics2M = App->textures->Load("Assets/Sprites/spritesTerryBogard2extresMIRROR.png");
 
-	UI = App->textures->Load("UI.png");
+	UI = App->textures->Load("Assets/Sprites/UI.png");
 
 	destroyed = false;
 	Terryposition.x = 5 + (250);
@@ -215,7 +215,7 @@ bool ModulePlayer::Start()
 
 	current_animation = &Terryidle;
 	currentstate = ST_IDLE;
-	font_score = App->fonts->Load("fonts/scorenums.png", "1234567890", 1);
+	font_score = App->fonts->Load("Assets/Sprites/fonts/scorenums.png", "1234567890", 1);
 	return ret;
 }
 
@@ -584,7 +584,7 @@ update_status ModulePlayer::Update()
 		currentstate = ST_POWER_WAVE;
 		current_animation = &TerryPW;
 		App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 40, Terryposition.y + 12);
-		App->audio->PlayFX("FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
+		App->audio->PlayFX("Assets/FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
 	}
 	if (TerryPW.Finished() == true)
 	{

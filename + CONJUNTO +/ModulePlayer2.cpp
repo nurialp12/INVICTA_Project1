@@ -201,14 +201,14 @@ bool ModulePlayer2::Start()
 	LOG("Loading player");
 	bool ret = true;
 
-	graphics = App->textures->Load("spritesTerryBogard.png");
-	graphics2 = App->textures->Load("spritesTerryBogard2extres.png");
+	graphics = App->textures->Load("Assets/Sprites/spritesTerryBogard.png");
+	graphics2 = App->textures->Load("Assets/Sprites/spritesTerryBogard2extres.png");
 
 
-	graphicsM = App->textures->Load("spritesTerryBogard.png"); //spritesTerryBogardMIRROR
-	graphics2M = App->textures->Load("spritesTerryBogard2extres.png"); //spritesTerryBogard2extresMIRROR
+	graphicsM = App->textures->Load("Assets/Sprites/spritesTerryBogard.png"); //spritesTerryBogardMIRROR
+	graphics2M = App->textures->Load("Assets/Sprites/spritesTerryBogard2extres.png"); //spritesTerryBogard2extresMIRROR
 
-	UI = App->textures->Load("UI.png");
+	UI = App->textures->Load("Assets/Sprites/UI.png");
 
 
 	destroyed = false;
@@ -225,7 +225,7 @@ bool ModulePlayer2::Start()
 	col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_ENEMY, App->player2);
 
 	// TODO 0: Notice how a font is loaded and the meaning of all its arguments 
-	font_score = App->fonts->Load("fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
+	font_score = App->fonts->Load("Assets/Sprites/fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 	return ret;
 }
 
@@ -398,7 +398,7 @@ update_status ModulePlayer2::Update()
 	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
 	{
 		App->particles->AddEnemyParticle(App->particles->terryenergy, Terry2position.x + 40, Terry2position.y + 12);
-		App->audio->PlayFX("FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
+		App->audio->PlayFX("Assets/FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
 	}
 
 
