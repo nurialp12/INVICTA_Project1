@@ -105,13 +105,13 @@ ModulePlayer::ModulePlayer()
 	TerryJumpForward.speed = 0.1f;
 
 	//JUMPBACKWARDS
-	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
-	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
-	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
-	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
-	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
-	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
-	TerryJumpBackwards.PushBack({ 0, 0, 0, 0 });
+	TerryJumpBackwards.PushBack({ 624, 912, 57, 112 });
+	TerryJumpBackwards.PushBack({ 964, 912, 60, 112 });
+	TerryJumpBackwards.PushBack({ 877, 912, 87, 112 });
+	TerryJumpBackwards.PushBack({ 824, 912, 53, 112 });
+	TerryJumpBackwards.PushBack({ 737, 912, 87, 112 });
+	TerryJumpBackwards.PushBack({ 681, 912, 56, 112 });
+	TerryJumpBackwards.PushBack({ 624, 912, 57, 112 });
 	TerryJumpBackwards.speed = 0.1f;
 
 	//CROUCHPUNCH
@@ -459,7 +459,7 @@ update_status ModulePlayer::Update()
 	}
 
 	//PUNCH
-	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
+	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && (currentstate == ST_IDLE || ST_WALK_FORWARD || ST_JUMP_BACKWARD))
 	{
 		currentstate = ST_PUNCH_STANDING;
 		current_animation = &TerryPunch;
@@ -470,14 +470,27 @@ update_status ModulePlayer::Update()
 		if (colp)
 			colp->to_delete = true;
 		TerryPunch.resetLoops(0);
-		currentstate = ST_IDLE;
-		current_animation = &Terryidle;
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_WALK_FORWARD;
+			current_animation = &TerryForward;
+		}
+		else if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_WALK_BACKWARD;
+			current_animation = &TerryBackwards;
+		}
+		else
+		{
+			currentstate = ST_IDLE;
+			current_animation = &Terryidle;
+		}
 		App->player2->collided = false;
 		TerryPunch.Reset();
 	}
 
 	//KICK
-	if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
+	if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN && (currentstate == ST_IDLE || ST_WALK_FORWARD || ST_JUMP_BACKWARD))
 	{
 		currentstate = ST_KICK_STANDING;
 		current_animation = &TerryKick;
@@ -490,8 +503,21 @@ update_status ModulePlayer::Update()
 			colk->to_delete = true;
 
 		TerryKick.resetLoops(0);
-		currentstate = ST_IDLE;
-		current_animation = &Terryidle;
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_WALK_FORWARD;
+			current_animation = &TerryForward;
+		}
+		else if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_WALK_BACKWARD;
+			current_animation = &TerryBackwards;
+		}
+		else
+		{
+			currentstate = ST_IDLE;
+			current_animation = &Terryidle;
+		}
 		TerryKick.Reset();
 	}
 
@@ -579,30 +605,32 @@ update_status ModulePlayer::Update()
 	}
 
 	//POWER WAVE
-	//if (App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_DOWN)
-	//{
-
-	//	App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 40, Terryposition.y+12);
-	//	App->audio->PlayFX("FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
-	//}
-	//if (App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_REPEAT)
-	//{
-	//	current_animation = &TerryPW;
-	//}
-	if (App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
+	if (App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_DOWN && (currentstate == ST_IDLE || ST_JUMP_FORWARD || ST_JUMP_BACKWARD))
 	{
 		currentstate = ST_POWER_WAVE;
 		current_animation = &TerryPW;
 		App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 40, Terryposition.y + 12);
 
 		App->audio->PlayFX("Assets/FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
-
 	}
 	if (TerryPW.Finished() == true)
 	{
 		TerryPW.resetLoops(0);
-		currentstate = ST_IDLE;
-		current_animation = &Terryidle;
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_WALK_FORWARD;
+			current_animation = &TerryForward;
+		}
+		else if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_WALK_BACKWARD;
+			current_animation = &TerryBackwards;
+		}
+		else
+		{
+			currentstate = ST_IDLE;
+			current_animation = &Terryidle;
+		}
 		TerryPW.Reset();
 	}
 
