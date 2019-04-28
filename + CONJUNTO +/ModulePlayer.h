@@ -124,7 +124,7 @@ public:
 	Animation hitM;							
 
 	bool mirror = false;
-
+	bool mirror2 = true;
 
 	iPoint Terryposition;
 	Collider* col;
