@@ -509,6 +509,7 @@ update_status ModulePlayer::Update()
 	{
 		currentstate = ST_PUNCH_STANDING;
 		current_animation = &TerryPunch;
+		App->audio->PlayFX("Assets/FX/punch.wav");
 		colp = App->collisions->AddCollider({ Terryposition.x + 45, Terryposition.y + 20, 43, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 	}
 	if (TerryPunch.Finished() == true)
@@ -540,6 +541,7 @@ update_status ModulePlayer::Update()
 	{
 		currentstate = ST_KICK_STANDING;
 		current_animation = &TerryKick;
+		App->audio->PlayFX("Assets/FX/Voice/Attacks/FX_Attack4/FX_Attack4.wav");
 		colk = App->collisions->AddCollider({ Terryposition.x + 45, Terryposition.y + 48, 55, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 		Terryposition.x += 5;
 	}
@@ -607,6 +609,7 @@ update_status ModulePlayer::Update()
 	{
 		currentstate = ST_PUNCH_CROUCH;
 		current_animation = &TerryCrouchPunch;
+		App->audio->PlayFX("Assets/FX/Voice/Attacks/FX_Attack4/FX_Attack4.wav");
 		colcp = App->collisions->AddCollider({ Terryposition.x + 50, Terryposition.y + 55, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 		colcp->rect.x = Terryposition.x + 50;
 		colcp->rect.y = Terryposition.y + 55;
@@ -636,6 +639,7 @@ update_status ModulePlayer::Update()
 	{
 		currentstate = ST_KICK_CROUCH;
 		current_animation = &TerryCrouchKick;
+		App->audio->PlayFX("Assets/FX/Voice/Attacks/FX_Attack4/FX_Attack4.wav");
 		colck = App->collisions->AddCollider({ Terryposition.x + 50, Terryposition.y + 90, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 
 		colck->rect.x = Terryposition.x + 50;
