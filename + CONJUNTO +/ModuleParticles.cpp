@@ -24,14 +24,11 @@ bool ModuleParticles::Start()
 	graphics = App->textures->Load("spritesTerryBogard.png");
 
 	// TODO 2: Create the template for a new particle "laser"
-	terryenergy.anim.PushBack({ 973, 695, 22, 105 });
-	terryenergy.anim.PushBack({ 951, 695, 44, 105 });
-	terryenergy.anim.PushBack({ 929, 695, 66, 105 });
-	terryenergy.anim.PushBack({ 910, 695, 88, 105 });
-	terryenergy.anim.PushBack({ 887, 695, 120, 105 });
-	terryenergy.anim.PushBack({ 887, 695, 120, 105 });
-	terryenergy.anim.PushBack({ 887, 695, 120, 105 });
-	terryenergy.anim.PushBack({ 887, 695, 120, 105 });
+	terryenergy.anim.PushBack({ 978, 695, 16, 105 });
+	terryenergy.anim.PushBack({ 956, 695, 16, 105 });
+	terryenergy.anim.PushBack({ 934, 695, 16, 105 });
+	terryenergy.anim.PushBack({ 956, 695, 16, 105 });
+	terryenergy.anim.PushBack({ 978, 695, 16, 105 });
 	terryenergy.anim.loop = false;
 	terryenergy.anim.speed = 0.05f;
 	terryenergy.speed.x = 1;
