@@ -5,6 +5,8 @@
 #include "ModuleRender.h"
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
+#include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -21,7 +23,7 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("spritesTerryBogard.png");
+	graphics = App->textures->Load("Assets/Sprites/spritesTerryBogard.png");
 
 	// TODO 2: Create the template for a new particle "laser"
 	terryenergy.anim.PushBack({ 978, 695, 16, 105 });
@@ -72,6 +74,8 @@ update_status ModuleParticles::Update()
 		else if (SDL_GetTicks() >= p->born)
 		{
 			App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+			p->col = App->collisions->AddCollider({ p->position.x,p->position.y - 4,p->anim.GetCurrentFrame().w,p->anim.GetCurrentFrame().h }, COLLIDER_PLAYER_SHOT, this);
+			p->col->to_delete = true;
 			if (p->fx_played == false)
 			{
 				p->fx_played = true;
@@ -90,7 +94,7 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Uint32
 	p->position.x = x;
 	p->position.y = y;
 
-	p->col = App->collisions->AddCollider({ x,y-4,p->anim.GetCurrentFrame().w,p->anim.GetCurrentFrame().h }, COLLIDER_PLAYER_SHOT, this);
+	
 
 
 	active[last_particle++] = p;
@@ -132,10 +136,29 @@ bool Particle::Update()
 	}
 	else
 		if (anim.Finished())
+		{
+			
 			ret = false;
+		}
 
-	position.x += speed.x;
-	position.y += speed.y;
 
 	return ret;
+}
+
+void OnCollision(Collider* c1, Collider* c2)
+{
+	if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_PLAYER && App->player->collided == false)
+	{
+
+		App->player->life_score -= 16;
+		App->player->collided = true;
+
+	}
+	if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_ENEMY && App->player2->collided == false)
+	{
+
+		App->player2->life_score -= 16;
+		App->player2->collided = true;
+
+	}
 }

@@ -93,7 +93,10 @@ update_status ModuleRender::Update()
 			App->player->currentstate != ST_IDLE &&
 			App->player->currentstate != ST_CROUCH &&
 			App->player->currentstate != ST_KICK_CROUCH &&
-			App->player->currentstate != ST_PUNCH_CROUCH)
+			App->player->currentstate != ST_PUNCH_CROUCH &&
+			App->player->currentstate != ST_PUNCH_STANDING &&
+			App->player->currentstate != ST_KICK_STANDING &&
+			App->player->currentstate != ST_JUMP_NEUTRAL)
 		{
 			camera.x += speed;
 		}
@@ -105,7 +108,10 @@ update_status ModuleRender::Update()
 			App->player->currentstate != ST_IDLE &&
 			App->player->currentstate != ST_CROUCH &&
 			App->player->currentstate != ST_KICK_CROUCH &&
-			App->player->currentstate != ST_PUNCH_CROUCH)
+			App->player->currentstate != ST_PUNCH_CROUCH &&
+			App->player->currentstate != ST_PUNCH_STANDING &&
+			App->player->currentstate != ST_KICK_STANDING &&
+			App->player->currentstate != ST_JUMP_NEUTRAL)
 		{
 			camera.x -= speed;
 		}
@@ -116,7 +122,10 @@ update_status ModuleRender::Update()
 			App->player->currentstate != ST_IDLE &&
 			App->player->currentstate != ST_CROUCH &&
 			App->player->currentstate != ST_KICK_CROUCH &&
-			App->player->currentstate != ST_PUNCH_CROUCH)
+			App->player->currentstate != ST_PUNCH_CROUCH &&
+			App->player->currentstate != ST_PUNCH_STANDING &&
+			App->player->currentstate != ST_KICK_STANDING &&
+			App->player->currentstate != ST_JUMP_NEUTRAL)
 		{
 			camera.x += speed;
 		}
@@ -127,7 +136,10 @@ update_status ModuleRender::Update()
 			App->player->currentstate != ST_IDLE &&
 			App->player->currentstate != ST_CROUCH &&
 			App->player->currentstate != ST_KICK_CROUCH &&
-			App->player->currentstate != ST_PUNCH_CROUCH)
+			App->player->currentstate != ST_PUNCH_CROUCH &&
+			App->player->currentstate != ST_PUNCH_STANDING &&
+			App->player->currentstate != ST_KICK_STANDING &&
+			App->player->currentstate != ST_JUMP_NEUTRAL)
 		{
 			camera.x -= speed;
 		}

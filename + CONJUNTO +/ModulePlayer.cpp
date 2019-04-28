@@ -720,6 +720,7 @@ update_status ModulePlayer::Update()
 			colk->to_delete = true;
 
 		TerryKick.resetLoops(0);
+
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		{
 			currentstate = ST_WALK_FORWARD;
@@ -735,6 +736,7 @@ update_status ModulePlayer::Update()
 			currentstate = ST_IDLE;
 			current_animation = &Terryidle;
 		}
+
 		TerryKick.Reset();
 	}
 
@@ -788,6 +790,7 @@ update_status ModulePlayer::Update()
 		if (colcp)
 			colcp->to_delete = true;
 		TerryCrouchPunch.resetLoops(0);
+		App->player2->collided = false;
 
 		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 		{
@@ -830,6 +833,9 @@ update_status ModulePlayer::Update()
 			current_animation = &Terryidle;
 		}
 		TerryCrouchKick.Reset();
+		App->player2->collided = false;
+		colck = App->collisions->AddCollider({ 0, 0, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+
 	}
 
 	//POWER WAVE
@@ -837,12 +843,22 @@ update_status ModulePlayer::Update()
 	{
 		currentstate = ST_POWER_WAVE;
 		current_animation = &TerryPW;
-		App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 40, Terryposition.y + 12);
 
+		
 		App->audio->PlayFX("Assets/FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
 	}
 	if (TerryPW.Finished() == true)
 	{
+		Uint32 inittime = 200;
+		if (SDL_GetTicks() >= inittime)
+		{
+			App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 60, Terryposition.y + 12);
+			App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 76, Terryposition.y + 12, 200);
+			App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 92, Terryposition.y + 12, 400);
+			App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 108, Terryposition.y + 12, 600);
+			App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 124, Terryposition.y + 12, 800);
+			App->particles->terryenergy.col->to_delete == true;
+		}
 		TerryPW.resetLoops(0);
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		{
