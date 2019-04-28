@@ -94,6 +94,8 @@ public:
 	Animation TerryPW;
 	Animation TerryDP;
 	Animation TerryDK;
+	Animation TerryJumpPunch;
+	Animation TerryJumpKick;	
 	Animation TerryCrouch;
 	Animation TerryJumpForward;
 	Animation TerryJumpBackwards;
@@ -103,15 +105,24 @@ public:
 
 	SDL_Texture* graphicsM = nullptr;
 	SDL_Texture* graphics2M = nullptr;
-	Animation TerryidleM;
-	Animation TerryForwardM;
-	Animation TerryBackwardsM;
-	Animation TerryJumpM;
-	Animation TerryKickM;
-	Animation TerryPunchM;
-	Animation TerryPWM;
-	Animation TerryJumpPunch;
-	Animation TerryJumpKick;
+	Animation TerryidleM;						
+	Animation TerryForwardM;					
+	Animation TerryBackwardsM;					
+	Animation TerryJumpM;						
+	Animation TerryKickM;						
+	Animation TerryPunchM;						
+	Animation TerryPWM;						
+	Animation TerryDPM;							
+	Animation TerryDKM;							
+	Animation TerryJumpPunchM;			
+	Animation TerryJumpKickM;				
+	Animation TerryCrouchM;						
+	Animation TerryJumpForwardM;				
+	Animation TerryJumpBackwardsM;				
+	Animation TerryCrouchPunchM;				
+	Animation TerryCrouchKickM;					
+	Animation hitM;							
+
 	bool mirror = false;
 
 
