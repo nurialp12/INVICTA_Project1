@@ -25,25 +25,25 @@ ModulePlayer::ModulePlayer()
 	life1 = { 10, 77, 1, 6 };
 	life2 = { 11, 77, 4, 6 };
 
-	Terryidle.PushBack({ 0, 901, 58, 123 });
-	Terryidle.PushBack({ 58, 901, 59, 123 });
-	Terryidle.PushBack({ 117, 901, 58, 123 });
-	Terryidle.PushBack({ 58, 901, 59, 123 });
+	Terryidle.PushBack({ 28, 909, 58, 112 });
+	Terryidle.PushBack({ 96, 910, 59, 112 });
+	Terryidle.PushBack({ 28, 909, 58, 112 });
+	Terryidle.PushBack({ 165, 909, 58, 112 });
 	Terryidle.speed = 0.1f;
 
 	// WALK FORWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
 	//TerryForward.frames.PushBack({/**/, /**/, /**/, /**/});
-	TerryForward.PushBack({ 20, 258, 61, 123 });
-	TerryForward.PushBack({ 95, 258, 71, 123 });
-	TerryForward.PushBack({ 177, 258, 61, 123 });
-	TerryForward.PushBack({ 251, 258, 61, 123 });
+	TerryForward.PushBack({  21, 268, 59, 112 });
+	TerryForward.PushBack({  96, 268, 69, 112 });
+	TerryForward.PushBack({ 178, 268, 59, 112 });
+	TerryForward.PushBack({ 252, 268, 59, 112 });
 	TerryForward.speed = 0.1f;
 
 	// WALK BACKWARD animation of Terry					//spritesTerryBogard2extres.png
-	TerryBackwards.PushBack({ 382, 259, 60, 123 });
-	TerryBackwards.PushBack({ 442, 259, 55, 123 });
-	TerryBackwards.PushBack({ 497, 259, 56, 123 });
-	TerryBackwards.PushBack({ 553, 259, 57, 123 });
+	TerryBackwards.PushBack({ 382, 270, 59, 112 });
+	TerryBackwards.PushBack({ 442, 270, 55, 112 });
+	TerryBackwards.PushBack({ 497, 270, 56, 112 });
+	TerryBackwards.PushBack({ 553, 270, 57, 112 });
 	TerryBackwards.speed = 0.1f;
 
 	// JUMP animation of Terry							//spritesTerryBogard2extres.png
@@ -55,11 +55,11 @@ ModulePlayer::ModulePlayer()
 	TerryJump.speed = 0.1f;
 
 	// KICK animation of Terry							//spritesTerryBogard2extres.png
-	TerryKick.PushBack({   0, 123, 47, 123 });
-	TerryKick.PushBack({  47, 123, 57, 123 });
-	TerryKick.PushBack({ 104, 123, 42, 123 });
-	TerryKick.PushBack({ 146, 123, 116, 123 });
-	TerryKick.PushBack({ 261, 123, 62, 123 });
+	TerryKick.PushBack({   0, 134,  47, 112 });
+	TerryKick.PushBack({  47, 134,  57, 112 });
+	TerryKick.PushBack({ 104, 134,  42, 112 });
+	TerryKick.PushBack({ 146, 134, 116, 112 });
+	TerryKick.PushBack({ 261, 134,  62, 112 });
 	TerryKick.speed = 0.1f;
 
 	//PUNCH
@@ -79,7 +79,7 @@ ModulePlayer::ModulePlayer()
 	TerryPW.speed = 0.1f;
 
 	//DAMAGED BY PUNCH
-	TerryDP.PushBack({ 0, 912, 59, 112 });
+	TerryDP.PushBack({  0, 912, 59, 112 });
 	TerryDP.PushBack({ 64, 912, 67, 112 });
 	TerryDP.speed = 0.1f;
 
@@ -207,7 +207,7 @@ bool ModulePlayer::Start()
 
 	destroyed = false;
 	Terryposition.x = 5 + (250);
-	Terryposition.y = 90;
+	Terryposition.y = 100;
 	score = 0;
 	col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
 	colcp = App->collisions->AddCollider({ 1000, 1000, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
@@ -374,7 +374,7 @@ update_status ModulePlayer::Update()
 			currentstate = ST_IDLE;
 			current_animation = &Terryidle;
 		}
-		Terryposition.y = 90;
+		Terryposition.y = 100;
 		App->render->camera.y = -20;
 		TerryJump.Reset();
 	}
@@ -414,7 +414,7 @@ update_status ModulePlayer::Update()
 			currentstate = ST_IDLE;
 			current_animation = &Terryidle;
 		}
-		Terryposition.y = 90;
+		Terryposition.y = 100;
 		TerryJumpForward.Reset();
 	}
 
@@ -453,7 +453,7 @@ update_status ModulePlayer::Update()
 			currentstate = ST_IDLE;
 			current_animation = &Terryidle;
 		}
-		Terryposition.y = 90;
+		Terryposition.y = 100;
 		TerryJumpBackwards.Reset();
 	}
 
