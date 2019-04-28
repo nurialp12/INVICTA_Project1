@@ -90,7 +90,10 @@ update_status ModuleRender::Update()
 		if (camera.x < 0 && App->player->destroyed == false &&
 			(App->player2->Terry2position.x * 2 - 160) < (-(camera.x-camera.w)) &&
 			App->input->keyboard[SDL_SCANCODE_LEFT] != KEY_STATE::KEY_REPEAT &&
-			App->player->currentstate != ST_IDLE)
+			App->player->currentstate != ST_IDLE &&
+			App->player->currentstate != ST_CROUCH &&
+			App->player->currentstate != ST_KICK_CROUCH &&
+			App->player->currentstate != ST_PUNCH_CROUCH)
 		{
 			camera.x += speed;
 		}
@@ -99,7 +102,10 @@ update_status ModuleRender::Update()
 		if (camera.x > -900 /*-490*/ && App->player->destroyed == false &&
 			App->player2->Terry2position.x*2 > -camera.x &&
 			App->input->keyboard[SDL_SCANCODE_RIGHT] != KEY_STATE::KEY_REPEAT &&
-			App->player->currentstate != ST_IDLE)
+			App->player->currentstate != ST_IDLE &&
+			App->player->currentstate != ST_CROUCH &&
+			App->player->currentstate != ST_KICK_CROUCH &&
+			App->player->currentstate != ST_PUNCH_CROUCH)
 		{
 			camera.x -= speed;
 		}
@@ -107,7 +113,10 @@ update_status ModuleRender::Update()
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 		if (camera.x < 0 && App->player->destroyed == false &&
 			(App->player->Terryposition.x * 2 - 160) < (-(camera.x - camera.w)) &&
-			App->player->currentstate != ST_IDLE)
+			App->player->currentstate != ST_IDLE &&
+			App->player->currentstate != ST_CROUCH &&
+			App->player->currentstate != ST_KICK_CROUCH &&
+			App->player->currentstate != ST_PUNCH_CROUCH)
 		{
 			camera.x += speed;
 		}
@@ -115,7 +124,10 @@ update_status ModuleRender::Update()
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 		if (camera.x > -900 /*-490*/ && App->player->destroyed == false &&
 			App->player->Terryposition.x * 2 > -camera.x &&
-			App->player->currentstate != ST_IDLE)
+			App->player->currentstate != ST_IDLE &&
+			App->player->currentstate != ST_CROUCH &&
+			App->player->currentstate != ST_KICK_CROUCH &&
+			App->player->currentstate != ST_PUNCH_CROUCH)
 		{
 			camera.x -= speed;
 		}
