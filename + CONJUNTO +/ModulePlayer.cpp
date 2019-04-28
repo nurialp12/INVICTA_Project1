@@ -122,11 +122,22 @@ ModulePlayer::ModulePlayer()
 	TerryCrouchPunch.speed = 0.1f;
 
 	//CROUCHKICK
-	TerryCrouchKick.PushBack({ 0, 788, 56, 112 }); //Charge
-	TerryCrouchKick.PushBack({ 56, 788, 58, 112 }); //Riposte
+	TerryCrouchKick.PushBack({ 0, 788, 56, 112 });   //Charge
+	TerryCrouchKick.PushBack({ 56, 788, 58, 112 });  //Riposte
 	TerryCrouchKick.PushBack({ 114, 788, 92, 112 }); //Punch
 	TerryCrouchKick.PushBack({ 206, 788, 58, 112 }); //Riposte x2
 	TerryCrouchKick.speed = 0.1f;
+
+	//JUMPPUNCH
+	TerryJumpPunch.PushBack({  488, 789, 44, 112 }); //Charge
+	TerryJumpPunch.PushBack({ 544, 805, 68, 96 });   //Punch
+	TerryJumpKick.PushBack({ 802, 0, 57, 123 });     //Land
+
+	//JUMPKICK
+	TerryJumpKick.PushBack({ 304, 830, 56, 70 });  //Charge
+	TerryJumpKick.PushBack({ 376, 789, 78, 111 }); //Kick
+	TerryJumpKick.PushBack({ 304, 830, 56, 70 });  //Discharge
+	TerryJumpKick.PushBack({ 802, 0, 57, 123 });   //Land
 
 	//MIRROR -----------------------------------------------------------------------------------------
 
