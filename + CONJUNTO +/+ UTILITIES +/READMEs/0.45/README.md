@@ -17,7 +17,7 @@ Enjoy!
 
 	PLAYER 1
 	A move left
-			S crouch
+	S crouch
 	D move right
 	W jump
 	F punch
@@ -27,7 +27,7 @@ Enjoy!
 
 	PLAYER 2
 	LEFT KEY move left
-			DOWN KEY crouch
+	DOWN KEY crouch
 	RIGHT KEY move right
 	UP KEY jump
 	I punch
@@ -103,6 +103,8 @@ TODO: Write history
 		b) Player 2 (also Terry) mirrored
 	Removed:
 	Note: 
+0.5
+	FINAL TOUCHES
 
 
 ## Credits
