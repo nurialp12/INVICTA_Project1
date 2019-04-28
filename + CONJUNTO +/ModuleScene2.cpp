@@ -140,7 +140,7 @@ update_status ModuleScene2::Update()
 	}
 	if (App->player2->life_score <= 0 && App->player->life_score <= 0)
 	{
-		App->fade->FadeToBlack(App->scene_2, App->tie, 2.5);
+		App->fade->FadeToBlack(App->scene_2, App->end_game1, 2.5);
 	}
 
 

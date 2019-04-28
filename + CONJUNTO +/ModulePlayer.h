@@ -99,6 +99,7 @@ public:
 	Animation TerryJumpBackwards;
 	Animation TerryCrouchPunch;
 	Animation TerryCrouchKick;
+	Animation hit;
 
 	SDL_Texture* graphicsM = nullptr;
 	SDL_Texture* graphics2M = nullptr;
