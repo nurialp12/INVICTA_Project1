@@ -344,6 +344,7 @@ update_status ModulePlayer::PreUpdate()
 	inputTerry.F_DOWN = App->input->keyboard[SDL_SCANCODE_F] == KEY_DOWN;
 	inputTerry.G_DOWN = App->input->keyboard[SDL_SCANCODE_G] == KEY_DOWN;
 	inputTerry.H_DOWN = App->input->keyboard[SDL_SCANCODE_H] == KEY_DOWN;
+	inputTerry.SD_DOWN = (App->input->keyboard[SDL_SCANCODE_S] == KEY_DOWN) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_DOWN);
 
 	SDL_Event event;
 
@@ -422,10 +423,10 @@ update_status ModulePlayer::Update()
 
 			currentstate = ST_IDLE;
 
-			//if (mirror) { current_animation = &TerryidleM; }
-			//else { current_animation = &Terryidle; }
+			if (mirror) { current_animation = &TerryidleM; }
+			else { current_animation = &Terryidle; }
 
-			current_animation = &Terryidle;
+			//current_animation = &Terryidle;
 		
 		}
 	}
@@ -469,11 +470,11 @@ update_status ModulePlayer::Update()
 	{
 		currentstate = ST_JUMP_NEUTRAL;
 
-		if (mirror) { current_animation = &TerryJumpM; }
-		else { current_animation = &TerryJump; }
+		//if (mirror) { current_animation = &TerryJumpM; }
+		//else { current_animation = &TerryJump; }
 
 
-		//current_animation = &TerryJump;
+		current_animation = &TerryJump;
 
 
 		Terryposition.y -= jumpspeed;
@@ -790,7 +791,6 @@ update_status ModulePlayer::Update()
 			currentstate = ST_IDLE;
 			current_animation = &Terryidle;
 		}
-		if (colc)
 			colc->to_delete = true;
 		if (gmode != true)
 			col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
@@ -826,7 +826,7 @@ update_status ModulePlayer::Update()
 			current_animation = &Terryidle;
 		}
 		TerryCrouchPunch.Reset();
-
+		colc->to_delete = true;
 	}
 
 	//CROUCHKICK
@@ -835,14 +835,13 @@ update_status ModulePlayer::Update()
 		currentstate = ST_KICK_CROUCH;
 		current_animation = &TerryCrouchKick;
 		App->audio->PlayFX("Assets/FX/Voice/Attacks/FX_Attack4/FX_Attack4.wav");
-		colck = App->collisions->AddCollider({ Terryposition.x + 50, Terryposition.y + 90, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+		
 
 		colck->rect.x = Terryposition.x + 50;
 		colck->rect.y = Terryposition.y + 90;
 	}
 	if (TerryCrouchKick.Finished() == true)
 	{
-		if (colck)
 			colck->to_delete = true;
 		TerryCrouchKick.resetLoops(0);
 		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
@@ -858,17 +857,18 @@ update_status ModulePlayer::Update()
 		TerryCrouchKick.Reset();
 		App->player2->collided = false;
 		colck = App->collisions->AddCollider({ 0, 0, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
-
 	}
+	if (currentstate == ST_CROUCH && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN)
+		currentstate = ST_SD;
 
 	//POWER WAVE
-	if (App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_DOWN && (currentstate == ST_IDLE || currentstate == ST_WALK_FORWARD || currentstate == ST_WALK_BACKWARD))
+	if (currentstate == ST_SD  && App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN)
 	{
 		currentstate = ST_POWER_WAVE;
 		current_animation = &TerryPW;
-
-		
+		col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
 		App->audio->PlayFX("Assets/FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
+		colc->to_delete = true;
 	}
 	if (TerryPW.Finished() == true)
 	{
