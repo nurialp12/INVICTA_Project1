@@ -340,7 +340,7 @@ update_status ModulePlayer::Update()
 		currentstate = ST_IDLE;
 		current_animation = &Terryidle;
 		Terryposition.y = 100;
-		App->render->camera.y = -30;
+		App->render->camera.y = -20;
 		TerryJump.Reset();
 	}
 
@@ -437,6 +437,25 @@ update_status ModulePlayer::Update()
 		TerryPunch.Reset();
 	}
 
+	//KICK
+	if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
+	{
+		currentstate = ST_KICK_STANDING;
+		current_animation = &TerryKick;
+		colk = App->collisions->AddCollider({ Terryposition.x + 45, Terryposition.y + 48, 55, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+		Terryposition.x += 5;
+	}
+	if (TerryKick.Finished() == true)
+	{
+		if (colk)
+			colk->to_delete = true;
+
+		TerryKick.resetLoops(0);
+		currentstate = ST_IDLE;
+		current_animation = &Terryidle;
+		TerryKick.Reset();
+	}
+
 	//CROUCH
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
 	{
@@ -462,7 +481,9 @@ update_status ModulePlayer::Update()
 	{
 		currentstate = ST_PUNCH_CROUCH;
 		current_animation = &TerryCrouchPunch;
-		colcp = App->collisions->AddCollider({ Terryposition.x + 50, Terryposition.y + 55, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+		colcp = App->collisions->AddCollider({ 0, 0, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+		colcp->rect.x = Terryposition.x + 50;
+		colcp->rect.y = Terryposition.y + 55;
 	}
 	if (TerryCrouchPunch.Finished() == true)
 	{
@@ -491,27 +512,7 @@ update_status ModulePlayer::Update()
 		TerryCrouchKick.Reset();
 	}
 
-	//KICK
-	if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
-	{
-		currentstate = ST_KICK_STANDING;
-		current_animation = &TerryKick;
-		colk = App->collisions->AddCollider({ Terryposition.x + 45, Terryposition.y + 48, 55, 20 }, COLLIDER_PLAYER_SHOT, App->player);
-		Terryposition.x += 5;
-	}
-	if (TerryKick.Finished() == true)
-	{
-		if (colk)
-			colk->to_delete = true;
-
-		TerryKick.resetLoops(0);
-		currentstate = ST_IDLE;
-		current_animation = &Terryidle;
-		TerryKick.Reset();
-	}
-
 	//POWER WAVE
-
 	//if (App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_DOWN)
 	//{
 

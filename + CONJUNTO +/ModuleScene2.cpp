@@ -54,7 +54,7 @@ bool ModuleScene2::Start()
 	graphics = App->textures->Load("Pao_Pao_Cafe.png");
 
 	App->render->camera.x = -480;
-	App->render->camera.y = -30;
+	App->render->camera.y = -20;
 
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->Enable();
