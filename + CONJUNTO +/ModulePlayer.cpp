@@ -25,66 +25,63 @@ ModulePlayer::ModulePlayer()
 	life1 = { 10, 77, 1, 6 };
 	life2 = { 11, 77, 4, 6 };
 
-	Terryidle.PushBack({ 27, 910, 60, 112 });
-	Terryidle.PushBack({ 95, 911, 61, 112 });
-	Terryidle.PushBack({ 164, 910, 60, 112 });
-	Terryidle.PushBack({ 95, 911, 61, 112 });
+	Terryidle.PushBack({ 28, 909, 58, 112 });
+	Terryidle.PushBack({ 96, 910, 59, 112 });
+	Terryidle.PushBack({ 28, 909, 58, 112 });
+	Terryidle.PushBack({ 165, 909, 58, 112 });
 	Terryidle.speed = 0.1f;
 
 	// WALK FORWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
 	//TerryForward.frames.PushBack({/**/, /**/, /**/, /**/});
-	TerryForward.PushBack({ 20, 269, 61, 112 });
-	TerryForward.PushBack({ 95, 269, 71, 112 });
-	TerryForward.PushBack({ 177, 269, 61, 112 });
-	TerryForward.PushBack({ 251, 269, 61, 112 });
+	TerryForward.PushBack({  21, 268, 59, 112 });
+	TerryForward.PushBack({  96, 268, 69, 112 });
+	TerryForward.PushBack({ 178, 268, 59, 112 });
+	TerryForward.PushBack({ 252, 268, 59, 112 });
 	TerryForward.speed = 0.1f;
 
 	// WALK BACKWARD animation of Terry					//spritesTerryBogard2extres.png
-	TerryBackwards.PushBack({ 382, 266, 60, 112 });
-	TerryBackwards.PushBack({ 442, 268, 55, 112 });
+	TerryBackwards.PushBack({ 382, 270, 59, 112 });
+	TerryBackwards.PushBack({ 442, 270, 55, 112 });
 	TerryBackwards.PushBack({ 497, 270, 56, 112 });
-	TerryBackwards.PushBack({ 553, 268, 57, 112 });
+	TerryBackwards.PushBack({ 553, 270, 57, 112 });
 	TerryBackwards.speed = 0.1f;
 
 	// JUMP animation of Terry							//spritesTerryBogard2extres.png
-	//TerryJump.frames.PushBack({/**/, /**/, /**/, /**/});
-	TerryJump.PushBack({ 535, 12, 53, 125 });
-	//TerryJump.PushBack({ 535, 12, 53, 125 }); //EXTRA
-	TerryJump.PushBack({ 598, 22, 59, 105 });
-	TerryJump.PushBack({ 667, 33, 59, 94 });
-	//TerryJump.PushBack({ 667, 33, 59, 94 }); //EXTRA
-	//TerryJump.PushBack({ 667, 33, 59, 94 }); //EXTRA
-	//TerryJump.PushBack({ 667, 33, 59, 94 }); //EXTRA
-	TerryJump.PushBack({ 598, 22, 59, 105 }); //EXTRA
-	TerryJump.PushBack({ 535, 12, 53, 125 }); //EXTRA
-	TerryJump.speed = /*0.06*/0.1f;
+
+	TerryJump.PushBack({ 802, 0, 57, 123 });
+	TerryJump.PushBack({ 859, 0, 51, 123 });
+	TerryJump.PushBack({ 910, 0, 53, 123 });
+	TerryJump.PushBack({ 967, 0, 57, 123 }); 
+	TerryJump.PushBack({ 802, 0, 57, 123 }); 
+	TerryJump.speed = 0.1f;
+
 
 	// KICK animation of Terry							//spritesTerryBogard2extres.png
-	TerryKick.PushBack({ 20, 122, 49, 112 });
-	TerryKick.PushBack({ 73, 138, 59, 112 });
-	TerryKick.PushBack({ 138, 134, 44, 112 });
-	TerryKick.PushBack({ 200, 138, 118, 112 });
-	TerryKick.PushBack({ 331, 138, 64, 112 });
+	TerryKick.PushBack({   0, 134,  47, 112 });
+	TerryKick.PushBack({  47, 134,  57, 112 });
+	TerryKick.PushBack({ 104, 134,  42, 112 });
+	TerryKick.PushBack({ 146, 134, 116, 112 });
+	TerryKick.PushBack({ 261, 134,  62, 112 });
 	TerryKick.speed = 0.1f;
 
 	//PUNCH
-	TerryPunch.PushBack({ 435, 910, 71, 112 });
-	TerryPunch.PushBack({ 507, 912, 62, 112 });
-	TerryPunch.PushBack({ 574, 912, 97, 112 });
+	TerryPunch.PushBack({ 438, 901, 71, 123 });
+	TerryPunch.PushBack({ 509, 901, 61, 123 });
+	TerryPunch.PushBack({ 570, 901, 95, 123 });
 	TerryPunch.speed = 0.1f;
 
 	// POWER WAVE animation of Terrry
-	TerryPW.PushBack({ 623, 683, 51, 112 });
-	TerryPW.PushBack({ 550, 683, 54, 112 });
-	TerryPW.PushBack({ 485, 683, 60, 112 });
-	TerryPW.PushBack({ 402, 682, 79, 112 });
-	TerryPW.PushBack({ 330, 682, 67, 112 });
-	TerryPW.PushBack({ 262, 683, 65, 112 });
-	TerryPW.PushBack({ 198, 683, 60, 112 });
+	TerryPW.PushBack({ 505, 737, 51, 123 });
+	TerryPW.PushBack({ 451, 737, 54, 123 });
+	TerryPW.PushBack({ 391, 737, 60, 123 });
+	TerryPW.PushBack({ 312, 737, 79, 123 });
+	TerryPW.PushBack({ 245, 737, 67, 123 });
+	TerryPW.PushBack({ 180, 737, 65, 123 });
+	TerryPW.PushBack({ 120, 737, 60, 123 });
 	TerryPW.speed = 0.1f;
 
 	//DAMAGED BY PUNCH
-	TerryDP.PushBack({ 0, 912, 59, 112 });
+	TerryDP.PushBack({  0, 912, 59, 112 });
 	TerryDP.PushBack({ 64, 912, 67, 112 });
 	TerryDP.speed = 0.1f;
 
@@ -96,7 +93,7 @@ ModulePlayer::ModulePlayer()
 	//CROUCH
 	TerryCrouch.PushBack({ 488, 912, 57, 112 }); 
 	TerryCrouch.PushBack({ 545, 912, 52, 112 });
-	TerryCrouch.speed = 0.1f;
+	TerryCrouch.speed = 0.2f;
 	TerryCrouch.loop = false;
 
 	//JUMPFORWARD
@@ -131,7 +128,7 @@ ModulePlayer::ModulePlayer()
 	TerryCrouchKick.PushBack({ 56, 788, 58, 112 }); //Riposte
 	TerryCrouchKick.PushBack({ 114, 788, 92, 112 }); //Punch
 	TerryCrouchKick.PushBack({ 206, 788, 58, 112 }); //Riposte x2
-	TerryCrouchKick.speed = 1.0f;
+	TerryCrouchKick.speed = 0.1f;
 
 	//MIRROR -----------------------------------------------------------------------------------------
 
@@ -185,6 +182,13 @@ ModulePlayer::ModulePlayer()
 	TerryPWM.PushBack({ 262, 683, 65, 112 });
 	TerryPWM.PushBack({ 198, 683, 60, 112 });
 	TerryPWM.speed = 0.1f;
+
+	//hit particle animation
+	hit.PushBack({671, 263, 22, 33});
+	hit.PushBack({690, 263, 24, 33});
+	hit.PushBack({ 721, 263, 32, 33 });
+	hit.PushBack({ 757, 263, 32, 33 });
+	hit.speed = 0.5f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -302,8 +306,16 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP && currentstate == ST_WALK_FORWARD)
 	{
-		currentstate = ST_IDLE;
-		current_animation = &Terryidle;
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_WALK_BACKWARD;
+			current_animation = &TerryBackwards;
+		}
+		else
+		{
+			currentstate = ST_IDLE;
+			current_animation = &Terryidle;
+		}
 	}
 	
 	//MOVE BACKWARD
@@ -320,8 +332,16 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_UP && currentstate == ST_WALK_BACKWARD)
 	{
-		currentstate = ST_IDLE;
-		current_animation = &Terryidle;
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_WALK_FORWARD;
+			current_animation = &TerryForward;
+		}
+		else
+		{
+			currentstate = ST_IDLE;
+			current_animation = &Terryidle;
+		}
 	}
 
 	//JUMP
@@ -341,8 +361,21 @@ update_status ModulePlayer::Update()
 	if (TerryJump.Finished() == true || Terryposition.y==80)
 	{
 		TerryJump.resetLoops(0);
-		currentstate = ST_IDLE;
-		current_animation = &Terryidle;
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_WALK_FORWARD;
+			current_animation = &TerryForward;
+		}
+		else if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_WALK_BACKWARD;
+			current_animation = &TerryBackwards;
+		}
+		else
+		{
+			currentstate = ST_IDLE;
+			current_animation = &Terryidle;
+		}
 		Terryposition.y = 100;
 		App->render->camera.y = -20;
 		TerryJump.Reset();
@@ -360,7 +393,6 @@ update_status ModulePlayer::Update()
 			jumpspeed = -60;
 		if (Terryposition.y == 120)
 			jumpspeed = 60;
-
 		if (Terryposition.x < 700 &&
 			Terryposition.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w))
 		{
@@ -368,9 +400,7 @@ update_status ModulePlayer::Update()
 			if (App->render->camera.x > -900 /*-490*/ && App->player->destroyed == false &&
 				App->player2->Terry2position.x * 2 > -App->render->camera.x &&
 				App->input->keyboard[SDL_SCANCODE_RIGHT] != KEY_STATE::KEY_REPEAT)
-			{
 				App->render->camera.x -= speed;
-			}
 		}
 	}
 	if (TerryJumpForward.Finished() == true || Terryposition.y == 80)
@@ -395,30 +425,36 @@ update_status ModulePlayer::Update()
 	{
 		currentstate = ST_JUMP_BACKWARD;
 		current_animation = &TerryJumpBackwards;
+	}
+	if (TerryJumpBackwards.Finished() != true && currentstate == ST_JUMP_BACKWARD)
+	{
 		if (Terryposition.y == 80)
 			jumpspeed = -60;
 		if (Terryposition.y == 120)
 			jumpspeed = 60;
-	}
-	if (TerryJumpBackwards.Finished() != true && currentstate == ST_JUMP_BACKWARD)
-	{
 		if (Terryposition.x > 0 &&
-			Terryposition.x * 2 > -App->render->camera.x)
+			Terryposition.x * 2 > -(App->render->camera.x))
 		{
 			Terryposition.x -= speed;
 			if (App->render->camera.x < 0 && App->player->destroyed == false &&
 				(App->player2->Terry2position.x * 2 - 160) < (-(App->render->camera.x - App->render->camera.w)) &&
 				App->input->keyboard[SDL_SCANCODE_LEFT] != KEY_STATE::KEY_REPEAT)
-			{
 				App->render->camera.x += 2*speed;
-			}
 		}
 	}
 	if (TerryJumpBackwards.Finished() == true || Terryposition.y == 80)
 	{
 		TerryJumpBackwards.resetLoops(0);
-		currentstate = ST_IDLE;
-		current_animation = &Terryidle;
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_WALK_BACKWARD;
+			current_animation = &TerryBackwards;
+		}
+		else
+		{
+			currentstate = ST_IDLE;
+			current_animation = &Terryidle;
+		}
 		Terryposition.y = 100;
 		TerryJumpBackwards.Reset();
 	}
@@ -461,7 +497,7 @@ update_status ModulePlayer::Update()
 	}
 
 	//CROUCH
-	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN &&( currentstate == ST_IDLE || currentstate==ST_WALK_FORWARD || currentstate==ST_WALK_BACKWARD))
 	{
 		currentstate = ST_CROUCH;
 		current_animation = &TerryCrouch;
@@ -472,8 +508,21 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP && currentstate == ST_CROUCH)
 	{
-		currentstate = ST_IDLE;
-		current_animation = &Terryidle;
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_WALK_FORWARD;
+			current_animation = &TerryForward;
+		}
+		else if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_WALK_BACKWARD;
+			current_animation = &TerryBackwards;
+		}
+		else 
+		{
+			currentstate = ST_IDLE;
+			current_animation = &Terryidle;
+		}
 		if (colc)
 			colc->to_delete = true;
 		if (gmode != true)
@@ -532,6 +581,20 @@ update_status ModulePlayer::Update()
 	//{
 	//	current_animation = &TerryPW;
 	//}
+	if (App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_DOWN && currentstate==ST_IDLE)
+	{
+		currentstate = ST_POWER_WAVE;
+		current_animation = &TerryPW;
+		App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 40, Terryposition.y + 12);
+		App->audio->PlayFX("FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
+	}
+	if (TerryPW.Finished() == true)
+	{
+		TerryPW.resetLoops(0);
+		currentstate = ST_IDLE;
+		current_animation = &Terryidle;
+		TerryPW.Reset();
+	}
 
 	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN)
 	{
@@ -638,8 +701,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_PLAYER && collided == false)
 	{
+		
 		life_score -= stantardDMG;
 		collided = true;
+
 	}
 }
 
