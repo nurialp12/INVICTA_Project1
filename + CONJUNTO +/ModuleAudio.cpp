@@ -66,6 +66,7 @@ bool ModuleAudio::StopMusic()
 			SDL_Delay(90);
 		}
 		Mix_FreeMusic(music);
+		music = nullptr;
 	}
 	return true;
 }
@@ -75,6 +76,7 @@ void ModuleAudio::MuteMusic(const char* path)
 	if (!mute)
 	{
 		Mix_FreeMusic(music);
+		music = nullptr;
 		mute = true;
 	}
 	else
@@ -158,12 +160,14 @@ bool ModuleAudio::CleanUp()
 	if (music)
 	{
 		Mix_FreeMusic(music);
+		music = nullptr;
 	}
 	for (int i = 0; i < 10; ++i)
 	{
 		if (fx[i])
 		{
 			Mix_FreeChunk(fx[i]);
+			fx[i] = nullptr;
 		}
 	}
 	

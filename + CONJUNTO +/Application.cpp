@@ -12,6 +12,7 @@
 #include "ModuleSceneWinP2.h"
 #include "ModuleSceneTie.h"
 #include "ModuleSceneIni.h"
+#include "ModuleSceneIntro.h"
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "ModuleAudio.h"
@@ -31,12 +32,13 @@ Application::Application()
 	modules[8] = end_game2 = new ModuleSceneWinP2();
 	modules[9] = tie = new ModuleSceneTie();
 	modules[10] = ini = new ModuleSceneIni();
-	modules[11] = player = new ModulePlayer();
-	modules[12] = player2 = new ModulePlayer2();
-	modules[13] = fade = new ModuleFadeToBlack();
-	modules[14] = particles = new ModuleParticles();
-	modules[15] = collisions = new ModuleCollision();
-	modules[16] = fonts = new ModuleFonts();
+	modules[11] = intro = new ModuleSceneIntro();
+	modules[12] = player = new ModulePlayer();
+	modules[13] = player2 = new ModulePlayer2();
+	modules[14] = fade = new ModuleFadeToBlack();
+	modules[15] = particles = new ModuleParticles();
+	modules[16] = collisions = new ModuleCollision();
+	modules[17] = fonts = new ModuleFonts();
 }	
 
 Application::~Application()
@@ -58,6 +60,7 @@ bool Application::Init()
 	end_game1->Disable();
 	end_game2->Disable();
 	tie->Disable();
+	intro->Disable();
 	collisions->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
