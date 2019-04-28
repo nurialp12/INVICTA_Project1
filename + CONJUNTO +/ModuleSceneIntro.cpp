@@ -18,280 +18,76 @@
 
 ModuleSceneIntro::ModuleSceneIntro()
 {
-	/*background5.PushBack({ 0, 0, 303, 224 });
-	background5.PushBack({ 304, 0, 303, 224 });
-	background5.PushBack({ 608, 0, 303, 224 });
-	background5.PushBack({ 912, 0, 303, 224 });
-	background5.PushBack({ 1216, 0, 303, 224 });
-	background5.PushBack({ 0, 224, 303, 224 });
-	background5.PushBack({ 304, 224, 303, 224 });
-	background5.PushBack({ 608, 224, 303, 224 });
-	background5.PushBack({ 912, 224, 303, 224 });
-	background5.PushBack({ 1216, 224, 303, 224 });
-	background5.PushBack({ 0, 448, 303, 224 });
-	background5.PushBack({ 304, 448, 303, 224 });
-	background5.PushBack({ 608, 448, 303, 224 });
-	background5.PushBack({ 912, 448, 303, 224 });
-	background5.PushBack({ 1212, 448, 303, 224 });
-	background5.PushBack({ 0, 672, 303, 224 });
-	background5.PushBack({ 304, 672, 303, 224 });
-	background5.PushBack({ 608, 672, 303, 224 });
-	background5.PushBack({ 912, 672, 303, 224 });
-	background5.PushBack({ 1216, 672, 303, 224 });
-	background5.PushBack({ 0, 896, 303, 224 });
-	background5.PushBack({ 304, 896, 303, 224 });
-	background5.PushBack({ 608, 896, 303, 224 });
-	background5.PushBack({ 912, 896, 303, 224 });
-	background5.PushBack({ 1216, 896, 303, 224 });
-	background5.PushBack({ 0, 1120, 303, 224 });
-	background5.PushBack({ 304, 1120, 303, 224 });
-	background5.PushBack({ 608, 1120, 303, 224 });
-	background5.PushBack({ 912, 1120, 303, 224 });
-	background5.PushBack({ 1216, 1120, 303, 224 });
-	background5.PushBack({ 0, 1344, 303, 224 });
-	background5.PushBack({ 304, 1344, 303, 224 });
-	background5.PushBack({ 608, 1344, 303, 224 });
-	background5.PushBack({ 912, 1344, 303, 224 });
-	background5.PushBack({ 1216, 1344, 303, 224 });
-	background5.PushBack({ 0, 1568, 303, 224 });
-	background5.PushBack({ 304, 1568, 303, 224 });
-	background5.PushBack({ 608, 1568, 303, 224 });
-	background5.PushBack({ 912, 1568, 303, 224 });
-	background5.PushBack({ 1216, 1568, 303, 224 });
-	background5.PushBack({ 0, 1792, 303, 224 });
-	background5.PushBack({ 304, 1792, 303, 224 });
-	background5.PushBack({ 608, 1792, 303, 224 });
-	background5.PushBack({ 912, 1792, 303, 224 });
-	background5.PushBack({ 1216, 1792, 303, 224 });
-	background5.PushBack({ 0, 2016, 303, 224 });
-	background5.PushBack({ 304, 2016, 303, 224 });
-	background5.PushBack({ 608, 2016, 303, 224 });
-	background5.PushBack({ 912, 2016, 303, 224 });
-	background5.PushBack({ 1216, 2016, 303, 224 });
-	background5.PushBack({ 0, 2240, 303, 224 });
-	background5.PushBack({ 304, 2240, 303, 224 });
-	background5.PushBack({ 608, 2240, 303, 224 });
-	background5.PushBack({ 912, 2240, 303, 224 });
-	background5.PushBack({ 1216, 2240, 303, 224 });
-	background5.PushBack({ 0, 2464, 303, 224 });
-	background5.PushBack({ 304, 2464, 303, 224 });
-	background5.PushBack({ 608, 2464, 303, 224 });
-	background5.PushBack({ 912, 2464, 303, 224 });
-	background5.PushBack({ 1216, 2464, 303, 224 });
-	background5.PushBack({ 0, 2688, 303, 224 });
-	background5.PushBack({ 304, 2688, 303, 224 });
-	background5.PushBack({ 608, 2688, 303, 224 });
-	background5.PushBack({ 912, 2688, 303, 224 });
-	background5.PushBack({ 1216, 2688, 303, 224 });
-	background5.PushBack({ 0, 2912, 303, 224 });
-	background5.PushBack({ 304, 2912, 303, 224 });
-	background5.PushBack({ 608, 2912, 303, 224 });
-	background5.PushBack({ 912, 2912, 303, 224 });
-	background5.PushBack({ 1216, 2912, 303, 224 });
-	background5.PushBack({ 0, 3136, 303, 224 });
-	background5.PushBack({ 304, 3136, 303, 224 });
-	background5.PushBack({ 608, 3136, 303, 224 });
-	background5.PushBack({ 912, 3136, 303, 224 });
-	background5.PushBack({ 1216, 3136, 303, 224 });
-	background5.PushBack({ 0, 3360, 303, 224 });
-	background5.PushBack({ 304, 3360, 303, 224 });
-	background5.PushBack({ 608, 3360, 303, 224 });
-	background5.PushBack({ 912, 3360, 303, 224 });
-	background5.PushBack({ 1216, 3360, 303, 224 });
-	background5.PushBack({ 0, 3584, 303, 224 });
-	background5.PushBack({ 304, 3584, 303, 224 });
-	background5.PushBack({ 608, 3584, 303, 224 });
-	background5.PushBack({ 912, 3584, 303, 224 });
-	background5.PushBack({ 1216, 3584, 303, 224 });
-	background5.PushBack({ 0, 3808, 303, 224 });
-	background5.PushBack({ 304, 3808, 303, 224 });
-	background5.PushBack({ 608, 3808, 303, 224 });
-	background5.PushBack({ 912, 3808, 303, 224 });
-	background5.PushBack({ 1216, 3808, 303, 224 });
-	background5.PushBack({ 0, 4032, 303, 224 });
-	background5.PushBack({ 304, 4032, 303, 224 });
-	background5.PushBack({ 608, 4032, 303, 224 });
-	background5.PushBack({ 912, 4032, 303, 224 });
-	background5.PushBack({ 1216, 4032, 303, 224 });
-
-	background6.PushBack({ 0, 0, 303, 224 });
-	background6.PushBack({ 304, 0, 303, 224 });
-	background6.PushBack({ 608, 0, 303, 224 });
-	background6.PushBack({ 912, 0, 303, 224 });
-	background6.PushBack({ 1216, 0, 303, 224 });
-	background6.PushBack({ 0, 224, 303, 224 });
-	background6.PushBack({ 304, 224, 303, 224 });
-	background6.PushBack({ 608, 224, 303, 224 });
-	background6.PushBack({ 912, 224, 303, 224 });
-	background6.PushBack({ 1216, 224, 303, 224 });
-	background6.PushBack({ 0, 448, 303, 224 });
-	background6.PushBack({ 304, 448, 303, 224 });
-	background6.PushBack({ 608, 448, 303, 224 });
-	background6.PushBack({ 912, 448, 303, 224 });
-	background6.PushBack({ 1212, 448, 303, 224 });
-	background6.PushBack({ 0, 672, 303, 224 });
-	background6.PushBack({ 304, 672, 303, 224 });
-	background6.PushBack({ 608, 672, 303, 224 });
-	background6.PushBack({ 912, 672, 303, 224 });
-	background6.PushBack({ 1216, 672, 303, 224 });
-	background6.PushBack({ 0, 896, 303, 224 });
-	background6.PushBack({ 304, 896, 303, 224 });
-	background6.PushBack({ 608, 896, 303, 224 });
-	background6.PushBack({ 912, 896, 303, 224 });
-	background6.PushBack({ 1216, 896, 303, 224 });
-	background6.PushBack({ 0, 1120, 303, 224 });
-	background6.PushBack({ 304, 1120, 303, 224 });
-	background6.PushBack({ 608, 1120, 303, 224 });
-	background6.PushBack({ 912, 1120, 303, 224 });
-	background6.PushBack({ 1216, 1120, 303, 224 });
-	background6.PushBack({ 0, 1344, 303, 224 });
-	background6.PushBack({ 304, 1344, 303, 224 });
-	background6.PushBack({ 608, 1344, 303, 224 });
-	background6.PushBack({ 912, 1344, 303, 224 });
-	background6.PushBack({ 1216, 1344, 303, 224 });
-	background6.PushBack({ 0, 1568, 303, 224 });
-	background6.PushBack({ 304, 1568, 303, 224 });
-	background6.PushBack({ 608, 1568, 303, 224 });
-	background6.PushBack({ 912, 1568, 303, 224 });
-	background6.PushBack({ 1216, 1568, 303, 224 });
-	background6.PushBack({ 0, 1792, 303, 224 });
-	background6.PushBack({ 304, 1792, 303, 224 });
-	background6.PushBack({ 608, 1792, 303, 224 });
-	background6.PushBack({ 912, 1792, 303, 224 });
-	background6.PushBack({ 1216, 1792, 303, 224 });
-	background6.PushBack({ 0, 2016, 303, 224 });
-	background6.PushBack({ 304, 2016, 303, 224 });
-	background6.PushBack({ 608, 2016, 303, 224 });
-	background6.PushBack({ 912, 2016, 303, 224 });
-	background6.PushBack({ 1216, 2016, 303, 224 });
-	background6.PushBack({ 0, 2240, 303, 224 });
-	background6.PushBack({ 304, 2240, 303, 224 });
-	background6.PushBack({ 608, 2240, 303, 224 });
-	background6.PushBack({ 912, 2240, 303, 224 });
-	background6.PushBack({ 1216, 2240, 303, 224 });
-	background6.PushBack({ 0, 2464, 303, 224 });
-	background6.PushBack({ 304, 2464, 303, 224 });
-	background6.PushBack({ 608, 2464, 303, 224 });
-	background6.PushBack({ 912, 2464, 303, 224 });
-	background6.PushBack({ 1216, 2464, 303, 224 });
-	background6.PushBack({ 0, 2688, 303, 224 });
-	background6.PushBack({ 304, 2688, 303, 224 });
-	background6.PushBack({ 608, 2688, 303, 224 });
-	background6.PushBack({ 912, 2688, 303, 224 });
-	background6.PushBack({ 1216, 2688, 303, 224 });
-	background6.PushBack({ 0, 2912, 303, 224 });
-	background6.PushBack({ 304, 2912, 303, 224 });
-	background6.PushBack({ 608, 2912, 303, 224 });
-	background6.PushBack({ 912, 2912, 303, 224 });
-	background6.PushBack({ 1216, 2912, 303, 224 });
-	background6.PushBack({ 0, 3136, 303, 224 });
-	background6.PushBack({ 304, 3136, 303, 224 });
-	background6.PushBack({ 608, 3136, 303, 224 });
-	background6.PushBack({ 912, 3136, 303, 224 });
-	background6.PushBack({ 1216, 3136, 303, 224 });
-	background6.PushBack({ 0, 3360, 303, 224 });
-	background6.PushBack({ 304, 3360, 303, 224 });
-	background6.PushBack({ 608, 3360, 303, 224 });
-	background6.PushBack({ 912, 3360, 303, 224 });
-	background6.PushBack({ 1216, 3360, 303, 224 });
-	background6.PushBack({ 0, 3584, 303, 224 });
-	background6.PushBack({ 304, 3584, 303, 224 });
-	background6.PushBack({ 608, 3584, 303, 224 });
-	background6.PushBack({ 912, 3584, 303, 224 });
-	background6.PushBack({ 1216, 3584, 303, 224 });
-	background6.PushBack({ 0, 3808, 303, 224 });
-	background6.PushBack({ 304, 3808, 303, 224 });
-	background6.PushBack({ 608, 3808, 303, 224 });
-	background6.PushBack({ 912, 3808, 303, 224 });
-	background6.PushBack({ 1216, 3808, 303, 224 });
-	background6.PushBack({ 0, 4032, 303, 224 });
-	background6.PushBack({ 304, 4032, 303, 224 });
-	background6.PushBack({ 608, 4032, 303, 224 });
-	background6.PushBack({ 912, 4032, 303, 224 });
-	background6.PushBack({ 1216, 4032, 303, 224 });*/
-
-
-
-
-
+	background.PushBack({ 0, 0, 303, 224 });
+	background.PushBack({ 304, 0, 303, 224 });
+	background.PushBack({ 608, 0, 303, 224 });
+	background.PushBack({ 912, 0, 303, 224 });
+	background.PushBack({ 1216, 0, 303, 224 });
+	background.PushBack({ 0, 224, 303, 224 });
+	background.PushBack({ 304, 224, 303, 224 });
+	background.PushBack({ 608, 224, 303, 224 });
+	background.PushBack({ 912, 224, 303, 224 });
+	background.PushBack({ 1216, 224, 303, 224 });
+	background.PushBack({ 0, 448, 303, 224 });
+	background.PushBack({ 304, 448, 303, 224 });
+	background.PushBack({ 608, 448, 303, 224 });
+	background.PushBack({ 912, 448, 303, 224 });
+	background.PushBack({ 1212, 448, 303, 224 });
+	background.PushBack({ 0, 672, 303, 224 });
+	background.PushBack({ 304, 672, 303, 224 });
+	background.PushBack({ 608, 672, 303, 224 });
+	background.PushBack({ 912, 672, 303, 224 });
+	background.PushBack({ 1216, 672, 303, 224 });
+	background.PushBack({ 0, 896, 303, 224 });
+	background.PushBack({ 304, 896, 303, 224 });
+	background.PushBack({ 608, 896, 303, 224 });
+	background.PushBack({ 912, 896, 303, 224 });
+	background.PushBack({ 1216, 896, 303, 224 });
+	background.PushBack({ 0, 1120, 303, 224 });
+	background.PushBack({ 304, 1120, 303, 224 });
+	background.PushBack({ 608, 1120, 303, 224 });
+	background.PushBack({ 912, 1120, 303, 224 });
+	background.PushBack({ 1216, 1120, 303, 224 });
+	background.PushBack({ 0, 1344, 303, 224 });
+	background.PushBack({ 304, 1344, 303, 224 });
+	background.PushBack({ 608, 1344, 303, 224 });
+	background.PushBack({ 912, 1344, 303, 224 });
+	background.PushBack({ 1216, 1344, 303, 224 });
+	background.PushBack({ 0, 1568, 303, 224 });
+	background.PushBack({ 304, 1568, 303, 224 });
+	background.PushBack({ 608, 1568, 303, 224 });
+	background.PushBack({ 912, 1568, 303, 224 });
+	background.PushBack({ 1216, 1568, 303, 224 });
+	background.PushBack({ 0, 1792, 303, 224 });
+	background.PushBack({ 304, 1792, 303, 224 });
+	background.PushBack({ 608, 1792, 303, 224 });
+	background.PushBack({ 912, 1792, 303, 224 });
+	background.PushBack({ 1216, 1792, 303, 224 });
+	background.PushBack({ 0, 2016, 303, 224 });
+	background.PushBack({ 304, 2016, 303, 224 });
+	background.PushBack({ 608, 2016, 303, 224 });
+	background.PushBack({ 912, 2016, 303, 224 });
+	background.PushBack({ 1216, 2016, 303, 224 });
+	background.PushBack({ 0, 2240, 303, 224 });
+	background.PushBack({ 304, 2240, 303, 224 });
+	background.PushBack({ 608, 2240, 303, 224 });
+	background.PushBack({ 912, 2240, 303, 224 });
+	background.PushBack({ 1216, 2240, 303, 224 });
+	background.PushBack({ 0, 2464, 303, 224 });
+	background.PushBack({ 304, 2464, 303, 224 });
+	background.PushBack({ 608, 2464, 303, 224 });
+	background.PushBack({ 912, 2464, 303, 224 });
+	background.PushBack({ 1216, 2464, 303, 224 });
+	background.PushBack({ 0, 2688, 303, 224 });
+	background.PushBack({ 304, 2688, 303, 224 });
+	background.PushBack({ 608, 2688, 303, 224 });
+	background.PushBack({ 912, 2688, 303, 224 });
+	background.PushBack({ 1216, 2688, 303, 224 });
+	background.PushBack({ 0, 2912, 303, 224 });
+	background.PushBack({ 304, 2912, 303, 224 });
+	background.PushBack({ 608, 2912, 303, 224 });
 	
-	
-	
-	
-	background7.PushBack({ 0, 0, 303, 224 });
-	background7.PushBack({ 304, 0, 303, 224 });
-	background7.PushBack({ 608, 0, 303, 224 });
-	background7.PushBack({ 912, 0, 303, 224 });
-	background7.PushBack({ 1216, 0, 303, 224 });
-	background7.PushBack({ 0, 224, 303, 224 });
-	background7.PushBack({ 304, 224, 303, 224 });
-	background7.PushBack({ 608, 224, 303, 224 });
-	background7.PushBack({ 912, 224, 303, 224 });
-	background7.PushBack({ 1216, 224, 303, 224 });
-	background7.PushBack({ 0, 448, 303, 224 });
-	background7.PushBack({ 304, 448, 303, 224 });
-	background7.PushBack({ 608, 448, 303, 224 });
-	background7.PushBack({ 912, 448, 303, 224 });
-	background7.PushBack({ 1212, 448, 303, 224 });
-	background7.PushBack({ 0, 672, 303, 224 });
-	background7.PushBack({ 304, 672, 303, 224 });
-	background7.PushBack({ 608, 672, 303, 224 });
-	background7.PushBack({ 912, 672, 303, 224 });
-	background7.PushBack({ 1216, 672, 303, 224 });
-	background7.PushBack({ 0, 896, 303, 224 });
-	background7.PushBack({ 304, 896, 303, 224 });
-	background7.PushBack({ 608, 896, 303, 224 });
-	background7.PushBack({ 912, 896, 303, 224 });
-	background7.PushBack({ 1216, 896, 303, 224 });
-	background7.PushBack({ 0, 1120, 303, 224 });
-	background7.PushBack({ 304, 1120, 303, 224 });
-	background7.PushBack({ 608, 1120, 303, 224 });
-	background7.PushBack({ 912, 1120, 303, 224 });
-	background7.PushBack({ 1216, 1120, 303, 224 });
-	background7.PushBack({ 0, 1344, 303, 224 });
-	background7.PushBack({ 304, 1344, 303, 224 });
-	background7.PushBack({ 608, 1344, 303, 224 });
-	background7.PushBack({ 912, 1344, 303, 224 });
-	background7.PushBack({ 1216, 1344, 303, 224 });
-	background7.PushBack({ 0, 1568, 303, 224 });
-	background7.PushBack({ 304, 1568, 303, 224 });
-	background7.PushBack({ 608, 1568, 303, 224 });
-	background7.PushBack({ 912, 1568, 303, 224 });
-	background7.PushBack({ 1216, 1568, 303, 224 });
-	background7.PushBack({ 0, 1792, 303, 224 });
-	background7.PushBack({ 304, 1792, 303, 224 });
-	background7.PushBack({ 608, 1792, 303, 224 });
-	background7.PushBack({ 912, 1792, 303, 224 });
-	background7.PushBack({ 1216, 1792, 303, 224 });
-	background7.PushBack({ 0, 2016, 303, 224 });
-	background7.PushBack({ 304, 2016, 303, 224 });
-	background7.PushBack({ 608, 2016, 303, 224 });
-	background7.PushBack({ 912, 2016, 303, 224 });
-	background7.PushBack({ 1216, 2016, 303, 224 });
-	background7.PushBack({ 0, 2240, 303, 224 });
-	background7.PushBack({ 304, 2240, 303, 224 });
-	background7.PushBack({ 608, 2240, 303, 224 });
-	background7.PushBack({ 912, 2240, 303, 224 });
-	background7.PushBack({ 1216, 2240, 303, 224 });
-	background7.PushBack({ 0, 2464, 303, 224 });
-	background7.PushBack({ 304, 2464, 303, 224 });
-	background7.PushBack({ 608, 2464, 303, 224 });
-	background7.PushBack({ 912, 2464, 303, 224 });
-	background7.PushBack({ 1216, 2464, 303, 224 });
-	background7.PushBack({ 0, 2688, 303, 224 });
-	background7.PushBack({ 304, 2688, 303, 224 });
-	background7.PushBack({ 608, 2688, 303, 224 });
-	background7.PushBack({ 912, 2688, 303, 224 });
-	background7.PushBack({ 1216, 2688, 303, 224 });
-	background7.PushBack({ 0, 2912, 303, 224 });
-	background7.PushBack({ 304, 2912, 303, 224 });
-	background7.PushBack({ 608, 2912, 303, 224 });
-	
-
-	
-	background5.speed = 0.4f;
-	background6.speed = 0.4f;
-	background7.speed = 0.4f;
+	background.speed = 0.4f;
 
 }
 
@@ -308,9 +104,8 @@ bool ModuleSceneIntro::Start()
 
 	bool ret = true;
 	
-	//graphics5 = App->textures->Load("Intro5.png");
-	//graphics6 = App->textures->Load("Intro6.png");
-	graphics7 = App->textures->Load("Intro7.png");
+
+	graphics = App->textures->Load("Intro7.png");
 	App->audio->PlayMusic("music/Fatal Fury Intro/Fatal Fury Intro.ogg", 0);
 
 	// TODO 1: Enable (and properly disable) the player module
@@ -325,10 +120,7 @@ bool ModuleSceneIntro::Start()
 bool ModuleSceneIntro::CleanUp()
 {
 
-	
-	//graphics5 = nullptr;
-	//graphics6 = nullptr;
-	graphics7 = nullptr;
+	graphics = nullptr;
 	
 	
 	SDL_DestroyTexture(App->textures->Load("Intro7.png"));
@@ -343,23 +135,7 @@ bool ModuleSceneIntro::CleanUp()
 // Update: draw background
 update_status ModuleSceneIntro::Update()
 {
-	// Draw everything --------------------------------------	
-	//App->render->Blit(graphics, -10, 0, &background1);
-	
-
-	//App->render->Blit(graphics5, -8, -8, &(background5.GetCurrentFrame()), 0.70f);
-	
-
-	//if (background5.Finished())
-	//{
-	//	App->render->Blit(graphics6, -8, -8, &(background6.GetCurrentFrame()), 0.70f);
-	//}
-
-	//if (background6.Finished())
-	//{
-		App->render->Blit(graphics7, -8, -8, &(background7.GetCurrentFrame()), 0.70f);
-	//}
-
+		App->render->Blit(graphics, -8, -8, &(background.GetCurrentFrame()), 0.70f);
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
