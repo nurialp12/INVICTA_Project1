@@ -10,7 +10,7 @@
 ModuleRender::ModuleRender() : Module()
 {
 	camera.x = -480 /*0*/;
-	camera.y = 0;
+	camera.y = -30;
 	camera.w = SCREEN_WIDTH;
 	camera.h = SCREEN_HEIGHT;
 }
@@ -62,6 +62,29 @@ update_status ModuleRender::Update()
 
 	if(App->input->keyboard[SDL_SCANCODE_PERIOD] == KEY_STATE::KEY_REPEAT)
 		camera.y -= speed;
+
+
+	//CÁMARA JUMP, SOLO POARA COMPROBAR QUE FUNCIONA
+	if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_REPEAT)
+	{
+		camera.y = 0;
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_REPEAT)
+	{
+		camera.y = -30;
+	}
+
+
+	//if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
+	//{
+	//	camera.y = 30;
+	//}
+
+	//if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)
+	//{
+	//	camera.y = -30;
+	//}
 	
 	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT )
 		if (camera.x < 0 && App->player->destroyed == false &&
