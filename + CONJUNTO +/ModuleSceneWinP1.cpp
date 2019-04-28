@@ -19,7 +19,7 @@
 ModuleSceneWinP1::ModuleSceneWinP1()
 {
 
-	background = { 110, 150, 500, 400 };
+	background = { 0, 0, 304, 224 };
 }
 
 	
@@ -34,7 +34,7 @@ bool ModuleSceneWinP1::Start()
 	
 	LOG("Loading background assets");
 	bool ret = true;
-	graphics = App->textures->Load("game_over.png");
+	graphics = App->textures->Load("Win_p1.png");
 
 	// TODO 1: Enable (and properly disable) the player module
 	App->render->camera.x = App->render->camera.y = 0;
@@ -49,7 +49,7 @@ bool ModuleSceneWinP1::CleanUp()
 {
 
 	graphics = nullptr;
-	SDL_DestroyTexture(App->textures->Load("game_over.png"));
+	SDL_DestroyTexture(App->textures->Load("Win_p1.png"));
 
 	LOG("Unloading end stage");
 
@@ -63,8 +63,7 @@ update_status ModuleSceneWinP1::Update()
 	// Draw everything --------------------------------------	
 	App->render->Blit(graphics, 0, 0, &background);
 	
-	App->render->camera.x = 0;
-	App->render->camera.y = 0;
+
 	
 	
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
