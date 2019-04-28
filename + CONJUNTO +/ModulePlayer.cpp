@@ -63,19 +63,19 @@ ModulePlayer::ModulePlayer()
 	TerryKick.speed = 0.1f;
 
 	//PUNCH
-	TerryPunch.PushBack({ 438, 901, 71, 123 });
-	TerryPunch.PushBack({ 509, 901, 61, 123 });
-	TerryPunch.PushBack({ 570, 901, 95, 123 });
-	TerryPunch.speed = 0.1f;
+	TerryPunch.PushBack({ 435, 910, 71, 112 });
+	TerryPunch.PushBack({ 507, 911, 61, 112 });
+	TerryPunch.PushBack({ 575, 911, 95, 112 });
+	TerryPunch.speed = 0.01f;
 
 	// POWER WAVE animation of Terrry
-	TerryPW.PushBack({ 505, 737, 51, 123 });
-	TerryPW.PushBack({ 451, 737, 54, 123 });
-	TerryPW.PushBack({ 391, 737, 60, 123 });
-	TerryPW.PushBack({ 312, 737, 79, 123 });
-	TerryPW.PushBack({ 245, 737, 67, 123 });
-	TerryPW.PushBack({ 180, 737, 65, 123 });
-	TerryPW.PushBack({ 120, 737, 60, 123 });
+	TerryPW.PushBack({ 623, 683, 51, 112 });
+	TerryPW.PushBack({ 550, 683, 54, 112 });
+	TerryPW.PushBack({ 485, 683, 60, 112 });
+	TerryPW.PushBack({ 402, 683, 79, 112 });
+	TerryPW.PushBack({ 330, 683, 67, 112 });
+	TerryPW.PushBack({ 263, 683, 65, 112 });
+	TerryPW.PushBack({ 198, 683, 60, 112 });
 	TerryPW.speed = 0.1f;
 
 	//DAMAGED BY PUNCH
@@ -542,10 +542,19 @@ update_status ModulePlayer::Update()
 		if (colcp)
 			colcp->to_delete = true;
 		TerryCrouchPunch.resetLoops(0);
-		currentstate = ST_CROUCH;
-		current_animation = &TerryCrouch;
+
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_CROUCH;
+			current_animation = &TerryCrouch;
+		}
+		else
+		{
+			currentstate = ST_IDLE;
+			current_animation = &Terryidle;
+		}
 		TerryCrouchPunch.Reset();
-		colcp = App->collisions->AddCollider({ 0, 0, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+		colcp = App->collisions->AddCollider({ 1000, 1000, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 
 	}
 
