@@ -257,7 +257,7 @@ update_status ModulePlayer2::Update()
 
 	//Animation* current_animation = NULL;
 
-	
+
 	if (true)
 	{
 
@@ -267,24 +267,24 @@ update_status ModulePlayer2::Update()
 
 
 	}
-	
-	
+
+
 	int speed = 1;
-	
+
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 	{
 
-		
+
 		if (mirror2)
 		{
 			current_animation = &Terry2ForwardM;
-			if (Terry2position.x < 700 && Terry2position.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w)) 
+			if (Terry2position.x < 700 && Terry2position.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w))
 			{
 				Terry2position.x += speed;
 			}
 		}
-		
+
 		else
 		{
 			current_animation = &Terry2Forward;
@@ -297,7 +297,7 @@ update_status ModulePlayer2::Update()
 
 		}
 
-	} 
+	}
 
 
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
@@ -328,9 +328,9 @@ update_status ModulePlayer2::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
 	{
-		
+
 		if (mirror2) { current_animation = &Terry2JumpM; }
-		
+
 		else { current_animation = &Terry2Jump; }
 
 		/*FER QUE PER LES DUES PRIEMERES ANIMACIONS PUGI X PÍXELS I LES DUES ÚLTIMES QUE ELS BAIXI*/
@@ -361,23 +361,23 @@ update_status ModulePlayer2::Update()
 		colp = App->collisions->AddCollider({ Terry2position.x + 45, Terry2position.y + 20, 43, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
 
 	}
-	
+
 	if (App->input->keyboard[SDL_SCANCODE_I] == KEY_STATE::KEY_REPEAT)
 	{
 
-		if (mirror2) { current_animation = &Terry2PunchM;}
+		if (mirror2) { current_animation = &Terry2PunchM; }
 		else { current_animation = &Terry2Punch; }
 
 	}
 
-	
+
 	if (App->input->keyboard[SDL_SCANCODE_I] == KEY_STATE::KEY_UP)
 	{
 		if (colp)
 			colp->to_delete = true;
 	}
-	
-		//KICK
+
+	//KICK
 	if (App->input->keyboard[SDL_SCANCODE_O] == KEY_STATE::KEY_DOWN)
 		colk = App->collisions->AddCollider({ Terry2position.x + 45, Terry2position.y + 48, 55, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
 
@@ -394,7 +394,7 @@ update_status ModulePlayer2::Update()
 			colk->to_delete = true;
 	}
 
-		//PPWER WAVE
+	//PPWER WAVE
 	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
 	{
 		App->particles->AddEnemyParticle(App->particles->terryenergy, Terry2position.x + 40, Terry2position.y + 12);
@@ -406,7 +406,7 @@ update_status ModulePlayer2::Update()
 	{
 
 		if (mirror2) { current_animation = &Terry2PWM; }
-		
+
 		else { current_animation = &Terry2PW; }
 	}
 
@@ -430,7 +430,7 @@ update_status ModulePlayer2::Update()
 	App->render->Blit(UI, 165, 0, &lifebar, 0);
 	if (life_score >= 4)
 	{
- 		App->render->Blit(UI, 263, 26, &life1, 0);
+		App->render->Blit(UI, 263, 26, &life1, 0);
 		App->render->Blit(UI, 259, 26, &life2, 0);
 	}
 	if (life_score >= 8)
@@ -536,7 +536,7 @@ update_status ModulePlayer2::Update()
 	if (destroyed == false)
 	{
 
-		
+
 		if ((current_animation == (&Terry2Kick)) || current_animation == (&Terry2Jump) || current_animation == (&Terry2Forward) || current_animation == (&Terry2Backwards) /*current_animation == (&TerryKick || &TerryJump || &TerryForward || &TerryBackwards)*/)
 		{
 			App->render->Blit(graphics2, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
