@@ -55,8 +55,8 @@ ModulePlayer::ModulePlayer()
 	TerryJump.speed = 0.1f;
 
 	// KICK animation of Terry							//spritesTerryBogard2extres.png
-	TerryKick.PushBack({ 0, 123, 47, 123 });
-	TerryKick.PushBack({ 47, 123, 57, 123 });
+	TerryKick.PushBack({   0, 123, 47, 123 });
+	TerryKick.PushBack({  47, 123, 57, 123 });
 	TerryKick.PushBack({ 104, 123, 42, 123 });
 	TerryKick.PushBack({ 146, 123, 116, 123 });
 	TerryKick.PushBack({ 261, 123, 62, 123 });
