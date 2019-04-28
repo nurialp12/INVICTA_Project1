@@ -17,6 +17,7 @@
 int speed = 1;
 float stantardDMG = 11.5;
 int jumpspeed = 60;
+int cameraspeed = 20;
 bool airkick = true;
 
 bool up = false;
@@ -358,6 +359,8 @@ update_status ModulePlayer::Update()
 	//JUMP
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
 	{
+	
+
 		currentstate = ST_JUMP_NEUTRAL;
 		current_animation = &TerryJump;
 		Terryposition.y -= jumpspeed;
@@ -368,9 +371,32 @@ update_status ModulePlayer::Update()
 		//App->render->camera.y = 0;
 		if (Terryposition.y == 120)
 			jumpspeed = 60;
-		//App->render->camera.y = -30;
+		//App->render->camera.y = -30;		
+		
+
+		//if (nothing) { up = true; nothing = false; }
+		//
+		//else if (up)
+		//{
+		//	Terryposition.y -= jumpspeed;
+		//	App->render->camera.y += cameraspeed;
+		//
+		//	if (Terryposition.y>=200) { down = true; up = false; }
+		//
+		//}
+		//
+		//else if (down)
+		//{
+		//	Terryposition.y += jumpspeed;
+		//	App->render->camera.y -= cameraspeed;
+		//
+		//	if (Terryposition.y <= 101) { nothing = true; down = false; }
+		//
+		//}
+	
+		
 	}
-	if (TerryJump.Finished() == true || Terryposition.y == 80)
+	if (TerryJump.Finished() == true || Terryposition.y == 10)
 	{
 		TerryJump.resetLoops(0);
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
@@ -406,13 +432,57 @@ update_status ModulePlayer::Update()
 		if (Terryposition.y == 120)
 			jumpspeed = 60;
 		//App->render->camera.y = -30;
+
+		//if (nothing) { up = true; nothing = false; }
+		//
+		//if (up)
+		//{
+		//	Terryposition.y -= jumpspeed;
+		//	//App->render->camera.y += cameraspeed;
+		//
+		//	if (Terryposition.y <= 20) { down = true; up = false; }
+		//
+		//}
+		//
+		//if (down)
+		//{
+		//	Terryposition.y += jumpspeed;
+		//	//App->render->camera.y -= cameraspeed;
+		//
+		//	if (Terryposition.y >= 99) { nothing = true; down = false; }
+		//
+		//}
+
 	}
 	if (TerryJumpForward.Finished() != true && currentstate == ST_JUMP_FORWARD)
 	{
-		if (Terryposition.y == 80/*100*/)
+
+		//if (nothing) { up = true; nothing = false; }
+		//
+		//if (up)
+		//{
+		//	Terryposition.y -= jumpspeed;
+		//	//App->render->camera.y += cameraspeed;
+		//
+		//	if (Terryposition.y <= 20) { down = true; up = false; }
+		//
+		//}
+		//
+		//if (down)
+		//{
+		//	Terryposition.y += jumpspeed;
+		//	//App->render->camera.y -= cameraspeed;
+		//
+		//	if (Terryposition.y >= 99) { nothing = true; down = false; }
+		//
+		//}
+		
+
+		if (Terryposition.y == 80)
 			jumpspeed = -60;
 		if (Terryposition.y == 120)
 			jumpspeed = 60;
+
 		if (Terryposition.x < 700 &&
 			Terryposition.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w))
 		{
