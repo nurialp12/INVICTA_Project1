@@ -7,7 +7,7 @@
 #include "ModulePlayer2.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleSceneIni.h"
+#include "ModuleSceneIntro.h"
 #include"ModuleScene2.h"
 #include "SDL/include/SDL.h"
 #include "ModuleParticles.h"
@@ -69,7 +69,7 @@ update_status ModuleSceneTie::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(App->tie, App->scene_2, 2.5);
+		App->fade->FadeToBlack(App->tie, App->intro, 2.5);
 	}
 
 

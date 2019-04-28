@@ -19,6 +19,7 @@ public:
 public:
 
 	SDL_Texture* graphics = nullptr;
+	
 	Animation background;
 	//Animation game;
 
