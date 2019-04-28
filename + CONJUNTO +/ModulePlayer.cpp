@@ -340,7 +340,7 @@ update_status ModulePlayer::Update()
 		currentstate = ST_IDLE;
 		current_animation = &Terryidle;
 		Terryposition.y = 100;
-		App->render->camera.y = -30;
+		App->render->camera.y = -20;
 		TerryJump.Reset();
 	}
 
