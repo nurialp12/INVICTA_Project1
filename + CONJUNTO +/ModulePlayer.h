@@ -117,6 +117,7 @@ public:
 
 	iPoint Terryposition;
 	Collider* col;
+	Collider* colj;
 	Collider* colp;
 	Collider* colk;
 	Collider* colc;

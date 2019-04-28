@@ -396,6 +396,10 @@ update_status ModulePlayer::Update()
 	//JUMP FORWARD
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && currentstate == ST_WALK_FORWARD)
 	{
+		if (col)
+			col->to_delete = true;
+		if (gmode != true)
+	//	colj=App->collisions->AddCollider({Terryposition.x+13, })
 		currentstate = ST_JUMP_FORWARD;
 		current_animation = &TerryJumpForward;
 		Terryposition.y -= jumpspeed;
@@ -593,6 +597,8 @@ update_status ModulePlayer::Update()
 		currentstate = ST_PUNCH_CROUCH;
 		current_animation = &TerryCrouchPunch;
 		colcp = App->collisions->AddCollider({ Terryposition.x + 50, Terryposition.y + 55, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+		colcp->rect.x = Terryposition.x + 50;
+		colcp->rect.y = Terryposition.y + 55;
 	}
 	if (TerryCrouchPunch.Finished() == true)
 	{
@@ -619,6 +625,8 @@ update_status ModulePlayer::Update()
 	{
 		currentstate = ST_KICK_CROUCH;
 		current_animation = &TerryCrouchKick;
+		colck = App->collisions->AddCollider({ Terryposition.x + 50, Terryposition.y + 90, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+
 		colck->rect.x = Terryposition.x + 50;
 		colck->rect.y = Terryposition.y + 90;
 	}
@@ -627,14 +635,21 @@ update_status ModulePlayer::Update()
 		if (colck)
 			colck->to_delete = true;
 		TerryCrouchKick.resetLoops(0);
-		currentstate = ST_CROUCH;
-		current_animation = &TerryCrouch;
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_CROUCH;
+			current_animation = &TerryCrouch;
+		}
+		else
+		{
+			currentstate = ST_IDLE;
+			current_animation = &Terryidle;
+		}
 		TerryCrouchKick.Reset();
-		colck = App->collisions->AddCollider({ 0, 0, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 	}
 
 	//POWER WAVE
-	if (App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_DOWN && (currentstate == ST_IDLE || ST_JUMP_FORWARD || ST_JUMP_BACKWARD))
+	if (App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_DOWN && (currentstate == ST_IDLE || currentstate == ST_WALK_FORWARD || currentstate == ST_WALK_BACKWARD))
 	{
 		currentstate = ST_POWER_WAVE;
 		current_animation = &TerryPW;
