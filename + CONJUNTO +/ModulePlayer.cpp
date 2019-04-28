@@ -799,7 +799,7 @@ update_status ModulePlayer::Update()
 			current_animation = &Terryidle;
 		}
 		TerryCrouchPunch.Reset();
-
+		colc->to_delete = true;
 	}
 
 	//CROUCHKICK
