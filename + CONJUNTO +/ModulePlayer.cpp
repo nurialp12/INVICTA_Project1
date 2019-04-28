@@ -340,7 +340,7 @@ update_status ModulePlayer::Update()
 		currentstate = ST_IDLE;
 		current_animation = &Terryidle;
 		Terryposition.y = 100;
-		App->render->camera.y = -30;
+		App->render->camera.y = -20;
 		TerryJump.Reset();
 	}
 
@@ -433,6 +433,7 @@ update_status ModulePlayer::Update()
 		TerryPunch.resetLoops(0);
 		currentstate = ST_IDLE;
 		current_animation = &Terryidle;
+		App->player2->collided = false;
 		TerryPunch.Reset();
 	}
 
@@ -624,6 +625,9 @@ update_status ModulePlayer::Update()
 }
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_ENEMY)
+	if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_PLAYER && collided == false)
+	{
 		life_score -= stantardDMG;
+		collided = true;
+	}
 }

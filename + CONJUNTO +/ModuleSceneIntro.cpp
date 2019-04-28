@@ -32,7 +32,7 @@ ModuleSceneIntro::ModuleSceneIntro()
 	background.PushBack({ 304, 448, 303, 224 });
 	background.PushBack({ 608, 448, 303, 224 });
 	background.PushBack({ 912, 448, 303, 224 });
-	background.PushBack({ 1212, 448, 303, 224 });
+	background.PushBack({ 1216, 448, 303, 224 });
 	background.PushBack({ 0, 672, 303, 224 });
 	background.PushBack({ 304, 672, 303, 224 });
 	background.PushBack({ 608, 672, 303, 224 });
