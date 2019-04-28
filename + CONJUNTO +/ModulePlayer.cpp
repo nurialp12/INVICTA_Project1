@@ -198,7 +198,6 @@ bool ModulePlayer::Start()
 	LOG("Loading player");
 	bool ret = true;
 	graphics = App->textures->Load("Assets/Sprites/spritesTerryBogard.png");
-
 	graphics2 = App->textures->Load("Assets/Sprites/spritesTerryBogard2extres.png");
 
 
