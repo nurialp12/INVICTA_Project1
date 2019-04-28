@@ -180,6 +180,13 @@ ModulePlayer::ModulePlayer()
 	TerryPWM.PushBack({ 262, 683, 65, 112 });
 	TerryPWM.PushBack({ 198, 683, 60, 112 });
 	TerryPWM.speed = 0.1f;
+
+	//hit particle animation
+	hit.PushBack({671, 263, 22, 33});
+	hit.PushBack({690, 263, 24, 33});
+	hit.PushBack({ 721, 263, 32, 33 });
+	hit.PushBack({ 757, 263, 32, 33 });
+	hit.speed = 0.5f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -691,7 +698,9 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_PLAYER && collided == false)
 	{
+		
 		life_score -= stantardDMG;
 		collided = true;
+
 	}
 }
