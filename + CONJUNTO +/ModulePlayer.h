@@ -30,7 +30,8 @@ enum terry_states
 	ST_PUNCH_BACKWARD_JUMP,
 	ST_PUNCH_CROUCH,
 	ST_KICK_STANDING,
-	ST_KICK_CROUCH
+	ST_KICK_CROUCH,
+	ST_SD
 };
 
 struct InputP1 {
@@ -40,8 +41,9 @@ struct InputP1 {
 	bool W_DOWN; //JUMP
 	bool F_DOWN; //PUNCH
 	bool G_DOWN; //KICK
-	bool H_DOWN; //POEWER WAVE                             ¡¡¡PROVISIONAL!!!
-	/*
+	bool H_DOWN; //POEWER WAVE         ¡¡¡PROVISIONAL!!!
+	bool SD_DOWN;
+				 /*
 	bool IN_LEFT_DOWN;
 	bool IN_LEFT_UP;
 	bool IN_RIGHT_DOWN;
