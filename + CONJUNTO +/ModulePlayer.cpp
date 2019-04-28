@@ -197,7 +197,7 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 	bool ret = true;
-	graphics = App->textures->Load("spritesTerryBogard.png");
+	graphics = App->textures->Load("Assets/Sprites/spritesTerryBogard.png");
 	graphics2 = App->textures->Load("spritesTerryBogard2extres.png");
 
 	graphicsM = App->textures->Load("spritesTerryBogardMIRROR.png");
@@ -584,6 +584,7 @@ update_status ModulePlayer::Update()
 		currentstate = ST_POWER_WAVE;
 		current_animation = &TerryPW;
 		App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 40, Terryposition.y + 12);
+
 		App->audio->PlayFX("FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
 	}
 	if (TerryPW.Finished() == true)
