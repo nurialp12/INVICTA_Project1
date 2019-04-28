@@ -501,7 +501,7 @@ update_status ModulePlayer::Update()
 	}
 
 	//PUNCH
-	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && (currentstate == ST_IDLE || ST_WALK_FORWARD || ST_JUMP_BACKWARD))
+	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_FORWARD) || (currentstate == ST_WALK_BACKWARD)))
 	{
 		currentstate = ST_PUNCH_STANDING;
 		current_animation = &TerryPunch;
@@ -532,7 +532,7 @@ update_status ModulePlayer::Update()
 	}
 
 	//KICK
-	if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN && (currentstate == ST_IDLE || ST_WALK_FORWARD || ST_JUMP_BACKWARD))
+	if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN  && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_FORWARD) || (currentstate == ST_WALK_BACKWARD)))
 	{
 		currentstate = ST_KICK_STANDING;
 		current_animation = &TerryKick;
@@ -603,8 +603,7 @@ update_status ModulePlayer::Update()
 	{
 		currentstate = ST_PUNCH_CROUCH;
 		current_animation = &TerryCrouchPunch;
-		colcp->rect.x = Terryposition.x + 50;
-		colcp->rect.y = Terryposition.y + 55;
+		colcp = App->collisions->AddCollider({ Terryposition.x + 50, Terryposition.y + 55, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 	}
 	if (TerryCrouchPunch.Finished() == true)
 	{
@@ -623,7 +622,6 @@ update_status ModulePlayer::Update()
 			current_animation = &Terryidle;
 		}
 		TerryCrouchPunch.Reset();
-		colcp = App->collisions->AddCollider({ 1000, 1000, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 
 	}
 
@@ -756,18 +754,20 @@ update_status ModulePlayer::Update()
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
 	// Draw everything --------------------------------------
-	if (destroyed == false)
-	{
-		if ((current_animation == (&TerryKick)) || current_animation == (&TerryJump) || current_animation == (&TerryForward)
-			|| current_animation == (&TerryBackwards) || current_animation == &TerryDP || current_animation == &TerryDK || current_animation == &TerryCrouchPunch
-			|| current_animation == &TerryCrouchKick || current_animation == &TerryJumpForward || current_animation == &TerryJumpBackwards || current_animation == &TerryCrouch)
+		if (destroyed == false)
 		{
-			App->render->Blit(graphics2, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
+			if ((current_animation == (&TerryKick)) || current_animation == (&TerryJump) || current_animation == (&TerryForward)
+				|| current_animation == (&TerryBackwards) || current_animation == &TerryDP || current_animation == &TerryDK || current_animation == &TerryCrouchPunch
+				|| current_animation == &TerryCrouchKick || current_animation == &TerryJumpForward || current_animation == &TerryJumpBackwards || current_animation == &TerryCrouch)
+			{
+				App->render->Blit(graphics2, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
+			}
+			else 
+				App->render->Blit(graphics, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
+			/*else if()
+			else if()*/
 		}
-		else
-			App->render->Blit(graphics, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
-	}
-
+	
 	// Draw UI (score) --------------------------------------
 	//sprintf_s(score_text, 10, "%7d", score);
 
