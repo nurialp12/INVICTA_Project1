@@ -11,6 +11,7 @@
 #include "ModuleSceneIntro.h"
 #include "SDL/include/SDL.h"
 #include "ModuleParticles.h"
+#include "ModuleAudio.h"
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
 #pragma comment( lib, "SDL/libx86/SDL2main.lib" )
 
@@ -34,7 +35,8 @@ bool ModuleSceneWinP2::Start()
 
 	LOG("Loading background assets");
 	bool ret = true;
-	graphics = App->textures->Load("Win_p2.png");
+	graphics = App->textures->Load("Assets/Sprites/Win_p2.png");
+	App->audio->PlayMusic("Assets/music/Results are everything/Results are everything.ogg", 0);
 
 	// TODO 1: Enable (and properly disable) the player module
 	App->render->camera.x = App->render->camera.y = 0;
@@ -49,7 +51,7 @@ bool ModuleSceneWinP2::CleanUp()
 {
 
 	graphics = nullptr;
-	SDL_DestroyTexture(App->textures->Load("Win_p2.png"));
+	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Win_p2.png"));
 
 	LOG("Unloading end stage");
 

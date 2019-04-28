@@ -51,7 +51,7 @@ bool ModuleScene2::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
-	graphics = App->textures->Load("Pao_Pao_Cafe.png");
+	graphics = App->textures->Load("Assets/Sprites/Pao_Pao_Cafe.png");
 
 	App->render->camera.x = -480;
 	App->render->camera.y = -20;
@@ -65,7 +65,7 @@ bool ModuleScene2::Start()
 	// TODO 1: Add colliders for the first columns of the level
 	
 
-	App->audio->PlayMusic("music/Haremar religion/Haremar religion.ogg", -1);
+	App->audio->PlayMusic("Assets/music/Haremar religion/Haremar religion.ogg", -1);
 
 	return ret;
 }
@@ -75,7 +75,7 @@ bool ModuleScene2::CleanUp()
 {
 	// TODO 4: Remove all memory leaks
 	graphics = nullptr;
-	SDL_DestroyTexture(App->textures->Load("Pao_Pao_Cafe.png"));
+	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Pao_Pao_Cafe.png"));
 
 	LOG("Unloading second stage");
 	
@@ -104,7 +104,7 @@ update_status ModuleScene2::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_F9] == 1)
 	{
-		App->audio->MuteMusic("music/Haremar religion/Haremar religion.ogg", -1);
+		App->audio->MuteMusic("Assets/music/Haremar religion/Haremar religion.ogg", -1);
 	}
 
 
@@ -120,7 +120,7 @@ update_status ModuleScene2::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F4] == 1)
 	{
-		App->fade->FadeToBlack(App->scene_2, App->tie, 2.5);
+		App->fade->FadeToBlack(App->scene_2, App->end_game1, 2.5);
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F6] == 1)
 	{

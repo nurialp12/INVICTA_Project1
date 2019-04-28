@@ -60,7 +60,7 @@ bool ModuleScene1::Start()
 {
 	LOG("Loading first scene");
 	
-	graphics = App->textures->Load("Sound_Beach.png");
+	graphics = App->textures->Load("Assets/Sprites/Sound_Beach.png");
 
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->Enable();
@@ -79,7 +79,7 @@ bool ModuleScene1::Start()
 bool ModuleScene1::CleanUp()
 {
 	graphics = nullptr;
-	SDL_DestroyTexture(App->textures->Load("Sound_Beach.png"));
+	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Sound_Beach.png"));
 
 	LOG("Unloading first scene");
 	App->player->Disable();
