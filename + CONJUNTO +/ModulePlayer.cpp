@@ -66,7 +66,7 @@ ModulePlayer::ModulePlayer()
 	TerryPunch.PushBack({ 435, 910, 71, 112 });
 	TerryPunch.PushBack({ 507, 911, 61, 112 });
 	TerryPunch.PushBack({ 575, 911, 95, 112 });
-	TerryPunch.speed = 0.01f;
+	TerryPunch.speed = 0.1f;
 
 	// POWER WAVE animation of Terrry
 	TerryPW.PushBack({ 623, 683, 51, 112 });
