@@ -94,9 +94,10 @@ ModulePlayer::ModulePlayer()
 	TerryDK.speed = 0.1f;
 
 	//CROUCH
-	TerryCrouch.PushBack({ 0, 0, 0, 0 }); 
-	TerryCrouch.PushBack({ 0, 0, 0, 0 });
+	TerryCrouch.PushBack({ 488, 912, 57, 112 }); 
+	TerryCrouch.PushBack({ 545, 912, 52, 112 });
 	TerryCrouch.speed = 0.1f;
+	TerryCrouch.loop = false;
 
 	//JUMPFORWARD
 	TerryJumpForward.PushBack({ 624, 912, 57, 112 });
@@ -126,11 +127,11 @@ ModulePlayer::ModulePlayer()
 	TerryCrouchPunch.speed = 0.1f;
 
 	//CROUCHKICK
-	TerryCrouchKick.PushBack({ 0, 0, 0, 0 }); //Charge
-	TerryCrouchKick.PushBack({ 0, 0, 0, 0 }); //Riposte
-	TerryCrouchKick.PushBack({ 0, 0, 0, 0 }); //Punch
-	TerryCrouchKick.PushBack({ 0, 0, 0, 0 }); //Riposte x2
-	TerryCrouchKick.speed = 0.1f;
+	TerryCrouchKick.PushBack({ 0, 788, 56, 112 }); //Charge
+	TerryCrouchKick.PushBack({ 56, 788, 58, 112 }); //Riposte
+	TerryCrouchKick.PushBack({ 114, 788, 92, 112 }); //Punch
+	TerryCrouchKick.PushBack({ 206, 788, 58, 112 }); //Riposte x2
+	TerryCrouchKick.speed = 1.0f;
 
 	//MIRROR -----------------------------------------------------------------------------------------
 
@@ -207,6 +208,9 @@ bool ModulePlayer::Start()
 	Terryposition.y = 100;
 	score = 0;
 	col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
+	colcp = App->collisions->AddCollider({ 1000, 1000, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+	colck = App->collisions->AddCollider({ 1000, 1000, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+
 	current_animation = &Terryidle;
 	currentstate = ST_IDLE;
 	font_score = App->fonts->Load("fonts/scorenums.png", "1234567890", 1);
@@ -475,13 +479,14 @@ update_status ModulePlayer::Update()
 		if (gmode != true)
 		col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
 	}
+	if (TerryCrouch.Finished() == true && currentstate!=ST_CROUCH)
+		TerryCrouch.Reset();
 
 	//CROUCHPUNCH
 	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && currentstate == ST_CROUCH)
 	{
 		currentstate = ST_PUNCH_CROUCH;
 		current_animation = &TerryCrouchPunch;
-		colcp = App->collisions->AddCollider({ 0, 0, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 		colcp->rect.x = Terryposition.x + 50;
 		colcp->rect.y = Terryposition.y + 55;
 	}
@@ -493,6 +498,8 @@ update_status ModulePlayer::Update()
 		currentstate = ST_CROUCH;
 		current_animation = &TerryCrouch;
 		TerryCrouchPunch.Reset();
+		colcp = App->collisions->AddCollider({ 0, 0, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+
 	}
 
 	//CROUCHKICK
@@ -500,7 +507,8 @@ update_status ModulePlayer::Update()
 	{
 		currentstate = ST_KICK_CROUCH;
 		current_animation = &TerryCrouchKick;
-		colck = App->collisions->AddCollider({ Terryposition.x + 50, Terryposition.y + 55, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+		colck->rect.x = Terryposition.x + 50;
+		colck->rect.y = Terryposition.y + 90;
 	}
 	if (TerryCrouchKick.Finished() == true)
 	{
@@ -510,6 +518,7 @@ update_status ModulePlayer::Update()
 		currentstate = ST_CROUCH;
 		current_animation = &TerryCrouch;
 		TerryCrouchKick.Reset();
+		colck = App->collisions->AddCollider({ 0, 0, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 	}
 
 	//POWER WAVE
@@ -598,7 +607,8 @@ update_status ModulePlayer::Update()
 	// TODO 3: Update collider position to player position
 	col->rect.x = Terryposition.x + 15;  //le sigue horizontalmente
 	col->rect.y = Terryposition.y + 10;  //NO le sigue verticalmente
-	 
+	
+
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
@@ -606,8 +616,8 @@ update_status ModulePlayer::Update()
 	if (destroyed == false)
 	{
 		if ((current_animation == (&TerryKick)) || current_animation == (&TerryJump) || current_animation == (&TerryForward)
-			|| current_animation == (&TerryBackwards) || current_animation == &TerryDP || current_animation == &TerryDP || current_animation == &TerryCrouchPunch
-			|| current_animation == &TerryJumpForward || current_animation == &TerryJumpBackwards)
+			|| current_animation == (&TerryBackwards) || current_animation == &TerryDP || current_animation == &TerryDK || current_animation == &TerryCrouchPunch 
+			|| current_animation==&TerryCrouchKick || current_animation == &TerryJumpForward || current_animation == &TerryJumpBackwards || current_animation==&TerryCrouch)
 		{
 			App->render->Blit(graphics2, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
 		}
