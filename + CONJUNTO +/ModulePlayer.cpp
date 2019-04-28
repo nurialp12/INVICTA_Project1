@@ -19,16 +19,28 @@ float stantardDMG = 11.5;
 int jumpspeed = 60;
 bool airkick = true;
 
+bool up = false;
+bool down = false;
+bool nothing = true;
+
 ModulePlayer::ModulePlayer()
 {
 	lifebar = { 15, 69, 166, 75 };
 	life1 = { 10, 77, 1, 6 };
 	life2 = { 11, 77, 4, 6 };
+	
+	//TOMÁS
+	//Terryidle.PushBack({ 28, 909, 58, 112 });
+	//Terryidle.PushBack({ 96, 910, 59, 112 });
+	//Terryidle.PushBack({ 28, 909, 58, 112 });
+	//Terryidle.PushBack({ 165, 909, 58, 112 });
+	//Terryidle.speed = 0.1f;
 
 	Terryidle.PushBack({ 28, 909, 58, 112 });
 	Terryidle.PushBack({ 96, 910, 59, 112 });
-	Terryidle.PushBack({ 28, 909, 58, 112 });
 	Terryidle.PushBack({ 165, 909, 58, 112 });
+	Terryidle.PushBack({ 96, 910, 59, 112 });
+	//Terryidle.PushBack({ 28, 909, 58, 112 });
 	Terryidle.speed = 0.1f;
 
 	// WALK FORWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
@@ -361,6 +373,7 @@ update_status ModulePlayer::Update()
 		current_animation = &TerryJump;
 		Terryposition.y -= jumpspeed;
 		App->render->camera.y = 0;
+
 		if (Terryposition.y == 80)
 			jumpspeed = -60;
 		//App->render->camera.y = 0;
@@ -396,10 +409,18 @@ update_status ModulePlayer::Update()
 	{
 		currentstate = ST_JUMP_FORWARD;
 		current_animation = &TerryJumpForward;
+		Terryposition.y -= jumpspeed;
+		App->render->camera.y = 0;
+		if (Terryposition.y == 80)
+			jumpspeed = -60;
+		//App->render->camera.y = 0;
+		if (Terryposition.y == 120)
+			jumpspeed = 60;
+		//App->render->camera.y = -30;
 	}
 	if (TerryJumpForward.Finished() != true && currentstate == ST_JUMP_FORWARD)
 	{
-		if (Terryposition.y == 80)
+		if (Terryposition.y == 80/*100*/)
 			jumpspeed = -60;
 		if (Terryposition.y == 120)
 			jumpspeed = 60;
@@ -427,6 +448,7 @@ update_status ModulePlayer::Update()
 			current_animation = &Terryidle;
 		}
 		Terryposition.y = 100;
+		App->render->camera.y = -20;
 		TerryJumpForward.Reset();
 	}
 
@@ -435,6 +457,14 @@ update_status ModulePlayer::Update()
 	{
 		currentstate = ST_JUMP_BACKWARD;
 		current_animation = &TerryJumpBackwards;
+		Terryposition.y -= jumpspeed;
+		App->render->camera.y = 0;
+		if (Terryposition.y == 80)
+			jumpspeed = -60;
+		//App->render->camera.y = 0;
+		if (Terryposition.y == 120)
+			jumpspeed = 60;
+		//App->render->camera.y = -30;
 	}
 	if (TerryJumpBackwards.Finished() != true && currentstate == ST_JUMP_BACKWARD)
 	{
@@ -466,6 +496,7 @@ update_status ModulePlayer::Update()
 			current_animation = &Terryidle;
 		}
 		Terryposition.y = 100;
+		App->render->camera.y = -20;
 		TerryJumpBackwards.Reset();
 	}
 
