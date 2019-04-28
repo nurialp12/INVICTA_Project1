@@ -542,10 +542,19 @@ update_status ModulePlayer::Update()
 		if (colcp)
 			colcp->to_delete = true;
 		TerryCrouchPunch.resetLoops(0);
-		currentstate = ST_CROUCH;
-		current_animation = &TerryCrouch;
+
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_CROUCH;
+			current_animation = &TerryCrouch;
+		}
+		else
+		{
+			currentstate = ST_IDLE;
+			current_animation = &Terryidle;
+		}
 		TerryCrouchPunch.Reset();
-		colcp = App->collisions->AddCollider({ 0, 0, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+		colcp = App->collisions->AddCollider({ 1000, 1000, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 
 	}
 
