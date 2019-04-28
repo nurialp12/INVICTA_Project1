@@ -10,7 +10,7 @@
 
 
 
-bool ModuleAudio::PlayMusic(const char* path)
+bool ModuleAudio::PlayMusic(const char* path, const int times)
 {
 
 	//NÚRIA
@@ -48,7 +48,7 @@ bool ModuleAudio::PlayMusic(const char* path)
 		return false;
 	}
 
-	if (Mix_FadeInMusic(music, -1, 2000) == -1) {
+	if (Mix_FadeInMusic(music, times, 2000) < 0) {
 		LOG("Mix_FadeInMusic: %s\n", Mix_GetError());
 		return false;
 	}
@@ -71,7 +71,7 @@ bool ModuleAudio::StopMusic()
 	return true;
 }
 
-void ModuleAudio::MuteMusic(const char* path)
+void ModuleAudio::MuteMusic(const char* path, const int times)
 {
 	if (!mute)
 	{
@@ -81,7 +81,7 @@ void ModuleAudio::MuteMusic(const char* path)
 	}
 	else
 	{
-		App->audio->PlayMusic(path);
+		App->audio->PlayMusic(path, times);
 		mute = false;
 	}
 }

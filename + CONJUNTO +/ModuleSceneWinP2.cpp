@@ -8,7 +8,7 @@
 #include "ModulePlayer2.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleSceneIni.h"
+#include "ModuleSceneIntro.h"
 #include "SDL/include/SDL.h"
 #include "ModuleParticles.h"
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
@@ -69,7 +69,7 @@ update_status ModuleSceneWinP2::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(App->end_game2, App->scene_2, 2.5);
+		App->fade->FadeToBlack(App->end_game2, App->intro, 2.5);
 	}
 
 

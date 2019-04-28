@@ -279,7 +279,7 @@ update_status ModulePlayer2::Update()
 		if (mirror2)
 		{
 			current_animation = &Terry2ForwardM;
-			if (Terry2position.x < 570 && Terry2position.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w)) 
+			if (Terry2position.x < 700 && Terry2position.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w)) 
 			{
 				Terry2position.x += speed;
 			}

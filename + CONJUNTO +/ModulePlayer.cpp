@@ -196,9 +196,12 @@ bool ModulePlayer::Start()
 	bool ret = true;
 	graphics = App->textures->Load("spritesTerryBogard.png");
 	graphics2 = App->textures->Load("spritesTerryBogard2extres.png");
-	UI = App->textures->Load("UI.png");
+
 	graphicsM = App->textures->Load("spritesTerryBogardMIRROR.png");
 	graphics2M = App->textures->Load("spritesTerryBogard2extresMIRROR.png");
+
+	UI = App->textures->Load("UI.png");
+
 	destroyed = false;
 	Terryposition.x = 5 + (250);
 	Terryposition.y = 100;
@@ -323,10 +326,13 @@ update_status ModulePlayer::Update()
 		currentstate = ST_JUMP_NEUTRAL;
 		current_animation = &TerryJump;
 		Terryposition.y -= jumpspeed;
+		App->render->camera.y = 0;
 		if (Terryposition.y == 80)
 			jumpspeed = -60;
+			//App->render->camera.y = 0;
 		if (Terryposition.y == 120)
 			jumpspeed = 60;
+			//App->render->camera.y = -30;
 	}
 	if (TerryJump.Finished() == true || Terryposition.y==80)
 	{
@@ -334,6 +340,7 @@ update_status ModulePlayer::Update()
 		currentstate = ST_IDLE;
 		current_animation = &Terryidle;
 		Terryposition.y = 100;
+		App->render->camera.y = -30;
 		TerryJump.Reset();
 	}
 
