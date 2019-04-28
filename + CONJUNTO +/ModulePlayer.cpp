@@ -757,8 +757,7 @@ update_status ModulePlayer::Update()
 		currentstate = ST_POWER_WAVE;
 		current_animation = &TerryPW;
 
-		App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 40, Terryposition.y + 12);
-
+		
 		App->audio->PlayFX("Assets/FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
 	}
 	if (TerryPW.Finished() == true)
@@ -771,7 +770,7 @@ update_status ModulePlayer::Update()
 			App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 92, Terryposition.y + 12, 400);
 			App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 108, Terryposition.y + 12, 600);
 			App->particles->AddParticle(App->particles->terryenergy, Terryposition.x + 124, Terryposition.y + 12, 800);
-			App->audio->PlayFX("Assets/FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
+			App->particles->terryenergy.col->to_delete == true;
 		}
 		TerryPW.resetLoops(0);
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
