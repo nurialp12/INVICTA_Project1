@@ -176,7 +176,7 @@ bool ModuleSceneIni::Start()
 	
 	bool ret = true;
 	graphics = App->textures->Load("Neo_Geo.png");
-	App->audio->PlayMusic("music/Neo_Geo/Neo_Geo.ogg");
+	App->audio->PlayMusic("music/Neo_Geo/Neo_Geo.ogg", 0);
 
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->destroyed = true;
@@ -190,7 +190,7 @@ bool ModuleSceneIni::CleanUp()
 
 	graphics = nullptr;
 	SDL_DestroyTexture(App->textures->Load("Neo_Geo.png"));
-	App->audio->CleanUp();
+	//App->audio->CleanUp();
 	LOG("Unloading ini stage");
 
 

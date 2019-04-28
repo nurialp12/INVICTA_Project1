@@ -18,8 +18,14 @@ public:
 
 public:
 
-	SDL_Texture* graphics = nullptr;
-	Animation background;
+	
+	SDL_Texture* graphics5 = nullptr;
+	SDL_Texture* graphics6 = nullptr;
+	SDL_Texture* graphics7 = nullptr;
+	
+	Animation background5;
+	Animation background6;
+	Animation background7;
 	//Animation game;
 
 

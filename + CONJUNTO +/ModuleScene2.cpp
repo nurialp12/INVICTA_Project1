@@ -65,7 +65,7 @@ bool ModuleScene2::Start()
 	// TODO 1: Add colliders for the first columns of the level
 	
 
-	App->audio->PlayMusic("music/Haremar religion/Haremar religion.ogg");
+	App->audio->PlayMusic("music/Haremar religion/Haremar religion.ogg", -1);
 
 	return ret;
 }
@@ -104,7 +104,7 @@ update_status ModuleScene2::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_F9] == 1)
 	{
-		App->audio->MuteMusic("music/Haremar religion/Haremar religion.ogg");
+		App->audio->MuteMusic("music/Haremar religion/Haremar religion.ogg", -1);
 	}
 
 
