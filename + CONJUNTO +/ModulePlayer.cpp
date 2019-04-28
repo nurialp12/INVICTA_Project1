@@ -14,7 +14,7 @@
 #include "SDL\include\SDL.h"
 #include <stdio.h>
 
-int speed =1;
+int speed = 1;
 float stantardDMG = 11.5;
 int jumpspeed = 60;
 bool airkick = true;
@@ -33,8 +33,8 @@ ModulePlayer::ModulePlayer()
 
 	// WALK FORWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
 	//TerryForward.frames.PushBack({/**/, /**/, /**/, /**/});
-	TerryForward.PushBack({  21, 268, 59, 112 });
-	TerryForward.PushBack({  96, 268, 69, 112 });
+	TerryForward.PushBack({ 21, 268, 59, 112 });
+	TerryForward.PushBack({ 96, 268, 69, 112 });
 	TerryForward.PushBack({ 178, 268, 59, 112 });
 	TerryForward.PushBack({ 252, 268, 59, 112 });
 	TerryForward.speed = 0.1f;
@@ -47,18 +47,16 @@ ModulePlayer::ModulePlayer()
 	TerryBackwards.speed = 0.1f;
 
 	// JUMP animation of Terry							//spritesTerryBogard2extres.png
-
 	TerryJump.PushBack({ 802, 0, 57, 123 });
 	TerryJump.PushBack({ 859, 0, 51, 123 });
 	TerryJump.PushBack({ 910, 0, 53, 123 });
-	TerryJump.PushBack({ 967, 0, 57, 123 }); 
-	TerryJump.PushBack({ 802, 0, 57, 123 }); 
+	TerryJump.PushBack({ 967, 0, 57, 123 });
+	TerryJump.PushBack({ 802, 0, 57, 123 });
 	TerryJump.speed = 0.1f;
 
-
 	// KICK animation of Terry							//spritesTerryBogard2extres.png
-	TerryKick.PushBack({   0, 134,  47, 112 });
-	TerryKick.PushBack({  47, 134,  57, 112 });
+	TerryKick.PushBack({ 0, 134,  47, 112 });
+	TerryKick.PushBack({ 47, 134,  57, 112 });
 	TerryKick.PushBack({ 104, 134,  42, 112 });
 	TerryKick.PushBack({ 146, 134, 116, 112 });
 	TerryKick.PushBack({ 261, 134,  62, 112 });
@@ -81,7 +79,7 @@ ModulePlayer::ModulePlayer()
 	TerryPW.speed = 0.1f;
 
 	//DAMAGED BY PUNCH
-	TerryDP.PushBack({  0, 912, 59, 112 });
+	TerryDP.PushBack({ 0, 912, 59, 112 });
 	TerryDP.PushBack({ 64, 912, 67, 112 });
 	TerryDP.speed = 0.1f;
 
@@ -91,7 +89,7 @@ ModulePlayer::ModulePlayer()
 	TerryDK.speed = 0.1f;
 
 	//CROUCH
-	TerryCrouch.PushBack({ 488, 912, 57, 112 }); 
+	TerryCrouch.PushBack({ 488, 912, 57, 112 });
 	TerryCrouch.PushBack({ 545, 912, 52, 112 });
 	TerryCrouch.speed = 0.2f;
 	TerryCrouch.loop = false;
@@ -184,8 +182,8 @@ ModulePlayer::ModulePlayer()
 	TerryPWM.speed = 0.1f;
 
 	//hit particle animation
-	hit.PushBack({671, 263, 22, 33});
-	hit.PushBack({690, 263, 24, 33});
+	hit.PushBack({ 671, 263, 22, 33 });
+	hit.PushBack({ 690, 263, 24, 33 });
 	hit.PushBack({ 721, 263, 32, 33 });
 	hit.PushBack({ 757, 263, 32, 33 });
 	hit.speed = 0.5f;
@@ -317,7 +315,7 @@ update_status ModulePlayer::Update()
 			current_animation = &Terryidle;
 		}
 	}
-	
+
 	//MOVE BACKWARD
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
 	{
@@ -353,12 +351,12 @@ update_status ModulePlayer::Update()
 		App->render->camera.y = 0;
 		if (Terryposition.y == 80)
 			jumpspeed = -60;
-			//App->render->camera.y = 0;
+		//App->render->camera.y = 0;
 		if (Terryposition.y == 120)
 			jumpspeed = 60;
-			//App->render->camera.y = -30;
+		//App->render->camera.y = -30;
 	}
-	if (TerryJump.Finished() == true || Terryposition.y==80)
+	if (TerryJump.Finished() == true || Terryposition.y == 80)
 	{
 		TerryJump.resetLoops(0);
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
@@ -387,7 +385,7 @@ update_status ModulePlayer::Update()
 		currentstate = ST_JUMP_FORWARD;
 		current_animation = &TerryJumpForward;
 	}
-	if (TerryJumpForward.Finished() != true && currentstate==ST_JUMP_FORWARD)
+	if (TerryJumpForward.Finished() != true && currentstate == ST_JUMP_FORWARD)
 	{
 		if (Terryposition.y == 80)
 			jumpspeed = -60;
@@ -439,7 +437,7 @@ update_status ModulePlayer::Update()
 			if (App->render->camera.x < 0 && App->player->destroyed == false &&
 				(App->player2->Terry2position.x * 2 - 160) < (-(App->render->camera.x - App->render->camera.w)) &&
 				App->input->keyboard[SDL_SCANCODE_LEFT] != KEY_STATE::KEY_REPEAT)
-				App->render->camera.x += 2*speed;
+				App->render->camera.x += 2 * speed;
 		}
 	}
 	if (TerryJumpBackwards.Finished() == true || Terryposition.y == 80)
@@ -497,14 +495,14 @@ update_status ModulePlayer::Update()
 	}
 
 	//CROUCH
-	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN &&( currentstate == ST_IDLE || currentstate==ST_WALK_FORWARD || currentstate==ST_WALK_BACKWARD))
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && (currentstate == ST_IDLE || currentstate == ST_WALK_FORWARD || currentstate == ST_WALK_BACKWARD))
 	{
 		currentstate = ST_CROUCH;
 		current_animation = &TerryCrouch;
 		if (col)
 			col->to_delete = true;
 		if (gmode != true)
-		colc = App->collisions->AddCollider({ Terryposition.x + 13, Terryposition.y + 50, 36, 60 }, COLLIDER_PLAYER, App->player);
+			colc = App->collisions->AddCollider({ Terryposition.x + 13, Terryposition.y + 50, 36, 60 }, COLLIDER_PLAYER, App->player);
 	}
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP && currentstate == ST_CROUCH)
 	{
@@ -518,7 +516,7 @@ update_status ModulePlayer::Update()
 			currentstate = ST_WALK_BACKWARD;
 			current_animation = &TerryBackwards;
 		}
-		else 
+		else
 		{
 			currentstate = ST_IDLE;
 			current_animation = &Terryidle;
@@ -526,9 +524,9 @@ update_status ModulePlayer::Update()
 		if (colc)
 			colc->to_delete = true;
 		if (gmode != true)
-		col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
+			col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
 	}
-	if (TerryCrouch.Finished() == true && currentstate!=ST_CROUCH)
+	if (TerryCrouch.Finished() == true && currentstate != ST_CROUCH)
 		TerryCrouch.Reset();
 
 	//CROUCHPUNCH
@@ -581,7 +579,7 @@ update_status ModulePlayer::Update()
 	//{
 	//	current_animation = &TerryPW;
 	//}
-	if (App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_DOWN && currentstate==ST_IDLE)
+	if (App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
 	{
 		currentstate = ST_POWER_WAVE;
 		current_animation = &TerryPW;
@@ -612,7 +610,7 @@ update_status ModulePlayer::Update()
 			gmode = false;
 		}
 	}
-	
+
 	App->render->Blit(UI, 0, 0, &lifebar, 0);
 	if (life_score >= 4)
 	{
@@ -666,11 +664,11 @@ update_status ModulePlayer::Update()
 		App->render->Blit(UI, 115, 26, &life2, 0);
 		App->render->Blit(UI, 119, 26, &life1, 0);
 	}
-	
+
 	// TODO 3: Update collider position to player position
 	col->rect.x = Terryposition.x + 15;  //le sigue horizontalmente
 	col->rect.y = Terryposition.y + 10;  //NO le sigue verticalmente
-	
+
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
@@ -679,8 +677,8 @@ update_status ModulePlayer::Update()
 	if (destroyed == false)
 	{
 		if ((current_animation == (&TerryKick)) || current_animation == (&TerryJump) || current_animation == (&TerryForward)
-			|| current_animation == (&TerryBackwards) || current_animation == &TerryDP || current_animation == &TerryDK || current_animation == &TerryCrouchPunch 
-			|| current_animation==&TerryCrouchKick || current_animation == &TerryJumpForward || current_animation == &TerryJumpBackwards || current_animation==&TerryCrouch)
+			|| current_animation == (&TerryBackwards) || current_animation == &TerryDP || current_animation == &TerryDK || current_animation == &TerryCrouchPunch
+			|| current_animation == &TerryCrouchKick || current_animation == &TerryJumpForward || current_animation == &TerryJumpBackwards || current_animation == &TerryCrouch)
 		{
 			App->render->Blit(graphics2, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
 		}
@@ -696,382 +694,13 @@ update_status ModulePlayer::Update()
 
 	return UPDATE_CONTINUE;
 }
-
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_PLAYER && collided == false)
 	{
-		
+
 		life_score -= stantardDMG;
 		collided = true;
 
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//#if 0;
-//
-//
-//update_status ModulePlayer2::Update()
-//{
-//	// MIRROR
-//	if (Terry2position.x < App->player->Terryposition.x) { mirror2 = false; }
-//	else { mirror2 = true; }
-//
-//	//Animation* current_animation = NULL;
-//
-//
-//	if (true)
-//	{
-//
-//		if (mirror2) { current_animation = &Terry2idleM; }
-//
-//		else { current_animation = &Terry2idle; }
-//
-//
-//	}
-//
-//
-//	int speed = 1;
-//
-//
-//	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
-//	{
-//
-//
-//		if (mirror2)
-//		{
-//			current_animation = &Terry2ForwardM;
-//			if (Terry2position.x < 700 && Terry2position.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w))
-//			{
-//				Terry2position.x += speed;
-//			}
-//		}
-//
-//		else
-//		{
-//			current_animation = &Terry2Forward;
-//
-//			if (Terry2position.x < 570 && Terry2position.x * 2 - 260 < -(App->render->camera.x - App->render->camera.w))
-//			{
-//				Terry2position.x += speed;
-//
-//			}
-//
-//		}
-//
-//	}
-//
-//
-//	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
-//	{
-//
-//		if (mirror2)
-//		{
-//			current_animation = &Terry2BackwardsM;
-//			if (Terry2position.x > 0 && Terry2position.x * 2 > -App->render->camera.x)
-//			{
-//				Terry2position.x -= speed;
-//			}
-//
-//		}
-//
-//		else
-//		{
-//			current_animation = &Terry2Backwards;
-//			if (Terry2position.x > 0 && Terry2position.x * 2 > -App->render->camera.x)
-//			{
-//				Terry2position.x -= speed;
-//
-//			}
-//		}
-//
-//	}
-//
-//
-//	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
-//	{
-//
-//		if (mirror2) { current_animation = &Terry2JumpM; }
-//
-//		else { current_animation = &Terry2Jump; }
-//
-//		/*FER QUE PER LES DUES PRIEMERES ANIMACIONS PUGI X PÍXELS I LES DUES ÚLTIMES QUE ELS BAIXI*/
-//
-//
-//	}
-//
-//	//if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
-//	//{
-//	//	if (terry2position.x < 570)
-//	//	{
-//	//		current_animation = &terryforward;
-//	//		terryposition.x += speed;
-//	//	}
-//	//}
-//	//if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
-//	//{
-//	//	if (terry2position.x > 0)
-//	//	{
-//	//		current_animation = &terrybackward;
-//	//		terry2position.x -= speed;
-//	//	}
-//	//}
-//
-//		//PUNCH
-//	if (App->input->keyboard[SDL_SCANCODE_I] == KEY_STATE::KEY_DOWN)
-//	{
-//		colp = App->collisions->AddCollider({ Terry2position.x + 45, Terry2position.y + 20, 43, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
-//
-//	}
-//
-//	if (App->input->keyboard[SDL_SCANCODE_I] == KEY_STATE::KEY_REPEAT)
-//	{
-//
-//		if (mirror2) { current_animation = &Terry2PunchM; }
-//		else { current_animation = &Terry2Punch; }
-//
-//	}
-//
-//
-//	if (App->input->keyboard[SDL_SCANCODE_I] == KEY_STATE::KEY_UP)
-//	{
-//		if (colp)
-//			colp->to_delete = true;
-//	}
-//
-//	//KICK
-//	if (App->input->keyboard[SDL_SCANCODE_O] == KEY_STATE::KEY_DOWN)
-//		colk = App->collisions->AddCollider({ Terry2position.x + 45, Terry2position.y + 48, 55, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
-//
-//	if (App->input->keyboard[SDL_SCANCODE_O] == KEY_STATE::KEY_REPEAT)
-//	{
-//		if (mirror2) { current_animation = &Terry2KickM; }
-//		else { current_animation = &Terry2Kick; }
-//
-//	}
-//
-//	if (App->input->keyboard[SDL_SCANCODE_O] == KEY_STATE::KEY_UP)
-//	{
-//		if (colk)
-//			colk->to_delete = true;
-//	}
-//
-//	//PPWER WAVE
-//	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
-//	{
-//		App->particles->AddEnemyParticle(App->particles->terryenergy, Terry2position.x + 40, Terry2position.y + 12);
-//		App->audio->PlayFX("FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
-//	}
-//
-//
-//	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_REPEAT)
-//	{
-//
-//		if (mirror2) { current_animation = &Terry2PWM; }
-//
-//		else { current_animation = &Terry2PW; }
-//	}
-//
-//	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN)
-//	{
-//		if (gmode == false)
-//		{
-//			LOG("Starting GOD MODE");
-//			gmode = true;
-//			col->to_delete = true;
-//		}
-//		else
-//		{
-//			LOG("GOD MODE off");
-//			col = App->collisions->AddCollider({ 0, 0, 30, 103 }, COLLIDER_ENEMY, App->player2);
-//			gmode = false;
-//		}
-//	}
-//
-//
-//	App->render->Blit(UI, 165, 0, &lifebar, 0);
-//	if (life_score >= 4)
-//	{
-//		App->render->Blit(UI, 263, 26, &life1, 0);
-//		App->render->Blit(UI, 259, 26, &life2, 0);
-//	}
-//	if (life_score >= 8)
-//	{
-//		App->render->Blit(UI, 255, 26, &life2, 0);
-//	}
-//	if (life_score >= 12)
-//	{
-//		App->render->Blit(UI, 251, 26, &life2, 0);
-//	}
-//	if (life_score >= 16)
-//	{
-//		App->render->Blit(UI, 247, 26, &life2, 0);
-//	}
-//	if (life_score >= 20)
-//	{
-//		App->render->Blit(UI, 243, 26, &life2, 0);
-//	}
-//	if (life_score >= 24)
-//	{
-//		App->render->Blit(UI, 239, 26, &life2, 0);
-//	}
-//	if (life_score >= 28)
-//	{
-//		App->render->Blit(UI, 235, 26, &life2, 0);
-//	}
-//	if (life_score >= 32)
-//	{
-//		App->render->Blit(UI, 231, 26, &life2, 0);
-//	}
-//	if (life_score >= 36)
-//	{
-//		App->render->Blit(UI, 227, 26, &life2, 0);
-//	}
-//	if (life_score >= 40)
-//	{
-//		App->render->Blit(UI, 223, 26, &life2, 0);
-//	}
-//	if (life_score >= 44)
-//	{
-//		App->render->Blit(UI, 219, 26, &life2, 0);
-//	}
-//	if (life_score >= 48)
-//	{
-//		App->render->Blit(UI, 215, 26, &life2, 0);
-//	}
-//	if (life_score >= 52)
-//	{
-//		App->render->Blit(UI, 211, 26, &life2, 0);
-//	}
-//	if (life_score >= 56)
-//	{
-//		App->render->Blit(UI, 207, 26, &life2, 0);
-//	}
-//	if (life_score >= 60)
-//	{
-//		App->render->Blit(UI, 203, 26, &life2, 0);
-//	}
-//	if (life_score >= 64)
-//	{
-//		App->render->Blit(UI, 199, 26, &life2, 0);
-//	}
-//	if (life_score >= 68)
-//	{
-//		App->render->Blit(UI, 195, 26, &life2, 0);
-//	}
-//	if (life_score >= 72)
-//	{
-//		App->render->Blit(UI, 191, 26, &life2, 0);
-//	}
-//	if (life_score >= 76)
-//	{
-//		App->render->Blit(UI, 187, 26, &life2, 0);
-//	}
-//	if (life_score >= 80)
-//	{
-//		App->render->Blit(UI, 183, 26, &life2, 0);
-//	}
-//	if (life_score >= 84)
-//	{
-//		App->render->Blit(UI, 179, 26, &life2, 0);
-//	}
-//	if (life_score >= 88)
-//	{
-//		App->render->Blit(UI, 175, 26, &life2, 0);
-//	}
-//	if (life_score >= 92)
-//	{
-//		App->render->Blit(UI, 171, 26, &life2, 0);
-//		App->render->Blit(UI, 170, 26, &life1, 0);
-//	}
-//
-//	// TODO 3: Update collider position to player position
-//	//col->rect.x = Terryposition.x;
-//	//col->rect.y = Terryposition.y;
-//	col->rect.x = Terry2position.x + 15;
-//	col->rect.y = Terry2position.y + 10;
-//
-//	// Draw everything --------------------------------------
-//	SDL_Rect r = current_animation->GetCurrentFrame();
-//
-//	// Draw everything --------------------------------------
-//	if (destroyed == false)
-//	{
-//
-//
-//		if ((current_animation == (&Terry2Kick)) || current_animation == (&Terry2Jump) || current_animation == (&Terry2Forward) || current_animation == (&Terry2Backwards) /*current_animation == (&TerryKick || &TerryJump || &TerryForward || &TerryBackwards)*/)
-//		{
-//			App->render->Blit(graphics2, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
-//		}
-//
-//		else if ((current_animation == (&Terry2KickM)) || current_animation == (&Terry2JumpM) || current_animation == (&Terry2ForwardM) || current_animation == (&Terry2BackwardsM))
-//		{
-//			//App->render->Blit(graphics2, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
-//			App->render->Blit(graphics2M, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
-//		}
-//
-//		else if ((current_animation == (&Terry2idleM)) || current_animation == (&Terry2PunchM) || current_animation == (&Terry2PWM))
-//		{
-//			//App->render->Blit(graphics2, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
-//			App->render->Blit(graphicsM, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
-//		}
-//
-//
-//		else
-//		{
-//			App->render->Blit(graphics, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
-//		}
-//		//App->render->Blit(graphics, terry2position.x, terry2position.y, &(current_animation->GetCurrentFrame()));
-//	}
-//
-//	// Draw UI (score) --------------------------------------
-//	sprintf_s(score_text, 10, "%7d", score);
-//
-//	// TODO 3: Blit the text of the score in at the bottom of the screen
-//	//App->fonts->BlitText(0, 150, font_score, "1");
-//
-//	return UPDATE_CONTINUE;
-//}
-//
-//
-//
-//#endif;
-
