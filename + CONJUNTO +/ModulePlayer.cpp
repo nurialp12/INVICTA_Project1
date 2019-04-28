@@ -418,8 +418,14 @@ update_status ModulePlayer::Update()
 		}
 		else
 		{
+
 			currentstate = ST_IDLE;
+
+			//if (mirror) { current_animation = &TerryidleM; }
+			//else { current_animation = &Terryidle; }
+
 			current_animation = &Terryidle;
+		
 		}
 	}
 
@@ -449,7 +455,11 @@ update_status ModulePlayer::Update()
 		else
 		{
 			currentstate = ST_IDLE;
-			current_animation = &Terryidle;
+
+			//if (mirror) { current_animation = &TerryidleM; }
+			//else { current_animation = &Terryidle; }
+
+			current_animation = &Terryidle;		
 		}
 	}
 
@@ -460,7 +470,13 @@ update_status ModulePlayer::Update()
 
 		currentstate = ST_JUMP_NEUTRAL;
 
-		current_animation = &TerryJump;
+		if (mirror) { current_animation = &TerryJumpM; }
+		else { current_animation = &TerryJump; }
+
+
+		//current_animation = &TerryJump;
+
+
 		Terryposition.y -= jumpspeed;
 		App->render->camera.y = 0;
 
@@ -500,12 +516,23 @@ update_status ModulePlayer::Update()
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		{
 			currentstate = ST_WALK_FORWARD;
-			current_animation = &TerryForward;
+
+			if (mirror) { current_animation = &TerryBackwardsM; }
+			else { current_animation = &TerryForward; }
+
+			//current_animation = &TerryForward;
+
+
 		}
 		else if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 		{
 			currentstate = ST_WALK_BACKWARD;
-			current_animation = &TerryBackwards;
+			
+			if (mirror) { current_animation = &TerryForwardM; }
+			else { current_animation = &TerryBackwards; }
+			
+			//current_animation = &TerryBackwards;
+
 		}
 		else
 		{
