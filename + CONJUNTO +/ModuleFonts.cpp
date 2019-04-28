@@ -51,8 +51,8 @@ int ModuleFonts::Load(const char* texture_path, const char* characters, uint row
 	fonts[id].len = strlen(characters);
 	uint w, h;
 	App->textures->GetSize(fonts[id].graphic, w, h);
-	fonts[id].row_chars = fonts[id].len / rows;
-	fonts[id].char_w = w / fonts[id].len;
+	fonts[id].row_chars = strlen(characters) / rows;
+	fonts[id].char_w = w / fonts[id].row_chars;
 	fonts[id].char_h = h / rows;
 
 	// len: lenght of the table
@@ -95,17 +95,15 @@ void ModuleFonts::BlitText(int x, int y, int font_id, const char* text) const
 	for (uint i = 0; i < len; ++i)
 	{
 		// TODO 2: Find the character in the table and its position in the texture, then Blit
-		for (uint j = 0; j < fonts[font_id].len; j++)
+		for (uint j = 0; j <= font->len; j++)
 		{
-			if (text[j] == fonts[font_id].table[j])
+			if (text[i] == font->table[j])
 			{
-				SDL_Rect rectt;
-				rectt.h = fonts[font_id].char_h;
-				rectt.w = fonts[font_id].char_w;
-				rectt.x = j % fonts[font_id].row_chars;
-				rectt.y = (int)j / fonts[font_id].row_chars;
-				App->render->Blit(fonts[font_id].graphic, x, y, &rectt, NULL);
+				rect.x = (j % font->row_chars)*font->char_w;
+				rect.y = (j / font->row_chars)*font->char_h;
+				
 			}
+			App->render->Blit(font->graphic, x + (i*font->char_w), y, &rect, 1.0f);
 		}
 	}
 }

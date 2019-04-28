@@ -430,48 +430,48 @@ update_status ModulePlayer2::Update()
 	App->render->Blit(UI, 165, 0, &lifebar, 0);
 	if (life_score >= 4)
 	{
- 		App->render->Blit(UI, 170, 26, &life1, 0);
-		App->render->Blit(UI, 171, 26, &life2, 0);
+ 		App->render->Blit(UI, 263, 26, &life1, 0);
+		App->render->Blit(UI, 259, 26, &life2, 0);
 	}
 	if (life_score >= 8)
 	{
-		App->render->Blit(UI, 175, 26, &life2, 0);
+		App->render->Blit(UI, 255, 26, &life2, 0);
 	}
 	if (life_score >= 12)
 	{
-		App->render->Blit(UI, 179, 26, &life2, 0);
+		App->render->Blit(UI, 251, 26, &life2, 0);
 	}
 	if (life_score >= 16)
 	{
-		App->render->Blit(UI, 183, 26, &life2, 0);
+		App->render->Blit(UI, 247, 26, &life2, 0);
 	}
 	if (life_score >= 20)
 	{
-		App->render->Blit(UI, 187, 26, &life2, 0);
+		App->render->Blit(UI, 243, 26, &life2, 0);
 	}
 	if (life_score >= 24)
 	{
-		App->render->Blit(UI, 191, 26, &life2, 0);
+		App->render->Blit(UI, 239, 26, &life2, 0);
 	}
 	if (life_score >= 28)
 	{
-		App->render->Blit(UI, 195, 26, &life2, 0);
+		App->render->Blit(UI, 235, 26, &life2, 0);
 	}
 	if (life_score >= 32)
 	{
-		App->render->Blit(UI, 199, 26, &life2, 0);
+		App->render->Blit(UI, 231, 26, &life2, 0);
 	}
 	if (life_score >= 36)
 	{
-		App->render->Blit(UI, 203, 26, &life2, 0);
+		App->render->Blit(UI, 227, 26, &life2, 0);
 	}
 	if (life_score >= 40)
 	{
-		App->render->Blit(UI, 207, 26, &life2, 0);
+		App->render->Blit(UI, 223, 26, &life2, 0);
 	}
 	if (life_score >= 44)
 	{
-		App->render->Blit(UI, 211, 26, &life2, 0);
+		App->render->Blit(UI, 219, 26, &life2, 0);
 	}
 	if (life_score >= 48)
 	{
@@ -479,48 +479,48 @@ update_status ModulePlayer2::Update()
 	}
 	if (life_score >= 52)
 	{
-		App->render->Blit(UI, 219, 26, &life2, 0);
+		App->render->Blit(UI, 211, 26, &life2, 0);
 	}
 	if (life_score >= 56)
 	{
-		App->render->Blit(UI, 223, 26, &life2, 0);
+		App->render->Blit(UI, 207, 26, &life2, 0);
 	}
 	if (life_score >= 60)
 	{
-		App->render->Blit(UI, 227, 26, &life2, 0);
+		App->render->Blit(UI, 203, 26, &life2, 0);
 	}
 	if (life_score >= 64)
 	{
-		App->render->Blit(UI, 231, 26, &life2, 0);
+		App->render->Blit(UI, 199, 26, &life2, 0);
 	}
 	if (life_score >= 68)
 	{
-		App->render->Blit(UI, 235, 26, &life2, 0);
+		App->render->Blit(UI, 195, 26, &life2, 0);
 	}
 	if (life_score >= 72)
 	{
-		App->render->Blit(UI, 239, 26, &life2, 0);
+		App->render->Blit(UI, 191, 26, &life2, 0);
 	}
 	if (life_score >= 76)
 	{
-		App->render->Blit(UI, 243, 26, &life2, 0);
+		App->render->Blit(UI, 187, 26, &life2, 0);
 	}
 	if (life_score >= 80)
 	{
-		App->render->Blit(UI, 247, 26, &life2, 0);
+		App->render->Blit(UI, 183, 26, &life2, 0);
 	}
 	if (life_score >= 84)
 	{
-		App->render->Blit(UI, 251, 26, &life2, 0);
+		App->render->Blit(UI, 179, 26, &life2, 0);
 	}
 	if (life_score >= 88)
 	{
-		App->render->Blit(UI, 255, 26, &life2, 0);
+		App->render->Blit(UI, 175, 26, &life2, 0);
 	}
 	if (life_score >= 92)
 	{
-		App->render->Blit(UI, 259, 26, &life2, 0);
-		App->render->Blit(UI, 263, 26, &life1, 0);
+		App->render->Blit(UI, 171, 26, &life2, 0);
+		App->render->Blit(UI, 170, 26, &life1, 0);
 	}
 
 	// TODO 3: Update collider position to player position
@@ -574,9 +574,10 @@ update_status ModulePlayer2::Update()
 // TODO 4: Detect collision with a player.
 void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY)
+	if (c1->type == COLLIDER_ENEMY && c2->type == COLLIDER_PLAYER_SHOT && collided == false)
 	{
-		App->fade->FadeToBlack((Module*)App->scene_2, (Module*)App->end_game1);
+		life_score -= 4;
+		collided = true;
 	}
 }
 
