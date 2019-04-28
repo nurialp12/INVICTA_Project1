@@ -119,6 +119,7 @@ public:
 	Collider* colc;
 	Collider* colcp;
 	Collider* colck;
+	bool collided = false;
 
 	bool gmode = false;
 	bool destroyed = false;

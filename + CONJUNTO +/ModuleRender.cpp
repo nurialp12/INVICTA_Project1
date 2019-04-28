@@ -31,7 +31,7 @@ bool ModuleRender::Init()
 		flags |= SDL_RENDERER_PRESENTVSYNC;
 	}
 
-	renderer = SDL_CreateRenderer(App->window->window, -1, SDL_RENDERER_PRESENTVSYNC);
+	renderer = SDL_CreateRenderer(App->window->window, -1, flags);
 	
 	if(renderer == NULL)
 	{
@@ -89,7 +89,8 @@ update_status ModuleRender::Update()
 	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT )
 		if (camera.x < 0 && App->player->destroyed == false &&
 			(App->player2->Terry2position.x * 2 - 160) < (-(camera.x-camera.w)) &&
-			App->input->keyboard[SDL_SCANCODE_LEFT] != KEY_STATE::KEY_REPEAT)
+			App->input->keyboard[SDL_SCANCODE_LEFT] != KEY_STATE::KEY_REPEAT &&
+			App->player->currentstate != ST_IDLE)
 		{
 			camera.x += speed;
 		}
@@ -97,21 +98,24 @@ update_status ModuleRender::Update()
 	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		if (camera.x > -900 /*-490*/ && App->player->destroyed == false &&
 			App->player2->Terry2position.x*2 > -camera.x &&
-			App->input->keyboard[SDL_SCANCODE_RIGHT] != KEY_STATE::KEY_REPEAT)
+			App->input->keyboard[SDL_SCANCODE_RIGHT] != KEY_STATE::KEY_REPEAT &&
+			App->player->currentstate != ST_IDLE)
 		{
 			camera.x -= speed;
 		}
 
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 		if (camera.x < 0 && App->player->destroyed == false &&
-			(App->player->Terryposition.x * 2 - 160) < (-(camera.x - camera.w)))
+			(App->player->Terryposition.x * 2 - 160) < (-(camera.x - camera.w)) &&
+			App->player->currentstate != ST_IDLE)
 		{
 			camera.x += speed;
 		}
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 		if (camera.x > -900 /*-490*/ && App->player->destroyed == false &&
-			App->player->Terryposition.x * 2 > -camera.x)
+			App->player->Terryposition.x * 2 > -camera.x &&
+			App->player->currentstate != ST_IDLE)
 		{
 			camera.x -= speed;
 		}

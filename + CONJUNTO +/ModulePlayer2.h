@@ -69,6 +69,7 @@ public:
 	Collider* col;
 	Collider* colp;
 	Collider* colk;
+	bool collided = false;
 	bool gmode = false;
 	bool destroyed = false;
 
