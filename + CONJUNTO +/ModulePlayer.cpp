@@ -235,6 +235,7 @@ bool ModulePlayer::Start()
 	Terryposition.y = 100;
 	score = 0;
 	col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
+	colj = App->collisions->AddCollider({ 1000, 1000, 36, 60 }, COLLIDER_PLAYER);
 	colcp = App->collisions->AddCollider({ 1000, 1000, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 	colck = App->collisions->AddCollider({ 1000, 1000, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 
@@ -370,8 +371,6 @@ update_status ModulePlayer::Update()
 	//JUMP
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
 	{
-	
-
 		currentstate = ST_JUMP_NEUTRAL;
 		current_animation = &TerryJump;
 		Terryposition.y -= jumpspeed;
@@ -436,11 +435,7 @@ update_status ModulePlayer::Update()
 		if (col)
 			col->to_delete = true;
 		if (gmode != true)
-		{
 			colj = App->collisions->AddCollider({ Terryposition.x + 13, Terryposition.y + 50, 36, 60 }, COLLIDER_PLAYER);
-			colj->rect.x = Terryposition.x + 13;
-			colj->rect.y = Terryposition.y + 50;
-		}
 		currentstate = ST_JUMP_FORWARD;
 		current_animation = &TerryJumpForward;
 		Terryposition.y -= jumpspeed;
@@ -529,18 +524,17 @@ update_status ModulePlayer::Update()
 		Terryposition.y = 100;
 		App->render->camera.y = -20;
 		TerryJumpForward.Reset();
-		if (colj)
-			colj->to_delete = true;
-
+		colj->to_delete = true;
 		if (gmode != true)
-		{
-			
-		}
+			col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
 	}
 
 	//JUMP BACKWARDS
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && currentstate == ST_WALK_BACKWARD)
 	{
+		col->to_delete = true;
+		if (gmode != true)
+			colj = App->collisions->AddCollider({ Terryposition.x + 13, Terryposition.y + 50, 36, 60 }, COLLIDER_PLAYER);
 		currentstate = ST_JUMP_BACKWARD;
 		current_animation = &TerryJumpBackwards;
 		Terryposition.y -= jumpspeed;
@@ -584,6 +578,9 @@ update_status ModulePlayer::Update()
 		Terryposition.y = 100;
 		App->render->camera.y = -20;
 		TerryJumpBackwards.Reset();
+		colj->to_delete = true;
+		if (gmode != true)
+			col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
 	}
 
 	//PUNCH
@@ -656,8 +653,7 @@ update_status ModulePlayer::Update()
 	{
 		currentstate = ST_CROUCH;
 		current_animation = &TerryCrouch;
-		if (col)
-			col->to_delete = true;
+		col->to_delete = true;
 		if (gmode != true)
 			colc = App->collisions->AddCollider({ Terryposition.x + 13, Terryposition.y + 50, 36, 60 }, COLLIDER_PLAYER, App->player);
 	}
@@ -782,7 +778,9 @@ update_status ModulePlayer::Update()
 			LOG("Starting GOD MODE");
 			gmode = true;
 			col->to_delete = true;
+			if(currentstate==ST_CROUCH)
 			colc->to_delete = true;
+			colj->to_delete = true;
 		}
 		else
 		{
@@ -847,9 +845,16 @@ update_status ModulePlayer::Update()
 	}
 
 	// TODO 3: Update collider position to player position
-	col->rect.x = Terryposition.x + 15;  //le sigue horizontalmente
-	col->rect.y = Terryposition.y + 10;  //NO le sigue verticalmente
-
+	if (currentstate != ST_JUMP_NEUTRAL)
+		col->rect.y = Terryposition.y + 10;  //le sigue horizontalmente
+	if(currentstate==ST_JUMP_NEUTRAL)
+		col->rect.y = Terryposition.y + 30;
+	col->rect.x = Terryposition.x + 15;
+	if (currentstate == ST_JUMP_FORWARD || currentstate== ST_JUMP_BACKWARD)
+	{
+		colj->rect.x = Terryposition.x + 13;
+		colj->rect.y = Terryposition.y + 50;
+	}
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
@@ -881,9 +886,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_PLAYER && collided == false)
 	{
-
 		life_score -= stantardDMG;
 		collided = true;
-
 	}
 }
