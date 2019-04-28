@@ -410,7 +410,11 @@ update_status ModulePlayer::Update()
 		if (col)
 			col->to_delete = true;
 		if (gmode != true)
-	//	colj=App->collisions->AddCollider({Terryposition.x+13, })
+		{
+			colj = App->collisions->AddCollider({ Terryposition.x + 13, Terryposition.y + 50, 36, 60 }, COLLIDER_PLAYER);
+			colj->rect.x = Terryposition.x + 13;
+			colj->rect.y = Terryposition.y + 50;
+		}
 		currentstate = ST_JUMP_FORWARD;
 		current_animation = &TerryJumpForward;
 		Terryposition.y -= jumpspeed;
@@ -437,6 +441,7 @@ update_status ModulePlayer::Update()
 				App->input->keyboard[SDL_SCANCODE_RIGHT] != KEY_STATE::KEY_REPEAT)
 				App->render->camera.x -= speed;
 		}
+		
 	}
 	if (TerryJumpForward.Finished() == true || Terryposition.y == 80)
 	{
@@ -454,6 +459,13 @@ update_status ModulePlayer::Update()
 		Terryposition.y = 100;
 		App->render->camera.y = -20;
 		TerryJumpForward.Reset();
+		if (colj)
+			colj->to_delete = true;
+
+		if (gmode != true)
+		{
+			
+		}
 	}
 
 	//JUMP BACKWARDS
