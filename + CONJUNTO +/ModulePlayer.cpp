@@ -422,10 +422,10 @@ update_status ModulePlayer::Update()
 
 			currentstate = ST_IDLE;
 
-			//if (mirror) { current_animation = &TerryidleM; }
-			//else { current_animation = &Terryidle; }
+			if (mirror) { current_animation = &TerryidleM; }
+			else { current_animation = &Terryidle; }
 
-			current_animation = &Terryidle;
+			//current_animation = &Terryidle;
 		
 		}
 	}
@@ -469,11 +469,11 @@ update_status ModulePlayer::Update()
 	{
 		currentstate = ST_JUMP_NEUTRAL;
 
-		if (mirror) { current_animation = &TerryJumpM; }
-		else { current_animation = &TerryJump; }
+		//if (mirror) { current_animation = &TerryJumpM; }
+		//else { current_animation = &TerryJump; }
 
 
-		//current_animation = &TerryJump;
+		current_animation = &TerryJump;
 
 
 		Terryposition.y -= jumpspeed;
