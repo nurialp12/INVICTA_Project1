@@ -110,16 +110,22 @@ public:
 	Animation TerryKickM;
 	Animation TerryPunchM;
 	Animation TerryPWM;
+	Animation TerryJumpPunch;
+	Animation TerryJumpKick;
 	bool mirror = false;
 
 
 	iPoint Terryposition;
 	Collider* col;
+	Collider* colj;
 	Collider* colp;
 	Collider* colk;
 	Collider* colc;
 	Collider* colcp;
 	Collider* colck;
+	Collider* coljp;
+	Collider* coljk;
+
 	bool collided = false;
 
 	bool gmode = false;
