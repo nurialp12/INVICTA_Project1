@@ -21,7 +21,7 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("spritesTerryBogard.png");
+	graphics = App->textures->Load("Assets/Sprites/spritesTerryBogard.png");
 
 	// TODO 2: Create the template for a new particle "laser"
 	terryenergy.anim.PushBack({ 978, 695, 16, 105 });
@@ -134,8 +134,6 @@ bool Particle::Update()
 		if (anim.Finished())
 			ret = false;
 
-	position.x += speed.x;
-	position.y += speed.y;
 
 	return ret;
 }
