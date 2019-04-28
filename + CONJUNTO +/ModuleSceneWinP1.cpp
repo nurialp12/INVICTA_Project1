@@ -63,7 +63,7 @@ bool ModuleSceneWinP1::CleanUp()
 update_status ModuleSceneWinP1::Update()
 {
 	// Draw everything --------------------------------------	
-	App->render->Blit(graphics, -10, 0, &background);
+	App->render->Blit(graphics, -7, 0, &background);
 	
 
 	
