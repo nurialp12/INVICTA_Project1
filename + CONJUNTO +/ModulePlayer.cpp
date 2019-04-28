@@ -292,6 +292,11 @@ ModulePlayer::~ModulePlayer()
 // Load assets
 bool ModulePlayer::Start()
 {
+
+	// MIRROR
+	if (Terryposition.x <= App->player2->Terry2position.x) { mirror = false; }
+	else { mirror = true; }
+
 	LOG("Loading player");
 	bool ret = true;
 	graphics = App->textures->Load("Assets/Sprites/spritesTerryBogard.png");
@@ -312,7 +317,13 @@ bool ModulePlayer::Start()
 	colcp = App->collisions->AddCollider({ 1000, 1000, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 	colck = App->collisions->AddCollider({ 1000, 1000, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 
-	current_animation = &Terryidle;
+
+	if (mirror) { current_animation = &TerryidleM; }													// INVALID TEXTURE
+	else { current_animation = &Terryidle; }
+
+	//current_animation = &Terryidle;
+
+
 	currentstate = ST_IDLE;
 	font_score = App->fonts->Load("Assets/Sprites/fonts/scorenums.png", "1234567890", 1);
 	return ret;
@@ -452,7 +463,12 @@ update_status ModulePlayer::Update()
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		{
 			currentstate = ST_WALK_FORWARD;
-			current_animation = &TerryForward;
+
+			if (mirror) { current_animation = &TerryBackwardsM; }
+			else { current_animation = &TerryForward; }
+
+			//current_animation = &TerryForward;
+
 		}
 		else
 		{
