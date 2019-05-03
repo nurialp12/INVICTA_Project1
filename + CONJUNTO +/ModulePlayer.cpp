@@ -439,7 +439,7 @@ update_status ModulePlayer::Update()
 			else { current_animation = &Terryidle; }
 
 			//current_animation = &Terryidle;
-		
+
 		}
 	}
 
@@ -447,7 +447,7 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
 	{
 		currentstate = ST_WALK_BACKWARD;
-		
+
 		if (mirror) { current_animation = &TerryForwardM; }
 		else { current_animation = &TerryBackwards; }
 
@@ -478,7 +478,7 @@ update_status ModulePlayer::Update()
 			//if (mirror) { current_animation = &TerryidleM; }
 			//else { current_animation = &Terryidle; }
 
-			current_animation = &Terryidle;		
+			current_animation = &Terryidle;
 		}
 	}
 
@@ -503,7 +503,7 @@ update_status ModulePlayer::Update()
 		if (Terryposition.y == 120)
 			jumpspeed = 60;
 		//App->render->camera.y = -30;		
-		
+
 
 		//if (nothing) { up = true; nothing = false; }
 		//
@@ -524,8 +524,8 @@ update_status ModulePlayer::Update()
 		//	if (Terryposition.y <= 101) { nothing = true; down = false; }
 		//
 		//}
-	
-		
+
+
 	}
 	if (TerryJump.Finished() == true || Terryposition.y == 10)
 	{
@@ -544,10 +544,10 @@ update_status ModulePlayer::Update()
 		else if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 		{
 			currentstate = ST_WALK_BACKWARD;
-			
+
 			if (mirror) { current_animation = &TerryForwardM; }
 			else { current_animation = &TerryBackwards; }
-			
+
 			//current_animation = &TerryBackwards;
 
 		}
@@ -622,7 +622,7 @@ update_status ModulePlayer::Update()
 		//	if (Terryposition.y >= 99) { nothing = true; down = false; }
 		//
 		//}
-		
+
 
 		if (Terryposition.y == 80)
 			jumpspeed = -60;
@@ -638,7 +638,7 @@ update_status ModulePlayer::Update()
 				App->input->keyboard[SDL_SCANCODE_RIGHT] != KEY_STATE::KEY_REPEAT)
 				App->render->camera.x -= speed;
 		}
-		
+
 	}
 	if (TerryJumpForward.Finished() == true || Terryposition.y == 80)
 	{
@@ -748,7 +748,7 @@ update_status ModulePlayer::Update()
 	}
 
 	//KICK
-	if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN  && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_FORWARD) || (currentstate == ST_WALK_BACKWARD)))
+	if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_FORWARD) || (currentstate == ST_WALK_BACKWARD)))
 	{
 		currentstate = ST_KICK_STANDING;
 		current_animation = &TerryKick;
@@ -808,7 +808,7 @@ update_status ModulePlayer::Update()
 			currentstate = ST_IDLE;
 			current_animation = &Terryidle;
 		}
-			colc->to_delete = true;
+		colc->to_delete = true;
 		if (gmode != true)
 			col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
 	}
@@ -852,14 +852,14 @@ update_status ModulePlayer::Update()
 		currentstate = ST_KICK_CROUCH;
 		current_animation = &TerryCrouchKick;
 		App->audio->PlayFX("Assets/FX/Voice/Attacks/FX_Attack4/FX_Attack4.wav");
-		
+
 
 		colck->rect.x = Terryposition.x + 50;
 		colck->rect.y = Terryposition.y + 90;
 	}
 	if (TerryCrouchKick.Finished() == true)
 	{
-			colck->to_delete = true;
+		colck->to_delete = true;
 		TerryCrouchKick.resetLoops(0);
 		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 		{
@@ -875,8 +875,24 @@ update_status ModulePlayer::Update()
 		App->player2->collided = false;
 		colck = App->collisions->AddCollider({ 0, 0, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 	}
+
+
 	if (currentstate == ST_CROUCH && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN)
+	{
 		currentstate = ST_SD;
+		current_animation = &TerryCrouch;
+	}
+
+	if (currentstate == ST_SD && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP)
+		currentstate = ST_CROUCH;
+
+	if (currentstate == ST_SD && App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP)
+	{
+		currentstate = ST_WALK_FORWARD;
+		current_animation = &TerryForward;
+		colc->to_delete = true;
+		col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
+	}
 
 	//POWER WAVE
 	if (currentstate == ST_SD  && App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN)

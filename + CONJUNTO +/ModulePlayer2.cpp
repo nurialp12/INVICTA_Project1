@@ -10,13 +10,9 @@
 #include "ModuleAudio.h"
 #include "ModuleFonts.h"
 #include "p2Qeue.h"
-
 #include "SDL\include\SDL.h"
 #include <stdio.h>
-
 #include "ModulePlayer.h"
-
-
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
