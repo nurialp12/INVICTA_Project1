@@ -648,6 +648,11 @@ update_status ModulePlayer::Update()
 			currentstate = ST_WALK_FORWARD;
 			current_animation = &TerryForward;
 		}
+		else if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_WALK_BACKWARD;
+			current_animation = &TerryBackwards;
+		}
 		else
 		{
 			currentstate = ST_IDLE;
@@ -701,6 +706,11 @@ update_status ModulePlayer::Update()
 		{
 			currentstate = ST_WALK_BACKWARD;
 			current_animation = &TerryBackwards;
+		}
+		else if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_WALK_FORWARD;
+			current_animation = &TerryForward;
 		}
 		else
 		{
