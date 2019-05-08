@@ -10,6 +10,7 @@
 #define JUMP_TIME 3000
 #define PUNCH_TIME 1000
 
+
 struct SDL_Texture;
 
 enum terry_states
@@ -143,6 +144,7 @@ public:
 
 	bool gmode = false;
 	bool destroyed = false;
+
 
 	Uint32 jump_timer = 0;
 	Uint32 punch_timer = 0;
