@@ -11,6 +11,7 @@
 #include "ModuleAudio.h"
 #include "ModuleFonts.h"
 
+#include "SDL\include\SDL.h"
 #include <stdio.h>
 
 
@@ -141,6 +142,8 @@ update_status ModulePlayer::Update()
 
 	int speed = 3;
 
+
+
 	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
 		if (Terryposition.x < 570)
@@ -264,5 +267,105 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_2, (Module*)App->end_game);
+	}
+}
+
+bool ModulePlayer::external_input(p2Qeue<terry_inputs>& inputs)
+{
+	static bool left = false;
+	static bool right = false;
+	static bool down = false;
+	static bool up = false;
+
+	SDL_Event event;
+
+	while (SDL_PollEvent(&event) != 0)
+	{
+		if (event.type == SDL_KEYUP && event.key.repeat == 0)
+		{
+			switch (event.key.keysym.sym)
+			{
+			case SDLK_ESCAPE:
+				return false;
+				break;
+			case SDLK_DOWN:
+				inputs.Push(IN_CROUCH_UP);
+				down = false;
+				break;
+			case SDLK_UP:
+				up = false;
+				break;
+			case SDLK_LEFT:
+				inputs.Push(IN_LEFT_UP);
+				left = false;
+				break;
+			case SDLK_RIGHT:
+				inputs.Push(IN_RIGHT_UP);
+				right = false;
+				break;
+			}
+		}
+		if (event.type == SDL_KEYDOWN && event.key.repeat == 0)
+		{
+			switch (event.key.keysym.sym)
+			{
+			case SDLK_SPACE:
+				inputs.Push(IN_X);
+				break;
+			case SDLK_UP:
+				up = true;
+				break;
+			case SDLK_DOWN:
+				down = true;
+				break;
+			case SDLK_LEFT:
+				left = true;
+				break;
+			case SDLK_RIGHT:
+				right = true;
+				break;
+			}
+		}
+	}
+	if (left && right)
+		inputs.Push(IN_LEFT_AND_RIGHT);
+	{
+		if (left)
+			inputs.Push(IN_LEFT_DOWN);
+		if (right)
+			inputs.Push(IN_RIGHT_DOWN);
+	}
+
+	if (up && down)
+		inputs.Push(IN_JUMP_AND_CROUCH);
+	else
+	{
+		if (down)
+			inputs.Push(IN_CROUCH_DOWN);
+		if (up)
+			inputs.Push(IN_JUMP);
+	}
+
+	return true;
+}
+
+void ModulePlayer::internal_input(p2Qeue<terry_inputs>& inputs)
+{
+	if (jump_timer > 0)
+	{
+		if (SDL_GetTicks() - jump_timer > JUMP_TIME)
+		{
+			inputs.Push(IN_JUMP_FINISH);
+			jump_timer = 0;
+		}
+	}
+
+	if (punch_timer > 0)
+	{
+		if (SDL_GetTicks() - punch_timer > PUNCH_TIME)
+		{
+			inputs.Push(IN_PUNCH_FINISH);
+			punch_timer = 0;
+		}
 	}
 }
