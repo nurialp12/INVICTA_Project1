@@ -6,7 +6,7 @@
 #include "Globals.h"
 #include "p2Point.h"
 
-#define MAX_ACTIVE_PARTICLES 100
+#define MAX_ACTIVE_PARTICLES 1000
 
 struct SDL_Texture;
 
@@ -37,6 +37,7 @@ public:
 	bool CleanUp();
 
 	void AddParticle(const Particle& particle, int x, int y, Uint32 delay = 0);
+	void AddEnemyParticle(const Particle& particle, int x, int y, Uint32 delay = 0);
 
 private:
 

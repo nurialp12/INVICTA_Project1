@@ -6,13 +6,18 @@
 #include "ModuleScene1.h"
 #include "ModuleScene2.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleEnd.h"
-#include "ModuleIni.h"
+#include "ModuleSceneWinP1.h"
+#include "ModuleSceneWinP2.h"
+#include "ModuleSceneTie.h"
+#include "ModuleSceneIni.h"
+#include "ModuleSceneIntro.h"
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "ModuleAudio.h"
 #include "ModuleFonts.h"
+
 
 Application::Application()
 {
@@ -23,13 +28,17 @@ Application::Application()
 	modules[4] = textures = new ModuleTextures();
 	modules[5] = scene_2 = new ModuleScene2();
 	modules[6] = scene_1 = new ModuleScene1();
-	modules[7] = end_game = new ModuleEnd();
-	modules[8] = ini = new ModuleIni();
-	modules[9] = player = new ModulePlayer();
-	modules[10] = fade = new ModuleFadeToBlack();
-	modules[11] = particles = new ModuleParticles();
-	modules[12] = collisions = new ModuleCollision();
-	modules[13] = fonts = new ModuleFonts();
+	modules[7] = end_game1 = new ModuleSceneWinP1();
+	modules[8] = end_game2 = new ModuleSceneWinP2();
+	modules[9] = tie = new ModuleSceneTie();
+	modules[10] = ini = new ModuleSceneIni();
+	modules[11] = intro = new ModuleSceneIntro();
+	modules[12] = player = new ModulePlayer();
+	modules[13] = player2 = new ModulePlayer2();
+	modules[14] = fade = new ModuleFadeToBlack();
+	modules[15] = particles = new ModuleParticles();
+	modules[16] = collisions = new ModuleCollision();
+	modules[17] = fonts = new ModuleFonts();
 }	
 
 Application::~Application()
@@ -44,10 +53,15 @@ bool Application::Init()
 
 	// Player will be enabled on the first update of a new scene
 	player->Disable();
+	player2->Disable();
 	// Disable the map that you do not start with
 	scene_2->Disable();
+	//ini->Disable();
 	scene_1->Disable();
-	end_game->Disable();
+	end_game1->Disable();
+	end_game2->Disable();
+	tie->Disable();
+	intro->Disable();
 	collisions->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

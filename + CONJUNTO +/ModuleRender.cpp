@@ -5,10 +5,12 @@
 #include "ModuleInput.h"
 #include "SDL/include/SDL.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 
 ModuleRender::ModuleRender() : Module()
 {
-	camera.x = camera.y = 0;
+	camera.x = -480 /*0*/;
+	camera.y = -30;
 	camera.w = SCREEN_WIDTH;
 	camera.h = SCREEN_HEIGHT;
 }
@@ -45,31 +47,102 @@ update_status ModuleRender::PreUpdate()
 {
 	SDL_RenderClear(renderer);
 
+	
+
 	return update_status::UPDATE_CONTINUE;
 }
 
+
 update_status ModuleRender::Update()	
 {
-	int speed = 3;
+	float speed = 1.7;
 
-	if(App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+	if(App->input->keyboard[SDL_SCANCODE_COMMA] == KEY_STATE::KEY_REPEAT)
 		camera.y += speed;
 
-	if(App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+	if(App->input->keyboard[SDL_SCANCODE_PERIOD] == KEY_STATE::KEY_REPEAT)
 		camera.y -= speed;
+
+
+	//CÁMARA JUMP, SOLO POARA COMPROBAR QUE FUNCIONA
+	if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_REPEAT)
+	{
+		camera.y = 0;
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_REPEAT)
+	{
+		camera.y = -30;
+	}
+
+
+	//if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
+	//{
+	//	camera.y = 30;
+	//}
+
+	//if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)
+	//{
+	//	camera.y = -30;
+	//}
 	
-	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
-		if (camera.x < 0 && App->player->destroyed == false)
+	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT )
+		if (camera.x < 0 && App->player->destroyed == false &&
+			(App->player2->Terry2position.x * 2 - 160) < (-(camera.x-camera.w)) &&
+			App->input->keyboard[SDL_SCANCODE_LEFT] != KEY_STATE::KEY_REPEAT &&
+			App->player->currentstate != ST_IDLE &&
+			App->player->currentstate != ST_CROUCH &&
+			App->player->currentstate != ST_KICK_CROUCH &&
+			App->player->currentstate != ST_PUNCH_CROUCH &&
+			App->player->currentstate != ST_PUNCH_STANDING &&
+			App->player->currentstate != ST_KICK_STANDING &&
+			App->player->currentstate != ST_JUMP_NEUTRAL)
 		{
 			camera.x += speed;
 		}
 
 	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-		if (camera.x > -490 && App->player->destroyed == false)
+		if (camera.x > -900 /*-490*/ && App->player->destroyed == false &&
+			App->player2->Terry2position.x*2 > -camera.x &&
+			App->input->keyboard[SDL_SCANCODE_RIGHT] != KEY_STATE::KEY_REPEAT &&
+			App->player->currentstate != ST_IDLE &&
+			App->player->currentstate != ST_CROUCH &&
+			App->player->currentstate != ST_KICK_CROUCH &&
+			App->player->currentstate != ST_PUNCH_CROUCH &&
+			App->player->currentstate != ST_PUNCH_STANDING &&
+			App->player->currentstate != ST_KICK_STANDING &&
+			App->player->currentstate != ST_JUMP_NEUTRAL)
 		{
 			camera.x -= speed;
 		}
-		
+
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+		if (camera.x < 0 && App->player->destroyed == false &&
+			(App->player->Terryposition.x * 2 - 160) < (-(camera.x - camera.w)) &&
+			App->player->currentstate != ST_IDLE &&
+			App->player->currentstate != ST_CROUCH &&
+			App->player->currentstate != ST_KICK_CROUCH &&
+			App->player->currentstate != ST_PUNCH_CROUCH &&
+			App->player->currentstate != ST_PUNCH_STANDING &&
+			App->player->currentstate != ST_KICK_STANDING &&
+			App->player->currentstate != ST_JUMP_NEUTRAL)
+		{
+			camera.x += speed;
+		}
+
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+		if (camera.x > -900 /*-490*/ && App->player->destroyed == false &&
+			App->player->Terryposition.x * 2 > -camera.x &&
+			App->player->currentstate != ST_IDLE &&
+			App->player->currentstate != ST_CROUCH &&
+			App->player->currentstate != ST_KICK_CROUCH &&
+			App->player->currentstate != ST_PUNCH_CROUCH &&
+			App->player->currentstate != ST_PUNCH_STANDING &&
+			App->player->currentstate != ST_KICK_STANDING &&
+			App->player->currentstate != ST_JUMP_NEUTRAL)
+		{
+			camera.x -= speed;
+		}
 	return update_status::UPDATE_CONTINUE;
 }
 

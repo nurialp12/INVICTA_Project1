@@ -1,0 +1,15 @@
+		Fully functional animations
+
+		Jump
+
+Fix sprites
+
+		Mirror
+
+		Win/lose/tie screen
+
+		F Keys
+
+		Camera
+
+		

@@ -4,9 +4,12 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleEnd.h"
+#include "ModuleSceneWinP1.h"
+#include "ModuleSceneWinP2.h"
+#include "ModuleSceneTie.h"
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "ModuleAudio.h"
@@ -48,17 +51,21 @@ bool ModuleScene2::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
-	graphics = App->textures->Load("Pao_Pao_Cafe.png");
+	graphics = App->textures->Load("Assets/Sprites/Pao_Pao_Cafe.png");
+
+	App->render->camera.x = -480;
+	App->render->camera.y = -20;
 
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->Enable();
+	App->player2->Enable();
 	App->particles->Enable();
 	App->collisions->Enable();
 
 	// TODO 1: Add colliders for the first columns of the level
 	
 
-	App->audio->PlayMusic("music/Haremar religion/Haremar religion.ogg");
+	App->audio->PlayMusic("Assets/music/Haremar religion/Haremar religion.ogg", -1);
 
 	return ret;
 }
@@ -68,7 +75,7 @@ bool ModuleScene2::CleanUp()
 {
 	// TODO 4: Remove all memory leaks
 	graphics = nullptr;
-	SDL_DestroyTexture(App->textures->Load("Pao_Pao_Cafe.png"));
+	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Pao_Pao_Cafe.png"));
 
 	LOG("Unloading second stage");
 	
@@ -84,14 +91,56 @@ update_status ModuleScene2::Update()
 	//App->render->Blit(graphics, 0, 160, &ground);
 	App->render->Blit(graphics, 0, 0, &(background.GetCurrentFrame()), 0.70f); // back of the room
 	
+
+	//NÚRIA: BLOQUEA LA CÁMARA EN EL CENTRO DURANTE EL PAOPAO
+	//App->render->camera.x = -480;
+	//App->render->camera.y = 0;
+
+
 	//App->render->Blit(graphics, 280, 125, &foreground);
 	//App->render->Blit(graphics, 305, 136, &(water.GetCurrentFrame())); // water animation
 	//App->render->Blit(graphics, 0, -16, &roof, 0.75f);
 
-	// TODO 3: make so pressing SPACE the KEN stage is loaded
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+
+	if (App->input->keyboard[SDL_SCANCODE_F9] == 1)
 	{
-		App->fade->FadeToBlack(App->scene_2, App->end_game, 2.5);  
+		App->audio->MuteMusic("Assets/music/Haremar religion/Haremar religion.ogg", -1);
+	}
+
+
+	// TODO 3: make so pressing SPACE the KEN stage is loaded
+	if (App->input->keyboard[SDL_SCANCODE_F2] == 1)
+	{
+		
+		App->fade->FadeToBlack(App->scene_2, App->end_game1, 2.5);  
+	}
+	if (App->input->keyboard[SDL_SCANCODE_F3] == 1)
+	{
+		App->fade->FadeToBlack(App->scene_2, App->end_game2, 2.5);
+	}
+	if (App->input->keyboard[SDL_SCANCODE_F4] == 1)
+	{
+		App->fade->FadeToBlack(App->scene_2, App->end_game1, 2.5);
+	}
+	if (App->input->keyboard[SDL_SCANCODE_F6] == 1)
+	{
+		App->fade->FadeToBlack(App->scene_2, App->end_game2, 2.5);
+	}
+	if (App->input->keyboard[SDL_SCANCODE_F7] == 1)
+	{
+		App->fade->FadeToBlack(App->scene_2, App->end_game1, 2.5);
+	}
+	if (App->player->life_score <= 0)
+	{
+		App->fade->FadeToBlack(App->scene_2, App->end_game2, 2.5);
+	}
+	if (App->player2->life_score <= 0)
+	{
+		App->fade->FadeToBlack(App->scene_2, App->end_game1, 2.5);
+	}
+	if (App->player2->life_score <= 0 && App->player->life_score <= 0)
+	{
+		App->fade->FadeToBlack(App->scene_2, App->end_game1, 2.5);
 	}
 
 

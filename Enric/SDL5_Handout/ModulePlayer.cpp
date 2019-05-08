@@ -112,7 +112,7 @@ bool ModulePlayer::Start()
 	// TODO 2: Add a collider to the player
 	col = App->collisions->AddCollider({ 0, 0, 60, 92 }, COLLIDER_PLAYER, App->player);
 	col2 = App->collisions->AddCollider({ 0, 0, 60, 92 }, COLLIDER_ENEMY, App->player);
-	col3 = App->collisions->AddCollider({ 0, 0, 60, 92 }, COLLIDER_PLAYER_SHOT, App->player);
+	col3 = App->collisions->AddCollider({ 0, 0, 20, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 
 	// TODO 0: Notice how a font is loaded and the meaning of all its arguments 
 	font_score = App->fonts->Load("fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
@@ -130,6 +130,7 @@ bool ModulePlayer::CleanUp()
 		col->to_delete = true;
 	if (col2)
 		col2->to_delete = true;
+
 
 	return true;
 }
@@ -216,12 +217,20 @@ update_status ModulePlayer::Update()
 			gmode = false;
 		}
 	}
-
+	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_UP)
+	{
+		if (col3)
+			col3->to_delete = true;
+	}
 	// TODO 3: Update collider position to player position
 	col->rect.x = Terryposition.x;
 	col->rect.y = Terryposition.y;
 	col2->rect.x = Terry2position.x;
 	col2->rect.y = Terry2position.y;
+
+	//collider punch position
+	col3->rect.x = Terryposition.x-20;
+	col3->rect.y = Terryposition.y-20;
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
