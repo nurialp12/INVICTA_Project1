@@ -410,18 +410,28 @@ update_status ModulePlayer::Update()
 	//MOVE FORWARD
 	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
 	{
-		currentstate = ST_WALK_FORWARD;
-
-		if (mirror) { current_animation = &TerryBackwardsM; }
-		else { current_animation = &TerryForward; }
-
+		if (mirror)
+		{
+			currentstate = ST_WALK_BACKWARD;
+			current_animation = &TerryBackwardsM;
+		}
+		else
+		{
+			currentstate = ST_WALK_FORWARD;
+			current_animation = &TerryForward;
+		}
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && currentstate == ST_WALK_FORWARD)
 	{
 		if (Terryposition.x < 700 &&
 			Terryposition.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w))
-			Terryposition.x += speed;
+		{
+			if (mirror)
+				Terryposition.x -= speed;
+			else
+				Terryposition.x += speed;
+		}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP && currentstate == ST_WALK_FORWARD)
 	{

@@ -265,17 +265,13 @@ update_status ModulePlayer2::Update()
 
 	if (true)
 	{
-
 		if (mirror2) { current_animation = &Terry2idleM; }
 
 		else { current_animation = &Terryidle; }
 
 
 	}
-
-
 	int speed = 1;
-
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 	{
