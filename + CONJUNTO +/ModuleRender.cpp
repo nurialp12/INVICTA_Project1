@@ -31,14 +31,18 @@ bool ModuleRender::Init()
 		flags |= SDL_RENDERER_PRESENTVSYNC;
 	}
 
+	
+
 	renderer = SDL_CreateRenderer(App->window->window, -1, flags);
+
+
 	
 	if(renderer == NULL)
 	{
 		LOG("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
 	}
-
+	SDL_RenderSetLogicalSize(renderer, App->window->width, App->window->height);
 	return ret;
 }
 

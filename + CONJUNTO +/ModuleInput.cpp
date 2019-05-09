@@ -21,6 +21,12 @@ bool ModuleInput::Init()
 	bool ret = true;
 	SDL_Init(0);
 
+	if (SDL_Init(SDL_INIT_GAMECONTROLLER) < 0)
+	{
+		LOG("SDL_GAMECONTROLLER could not initialize! SDL_Error:\n");
+		ret = false;
+	}
+
 	if (SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
 	{
 		LOG("SDL_EVENTS could not initialize! SDL_Error: %s\n", SDL_GetError());
@@ -34,6 +40,11 @@ bool ModuleInput::Init()
 update_status ModuleInput::PreUpdate()
 {
 	SDL_PumpEvents();
+
+	if (SDL_NumJoysticks() >= 1)
+	{
+		gController1 = SDL_GameControllerOpen(0);
+	}
 
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
 
@@ -66,5 +77,8 @@ bool ModuleInput::CleanUp()
 {
 	LOG("Quitting SDL input event subsystem");
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
+	LOG("Closing Gamepads");
+	SDL_GameControllerClose(gController1);
+	gController1 = NULL;
 	return true;
 }
