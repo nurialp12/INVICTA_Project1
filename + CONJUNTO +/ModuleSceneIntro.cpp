@@ -110,7 +110,7 @@ bool ModuleSceneIntro::Start()
 
 	// TODO 1: Enable (and properly disable) the player module
 	App->render->camera.x = 0;
-	App->render->camera.y = 0;
+	App->render->camera.y = -10;
 	App->player->destroyed = true;
 	App->player2->destroyed = true;
 	return ret;

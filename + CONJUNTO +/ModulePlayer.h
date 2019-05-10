@@ -10,7 +10,6 @@
 #define JUMP_TIME 3000
 #define PUNCH_TIME 1000
 
-
 struct SDL_Texture;
 
 enum terry_states
@@ -21,6 +20,7 @@ enum terry_states
 	ST_WALK_FORWARD,
 	ST_WALK_BACKWARD,
 	ST_GOING_UP,
+	ST_TOP,
 	ST_GOING_DOWN,
 	ST_JUMP_NEUTRAL,
 	ST_JUMP_FORWARD,
@@ -61,7 +61,6 @@ public:
 	void OnCollision(Collider* c1, Collider* c2);
 
 public:
-	void jump();
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* graphics2 = nullptr;
 	SDL_Texture* UI = nullptr;
@@ -79,7 +78,6 @@ public:
 	Animation TerryGoingUp;
 	Animation TerryTop;
 	Animation TerryGoingDown;
-
 	Animation TerryKick;
 	Animation TerryPunch;
 	Animation TerryPW;
@@ -129,7 +127,6 @@ public:
 	Collider* coljk;
 
 	bool collided = false;
-
 	bool gmode = false;
 	bool destroyed = false;
 
@@ -138,6 +135,7 @@ public:
 	bool goingUp = false;
 	bool goingDown = false;
 	int t = 0;
+	float speed = 1.0;
 
 	Uint32 jump_timer = 0;
 	Uint32 punch_timer = 0;

@@ -37,7 +37,7 @@ bool ModuleSceneTie::Start()
 	graphics = App->textures->Load("Assets/Sprites/game_over.png");
 
 	// TODO 1: Enable (and properly disable) the player module
-	App->render->camera.x = App->render->camera.y = 0;
+	App->render->camera.x = App->render->camera.y = -10;
 	App->player->destroyed = true;
 	App->player2->destroyed = true;
 	App->particles->Disable();
@@ -64,7 +64,7 @@ update_status ModuleSceneTie::Update()
 	App->render->Blit(graphics, 0, 0, &background);
 
 	App->render->camera.x = 0;
-	App->render->camera.y = 0;
+	App->render->camera.y = -10;
 
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)

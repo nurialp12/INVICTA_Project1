@@ -54,7 +54,7 @@ bool ModuleScene2::Start()
 	graphics = App->textures->Load("Assets/Sprites/Pao_Pao_Cafe.png");
 
 	App->render->camera.x = -245;
-	App->render->camera.y = -20;
+	App->render->camera.y = -10;
 
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->Enable();
