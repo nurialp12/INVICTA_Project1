@@ -312,8 +312,8 @@ bool ModulePlayer::Start()
 	colcp = App->collisions->AddCollider({ 1000, 1000, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 	colck = App->collisions->AddCollider({ 1000, 1000, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 
-	currentstate = ST_IDLE;
 	current_animation = &Terryidle;
+	currentstate = ST_IDLE;
 	font_score = App->fonts->Load("Assets/Sprites/fonts/scorenums.png", "1234567890", 1);
 	return ret;
 }

@@ -22,6 +22,7 @@
 
 ModulePlayer2::ModulePlayer2()
 {
+
 	lifebar = { 180, 69, 117, 80 };
 	life1 = { 10, 77, 1, 6 };
 	life2 = { 11, 77, 4, 6 };
@@ -32,33 +33,33 @@ ModulePlayer2::ModulePlayer2()
 		//Terry2idle.PushBack({ 505, 915, 68, 105 });
 		//Terry2idle.speed = 0.2f;
 
-	Terryidle.PushBack({ 28, 909, 58, 112 });
-	Terryidle.PushBack({ 96, 910, 59, 112 });
-	Terryidle.PushBack({ 28, 909, 58, 112 });
-	Terryidle.PushBack({ 166, 909, 58, 112 });
-	Terryidle.speed = 0.1f;
+	Terry2idle.PushBack({ 27, 910, 60, 112 });
+	Terry2idle.PushBack({ 95, 911, 61, 112 });
+	Terry2idle.PushBack({ 164, 910, 60, 112 });
+	Terry2idle.PushBack({ 95, 911, 61, 112 });
+	Terry2idle.speed = 0.1f;
 
 
 	// WALK FORWARD animation of Terry2				//Terry2Avanzar+SaltoEstatico+Patada+Retroceder.png
 
 	//Terry2Forward.frames.PushBack({/**/, /**/, /**/, /**/});
 
-	TerryForward.PushBack({ 20, 269, 61, 112 });
-	TerryForward.PushBack({ 95, 269, 71, 112 });
-	TerryForward.PushBack({ 177, 269, 61, 112 });
-	TerryForward.PushBack({ 251, 269, 61, 112 });
-	TerryForward.speed = 0.1f;
+	Terry2Forward.PushBack({ 20, 269, 61, 112 });
+	Terry2Forward.PushBack({ 95, 269, 71, 112 });
+	Terry2Forward.PushBack({ 177, 269, 61, 112 });
+	Terry2Forward.PushBack({ 251, 269, 61, 112 });
+	Terry2Forward.speed = 0.1f;
 
 
 	// WALK BACKWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
 
 	//Terry2Backwards.frames.PushBack({/**/, /**/, /**/, /**/});
 
-	TerryBackwards.PushBack({ 382, 266, 60, 112 });
-	TerryBackwards.PushBack({ 442, 268, 55, 112 });
-	TerryBackwards.PushBack({ 497, 270, 56, 112 });
-	TerryBackwards.PushBack({ 553, 268, 57, 112 });
-	TerryBackwards.speed = 0.1f;
+	Terry2Backwards.PushBack({ 382, 266, 60, 112 });
+	Terry2Backwards.PushBack({ 442, 268, 55, 112 });
+	Terry2Backwards.PushBack({ 497, 270, 56, 112 });
+	Terry2Backwards.PushBack({ 553, 268, 57, 112 });
+	Terry2Backwards.speed = 0.1f;
 
 
 
@@ -66,21 +67,21 @@ ModulePlayer2::ModulePlayer2()
 
 	//Terry2Jump.frames.PushBack({/**/, /**/, /**/, /**/});
 
-	TerryJump.PushBack({ 535, 12, 53, 125 });
-	TerryJump.PushBack({ 598, 22, 59, 105 });
-	TerryJump.PushBack({ 667, 33, 59, 94 });
-	TerryJump.speed = 0.1f;
+	Terry2Jump.PushBack({ 535, 12, 53, 125 });
+	Terry2Jump.PushBack({ 598, 22, 59, 105 });
+	Terry2Jump.PushBack({ 667, 33, 59, 94 });
+	Terry2Jump.speed = 0.1f;
 
 
 	// KICK animation of Terry				//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
 
 	//Terry2Kick.frames.PushBack({/**/, /**/, /**/, /**/});
-	TerryKick.PushBack({ 20, 122, 49, 112 });
-	TerryKick.PushBack({ 73, 138, 59, 112 });
-	TerryKick.PushBack({ 138, 134, 44, 112 });
-	TerryKick.PushBack({ 200, 138, 118, 112 });
-	TerryKick.PushBack({ 331, 138, 64, 112 });
-	TerryKick.speed = 0.1f;
+	Terry2Kick.PushBack({ 20, 122, 49, 112 });
+	Terry2Kick.PushBack({ 73, 138, 59, 112 });
+	Terry2Kick.PushBack({ 138, 134, 44, 112 });
+	Terry2Kick.PushBack({ 200, 138, 118, 112 });
+	Terry2Kick.PushBack({ 331, 138, 64, 112 });
+	Terry2Kick.speed = 0.1f;
 
 
 	// PUNCH animation of Terry					//spritesTerryBogard.png
@@ -91,49 +92,43 @@ ModulePlayer2::ModulePlayer2()
 	//Terry2Punch.PushBack({ 570, 915, 107, 109 });
 	//Terry2Punch.speed = 0.1f;
 
-	TerryPunch.PushBack({ 435, 910, 71, 112 });
-	TerryPunch.PushBack({ 507, 912, 62, 112 });
-	TerryPunch.PushBack({ 574, 912, 97, 112 });
-	TerryPunch.speed = 0.1f;
+	Terry2Punch.PushBack({ 435, 910, 71, 112 });
+	Terry2Punch.PushBack({ 507, 912, 62, 112 });
+	Terry2Punch.PushBack({ 574, 912, 97, 112 });
+	Terry2Punch.speed = 0.1f;
 
 	// POWER WAVE animation of Terrry
 
-	TerryPW.PushBack({ 623, 683, 51, 112 });
-	TerryPW.PushBack({ 550, 683, 54, 112 });
-	TerryPW.PushBack({ 485, 683, 60, 112 });
-	TerryPW.PushBack({ 402, 682, 79, 112 });
-	TerryPW.PushBack({ 330, 682, 67, 112 });
-	TerryPW.PushBack({ 262, 683, 65, 112 });
-	TerryPW.PushBack({ 198, 683, 60, 112 });
-	TerryPW.speed = 0.1f;
+	Terry2PW.PushBack({ 623, 683, 51, 112 });
+	Terry2PW.PushBack({ 550, 683, 54, 112 });
+	Terry2PW.PushBack({ 485, 683, 60, 112 });
+	Terry2PW.PushBack({ 402, 682, 79, 112 });
+	Terry2PW.PushBack({ 330, 682, 67, 112 });
+	Terry2PW.PushBack({ 262, 683, 65, 112 });
+	Terry2PW.PushBack({ 198, 683, 60, 112 });
+	Terry2PW.speed = 0.1f;
 
 
 	//DAMAGED BY PUNCH
-	TerryDP.PushBack({ 0, 912, 59, 112 });
-	TerryDP.PushBack({ 64, 912, 67, 112 });
-	TerryDP.speed = 0.1f;
+	Terry2DP.PushBack({ 0, 912, 59, 112 });
+	Terry2DP.PushBack({ 64, 912, 67, 112 });
+	Terry2DP.speed = 0.1f;
 
 	//DAMAGED BY KICK
 
-	TerryDK.PushBack({ 136, 912, 63, 112 });
-	TerryDK.PushBack({ 211, 912, 68, 112 });
-	TerryDK.speed = 0.1f;
+	Terry2DK.PushBack({ 136, 912, 63, 112 });
+	Terry2DK.PushBack({ 211, 912, 68, 112 });
+	Terry2DK.speed = 0.1f;
 
 
 	//MIRROR -----------------------------------------------------------------------------------------
 
 		// idle animation of Terry							//spritesTerryBogardMIRROR.png
 
-	/*Terry2idleM.PushBack({ 27, 910, 30, 112 });
+	Terry2idleM.PushBack({ 27, 910, 30, 112 });
 	Terry2idleM.PushBack({ 95, 911, 31, 112 });
 	Terry2idleM.PushBack({ 164, 910, 30, 112 });
 	Terry2idleM.PushBack({ 95, 911, 31, 112 });
-	Terry2idleM.speed = 0.1f;
-*/
-	Terry2idleM.PushBack({ 28, 918, 58, 103 });
-	Terry2idleM.PushBack({ 96, 920, 59, 102 });
-	Terry2idleM.PushBack({ 28, 918, 58, 103 });
-	Terry2idleM.PushBack({ 166, 920, 58, 101 });
 	Terry2idleM.speed = 0.1f;
 
 
@@ -210,8 +205,8 @@ bool ModulePlayer2::Start()
 	graphics2 = App->textures->Load("Assets/Sprites/spritesTerryBogard2extres.png");
 
 
-	graphicsM = App->textures->Load("Assets/Sprites/spritesTerryBogardMIRROR.png"); //spritesTerryBogardMIRROR
-	graphics2M = App->textures->Load("Assets/Sprites/spritesTerryBogard2extresMIRROR.png"); //spritesTerryBogard2extresMIRROR
+	graphicsM = App->textures->Load("Assets/Sprites/spritesTerryBogard.png"); //spritesTerryBogardMIRROR
+	graphics2M = App->textures->Load("Assets/Sprites/spritesTerryBogard2extres.png"); //spritesTerryBogard2extresMIRROR
 
 	UI = App->textures->Load("Assets/Sprites/UI.png");
 
@@ -221,13 +216,9 @@ bool ModulePlayer2::Start()
 	//Terryposition.y = 115;
 	Terry2position.x = 215 + (250);
 	Terry2position.y = 100;
-	col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_ENEMY, App->player);
-	colj = App->collisions->AddCollider({ 1000, 1000, 36, 60 }, COLLIDER_ENEMY);
-	colcp = App->collisions->AddCollider({ 1000, 1000, 25, 20 }, COLLIDER_ENEMY_SHOT, App->player);
-	colck = App->collisions->AddCollider({ 1000, 1000, 40, 20 }, COLLIDER_ENEMY_SHOT, App->player);
 	score = 0;
 
-	current_animation = &Terryidle;			// ESTO ESTÁ EN ModulePlayer.cpp --> va conjuntamente 
+	current_animation = &Terry2idle;			// ESTO ESTÁ EN ModulePlayer.cpp --> va conjuntamente 
 
 
 	// TODO 2: Add a collider to the player
@@ -272,7 +263,7 @@ update_status ModulePlayer2::Update()
 
 		if (mirror2) { current_animation = &Terry2idleM; }
 
-		else { current_animation = &Terryidle; }
+		else { current_animation = &Terry2idle; }
 
 
 	}
@@ -296,7 +287,7 @@ update_status ModulePlayer2::Update()
 
 		else
 		{
-			current_animation = &TerryForward;
+			current_animation = &Terry2Forward;
 
 			if (Terry2position.x < 570 && Terry2position.x * 2 - 260 < -(App->render->camera.x - App->render->camera.w))
 			{
@@ -324,7 +315,7 @@ update_status ModulePlayer2::Update()
 
 		else
 		{
-			current_animation = &TerryBackwards;
+			current_animation = &Terry2Backwards;
 			if (Terry2position.x > 0 && Terry2position.x * 2 > -App->render->camera.x)
 			{
 				Terry2position.x -= speed;
@@ -340,7 +331,7 @@ update_status ModulePlayer2::Update()
 
 		if (mirror2) { current_animation = &Terry2JumpM; }
 
-		else { current_animation = &TerryJump; }
+		else { current_animation = &Terry2Jump; }
 
 		/*FER QUE PER LES DUES PRIEMERES ANIMACIONS PUGI X PÍXELS I LES DUES ÚLTIMES QUE ELS BAIXI*/
 
@@ -375,7 +366,7 @@ update_status ModulePlayer2::Update()
 	{
 
 		if (mirror2) { current_animation = &Terry2PunchM; }
-		else { current_animation = &TerryPunch; }
+		else { current_animation = &Terry2Punch; }
 
 	}
 
@@ -393,7 +384,7 @@ update_status ModulePlayer2::Update()
 	if (App->input->keyboard[SDL_SCANCODE_O] == KEY_STATE::KEY_REPEAT)
 	{
 		if (mirror2) { current_animation = &Terry2KickM; }
-		else { current_animation = &TerryKick; }
+		else { current_animation = &Terry2Kick; }
 
 	}
 
@@ -416,7 +407,7 @@ update_status ModulePlayer2::Update()
 
 		if (mirror2) { current_animation = &Terry2PWM; }
 
-		else { current_animation = &TerryPW; }
+		else { current_animation = &Terry2PW; }
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN)
@@ -544,9 +535,11 @@ update_status ModulePlayer2::Update()
 	// Draw everything --------------------------------------
 	if (destroyed == false)
 	{
-		if ((current_animation == (&TerryKick)) || current_animation == (&TerryJump) || current_animation == (&TerryForward) || current_animation == (&TerryBackwards) /*current_animation == (&TerryKick || &TerryJump || &TerryForward || &TerryBackwards)*/)
+
+
+		if ((current_animation == (&Terry2Kick)) || current_animation == (&Terry2Jump) || current_animation == (&Terry2Forward) || current_animation == (&Terry2Backwards) /*current_animation == (&TerryKick || &TerryJump || &TerryForward || &TerryBackwards)*/)
 		{
-			App->render->Blit(graphics2M, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
+			App->render->Blit(graphics2, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
 		}
 
 		else if ((current_animation == (&Terry2KickM)) || current_animation == (&Terry2JumpM) || current_animation == (&Terry2ForwardM) || current_animation == (&Terry2BackwardsM))
@@ -555,14 +548,16 @@ update_status ModulePlayer2::Update()
 			App->render->Blit(graphics2M, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
 		}
 
-		else if ((current_animation == (&Terryidle)) || current_animation == (&Terry2PunchM) || current_animation == (&Terry2PWM))
+		else if ((current_animation == (&Terry2idleM)) || current_animation == (&Terry2PunchM) || current_animation == (&Terry2PWM))
 		{
 			//App->render->Blit(graphics2, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
 			App->render->Blit(graphicsM, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
 		}
+
+
 		else
 		{
-			App->render->Blit(graphics2M, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
+			App->render->Blit(graphics, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
 		}
 		//App->render->Blit(graphics, terry2position.x, terry2position.y, &(current_animation->GetCurrentFrame()));
 	}
@@ -585,4 +580,3 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 		collided = true;
 	}
 }
-
