@@ -209,7 +209,7 @@ update_status ModuleSceneIni::Update()
 	}
 
 	App->render->camera.x = 0;
-	App->render->camera.y = 0;
+	App->render->camera.y = -10;
 
 
 	if (background.Finished())

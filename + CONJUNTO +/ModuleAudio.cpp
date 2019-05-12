@@ -12,25 +12,6 @@
 
 bool ModuleAudio::PlayMusic(const char* path, const int times)
 {
-
-	//NÚRIA
-	//if (App->input->keyboard[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN)
-	//{
-	//	if (mute == false)
-	//	{
-	//		LOG("MUTE");
-	//		mute = true;
-	//	}
-	//	else
-	//	{
-	//		LOG("UNMUTE");
-	//		mute = false;
-	//		
-	//	}
-
-	//}
-
-
 	if (music)
 	{
 		while (!Mix_FadeOutMusic(3000) && Mix_PlayingMusic()) {
@@ -88,25 +69,6 @@ void ModuleAudio::MuteMusic(const char* path, const int times)
 
 bool ModuleAudio::PlayFX(const char* path)
 {
-
-	//NÚRIA
-	/*if (App->input->keyboard[SDL_SCANCODE_F10] == KEY_STATE::KEY_DOWN)
-	{
-		if (mutefx == false)
-		{
-			LOG("MUTE FX");
-			mutefx = true;
-		}
-		else
-		{
-			LOG("UNMUTE FX");
-			mutefx = false;
-		}
-
-	}*/
-
-
-
 	if (fx[cont])
 	{
 		Mix_FreeChunk(fx[cont]);

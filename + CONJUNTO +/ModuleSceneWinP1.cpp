@@ -39,7 +39,7 @@ bool ModuleSceneWinP1::Start()
 	App->audio->PlayMusic("Assets/music/Results are everything/Results are everything.ogg", 0);
 
 	// TODO 1: Enable (and properly disable) the player module
-	App->render->camera.x = App->render->camera.y = 0;
+	App->render->camera.x = App->render->camera.y = -10;
 	App->player->destroyed = true;
 	App->player2->destroyed = true;
 	App->particles->Disable();

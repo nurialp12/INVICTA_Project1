@@ -19,6 +19,9 @@ enum terry_states
 	ST_IDLE,
 	ST_WALK_FORWARD,
 	ST_WALK_BACKWARD,
+	ST_GOING_UP,
+	ST_TOP,
+	ST_GOING_DOWN,
 	ST_JUMP_NEUTRAL,
 	ST_JUMP_FORWARD,
 	ST_JUMP_BACKWARD,
@@ -43,23 +46,6 @@ struct InputP1 {
 	bool G_DOWN; //KICK
 	bool H_DOWN; //POEWER WAVE         ¡¡¡PROVISIONAL!!!
 	bool SD_DOWN;
-				 /*
-	bool IN_LEFT_DOWN;
-	bool IN_LEFT_UP;
-	bool IN_RIGHT_DOWN;
-	bool IN_RIGHT_UP;
-	bool IN_LEFT_AND_RIGHT;
-	bool IN_JUMP;
-	bool IN_CROUCH_UP;
-	bool IN_CROUCH_DOWN;
-	bool IN_JUMP_AND_CROUCH;
-	bool IN_X;
-	bool IN_JUMP_FINISH;
-	bool IN_PUNCH;
-	bool IN_PUNCH_FINISH;
-	bool IN_KICK;
-	bool IN_KICK_FINISH;
-	*/
 };
 
 class ModulePlayer : public Module
@@ -75,7 +61,6 @@ public:
 	void OnCollision(Collider* c1, Collider* c2);
 
 public:
-
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* graphics2 = nullptr;
 	SDL_Texture* UI = nullptr;
@@ -90,7 +75,9 @@ public:
 	Animation Terryidle;
 	Animation TerryForward;
 	Animation TerryBackwards;
-	Animation TerryJump;
+	Animation TerryGoingUp;
+	Animation TerryTop;
+	Animation TerryGoingDown;
 	Animation TerryKick;
 	Animation TerryPunch;
 	Animation TerryPW;
@@ -140,9 +127,15 @@ public:
 	Collider* coljk;
 
 	bool collided = false;
-
 	bool gmode = false;
 	bool destroyed = false;
+
+	int vy = 0;
+	bool jumping = false;
+	bool goingUp = false;
+	bool goingDown = false;
+	int t = 0;
+	float speed = 1.0;
 
 	Uint32 jump_timer = 0;
 	Uint32 punch_timer = 0;

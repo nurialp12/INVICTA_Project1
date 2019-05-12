@@ -1,5 +1,6 @@
-#ifndef __ModulePlayer2_H__
-#define __ModulePlayer2_H__
+#pragma once
+#ifndef __ModulePlayer_H__
+#define __ModulePlayer_H__
 
 #include "Module.h"
 #include "Animation.h"
@@ -10,33 +11,34 @@
 #define JUMP_TIME 3000
 #define PUNCH_TIME 1000
 
+
 struct SDL_Texture;
 
-enum terry2_states
+enum enemy_states
 {
-	ST_UNKNOWN2,
+	ST_UNKNOWN,
 
-	ST_IDLE2,
-	ST_WALK_FORWARD2,
-	ST_WALK_BACKWARD2,
-	ST_GOING_UP2,
-	ST_GOING_DOWN2,
-	ST_JUMP_NEUTRAL2,
-	ST_JUMP_FORWARD2,
-	ST_JUMP_BACKWARD2,
-	ST_CROUCH2,
-	ST_POWER_WAVE2,
-	ST_PUNCH_STANDING2,
-	ST_PUNCH_NEUTRAL_JUMP2,
-	ST_PUNCH_FORWARD_JUMP2,
-	ST_PUNCH_BACKWARD_JUMP2,
-	ST_PUNCH_CROUCH2,
-	ST_KICK_STANDING2,
-	ST_KICK_CROUCH2,
-	ST_SD2
+	ST_IDLE,
+	ST_WALK_FORWARD,
+	ST_WALK_BACKWARD,
+	ST_GOING_UP,
+	ST_GOING_DOWN,
+	ST_JUMP_NEUTRAL,
+	ST_JUMP_FORWARD,
+	ST_JUMP_BACKWARD,
+	ST_CROUCH,
+	ST_POWER_WAVE,
+	ST_PUNCH_STANDING,
+	ST_PUNCH_NEUTRAL_JUMP,
+	ST_PUNCH_FORWARD_JUMP,
+	ST_PUNCH_BACKWARD_JUMP,
+	ST_PUNCH_CROUCH,
+	ST_KICK_STANDING,
+	ST_KICK_CROUCH,
+	ST_SD
 };
 
-struct InputP2 {
+struct InputP1 {
 	bool A_DOWN; //LEFT
 	bool S_DOWN; //CROUCH
 	bool D_DOWN; //RIGHT
@@ -46,14 +48,15 @@ struct InputP2 {
 	bool H_DOWN; //POEWER WAVE         ¡¡¡PROVISIONAL!!!
 	bool SD_DOWN;
 };
-class ModulePlayer2 : public Module 
+
+class ModulePlayer : public Module
 {
 public:
-	ModulePlayer2();
-	~ModulePlayer2();
+	ModulePlayer();
+	~ModulePlayer();
 
 	bool Start();
-	update_status PreUpdate();				
+	update_status PreUpdate();
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
@@ -76,6 +79,7 @@ public:
 	Animation TerryGoingUp;
 	Animation TerryTop;
 	Animation TerryGoingDown;
+
 	Animation TerryKick;
 	Animation TerryPunch;
 	Animation TerryPW;
@@ -109,22 +113,38 @@ public:
 	Animation TerryCrouchPunchM;
 	Animation TerryCrouchKickM;
 	Animation hitM;
+
+	bool mirror = false;
 	bool mirror2 = true;
 
-	iPoint Terry2position;
+	iPoint Terryposition;
 	Collider* col;
+	Collider* colj;
 	Collider* colp;
 	Collider* colk;
+	Collider* colc;
+	Collider* colcp;
+	Collider* colck;
+	Collider* coljp;
+	Collider* coljk;
+
 	bool collided = false;
+
 	bool gmode = false;
 	bool destroyed = false;
-	int speed = 1;
+
+	int vy = 0;
+	bool jumping = false;
+	bool goingUp = false;
+	bool goingDown = false;
+	int t = 0;
 
 	Uint32 jump_timer = 0;
 	Uint32 punch_timer = 0;
 
-	InputP2 inputTerry;
-	terry2_states currentstate;
+	InputP1 inputTerry;
+	terry_states currentstate;
 };
 
 #endif
+
