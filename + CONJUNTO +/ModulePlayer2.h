@@ -42,16 +42,23 @@ public:
 
 	Animation* current_animation;
 
-
-	Animation Terry2idle;
-	Animation Terry2Forward;
-	Animation Terry2Backwards;
-	Animation Terry2Jump;
-	Animation Terry2Kick;
-	Animation Terry2Punch;
-	Animation Terry2PW;
-	Animation Terry2DP;
-	Animation Terry2DK;
+	Animation Terryidle;
+	Animation TerryForward;
+	Animation TerryBackwards;
+	Animation TerryJump;
+	Animation TerryKick;
+	Animation TerryPunch;
+	Animation TerryPW;
+	Animation TerryDP;
+	Animation TerryDK;
+	Animation TerryJumpPunch;
+	Animation TerryJumpKick;
+	Animation TerryCrouch;
+	Animation TerryJumpForward;
+	Animation TerryJumpBackwards;
+	Animation TerryCrouchPunch;
+	Animation TerryCrouchKick;
+	Animation hit;
 
 	SDL_Texture* graphicsM = nullptr;
 	SDL_Texture* graphics2M = nullptr;
@@ -67,8 +74,15 @@ public:
 
 	iPoint Terry2position;
 	Collider* col;
+	Collider* colj;
 	Collider* colp;
 	Collider* colk;
+	Collider* colc;
+	Collider* colcp;
+	Collider* colck;
+	Collider* coljp;
+	Collider* coljk;
+
 	bool collided = false;
 	bool gmode = false;
 	bool destroyed = false;
