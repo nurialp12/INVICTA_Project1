@@ -29,8 +29,9 @@ ModulePlayer::ModulePlayer()
 	lifebar = { 15, 69, 166, 75 };
 	life1 = { 10, 77, 1, 6 };
 	life2 = { 11, 77, 4, 6 };
-	{
+	
 		//IDLE
+	{
 		Terryidle.PushBack({ 28, 909, 58, 112 });
 		Terryidle.PushBack({ 96, 910, 59, 112 });
 		Terryidle.PushBack({ 165, 909, 58, 112 });
@@ -347,8 +348,6 @@ bool ModulePlayer::Start()
 	bool ret = true;
 	graphics = App->textures->Load("Assets/Sprites/spritesTerryBogard.png");
 	graphics2 = App->textures->Load("Assets/Sprites/spritesTerryBogard2extres.png");
-
-
 	graphicsM = App->textures->Load("Assets/Sprites/spritesTerryBogardMIRROR.png");
 	graphics2M = App->textures->Load("Assets/Sprites/spritesTerryBogard2extresMIRROR.png");
 
