@@ -523,7 +523,6 @@ update_status ModulePlayer::Update()
 		speed -= 0.01;
 		Terryposition.y = Terryposition.y - 3 * speed;
 		App->render->camera.y = App->render->camera.y + speed;
-		;
 		if (Terryposition.y <= 45)
 		{
 			currentstate = ST_TOP;

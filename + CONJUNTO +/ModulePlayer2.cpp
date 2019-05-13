@@ -20,10 +20,12 @@
 
 ModulePlayer2::ModulePlayer2()
 {
+
 	lifebar = { 180, 69, 117, 80 };
 	life1 = { 10, 77, 1, 6 };
 	life2 = { 11, 77, 4, 6 };
 
+//<<<<<<< HEAD
 	{
 		//IDLE
 		Terryidle.PushBack({ 28, 909, 58, 112 });
@@ -188,21 +190,156 @@ ModulePlayer2::ModulePlayer2()
 	TerryJumpPunch.PushBack({ 488, 789, 44, 112 }); //Charge
 	TerryJumpPunch.PushBack({ 544, 805, 68, 96 });   //Punch
 	TerryJumpPunch.PushBack({ 802, 0, 57, 123 });     //Land
+//=======
+//	// idle animation of Terry2					//spritesTerry2Bogard.png
+//
+//		//Terry2idle.PushBack({ 428, 915, 79, 109 });
+//		//Terry2idle.PushBack({ 505, 915, 68, 105 });
+//		//Terry2idle.speed = 0.2f;
+//
+//	Terry2idle.PushBack({ 27, 910, 60, 112 });
+//	Terry2idle.PushBack({ 95, 911, 61, 112 });
+//	Terry2idle.PushBack({ 164, 910, 60, 112 });
+//	Terry2idle.PushBack({ 95, 911, 61, 112 });
+//	Terry2idle.speed = 0.1f;
+//
+//
+//	// WALK FORWARD animation of Terry2				//Terry2Avanzar+SaltoEstatico+Patada+Retroceder.png
+//
+//	//Terry2Forward.frames.PushBack({/**/, /**/, /**/, /**/});
+//
+//	Terry2Forward.PushBack({ 20, 269, 61, 112 });
+//	Terry2Forward.PushBack({ 95, 269, 71, 112 });
+//	Terry2Forward.PushBack({ 177, 269, 61, 112 });
+//	Terry2Forward.PushBack({ 251, 269, 61, 112 });
+//	Terry2Forward.speed = 0.1f;
+//
+//
+//	// WALK BACKWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
+//
+//	//Terry2Backwards.frames.PushBack({/**/, /**/, /**/, /**/});
+//
+//	Terry2Backwards.PushBack({ 382, 266, 60, 112 });
+//	Terry2Backwards.PushBack({ 442, 268, 55, 112 });
+//	Terry2Backwards.PushBack({ 497, 270, 56, 112 });
+//	Terry2Backwards.PushBack({ 553, 268, 57, 112 });
+//	Terry2Backwards.speed = 0.1f;
+//
+//
+//
+//	// JUMP animation of Terry				//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
+//
+//	//Terry2Jump.frames.PushBack({/**/, /**/, /**/, /**/});
+//
+//	Terry2Jump.PushBack({ 535, 12, 53, 125 });
+//	Terry2Jump.PushBack({ 598, 22, 59, 105 });
+//	Terry2Jump.PushBack({ 667, 33, 59, 94 });
+//	Terry2Jump.speed = 0.1f;
+//
+//
+//	// KICK animation of Terry				//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
+//
+//	//Terry2Kick.frames.PushBack({/**/, /**/, /**/, /**/});
+//	Terry2Kick.PushBack({ 20, 122, 49, 112 });
+//	Terry2Kick.PushBack({ 73, 138, 59, 112 });
+//	Terry2Kick.PushBack({ 138, 134, 44, 112 });
+//	Terry2Kick.PushBack({ 200, 138, 118, 112 });
+//	Terry2Kick.PushBack({ 331, 138, 64, 112 });
+//	Terry2Kick.speed = 0.1f;
+//
+//
+//	// PUNCH animation of Terry					//spritesTerryBogard.png
+//
+//	//Terry2Punch.frames.PushBack({/**/, /**/, /**/, /**/});
+//	//Terry2Punch.PushBack({ 428, 915, 79, 109 });
+//	//Terry2Punch.PushBack({ 505, 915, 68, 105 });
+//	//Terry2Punch.PushBack({ 570, 915, 107, 109 });
+//	//Terry2Punch.speed = 0.1f;
+//
+//	Terry2Punch.PushBack({ 435, 910, 71, 112 });
+//	Terry2Punch.PushBack({ 507, 912, 62, 112 });
+//	Terry2Punch.PushBack({ 574, 912, 97, 112 });
+//	Terry2Punch.speed = 0.1f;
+//
+//	// POWER WAVE animation of Terrry
+//
+//	Terry2PW.PushBack({ 623, 683, 51, 112 });
+//	Terry2PW.PushBack({ 550, 683, 54, 112 });
+//	Terry2PW.PushBack({ 485, 683, 60, 112 });
+//	Terry2PW.PushBack({ 402, 682, 79, 112 });
+//	Terry2PW.PushBack({ 330, 682, 67, 112 });
+//	Terry2PW.PushBack({ 262, 683, 65, 112 });
+//	Terry2PW.PushBack({ 198, 683, 60, 112 });
+//	Terry2PW.speed = 0.1f;
+//
+//
+//	//DAMAGED BY PUNCH
+//	Terry2DP.PushBack({ 0, 912, 59, 112 });
+//	Terry2DP.PushBack({ 64, 912, 67, 112 });
+//	Terry2DP.speed = 0.1f;
+//
+//	//DAMAGED BY KICK
+//	Terry2DK.PushBack({ 136, 912, 63, 112 });
+//	Terry2DK.PushBack({ 211, 912, 68, 112 });
+//	Terry2DK.speed = 0.1f;
+//
+//
+//	//MIRROR -----------------------------------------------------------------------------------------
+//
+//		// idle animation of Terry							//spritesTerryBogardMIRROR.png
+//
+//	Terry2idleM.PushBack({ 27, 910, 30, 112 });
+//	Terry2idleM.PushBack({ 95, 911, 31, 112 });
+//	Terry2idleM.PushBack({ 164, 910, 30, 112 });
+//	Terry2idleM.PushBack({ 95, 911, 31, 112 });
+//	Terry2idleM.speed = 0.1f;
+//
+//
+//	// WALK FORWARD animation of Terry					//spritesTerryBogard2extresMIRROR.png
+//>>>>>>> 8a94242fbde6f542f7568aea09ebeb9097a8399f
 
-	//JUMPKICK
-	TerryJumpKick.PushBack({ 304, 830, 56, 70 });  //Charge
-	TerryJumpKick.PushBack({ 376, 789, 78, 111 }); //Kick
-	TerryJumpKick.PushBack({ 304, 830, 56, 70 });  //Discharge
-	TerryJumpKick.PushBack({ 802, 0, 57, 123 });   //Land
-
-		//hit particle animation
-	hit.PushBack({ 671, 263, 22, 33 });
-	hit.PushBack({ 690, 263, 24, 33 });
-	hit.PushBack({ 721, 263, 32, 33 });
-	hit.PushBack({ 757, 263, 32, 33 });
-	hit.speed = 0.5f;
+	Terry2ForwardM.PushBack({ 20, 269, 31, 112 });
+	Terry2ForwardM.PushBack({ 95, 269, 31, 112 });
+	Terry2ForwardM.PushBack({ 177, 269, 31, 112 });
+	Terry2ForwardM.PushBack({ 251, 269, 31, 112 });
+	Terry2ForwardM.speed = 0.1f;
 
 
+	// WALK BACKWARD animation of Terry					//spritesTerryBogard2extresMIRROR.png
+
+	Terry2BackwardsM.PushBack({ 382, 266, 30, 112 });
+	Terry2BackwardsM.PushBack({ 442, 268, 35, 112 });
+	Terry2BackwardsM.PushBack({ 497, 270, 36, 112 });
+	Terry2BackwardsM.PushBack({ 553, 268, 37, 112 });
+	Terry2BackwardsM.speed = 0.1f;
+
+
+	// JUMP animation of Terry							//spritesTerryBogard2extresMIRROR.png
+
+	Terry2JumpM.PushBack({ 535, 12, 33, 125 });
+	Terry2JumpM.PushBack({ 598, 22, 39, 105 });
+	Terry2JumpM.PushBack({ 667, 33, 39, 94 });
+	Terry2JumpM.speed = 0.1f;
+
+
+	// KICK animation of Terry							//spritesTerryBogard2extresMIRROR.png
+
+	Terry2KickM.PushBack({ 20, 122, 29, 112 });
+	Terry2KickM.PushBack({ 73, 138, 39, 112 });
+	Terry2KickM.PushBack({ 138, 134, 24, 112 });
+	Terry2KickM.PushBack({ 200, 138, 58, 112 });
+	Terry2KickM.PushBack({ 331, 138, 34, 112 });
+	Terry2KickM.speed = 0.1f;
+
+
+	// PUNCH animation of Terry							//spritesTerryBogardMIRROR.png
+
+	Terry2PunchM.PushBack({ 435, 910, 41, 112 });
+	Terry2PunchM.PushBack({ 507, 912, 32, 112 });
+	Terry2PunchM.PushBack({ 574, 912, 57, 112 });
+	Terry2PunchM.speed = 0.1f;
+
+//<<<<<<< HEAD
 	//MIRROR -----------------------------------------------------------------------------------------				//spritesTerryBogardMIRROR.png				//spritesTerryBogard2extresMIRROR.png
 	{
 		//IDLE
@@ -326,6 +463,87 @@ ModulePlayer2::ModulePlayer2()
 		hitM.PushBack({ 757, 263, 32, 33 });
 		hitM.speed = 0.5f;
 	}
+//=======
+//
+//
+//	// POWER WAVE animation of Terrry
+//	TerryPWM.PushBack({ 623, 683, 51, 112 });
+//	TerryPWM.PushBack({ 550, 683, 54, 112 });
+//	TerryPWM.PushBack({ 485, 683, 60, 112 });
+//	TerryPWM.PushBack({ 402, 683, 79, 112 });
+//	TerryPWM.PushBack({ 330, 683, 67, 112 });
+//	TerryPWM.PushBack({ 263, 683, 65, 112 });
+//	TerryPWM.PushBack({ 198, 683, 60, 112 });
+//	TerryPWM.speed = 0.1f;
+//
+//	//DAMAGED BY PUNCH
+//	TerryDPM.PushBack({ 0, 912, 59, 112 });
+//	TerryDPM.PushBack({ 64, 912, 67, 112 });
+//	TerryDPM.speed = 0.1f;
+//
+//	//DAMAGED BY KICK
+//	TerryDKM.PushBack({ 136, 912, 63, 112 });
+//	TerryDKM.PushBack({ 211, 912, 68, 112 });
+//	TerryDKM.speed = 0.1f;
+//
+//	//CROUCH
+//	TerryCrouchM.PushBack({ 488, 912, 57, 112 });
+//	TerryCrouchM.PushBack({ 545, 912, 52, 112 });
+//	TerryCrouchM.speed = 0.2f;
+//	TerryCrouchM.loop = false;
+//
+//	//JUMPFORWARD
+//	TerryJumpForwardM.PushBack({ 624, 912, 57, 112 });
+//	TerryJumpForwardM.PushBack({ 681, 912, 56, 112 });
+//	TerryJumpForwardM.PushBack({ 737, 912, 87, 112 });
+//	TerryJumpForwardM.PushBack({ 824, 912, 53, 112 });
+//	TerryJumpForwardM.PushBack({ 877, 912, 87, 112 });
+//	TerryJumpForwardM.PushBack({ 964, 912, 60, 112 });
+//	TerryJumpForwardM.PushBack({ 624, 912, 57, 112 });
+//	TerryJumpForwardM.speed = 0.1f;
+//
+//	//JUMPBACKWARDS
+//	TerryJumpBackwardsM.PushBack({ 624, 912, 57, 112 });
+//	TerryJumpBackwardsM.PushBack({ 964, 912, 60, 112 });
+//	TerryJumpBackwardsM.PushBack({ 877, 912, 87, 112 });
+//	TerryJumpBackwardsM.PushBack({ 824, 912, 53, 112 });
+//	TerryJumpBackwardsM.PushBack({ 737, 912, 87, 112 });
+//	TerryJumpBackwardsM.PushBack({ 681, 912, 56, 112 });
+//	TerryJumpBackwardsM.PushBack({ 624, 912, 57, 112 });
+//	TerryJumpBackwardsM.speed = 0.1f;
+//
+//	//CROUCHPUNCH
+//	TerryCrouchPunchM.PushBack({ 279, 912, 56, 112 }); //Charge
+//	TerryCrouchPunchM.PushBack({ 416, 912, 49, 112 }); //Riposte
+//	TerryCrouchPunchM.PushBack({ 335, 912, 81, 112 }); //Punch
+//	TerryCrouchPunchM.PushBack({ 416, 912, 49, 112 }); //Riposte x2
+//	TerryCrouchPunchM.speed = 0.1f;
+//
+//	//CROUCHKICK
+//	TerryCrouchKickM.PushBack({ 0, 788, 56, 112 });   //Charge
+//	TerryCrouchKickM.PushBack({ 56, 788, 58, 112 });  //Riposte
+//	TerryCrouchKickM.PushBack({ 114, 788, 92, 112 }); //Punch
+//	TerryCrouchKickM.PushBack({ 206, 788, 58, 112 }); //Riposte x2
+//	TerryCrouchKickM.speed = 0.1f;
+//
+//	//JUMPPUNCH
+//	TerryJumpPunchM.PushBack({ 488, 789, 44, 112 }); //Charge
+//	TerryJumpPunchM.PushBack({ 544, 805, 68, 96 });   //Punch
+//	TerryJumpPunchM.PushBack({ 802, 0, 57, 123 });     //Land
+//
+//	//JUMPKICK
+//	TerryJumpKickM.PushBack({ 304, 830, 56, 70 });  //Charge
+//	TerryJumpKickM.PushBack({ 376, 789, 78, 111 }); //Kick
+//	TerryJumpKickM.PushBack({ 304, 830, 56, 70 });  //Discharge
+//	TerryJumpKickM.PushBack({ 802, 0, 57, 123 });   //Land
+//
+//			//hit particle animation
+//	hitM.PushBack({ 671, 263, 22, 33 });
+//	hitM.PushBack({ 690, 263, 24, 33 });
+//	hitM.PushBack({ 721, 263, 32, 33 });
+//	hitM.PushBack({ 757, 263, 32, 33 });
+//	hitM.speed = 0.5f;
+//>>>>>>> 8a94242fbde6f542f7568aea09ebeb9097a8399f
 
 }
 
@@ -347,8 +565,8 @@ bool ModulePlayer2::Start()
 	graphics2 = App->textures->Load("Assets/Sprites/spritesTerryBogard2extres.png");
 
 
-	graphicsM = App->textures->Load("Assets/Sprites/spritesTerryBogardMIRROR.png"); //spritesTerryBogardMIRROR
-	graphics2M = App->textures->Load("Assets/Sprites/spritesTerryBogard2extresMIRROR.png"); //spritesTerryBogard2extresMIRROR
+	graphicsM = App->textures->Load("Assets/Sprites/spritesTerryBogard.png"); //spritesTerryBogardMIRROR
+	graphics2M = App->textures->Load("Assets/Sprites/spritesTerryBogard2extres.png"); //spritesTerryBogard2extresMIRROR
 
 	UI = App->textures->Load("Assets/Sprites/UI.png");
 
@@ -357,14 +575,10 @@ bool ModulePlayer2::Start()
 	//Terryposition.y = 115;
 	Terry2position.x = 215 + (250);
 	Terry2position.y = 100;
-	col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_ENEMY, App->player);
-	colj = App->collisions->AddCollider({ 1000, 1000, 36, 60 }, COLLIDER_ENEMY);
-	colcp = App->collisions->AddCollider({ 1000, 1000, 25, 20 }, COLLIDER_ENEMY_SHOT, App->player);
-	colck = App->collisions->AddCollider({ 1000, 1000, 40, 20 }, COLLIDER_ENEMY_SHOT, App->player);
 	score = 0;
 
-	currentstate = ST_IDLE2;
-	current_animation = &Terryidle;			// ESTO ESTÁ EN ModulePlayer.cpp --> va conjuntamente 
+
+	current_animation = &Terry2idle;			// ESTO ESTÁ EN ModulePlayer.cpp --> va conjuntamente 
 
 
 	// TODO 2: Add a collider to the player
@@ -408,7 +622,22 @@ update_status ModulePlayer2::PreUpdate()
 
 	while (SDL_PollEvent(&event) != 0)
 	{
-		if (event.type == SDL_KEYUP && event.key.repeat == 0)
+
+		if (mirror2) { current_animation = &Terry2idleM; }
+
+		else { current_animation = &Terry2idle; }
+
+
+	}
+
+
+	int speed = 1;
+
+
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+	{
+
+		if (mirror2)
 		{
 			switch (event.key.keysym.sym)
 			{
@@ -426,7 +655,9 @@ update_status ModulePlayer2::PreUpdate()
 		}
 		if (event.type == SDL_KEYDOWN && event.key.repeat == 0)
 		{
-			switch (event.key.keysym.sym)
+			current_animation = &Terry2Forward;
+
+			if (Terry2position.x < 570 && Terry2position.x * 2 - 260 < -(App->render->camera.x - App->render->camera.w))
 			{
 			case SDLK_SPACE:
 				break;
@@ -480,15 +711,28 @@ update_status ModulePlayer2::Update()
 			else current_animation = &TerryBackwards;
 		}
 		else
-			currentstate = ST_IDLE2;
+
+		{
+			current_animation = &Terry2Backwards;
+			if (Terry2position.x > 0 && Terry2position.x * 2 > -App->render->camera.x)
+			{
+				Terry2position.x -= speed;
+
+			}
+		}
+
 	}
 
 	//WALK BACKWARDS
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE2)
 	{
-		currentstate = ST_WALK_BACKWARD2;
-		if (mirror2) current_animation = &TerryForwardM;
-		else current_animation = &TerryBackwards;
+
+		if (mirror2) { current_animation = &Terry2JumpM; }
+
+		else { current_animation = &Terry2Jump; }
+
+		/*FER QUE PER LES DUES PRIEMERES ANIMACIONS PUGI X PÍXELS I LES DUES ÚLTIMES QUE ELS BAIXI*/
+
 	}
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && currentstate == ST_WALK_BACKWARD2)
 	{
@@ -520,8 +764,8 @@ update_status ModulePlayer2::Update()
 	if (App->input->keyboard[SDL_SCANCODE_I] == KEY_STATE::KEY_REPEAT)
 	{
 
-		if (mirror2) { current_animation = &TerryPunchM; }
-		else { current_animation = &TerryPunch; }
+		if (mirror2) { current_animation = &Terry2PunchM; }
+		else { current_animation = &Terry2Punch; }
 
 	}
 
@@ -538,8 +782,9 @@ update_status ModulePlayer2::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_O] == KEY_STATE::KEY_REPEAT)
 	{
-		if (mirror2) { current_animation = &TerryKickM; }
-		else { current_animation = &TerryKick; }
+
+		if (mirror2) { current_animation = &Terry2KickM; }
+		else { current_animation = &Terry2Kick; }
 
 	}
 
@@ -562,7 +807,7 @@ update_status ModulePlayer2::Update()
 
 		if (mirror2) { current_animation = &TerryPWM; }
 
-		else { current_animation = &TerryPW; }
+		else { current_animation = &Terry2PW; }
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN)
@@ -690,9 +935,8 @@ update_status ModulePlayer2::Update()
 	// Draw everything --------------------------------------
 	if (destroyed == false)
 	{
-		if ((current_animation == (&TerryKick)) || current_animation == &TerryGoingUp || current_animation == &TerryGoingDown || current_animation == &TerryTop
-			|| current_animation == (&TerryForward) || current_animation == (&TerryBackwards) || current_animation == &TerryDP || current_animation == &TerryDK || current_animation == &TerryCrouchPunch
-			|| current_animation == &TerryCrouchKick || current_animation == &TerryJumpForward || current_animation == &TerryJumpBackwards || current_animation == &TerryCrouch)
+
+		if ((current_animation == (&Terry2Kick)) || current_animation == (&Terry2Jump) || current_animation == (&Terry2Forward) || current_animation == (&Terry2Backwards) /*current_animation == (&TerryKick || &TerryJump || &TerryForward || &TerryBackwards)*/)
 		{
 			App->render->Blit(graphics2, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
 		}
@@ -704,12 +948,11 @@ update_status ModulePlayer2::Update()
 			App->render->Blit(graphics2M, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
 		}
 
-		else if (current_animation == &TerryidleM || current_animation == &TerryPunchM || current_animation == &TerryPWM || current_animation == &TerryJumpPunchM
-			|| current_animation == &TerryJumpKickM || current_animation == &hitM)
+
+		else if ((current_animation == (&Terry2idleM)) || current_animation == (&Terry2PunchM) || current_animation == (&Terry2PWM))
 		{
 			App->render->Blit(graphicsM, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
 		}
-
 		else
 		{
 			App->render->Blit(graphics, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
@@ -734,4 +977,3 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 		collided = true;
 	}
 }
-
