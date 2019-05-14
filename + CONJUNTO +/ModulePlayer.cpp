@@ -112,7 +112,7 @@ ModulePlayer::ModulePlayer()
 		TerryPunch.PushBack({ 435, 910, 71, 112 });
 		TerryPunch.PushBack({ 507, 911, 61, 112 });
 		TerryPunch.PushBack({ 575, 911, 95, 112 });
-		TerryPunch.speed = 0.01f;
+		TerryPunch.speed = 0.1f;
 	}
 
 	// POWER WAVE animation of Terrry
@@ -248,11 +248,13 @@ ModulePlayer::ModulePlayer()
 		TerryKickM.PushBack({ 261, 134,  62, 112 });
 		TerryKickM.speed = 0.1f;
 
-		//PUNCH
-		TerryPunchM.PushBack({ 645, 912, 90, 112 });
-		TerryPunchM.PushBack({ 572, 912, 68, 112 });
-		TerryPunchM.PushBack({ 470, 912, 95, 112 });
-		TerryPunchM.speed = 0.01f;
+		//PUNCH MIRROR
+		{
+			TerryPunchM.PushBack({ 453, 910, 95, 112 });
+			TerryPunchM.PushBack({ 358, 911, 95, 112 });
+			TerryPunchM.PushBack({ 263, 911, 95, 112 });
+			TerryPunchM.speed = 0.1f;
+		}
 
 		// POWER WAVE animation of Terrry
 		TerryPWM.PushBack({ 623, 683, 51, 112 });
@@ -382,7 +384,10 @@ bool ModulePlayer::CleanUp()
 	App->fonts->UnLoad(font_score);
 	if (col)
 		col->to_delete = true;
-
+	if (colj)
+		colj->to_delete = true;
+	if (colc)
+		colc->to_delete = true;
 	return true;
 }
 
@@ -441,16 +446,19 @@ update_status ModulePlayer::Update()
 {
 	if (Terryposition.y >= 100)
 		Terryposition.y;
+
 	// MIRROR
 	if (Terryposition.x <= App->player2->Terry2position.x) mirror = false;
 	else mirror = true;
 
 	//IDLE
 	if (currentstate == ST_IDLE)
+	{
 		if (mirror)current_animation = &TerryidleM;
 		else current_animation = &Terryidle;
+	}
 
-	//MOVE FORWARD
+	//MOVE FORWARD						CAMERA FIX NEEDED
 	{
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
 		{
@@ -460,8 +468,8 @@ update_status ModulePlayer::Update()
 		}
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && currentstate == ST_WALK_FORWARD)
 		{
-			if (Terryposition.x < 700 &&
-				Terryposition.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w))
+			if (Terryposition.x < 700 /*&&
+				Terryposition.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w)*/)
 				Terryposition.x += speed;
 		}
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP && currentstate == ST_WALK_FORWARD)
@@ -469,16 +477,13 @@ update_status ModulePlayer::Update()
 			TerryForward.resetLoops(0);
 			TerryForwardM.resetLoops(0);
 			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
-			{
 				currentstate = ST_WALK_BACKWARD;
-				if (mirror) current_animation = &TerryForwardM;
-				else current_animation = &TerryBackwards;
-			}
 			else
 				currentstate = ST_IDLE;
 		}
 	}
-	//MOVE BACKWARD
+
+	//MOVE BACKWARD						CAMERA FIX NEEDED
 	{
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
 		{
@@ -488,8 +493,7 @@ update_status ModulePlayer::Update()
 		}
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && currentstate == ST_WALK_BACKWARD)
 		{
-			if (Terryposition.x > 0 &&
-				Terryposition.x * 2 > -App->render->camera.x)
+			if (Terryposition.x > 0 /*&& Terryposition.x * 2 > -App->render->camera.x*/)
 				Terryposition.x -= speed;
 		}
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_UP && currentstate == ST_WALK_BACKWARD)
@@ -497,11 +501,7 @@ update_status ModulePlayer::Update()
 			TerryForward.resetLoops(0);
 			TerryForwardM.resetLoops(0);
 			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-			{
 				currentstate = ST_WALK_FORWARD;
-				if (mirror) current_animation = &TerryBackwardsM;
-				else current_animation = &TerryForward;
-			}
 			else
 				currentstate = ST_IDLE;
 		}
@@ -707,8 +707,9 @@ update_status ModulePlayer::Update()
 			currentstate = ST_PUNCH_STANDING;
 			if (mirror)
 			{
+				Terryposition.x -= 38;
 				current_animation = &TerryPunchM;
-				colp = App->collisions->AddCollider({ Terryposition.x - 28, Terryposition.y + 20, 43, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+				colp = App->collisions->AddCollider({ Terryposition.x - 28 + 38, Terryposition.y + 20, 43, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 			}
 			else
 			{
@@ -719,7 +720,8 @@ update_status ModulePlayer::Update()
 		}
 		if (TerryPunch.Finished() || TerryPunchM.Finished())
 		{
-				colp->to_delete = true;
+			if (mirror)Terryposition.x += 38;
+			colp->to_delete = true;
 			TerryPunch.resetLoops(0);
 			TerryPunchM.resetLoops(0);
 			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
@@ -1013,11 +1015,13 @@ update_status ModulePlayer::Update()
 	}
 
 	// TODO 3: Update collider position to player position
-	if (currentstate != ST_JUMP_NEUTRAL)
+	if (currentstate == ST_PUNCH_STANDING && mirror)
+		col->rect.x = Terryposition.x + 53;
+	else
+	{
 		col->rect.y = Terryposition.y + 10;  //le sigue horizontalmente
-	if(currentstate==ST_JUMP_NEUTRAL)
-		col->rect.y = Terryposition.y + 30;
-	col->rect.x = Terryposition.x + 15;
+		col->rect.x = Terryposition.x + 15;
+	}
 	if (currentstate == ST_JUMP_FORWARD || currentstate== ST_JUMP_BACKWARD)
 	{
 		colj->rect.x = Terryposition.x + 13;
