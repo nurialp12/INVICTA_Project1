@@ -71,7 +71,7 @@ update_status ModuleRender::Update()
 		if (camera.x < 0 && App->player->destroyed == false &&
 			(App->player2->Terry2position.x * 2 - 160) < (-(camera.x-camera.w)) &&
 			App->input->keyboard[SDL_SCANCODE_LEFT] != KEY_STATE::KEY_REPEAT &&
-			App->player->currentstate ==ST_WALK_BACKWARD)
+			App->player->currentstate == ST_WALK_BACKWARD)
 		{
 			camera.x += speed;
 		}
@@ -80,7 +80,7 @@ update_status ModuleRender::Update()
 		if (camera.x > -900 /*-490*/ && App->player->destroyed == false &&
 			App->player2->Terry2position.x*2 > -camera.x &&
 			App->input->keyboard[SDL_SCANCODE_RIGHT] != KEY_STATE::KEY_REPEAT &&
-			App->player->currentstate ==ST_WALK_FORWARD)
+			App->player->currentstate == ST_WALK_FORWARD)
 		{
 			camera.x -= speed;
 		}

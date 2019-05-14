@@ -20,10 +20,12 @@ public:
 public:
 
 	SDL_Texture* graphics = nullptr;
+	SDL_Rect bus;
 	//SDL_Rect ground;
 	//SDL_Rect roof;
 	//SDL_Rect foreground;
-	Animation background;
+	SDL_Rect background;
+	Animation background1;
 	//Animation water;
 };
 
