@@ -517,7 +517,7 @@ update_status ModulePlayer2::Update()
 	
 	//PUNCH
 	{
-		if (App->input->keyboard[SDL_SCANCODE_I] == KEY_STATE::KEY_DOWN && ((currentstate == ST_IDLE2) || (currentstate == ST_WALK_FORWARD2) || (currentstate == ST_WALK_BACKWARD2)))
+		if (App->input->keyboard[SDL_SCANCODE_J] == KEY_STATE::KEY_DOWN && ((currentstate == ST_IDLE2) || (currentstate == ST_WALK_FORWARD2) || (currentstate == ST_WALK_BACKWARD2)))
 		{
 			currentstate = ST_PUNCH_STANDING2;
 			if (mirror2)
@@ -558,21 +558,46 @@ update_status ModulePlayer2::Update()
 	}
 
 	//KICK
-	if (App->input->keyboard[SDL_SCANCODE_O] == KEY_STATE::KEY_DOWN)
-		colk = App->collisions->AddCollider({ Terry2position.x + 45, Terry2position.y + 48, 55, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
-
-	if (App->input->keyboard[SDL_SCANCODE_O] == KEY_STATE::KEY_REPEAT)
 	{
+		if (App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_DOWN && ((currentstate == ST_IDLE2) || (currentstate == ST_WALK_FORWARD2) || (currentstate == ST_WALK_BACKWARD2)))
+		{
+			currentstate = ST_KICK_STANDING2;
+			if (mirror2)
+			{
+				current_animation = &TerryKickM;
+				colk = App->collisions->AddCollider({ Terry2position.x + 45, Terry2position.y + 48, 55, 20 }, COLLIDER_ENEMY_SHOT, App->player);
+			}
+			else
+			{
+				current_animation = &TerryKick;
+				colk = App->collisions->AddCollider({ Terry2position.x + 45, Terry2position.y + 48, 55, 20 }, COLLIDER_ENEMY_SHOT, App->player);
+				Terry2position.x += 5;
 
-		if (mirror2) { current_animation = &TerryKickM; }
-		else { current_animation = &TerryKick; }
+			}
+			App->audio->PlayFX("Assets/FX/Voice/Attacks/FX_Attack4/FX_Attack4.wav");
+		}
+		if (TerryKick.Finished() == true || TerryKickM.Finished() == true)
+		{
+				colk->to_delete = true;
+			TerryKick.resetLoops(0);
+			TerryKickM.resetLoops(0);
 
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_O] == KEY_STATE::KEY_UP)
-	{
-		if (colk)
-			colk->to_delete = true;
+			if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+			{
+				currentstate = ST_WALK_BACKWARD2;
+				if (mirror2)current_animation = &TerryBackwardsM;
+				else current_animation = &TerryForward;
+			}
+			else if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+			{
+				currentstate = ST_WALK_FORWARD2;
+				if (mirror2)current_animation = &TerryForwardM;
+				else current_animation = &TerryBackwards;
+			}
+			else
+				currentstate = ST_IDLE2;
+			App->player2->collided = false;
+		}
 	}
 
 	//PPWER WAVE
