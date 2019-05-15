@@ -359,10 +359,11 @@ bool ModulePlayer::Start()
 	Terryposition.x = 5 + (250);
 	Terryposition.y = 100;
 	score = 0;
-	col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
-	colj = App->collisions->AddCollider({ 1000, 1000, 36, 60 }, COLLIDER_PLAYER);
-	colcp = App->collisions->AddCollider({ 1000, 1000, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
-	colck = App->collisions->AddCollider({ 1000, 1000, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+	col = App->collisions->AddCollider({ 0, 10000, 30, 101 }, COLLIDER_PLAYER, App->player);
+	colc= App->collisions->AddCollider({ 0, 10000, 36, 60 }, COLLIDER_PLAYER, App->player);
+	colj = App->collisions->AddCollider({ 1000, 10000, 36, 60 }, COLLIDER_PLAYER);
+	colcp = App->collisions->AddCollider({ 1000, 10000, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+	colck = App->collisions->AddCollider({ 1000, 10000, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 
 	currentstate = ST_IDLE;
 	current_animation = &Terryidle; 
@@ -448,8 +449,16 @@ update_status ModulePlayer::Update()
 		Terryposition.y;
 
 	// MIRROR
-	if (Terryposition.x <= App->player2->Terry2position.x) mirror = false;
-	else mirror = true;
+	if (App->player2->col->rect.x < App->player->col->rect.x ||
+		App->player2->colc->rect.x < App->player->col->rect.x ||
+		App->player2->colj->rect.x < App->player->col->rect.x ||
+		App->player2->col->rect.x < App->player->colc->rect.x ||
+		App->player2->colj->rect.x < App->player->colc->rect.x ||
+		App->player2->col->rect.x < App->player->colj->rect.x ||
+		App->player2->colc->rect.x < App->player->colj->rect.x ||
+		App->player2->colj->rect.x < App->player->colj->rect.x)
+		mirror = true;
+	else mirror = false;
 
 	//IDLE
 	if (currentstate == ST_IDLE)
@@ -636,6 +645,7 @@ update_status ModulePlayer::Update()
 				col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
 		}
 	}
+
 	//JUMP BACKWARDS  PENDIENTE
 	{
 		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && currentstate == ST_WALK_BACKWARD)
@@ -696,6 +706,7 @@ update_status ModulePlayer::Update()
 				col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
 		}
 	}
+
 	//PUNCH
 	{
 		if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_FORWARD) || (currentstate == ST_WALK_BACKWARD)))
@@ -874,17 +885,13 @@ update_status ModulePlayer::Update()
 			App->player2->collided = false;
 			colck = App->collisions->AddCollider({ 0, 0, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 		}
-
-
 		if (currentstate == ST_CROUCH && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN)
 		{
 			currentstate = ST_SD;
 			current_animation = &TerryCrouch;
 		}
-
 		if (currentstate == ST_SD && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP)
 			currentstate = ST_CROUCH;
-
 		if (currentstate == ST_SD && App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP)
 		{
 			currentstate = ST_WALK_FORWARD;
@@ -944,14 +951,15 @@ update_status ModulePlayer::Update()
 			LOG("Starting GOD MODE");
 			gmode = true;
 			col->to_delete = true;
-			if(currentstate==ST_CROUCH)
 			colc->to_delete = true;
 			colj->to_delete = true;
 		}
 		else
 		{
 			LOG("GOD MODE off");
-			col = App->collisions->AddCollider({ 0, 0, 30, 103 }, COLLIDER_PLAYER, App->player);
+			col = App->collisions->AddCollider({ 0, 10000, 30, 101 }, COLLIDER_PLAYER, App->player);
+			colc = App->collisions->AddCollider({ 0, 10000, 36, 60 }, COLLIDER_PLAYER, App->player);
+			colj = App->collisions->AddCollider({ 1000, 10000, 36, 60 }, COLLIDER_PLAYER);
 			gmode = false;
 		}
 	}
@@ -1018,11 +1026,10 @@ update_status ModulePlayer::Update()
 		col->rect.y = Terryposition.y + 10;  //le sigue horizontalmente
 		col->rect.x = Terryposition.x + 15;
 	}
+	colj->rect.x = Terryposition.x + 13;
+	colc->rect.x = Terryposition.x + 13;
 	if (currentstate == ST_JUMP_FORWARD || currentstate== ST_JUMP_BACKWARD)
-	{
-		colj->rect.x = Terryposition.x + 13;
 		colj->rect.y = Terryposition.y + 50;
-	}
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();

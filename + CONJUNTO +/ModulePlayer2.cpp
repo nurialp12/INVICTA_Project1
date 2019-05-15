@@ -361,9 +361,9 @@ bool ModulePlayer2::Start()
 	currentstate = ST_IDLE2;
 
 	// TODO 2: Add a collider to the player
-	col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_ENEMY, App->player2);
-	colc= App->collisions->AddCollider({ 0, 0, 36, 60 }, COLLIDER_ENEMY, App->player2);
-	colj = App->collisions->AddCollider({ 0, 0, 36, 60 }, COLLIDER_ENEMY, App->player2);
+	col = App->collisions->AddCollider({ 0, 1000, 30, 101 }, COLLIDER_ENEMY, App->player2);
+	colc= App->collisions->AddCollider({ 0, 1000, 36, 60 }, COLLIDER_ENEMY, App->player2);
+	colj = App->collisions->AddCollider({ 0, 1000, 36, 60 }, COLLIDER_ENEMY, App->player2);
 	colcp = App->collisions->AddCollider({ 1000, 1000, 25, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
 	colck = App->collisions->AddCollider({ 1000, 1000, 40, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
 
@@ -468,8 +468,8 @@ update_status ModulePlayer2::Update()
 		App->player2->col->rect.x < App->player->colj->rect.x  ||
 		App->player2->colc->rect.x < App->player->colj->rect.x ||
 		App->player2->colj->rect.x < App->player->colj->rect.x)
-		mirror2 = true;
-	else mirror2 = false;
+		mirror2 = false;
+	else mirror2 = true;
 
 	//IDLE
 	if (currentstate == ST_IDLE2)
@@ -606,7 +606,7 @@ update_status ModulePlayer2::Update()
 		}
 	}
 
-	//PPWER WAVE
+	//POWER WAVE
 	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
 	{
 		App->particles->AddEnemyParticle(App->particles->terryenergy, Terry2position.x + 40, Terry2position.y + 12);
@@ -703,6 +703,12 @@ update_status ModulePlayer2::Update()
 		col->rect.x = Terry2position.x + 15;
 		col->rect.y = Terry2position.y + 10;
 	}
+	if (currentstate != ST_PUNCH_STANDING2 && currentstate != ST_KICK_STANDING2)
+	{
+		colj->rect.x = Terry2position.x + 13;
+		colc->rect.x = Terry2position.x + 13;
+	}
+
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
