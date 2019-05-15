@@ -367,7 +367,7 @@ bool ModulePlayer2::Start()
 	currentstate = ST_IDLE2;
 
 	// TODO 2: Add a collider to the player
-	col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_ENEMY, App->player2);
+	col = App->collisions->AddCollider({ 0, 0, 31, 101 }, COLLIDER_ENEMY, App->player2);
 	colj = App->collisions->AddCollider({ 1000, 1000, 36, 60 }, COLLIDER_ENEMY, App->player2);
 	colcp = App->collisions->AddCollider({ 1000, 1000, 25, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
 	colck = App->collisions->AddCollider({ 1000, 1000, 40, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
@@ -631,7 +631,7 @@ update_status ModulePlayer2::Update()
 		else
 		{
 			LOG("GOD MODE off");
-			col = App->collisions->AddCollider({ 0, 0, 30, 103 }, COLLIDER_ENEMY, App->player2);
+			col = App->collisions->AddCollider({ 0, 0, 31, 103 }, COLLIDER_ENEMY, App->player2);
 			gmode = false;
 		}
 	}

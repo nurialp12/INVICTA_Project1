@@ -361,7 +361,7 @@ bool ModulePlayer::Start()
 	Terryposition.x = 5 + (250);
 	Terryposition.y = 100;
 	score = 0;
-	col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
+	col = App->collisions->AddCollider({ 0, 0, 31, 101 }, COLLIDER_PLAYER, App->player);
 	colj = App->collisions->AddCollider({ 1000, 1000, 36, 60 }, COLLIDER_PLAYER);
 	colcp = App->collisions->AddCollider({ 1000, 1000, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 	colck = App->collisions->AddCollider({ 1000, 1000, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
@@ -699,7 +699,7 @@ update_status ModulePlayer::Update()
 			TerryJumpBackwards.Reset();
 			colj->to_delete = true;
 			if (gmode != true)
-				col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
+				col = App->collisions->AddCollider({ 0, 0, 31, 101 }, COLLIDER_PLAYER, App->player);
 		}
 	}
 	//PUNCH
@@ -896,7 +896,7 @@ update_status ModulePlayer::Update()
 			currentstate = ST_WALK_FORWARD;
 			current_animation = &TerryForward;
 			colc->to_delete = true;
-			col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
+			col = App->collisions->AddCollider({ 0, 0, 31, 101 }, COLLIDER_PLAYER, App->player);
 		}
 	}
 
@@ -906,7 +906,7 @@ update_status ModulePlayer::Update()
 		{
 			currentstate = ST_POWER_WAVE;
 			current_animation = &TerryPW;
-			col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
+			col = App->collisions->AddCollider({ 0, 0, 31, 101 }, COLLIDER_PLAYER, App->player);
 			App->audio->PlayFX("Assets/FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
 			colc->to_delete = true;
 		}
@@ -957,7 +957,7 @@ update_status ModulePlayer::Update()
 		else
 		{
 			LOG("GOD MODE off");
-			col = App->collisions->AddCollider({ 0, 0, 30, 103 }, COLLIDER_PLAYER, App->player);
+			col = App->collisions->AddCollider({ 0, 0, 31, 103 }, COLLIDER_PLAYER, App->player);
 			gmode = false;
 		}
 	}

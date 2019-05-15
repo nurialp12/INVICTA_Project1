@@ -361,7 +361,7 @@ bool ModulePlayer2::Start()
 	currentstate = ST_IDLE2;
 
 	// TODO 2: Add a collider to the player
-	col = App->collisions->AddCollider({ 0, 1000, 30, 101 }, COLLIDER_ENEMY, App->player2);
+	col = App->collisions->AddCollider({ 0, 1000, 31, 101 }, COLLIDER_ENEMY, App->player2);
 	colc= App->collisions->AddCollider({ 0, 1000, 36, 60 }, COLLIDER_ENEMY, App->player2);
 	colj = App->collisions->AddCollider({ 0, 1000, 36, 60 }, COLLIDER_ENEMY, App->player2);
 	colcp = App->collisions->AddCollider({ 1000, 1000, 25, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
@@ -569,22 +569,22 @@ update_status ModulePlayer2::Update()
 			currentstate = ST_KICK_STANDING2;
 			if (mirror2)
 			{
-				Terry2position.x -= 68;
+				Terry2position.x -= 63;
 				current_animation = &TerryKickM;
-				colk = App->collisions->AddCollider({ Terry2position.x + 45, Terry2position.y + 48, 55, 20 }, COLLIDER_ENEMY_SHOT, App->player);
+				colk = App->collisions->AddCollider({ Terry2position.x + 16, Terry2position.y + 48, 55, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
 			}
 			else
 			{
 				current_animation = &TerryKick;
-				colk = App->collisions->AddCollider({ Terry2position.x + 45, Terry2position.y + 48, 55, 20 }, COLLIDER_ENEMY_SHOT, App->player);
-				Terry2position.x += 10;
+				colk = App->collisions->AddCollider({ Terry2position.x + 45, Terry2position.y + 48, 55, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
 			}
 			App->audio->PlayFX("Assets/FX/Voice/Attacks/FX_Attack4/FX_Attack4.wav");
 		}
-		if(TerryKickM.Finished())Terry2position.x += 68;
+		if(TerryKickM.Finished())Terry2position.x += 63;
 		if (TerryKick.Finished() == true || TerryKickM.Finished() == true)
 		{
-			Terry2position.x -= 10;
+			if (mirror2) Terry2position.x -= 10;
+			else Terry2position.x += 10;
 			colk->to_delete = true;
 			TerryKick.resetLoops(0);
 			TerryKickM.resetLoops(0);
@@ -600,11 +600,83 @@ update_status ModulePlayer2::Update()
 				if (mirror2)current_animation = &TerryForwardM;
 				else current_animation = &TerryBackwards;
 			}
-			else
-				currentstate = ST_IDLE2;
+			else currentstate = ST_IDLE2;
 			App->player2->collided = false;
 		}
 	}
+
+	//JUMP
+	/*{
+		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE2)
+		{
+			currentstate = ST_GOING_UP2;
+			col->to_delete = true;
+			if (!gmode) colj = App->collisions->AddCollider({ Terry2position.x + 13, Terry2position.y + 50, 36, 60 }, COLLIDER_ENEMY);
+		}
+		if (currentstate == ST_GOING_UP2)
+		{
+			colj->rect.y = Terry2position.y + 13;
+			current_animation = &TerryGoingUp;
+			speed -= 0.01;
+			Terryposition.y = Terryposition.y - 3 * speed;
+			App->render->camera.y = App->render->camera.y + speed;
+			if (Terryposition.y <= 45)
+			{
+				currentstate = ST_TOP;
+				speed = 1.0;
+			}
+		}
+		if (currentstate == ST_TOP)
+		{
+			colj->rect.y = Terryposition.y + 43;
+			current_animation = &TerryTop;
+			TerryGoingUp.resetLoops(0);
+			speed += 0.01;
+			Terryposition.y = Terryposition.y - 3 * speed;
+			if (Terryposition.y <= 25)
+			{
+				currentstate = ST_GOING_DOWN;
+				current_animation = &TerryGoingDown;
+			}
+		}
+		if (currentstate == ST_GOING_DOWN)
+		{
+			colj->rect.y = Terryposition.y + 53;
+			Terryposition.y = Terryposition.y + 3 * (speed + 0.6);
+			App->render->camera.y = App->render->camera.y - speed;
+			if (App->render->camera.y <= -10)
+				App->render->camera.y = -10;
+
+			if (Terryposition.y >= 100)
+			{
+				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+				{
+					currentstate = ST_WALK_BACKWARD;
+					current_animation = &TerryBackwards;
+				}
+				else if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+				{
+					currentstate = ST_WALK_FORWARD;
+					current_animation = &TerryForward;
+				}
+				else if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+				{
+					currentstate = ST_CROUCH;
+					current_animation = &TerryCrouch;
+				}
+				else
+				{
+					currentstate = ST_IDLE;
+					current_animation = &Terryidle;
+				}
+				TerryGoingDown.resetLoops(0);
+				speed = 1.0;
+				colj->to_delete = true;
+				if (!gmode) col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
+
+			}
+		}
+	}*/
 
 	//POWER WAVE
 	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
@@ -696,11 +768,11 @@ update_status ModulePlayer2::Update()
 	//col->rect.y = Terryposition.y;
 	if (currentstate == ST_PUNCH_STANDING2 && mirror2)
 		col->rect.x = Terry2position.x + 53;
-	else if (currentstate == ST_KICK_STANDING2)
-		col->rect.x = Terry2position.x + 53;
+	else if (currentstate == ST_KICK_STANDING2 && mirror2)
+		col->rect.x = Terry2position.x + 71;
 	else
 	{
-		col->rect.x = Terry2position.x + 15;
+		col->rect.x = Terry2position.x + 14;
 		col->rect.y = Terry2position.y + 10;
 	}
 	if (currentstate != ST_PUNCH_STANDING2 && currentstate != ST_KICK_STANDING2)
