@@ -20,6 +20,7 @@ enum terry2_states
 	ST_WALK_FORWARD2,
 	ST_WALK_BACKWARD2,
 	ST_GOING_UP2,
+	ST_TOP2,
 	ST_GOING_DOWN2,
 	ST_JUMP_NEUTRAL2,
 	ST_JUMP_FORWARD2,
@@ -95,7 +96,9 @@ public:
 	Animation TerryidleM;
 	Animation TerryForwardM;
 	Animation TerryBackwardsM;
-	Animation TerryJumpM;
+	Animation TerryGoingUpM;
+	Animation TerryTopM;
+	Animation TerryGoingDownM;
 	Animation TerryKickM;
 	Animation TerryPunchM;
 	Animation TerryPWM;
@@ -124,7 +127,8 @@ public:
 	bool collided = false;
 	bool gmode = false;
 	bool destroyed = false;
-	int speed = 1;
+
+	float speed = 1.0;
 
 	Uint32 jump_timer = 0;
 	Uint32 punch_timer = 0;

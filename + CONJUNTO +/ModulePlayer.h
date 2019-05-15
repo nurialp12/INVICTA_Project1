@@ -120,8 +120,10 @@ public:
 	//TERRY-----------------------------------
 	Animation TerryidleM;						
 	Animation TerryForwardM;					
-	Animation TerryBackwardsM;					
-	Animation TerryJumpM;						
+	Animation TerryBackwardsM;		
+	Animation TerryGoingUpM;
+	Animation TerryTopM;
+	Animation TerryGoingDownM;
 	Animation TerryKickM;						
 	Animation TerryPunchM;						
 	Animation TerryPWM;						
@@ -174,11 +176,6 @@ public:
 	bool gmode = false;
 	bool destroyed = false;
 
-	int vy = 0;
-	bool jumping = false;
-	bool goingUp = false;
-	bool goingDown = false;
-	int t = 0;
 	float speed = 1.0;
 
 	Uint32 jump_timer = 0;

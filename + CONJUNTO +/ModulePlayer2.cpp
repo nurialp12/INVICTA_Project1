@@ -228,13 +228,42 @@ ModulePlayer2::ModulePlayer2()
 		TerryBackwardsM.speed = 0.1f;
 
 		// JUMP animation of Terry							//spritesTerryBogard2extres.png
-		TerryJumpM.PushBack({ 802, 0, 57, 123 });
-		TerryJumpM.PushBack({ 859, 0, 51, 123 });
-		TerryJumpM.PushBack({ 910, 0, 53, 123 });
-		TerryJumpM.PushBack({ 967, 0, 57, 123 });
-		TerryJumpM.PushBack({ 802, 0, 57, 123 });
-		TerryJumpM.speed = 0.1f;
+		{
+			//LAUNCH AND UP
+			TerryGoingUpM.PushBack({ 557, 0, 57, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.speed = 0.1f;
 
+			TerryTopM.PushBack({ 665, 0, 53, 123 });
+
+			//GOING DOWN AND LAND
+			TerryGoingDownM.PushBack({ 722, 0, 57, 123 });
+			TerryGoingDownM.PushBack({ 722, 0, 57, 123 });
+			TerryGoingDownM.PushBack({ 722, 0, 57, 123 });
+			TerryGoingDownM.PushBack({ 722, 0, 57, 123 });
+			TerryGoingDownM.PushBack({ 722, 0, 57, 123 });
+			TerryGoingDownM.PushBack({ 722, 0, 57, 123 });
+			TerryGoingDownM.PushBack({ 557, 0, 57, 123 });
+			TerryGoingDownM.speed = 0.1f;
+		}
 		// KICK animation of Terry							//spritesTerryBogard2extres.png
 		TerryKickM.PushBack({   0, 137, 116, 112 });
 		TerryKickM.PushBack({ 116, 137, 116, 112 });
@@ -606,7 +635,7 @@ update_status ModulePlayer2::Update()
 	}
 
 	//JUMP
-	/*{
+	{
 		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE2)
 		{
 			currentstate = ST_GOING_UP2;
@@ -616,67 +645,71 @@ update_status ModulePlayer2::Update()
 		if (currentstate == ST_GOING_UP2)
 		{
 			colj->rect.y = Terry2position.y + 13;
-			current_animation = &TerryGoingUp;
+			if (mirror2)current_animation = &TerryGoingUpM;
+			else current_animation = &TerryGoingUp;
 			speed -= 0.01;
-			Terryposition.y = Terryposition.y - 3 * speed;
+			Terry2position.y = Terry2position.y - 3 * speed;
 			App->render->camera.y = App->render->camera.y + speed;
-			if (Terryposition.y <= 45)
+			if (Terry2position.y <= 45)
 			{
-				currentstate = ST_TOP;
+				currentstate = ST_TOP2;
 				speed = 1.0;
 			}
 		}
-		if (currentstate == ST_TOP)
+		if (currentstate == ST_TOP2)
 		{
-			colj->rect.y = Terryposition.y + 43;
-			current_animation = &TerryTop;
+			colj->rect.y = Terry2position.y + 43;
+			if (mirror2)current_animation = &TerryTopM;
+			else current_animation = &TerryTop;
 			TerryGoingUp.resetLoops(0);
+			TerryGoingUpM.resetLoops(0);
 			speed += 0.01;
-			Terryposition.y = Terryposition.y - 3 * speed;
-			if (Terryposition.y <= 25)
-			{
-				currentstate = ST_GOING_DOWN;
-				current_animation = &TerryGoingDown;
-			}
+			Terry2position.y = Terry2position.y - 3 * speed;
+			if (Terry2position.y <= 25)
+				currentstate = ST_GOING_DOWN2;
 		}
-		if (currentstate == ST_GOING_DOWN)
+		if (currentstate == ST_GOING_DOWN2)
 		{
-			colj->rect.y = Terryposition.y + 53;
-			Terryposition.y = Terryposition.y + 3 * (speed + 0.6);
+			if (mirror2) current_animation = &TerryGoingDownM;
+			else current_animation = &TerryGoingDown;
+
+			colj->rect.y = Terry2position.y + 53;
+			Terry2position.y = Terry2position.y + 3 * (speed + 0.6);
 			App->render->camera.y = App->render->camera.y - speed;
 			if (App->render->camera.y <= -10)
 				App->render->camera.y = -10;
 
-			if (Terryposition.y >= 100)
+			if (Terry2position.y >= 100)
 			{
-				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+				Terry2position.y = 100;
+				if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 				{
-					currentstate = ST_WALK_BACKWARD;
-					current_animation = &TerryBackwards;
+					currentstate = ST_WALK_FORWARD2;
+					if (mirror2)current_animation = &TerryForwardM;
+					else current_animation = &TerryBackwards;
 				}
-				else if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+				else if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 				{
-					currentstate = ST_WALK_FORWARD;
-					current_animation = &TerryForward;
+					currentstate = ST_WALK_BACKWARD2;
+					if (mirror2)current_animation = &TerryBackwardsM;
+					else current_animation = &TerryForward;
 				}
-				else if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+				else if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 				{
-					currentstate = ST_CROUCH;
-					current_animation = &TerryCrouch;
+					currentstate = ST_CROUCH2;
+					if (mirror2)current_animation = &TerryCrouchM;
+					else current_animation = &TerryCrouch;
 				}
-				else
-				{
-					currentstate = ST_IDLE;
-					current_animation = &Terryidle;
-				}
+				else currentstate = ST_IDLE2;
+
 				TerryGoingDown.resetLoops(0);
+				TerryGoingDownM.resetLoops(0);
 				speed = 1.0;
 				colj->to_delete = true;
-				if (!gmode) col = App->collisions->AddCollider({ 0, 0, 30, 101 }, COLLIDER_PLAYER, App->player);
-
+				if (!gmode) col = App->collisions->AddCollider({ 0, 0, 31, 101 }, COLLIDER_ENEMY, App->player2);
 			}
 		}
-	}*/
+	}
 
 	//POWER WAVE
 	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
@@ -794,7 +827,8 @@ update_status ModulePlayer2::Update()
 			App->render->Blit(graphics2, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
 		}
 
-		else if (current_animation == &TerryKickM || current_animation == &TerryJumpM || current_animation == &TerryForwardM
+		else if (current_animation == &TerryKickM || current_animation == &TerryGoingUpM || current_animation == &TerryGoingDownM
+			|| current_animation == &TerryTopM || current_animation == &TerryForwardM
 			|| current_animation == &TerryBackwardsM || current_animation == &TerryDPM || current_animation == &TerryDKM || current_animation == &TerryCrouchPunchM
 			|| current_animation == &TerryCrouchKickM || current_animation == &TerryJumpForwardM || current_animation == &TerryJumpBackwardsM || current_animation == &TerryCrouchM)
 		{
