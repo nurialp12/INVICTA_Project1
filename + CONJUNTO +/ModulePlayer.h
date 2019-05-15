@@ -72,6 +72,8 @@ public:
 	char score_text[10];
 	uint score = 0;
 	Animation* current_animation;
+
+	//TERRY-------------------------------------
 	Animation Terryidle;
 	Animation TerryForward;
 	Animation TerryBackwards;
@@ -90,10 +92,32 @@ public:
 	Animation TerryJumpBackwards;
 	Animation TerryCrouchPunch;
 	Animation TerryCrouchKick;
+	//ANDY--------------------------------------
+	Animation Andyidle;
+	Animation AndyForward;
+	Animation AndyBackwards;
+	Animation AndyGoingUp;
+	Animation AndyTop;
+	Animation AndyGoingDown;
+	Animation AndyKick;
+	Animation AndyPunch;
+	Animation AndyPW;
+	Animation AndyDP;
+	Animation AndyDK;
+	Animation AndyJumpPunch;
+	Animation AndyJumpKick;
+	Animation AndyCrouch;
+	Animation AndyJumpForward;
+	Animation AndyJumpBackwards;
+	Animation AndyCrouchPunch;
+	Animation AndyCrouchKick;
+	//-----------------------------------------
 	Animation hit;
 
 	SDL_Texture* graphicsM = nullptr;
 	SDL_Texture* graphics2M = nullptr;
+
+	//TERRY-----------------------------------
 	Animation TerryidleM;						
 	Animation TerryForwardM;					
 	Animation TerryBackwardsM;					
@@ -109,13 +133,33 @@ public:
 	Animation TerryJumpForwardM;				
 	Animation TerryJumpBackwardsM;				
 	Animation TerryCrouchPunchM;				
-	Animation TerryCrouchKickM;					
+	Animation TerryCrouchKickM;		
+	//ANDY--------------------------------------
+	Animation AndyidleM;
+	Animation AndyForwardM;
+	Animation AndyBackwardsM;
+	Animation AndyJumpM;
+	Animation AndyKickM;
+	Animation AndyPunchM;
+	Animation AndyPWM;
+	Animation AndyDPM;
+	Animation AndyDKM;
+	Animation AndyJumpPunchM;
+	Animation AndyJumpKickM;
+	Animation AndyCrouchM;
+	Animation AndyJumpForwardM;
+	Animation AndyJumpBackwardsM;
+	Animation AndyCrouchPunchM;
+	Animation AndyCrouchKickM;
+	//-----------------------------------------
 	Animation hitM;							
 
 	bool mirror = false;
 	bool mirror2 = true;
 
 	iPoint Terryposition;
+	iPoint Andyposition;
+
 	Collider* col;
 	Collider* colj;
 	Collider* colp;
@@ -141,7 +185,9 @@ public:
 	Uint32 punch_timer = 0;
 
 	InputP1 inputTerry;
-	terry_states currentstate;
+	InputP1 inputAndy;
+	terry_states currentstate; //Terry and Andy's states are the same
+
 };
 
 #endif

@@ -154,5 +154,11 @@
     <ClCompile Include="ModuleSceneIntro.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ModulePlayer1Andy.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModulePlayer2Andy.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
