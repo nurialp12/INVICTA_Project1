@@ -103,7 +103,7 @@ ModulePlayer::ModulePlayer()
 		TerryKick.PushBack({ 47, 134,  57, 112 });
 		TerryKick.PushBack({ 104, 134,  42, 112 });
 		TerryKick.PushBack({ 146, 134, 116, 112 });
-		TerryKick.PushBack({ 261, 134,  62, 112 });
+		TerryKick.PushBack({ 262, 134,  62, 112 });
 		TerryKick.speed = 0.1f;
 	}
 
@@ -461,13 +461,11 @@ update_status ModulePlayer::Update()
 	//MOVE FORWARD						CAMERA FIX NEEDED
 	{
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
-		{
 			currentstate = ST_WALK_FORWARD;
-			if (mirror) current_animation = &TerryBackwardsM;
-			else current_animation = &TerryForward;
-		}
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && currentstate == ST_WALK_FORWARD)
 		{
+			if (mirror) current_animation = &TerryBackwardsM;
+			else current_animation = &TerryForward;
 			if (Terryposition.x < 700 /*&&
 				Terryposition.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w)*/)
 				Terryposition.x += speed;
@@ -486,13 +484,11 @@ update_status ModulePlayer::Update()
 	//MOVE BACKWARD						CAMERA FIX NEEDED
 	{
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
-		{
 			currentstate = ST_WALK_BACKWARD;
-			if (mirror) current_animation = &TerryForwardM;
-			else current_animation = &TerryBackwards;
-		}
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && currentstate == ST_WALK_BACKWARD)
 		{
+			if (mirror) current_animation = &TerryForwardM;
+			else current_animation = &TerryBackwards;
 			if (Terryposition.x > 0 /*&& Terryposition.x * 2 > -App->render->camera.x*/)
 				Terryposition.x -= speed;
 		}
