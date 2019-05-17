@@ -20,8 +20,14 @@ enum terry_states
 	ST_WALK_FORWARD,
 	ST_WALK_BACKWARD,
 	ST_GOING_UP,
+	ST_GOING_UP_FORWARD,
+	ST_GOING_UP_BACKWARD,
 	ST_TOP,
+	ST_TOP_FORWARD,
+	ST_TOP_BACKWARD,
 	ST_GOING_DOWN,
+	ST_GOING_DOWN_FORWARD,
+	ST_GOING_DOWN_BACKWARD,
 	ST_JUMP_NEUTRAL,
 	ST_JUMP_FORWARD,
 	ST_JUMP_BACKWARD,
@@ -78,8 +84,14 @@ public:
 	Animation TerryForward;
 	Animation TerryBackwards;
 	Animation TerryGoingUp;
+	Animation TerryGoingUpForward;
+	Animation TerryGoingUpBackwards;
 	Animation TerryTop;
+	Animation TerryTopForward;
+	Animation TerryTopBackwards;
 	Animation TerryGoingDown;
+	Animation TerryGoingDownForward;
+	Animation TerryGoingDownBackwards;
 	Animation TerryKick;
 	Animation TerryPunch;
 	Animation TerryPW;
