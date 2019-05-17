@@ -12,40 +12,71 @@
 
 struct SDL_Texture;
 
-class ModulePlayer2 : public Module
+enum terry2_states
+{
+	ST_UNKNOWN2,
+
+	ST_IDLE2,
+	ST_WALK_FORWARD2,
+	ST_WALK_BACKWARD2,
+	ST_GOING_UP2,
+	ST_TOP2,
+	ST_GOING_DOWN2,
+	ST_JUMP_NEUTRAL2,
+	ST_JUMP_FORWARD2,
+	ST_JUMP_BACKWARD2,
+	ST_CROUCH2,
+	ST_POWER_WAVE2,
+	ST_PUNCH_STANDING2,
+	ST_PUNCH_NEUTRAL_JUMP2,
+	ST_PUNCH_FORWARD_JUMP2,
+	ST_PUNCH_BACKWARD_JUMP2,
+	ST_PUNCH_CROUCH2,
+	ST_KICK_STANDING2,
+	ST_KICK_CROUCH2,
+	ST_SD2
+};
+
+struct InputP2 {
+	bool A_DOWN; //LEFT
+	bool S_DOWN; //CROUCH
+	bool D_DOWN; //RIGHT
+	bool W_DOWN; //JUMP
+	bool F_DOWN; //PUNCH
+	bool G_DOWN; //KICK
+	bool H_DOWN; //POEWER WAVE         ¡¡¡PROVISIONAL!!!
+	bool SD_DOWN;
+};
+class ModulePlayer2 : public Module 
 {
 public:
 	ModulePlayer2();
 	~ModulePlayer2();
 
 	bool Start();
-	//update_status PreUpdate();					// ESTO ESTÁ EN ModulePlayer.h
+	update_status PreUpdate();				
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
 public:
-
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* graphics2 = nullptr;
 	SDL_Texture* UI = nullptr;
 	SDL_Rect lifebar;
 	SDL_Rect life1;
 	SDL_Rect life2;
-	int life_score = 92;
+	float life_score = 92;
 	int font_score = -1;
 	char score_text[10];
 	uint score = 0;
-
-
-	//Animation* current_animation = NULL;			// ESTO ESTÁ EN ModulePlayer.h
-
 	Animation* current_animation;
-
 	Animation Terryidle;
 	Animation TerryForward;
 	Animation TerryBackwards;
-	Animation TerryJump;
+	Animation TerryGoingUp;
+	Animation TerryTop;
+	Animation TerryGoingDown;
 	Animation TerryKick;
 	Animation TerryPunch;
 	Animation TerryPW;
@@ -62,15 +93,26 @@ public:
 
 	SDL_Texture* graphicsM = nullptr;
 	SDL_Texture* graphics2M = nullptr;
-	Animation Terry2idleM;
-	Animation Terry2ForwardM;
-	Animation Terry2BackwardsM;
-	Animation Terry2JumpM;
-	Animation Terry2KickM;
-	Animation Terry2PunchM;
-	Animation Terry2PWM;
+	Animation TerryidleM;
+	Animation TerryForwardM;
+	Animation TerryBackwardsM;
+	Animation TerryGoingUpM;
+	Animation TerryTopM;
+	Animation TerryGoingDownM;
+	Animation TerryKickM;
+	Animation TerryPunchM;
+	Animation TerryPWM;
+	Animation TerryDPM;
+	Animation TerryDKM;
+	Animation TerryJumpPunchM;
+	Animation TerryJumpKickM;
+	Animation TerryCrouchM;
+	Animation TerryJumpForwardM;
+	Animation TerryJumpBackwardsM;
+	Animation TerryCrouchPunchM;
+	Animation TerryCrouchKickM;
+	Animation hitM;
 	bool mirror2 = true;
-
 
 	iPoint Terry2position;
 	Collider* col;
@@ -82,51 +124,17 @@ public:
 	Collider* colck;
 	Collider* coljp;
 	Collider* coljk;
-
 	bool collided = false;
 	bool gmode = false;
 	bool destroyed = false;
 
-	enum terry2_states
-	{
-		ST_UNKNOWN,
-
-		ST_IDLE,
-		ST_WALK_FORWARD,
-		ST_WALK_BACKWARD,
-		ST_JUMP_NEUTRAL,
-		ST_JUMP_FORWARD,
-		ST_JUMP_BACKWARD,
-		ST_CROUCH,
-		ST_PUNCH_STANDING,
-		ST_PUNCH_NEUTRAL_JUMP,
-		ST_PUNCH_FORWARD_JUMP,
-		ST_PUNCH_BACKWARD_JUMP,
-		ST_PUNCH_CROUCH
-	};
-
-	enum terry2_inputs
-	{
-		IN_LEFT_DOWN,
-		IN_LEFT_UP,
-		IN_RIGHT_DOWN,
-		IN_RIGHT_UP,
-		IN_LEFT_AND_RIGHT,
-		IN_JUMP,
-		IN_CROUCH_UP,
-		IN_CROUCH_DOWN,
-		IN_JUMP_AND_CROUCH,
-		IN_X,
-		IN_JUMP_FINISH,
-		IN_PUNCH_FINISH
-	};
+	float speed = 1.0;
 
 	Uint32 jump_timer = 0;
 	Uint32 punch_timer = 0;
 
-	/*bool external_input(p2Qeue<terry2_inputs>& inputs);
-	void internal_input(p2Qeue<terry2_inputs>& inputs);
-	terry2_states process_fsm(p2Qeue<terry2_inputs>& inputs);*/
+	InputP2 inputTerry;
+	terry2_states currentstate;
 };
 
 #endif
