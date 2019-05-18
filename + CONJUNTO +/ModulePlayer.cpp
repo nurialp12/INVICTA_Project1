@@ -93,8 +93,8 @@ ModulePlayer::ModulePlayer()
 		TerryGoingDown.PushBack({ 967, 0, 57, 123 });
 		TerryGoingDown.PushBack({ 967, 0, 57, 123 });
 		TerryGoingDown.PushBack({ 967, 0, 57, 123 });
-		TerryGoingDown.PushBack({ 802, 0, 57, 123 });
-		TerryGoingDown.speed = 0.1f;
+		//TerryGoingDown.PushBack({ 802, 0, 57, 123 });
+		TerryGoingDown.speed = 0.08f;
 	}
 
 	// KICK animation of Terry							//spritesTerryBogard2extres.png
@@ -562,14 +562,14 @@ update_status ModulePlayer::Update()
 		colj->rect.y = Terryposition.y + 13;
 		if (mirror)current_animation = &TerryGoingUpM;
 		else current_animation = &TerryGoingUp;
-		speed -= 0.01;
+		t += 0.0005;
+		speed -= t;
+		if (Terryposition.y > 50)
 		Terryposition.y = Terryposition.y - 3 * speed;
+		else
+		Terryposition.y = Terryposition.y - 3 * speed/2;
 		App->render->camera.y = App->render->camera.y + speed;
-		if (Terryposition.y <= 45)
-		{
-			currentstate = ST_TOP;
-			speed = 1.0;
-		}
+		if (Terryposition.y <= 5) currentstate = ST_TOP;
 	}
 	if (currentstate == ST_TOP)
 	{
@@ -578,10 +578,11 @@ update_status ModulePlayer::Update()
 		else current_animation = &TerryTop;
 		TerryGoingUp.resetLoops(0);
 		TerryGoingUpM.resetLoops(0);
-		speed += 0.01;
-		Terryposition.y = Terryposition.y - 3 * speed;
-		if (Terryposition.y <= 25)
-		currentstate = ST_GOING_DOWN;
+
+		speed += 0.01*t;
+		Terryposition.y -= speed/1.5;
+		
+		if (Terryposition.y <= -5) currentstate = ST_GOING_DOWN;
 	}
 	if (currentstate == ST_GOING_DOWN)
 	{
@@ -589,7 +590,14 @@ update_status ModulePlayer::Update()
 		else current_animation = &TerryGoingDown;
 
 		colj->rect.y = Terryposition.y + 53;
-		Terryposition.y = Terryposition.y + 3 * (speed + 0.6);
+		t = 0;
+		
+		t += 0.0005;
+		speed += 2 * t;
+		if (Terryposition.y > 25 && Terryposition.y < 99)
+			Terryposition.y += 3 * speed;
+		else
+			Terryposition.y += 3 * speed / 2;
 		App->render->camera.y = App->render->camera.y - speed;
 		if (App->render->camera.y <= -10)
 			App->render->camera.y = -10;
@@ -619,7 +627,8 @@ update_status ModulePlayer::Update()
 			
 			TerryGoingDown.resetLoops(0);
 			TerryGoingDownM.resetLoops(0);
-			speed = 1.0;
+			speed = 2.0;
+			t = 0;
 			colj->rect.y = 10000;
 			if (!gmode) col->rect.y = Terryposition.y + 10;
 		}
@@ -658,36 +667,20 @@ update_status ModulePlayer::Update()
 			TerryGoingUpM.resetLoops(0);	//   !!!
 			speed += 0.01;
 			Terryposition.y = Terryposition.y - 2 * speed;
-			if (Terryposition.y <= 25)
+			if (TerryTopForward.Finished())
 				currentstate = ST_GOING_DOWN_FORWARD;
 		}
-		//if (TerryJumpForward.Finished() != true && currentstate == ST_JUMP_FORWARD)
-		//{
-		//	if (Terryposition.y == 80)
-		//		jumpspeed = -60;
-		//	if (Terryposition.y == 120)
-		//		jumpspeed = 60;
-
-		//	if (Terryposition.x < 700 &&
-		//		Terryposition.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w))
-		//	{
-		//		if (App->render->camera.x > -900 /*-490*/ && App->player->destroyed == false &&
-		//			App->player2->Terry2position.x * 2 > -App->render->camera.x &&
-		//			App->input->keyboard[SDL_SCANCODE_RIGHT] != KEY_STATE::KEY_REPEAT)
-		//			App->render->camera.x -= speed;
-		//	}
-
-		//}
-		if (currentstate == ST_GOING_DOWN_FORWARD)
+		if(currentstate==ST_GOING_DOWN_FORWARD)
 		{
 			if (mirror) current_animation = &TerryGoingDownM;	//	!!!
 			else current_animation = &TerryGoingDownForward;
+			TerryTopForward.resetLoops(0);
+
 			Terryposition.x++;
 			colj->rect.y = Terryposition.y + 53;
 			Terryposition.y = Terryposition.y + 2 * (speed + 0.6);
 			App->render->camera.y = App->render->camera.y - speed;
 			if (App->render->camera.y <= -10) App->render->camera.y = -10;
-
 			if (Terryposition.y >= 100)
 			{
 				Terryposition.y = 100;

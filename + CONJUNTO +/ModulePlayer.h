@@ -188,7 +188,8 @@ public:
 	bool gmode = false;
 	bool destroyed = false;
 
-	float speed = 1.0;
+	float t = 0;
+	float speed = 2;
 
 	Uint32 jump_timer = 0;
 	Uint32 punch_timer = 0;
