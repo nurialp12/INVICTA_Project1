@@ -367,7 +367,7 @@ ModulePlayer2::~ModulePlayer2()
 // Load assets
 bool ModulePlayer2::Start()
 {
-	if (Terry2position.x <= App->player->Terryposition.x) mirror2 = false;
+	if (Terry2position.x <= App->player->/*Terryposition*/Andyposition.x) mirror2 = false;
 	else mirror2 = true;
 
 	LOG("Loading player");

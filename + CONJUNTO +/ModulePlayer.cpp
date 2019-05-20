@@ -1,3 +1,6 @@
+#if 0;
+
+
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -1178,3 +1181,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		collided = true;
 	}
 }
+
+
+
+#endif;
