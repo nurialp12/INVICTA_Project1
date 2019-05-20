@@ -23,7 +23,7 @@ enum update_status
 typedef unsigned int uint;
 
 // Configuration -----------
-#define SCREEN_SIZE 2
+#define SCREEN_SIZE 1
 #define SCREEN_WIDTH 290
 #define SCREEN_HEIGHT 216
 #define WIN_FULLSCREEN 0
