@@ -34,12 +34,12 @@ ModulePlayer::ModulePlayer()
 
 	//IDLE
 	{
-		Andyidle.PushBack({ 401, 809, 61, 102 });
-		Andyidle.PushBack({ 464, 811, 61, 100 });
-		Andyidle.PushBack({ 526, 814, 62, 97 });
-		Andyidle.PushBack({ 590, 812, 61, 100 });
-		Andyidle.PushBack({ 655, 810, 61, 102 });
-		Andyidle.speed = 0.1f;
+		Andyidle.PushBack({ 401, 799, 61, 112 });
+		Andyidle.PushBack({ 464, 799, 61, 112 });
+		Andyidle.PushBack({ 526, 799, 62, 112 });
+		Andyidle.PushBack({ 590, 800, 61, 112 });
+		Andyidle.PushBack({ 655, 800, 61, 112 });
+		Andyidle.speed = 0.09f;
 	}
 
 	// WALK FORWARD animation of Andy					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
@@ -382,10 +382,6 @@ ModulePlayer::~ModulePlayer()
 // Load assets
 bool ModulePlayer::Start()
 {
-	// MIRROR
-	if (Andyposition.x <= App->player2->Terry2position.x) { mirror = false; }
-	else { mirror = true; }
-
 	LOG("Loading player");
 	bool ret = true;
 	graphics = App->textures->Load("Assets/Sprites/Sprites_AndyBogard_ok.png");

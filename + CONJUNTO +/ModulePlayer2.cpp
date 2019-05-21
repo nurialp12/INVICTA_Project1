@@ -1,3 +1,5 @@
+#if 0;
+
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -31,7 +33,7 @@ ModulePlayer2::ModulePlayer2()
 		Terryidle.PushBack({ 96, 910, 59, 112 });
 		Terryidle.PushBack({ 165, 909, 58, 112 });
 		Terryidle.PushBack({ 96, 910, 59, 112 });
-		Terryidle.speed = 0.1f;
+		Terryidle.speed = 0.08f;
 	}
 
 	// WALK FORWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
@@ -207,15 +209,15 @@ ModulePlayer2::ModulePlayer2()
 	//MIRROR -----------------------------------------------------------------------------------------				//spritesTerryBogardMIRROR.png				//spritesTerryBogard2extresMIRROR.png
 	{
 		//IDLE
-		TerryidleM.PushBack({ 0, 912, 59, 112 });		//1
-		TerryidleM.PushBack({ 59, 912, 59, 112 });		//2
+		TerryidleM.PushBack({   0, 912, 59, 112 });		//1
+		TerryidleM.PushBack({  59, 912, 59, 112 });		//2
 		TerryidleM.PushBack({ 118, 912, 59, 112 });		//3
-		TerryidleM.PushBack({ 59, 912, 59, 112 });		//2
-		TerryidleM.speed = 0.1f;
+		TerryidleM.PushBack({  59, 912, 59, 112 });		//2
+		TerryidleM.speed = 0.08f;
 
 		// WALK FORWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
-		TerryForwardM.PushBack({ 21, 268, 59, 112 });
-		TerryForwardM.PushBack({ 96, 268, 69, 112 });
+		TerryForwardM.PushBack({  21, 268, 59, 112 });
+		TerryForwardM.PushBack({  96, 268, 69, 112 });
 		TerryForwardM.PushBack({ 178, 268, 59, 112 });
 		TerryForwardM.PushBack({ 252, 268, 59, 112 });
 		TerryForwardM.speed = 0.1f;
@@ -868,3 +870,4 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 		collided = true;
 	}
 }
+#endif;

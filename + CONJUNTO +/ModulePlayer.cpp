@@ -382,10 +382,6 @@ ModulePlayer::~ModulePlayer()
 // Load assets
 bool ModulePlayer::Start()
 {
-	// MIRROR
-	if (Terryposition.x <= App->player2->Terry2position.x) { mirror = false; }
-	else { mirror = true; }
-
 	LOG("Loading player");
 	bool ret = true;
 	graphics = App->textures->Load("Assets/Sprites/spritesTerryBogard.png");

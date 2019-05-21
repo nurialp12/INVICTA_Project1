@@ -1,8 +1,4 @@
-
-
-#if 0;
-
-
+//#if 0;
 
 #include "Globals.h"
 #include "Application.h"
@@ -33,11 +29,11 @@ ModulePlayer2::ModulePlayer2()
 
 	//IDLE
 	{
-		Terryidle.PushBack({ 28, 909, 58, 112 });
-		Terryidle.PushBack({ 96, 910, 59, 112 });
+		Terryidle.PushBack({  28, 909, 58, 112 });
+		Terryidle.PushBack({  96, 910, 59, 112 });
 		Terryidle.PushBack({ 165, 909, 58, 112 });
-		Terryidle.PushBack({ 96, 910, 59, 112 });
-		Terryidle.speed = 0.1f;
+		Terryidle.PushBack({  96, 910, 59, 112 });
+		Terryidle.speed = 0.08f;
 	}
 
 	// WALK FORWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
@@ -217,7 +213,7 @@ ModulePlayer2::ModulePlayer2()
 		TerryidleM.PushBack({ 59, 912, 59, 112 });		//2
 		TerryidleM.PushBack({ 118, 912, 59, 112 });		//3
 		TerryidleM.PushBack({ 59, 912, 59, 112 });		//2
-		TerryidleM.speed = 0.1f;
+		TerryidleM.speed = 0.08f;
 
 		// WALK FORWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
 		TerryForwardM.PushBack({ 21, 268, 59, 112 });
@@ -234,19 +230,48 @@ ModulePlayer2::ModulePlayer2()
 		TerryBackwardsM.speed = 0.1f;
 
 		// JUMP animation of Terry							//spritesTerryBogard2extres.png
-		TerryJumpM.PushBack({ 802, 0, 57, 123 });
-		TerryJumpM.PushBack({ 859, 0, 51, 123 });
-		TerryJumpM.PushBack({ 910, 0, 53, 123 });
-		TerryJumpM.PushBack({ 967, 0, 57, 123 });
-		TerryJumpM.PushBack({ 802, 0, 57, 123 });
-		TerryJumpM.speed = 0.1f;
+		{
+			//LAUNCH AND UP
+			TerryGoingUpM.PushBack({ 557, 0, 57, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.PushBack({ 614, 0, 51, 123 });
+			TerryGoingUpM.speed = 0.1f;
 
+			TerryTopM.PushBack({ 665, 0, 53, 123 });
+
+			//GOING DOWN AND LAND
+			TerryGoingDownM.PushBack({ 722, 0, 57, 123 });
+			TerryGoingDownM.PushBack({ 722, 0, 57, 123 });
+			TerryGoingDownM.PushBack({ 722, 0, 57, 123 });
+			TerryGoingDownM.PushBack({ 722, 0, 57, 123 });
+			TerryGoingDownM.PushBack({ 722, 0, 57, 123 });
+			TerryGoingDownM.PushBack({ 722, 0, 57, 123 });
+			TerryGoingDownM.PushBack({ 557, 0, 57, 123 });
+			TerryGoingDownM.speed = 0.1f;
+		}
 		// KICK animation of Terry							//spritesTerryBogard2extres.png
-		TerryKickM.PushBack({ 0, 134,  47, 112 });
-		TerryKickM.PushBack({ 47, 134,  57, 112 });
-		TerryKickM.PushBack({ 104, 134,  42, 112 });
-		TerryKickM.PushBack({ 146, 134, 116, 112 });
-		TerryKickM.PushBack({ 261, 134,  62, 112 });
+		TerryKickM.PushBack({ 0, 137, 116, 112 });
+		TerryKickM.PushBack({ 116, 137, 116, 112 });
+		TerryKickM.PushBack({ 232, 137, 116, 112 });
+		TerryKickM.PushBack({ 348, 137, 116, 112 });
+		TerryKickM.PushBack({ 464, 137, 116, 112 });
 		TerryKickM.speed = 0.1f;
 
 		//PUNCH
@@ -344,7 +369,7 @@ ModulePlayer2::~ModulePlayer2()
 // Load assets
 bool ModulePlayer2::Start()
 {
-	if (Terry2position.x <= App->player->Terryposition.x) mirror2 = false;
+	if (Terry2position.x <= App->player->/*Terryposition*/Andyposition.x) mirror2 = false;
 	else mirror2 = true;
 
 	LOG("Loading player");
@@ -367,8 +392,9 @@ bool ModulePlayer2::Start()
 	currentstate = ST_IDLE2;
 
 	// TODO 2: Add a collider to the player
-	col = App->collisions->AddCollider({ 0, 0, 31, 101 }, COLLIDER_ENEMY, App->player2);
-	colj = App->collisions->AddCollider({ 1000, 1000, 36, 60 }, COLLIDER_ENEMY, App->player2);
+	col = App->collisions->AddCollider({ 0, 1000, 31, 101 }, COLLIDER_ENEMY, App->player2);
+	colc = App->collisions->AddCollider({ 0, 1000, 36, 60 }, COLLIDER_ENEMY, App->player2);
+	colj = App->collisions->AddCollider({ 0, 1000, 36, 60 }, COLLIDER_ENEMY, App->player2);
 	colcp = App->collisions->AddCollider({ 1000, 1000, 25, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
 	colck = App->collisions->AddCollider({ 1000, 1000, 40, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
 
@@ -465,7 +491,15 @@ update_status ModulePlayer2::PreUpdate()
 update_status ModulePlayer2::Update()
 {
 	// MIRROR
-	if (Terry2position.x < App->player->Terryposition.x) mirror2 = false;
+	if (App->player2->col->rect.x < App->player->col->rect.x ||
+		App->player2->colc->rect.x < App->player->col->rect.x ||
+		App->player2->colj->rect.x < App->player->col->rect.x ||
+		App->player2->col->rect.x < App->player->colc->rect.x ||
+		App->player2->colj->rect.x < App->player->colc->rect.x ||
+		App->player2->col->rect.x < App->player->colj->rect.x ||
+		App->player2->colc->rect.x < App->player->colj->rect.x ||
+		App->player2->colj->rect.x < App->player->colj->rect.x)
+		mirror2 = false;
 	else mirror2 = true;
 
 	//IDLE
@@ -476,13 +510,11 @@ update_status ModulePlayer2::Update()
 	//MOVE BACKWARD							CAMERA FIX NEEDED	
 	{
 		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE2)
-		{
 			currentstate = ST_WALK_BACKWARD2;
-			if (mirror2) current_animation = &TerryBackwardsM;
-			else current_animation = &TerryForward;
-		}
 		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && currentstate == ST_WALK_BACKWARD2)
 		{
+			if (mirror2) current_animation = &TerryBackwardsM;
+			else current_animation = &TerryForward;
 			if (Terry2position.x < 700 /*&& Terry2position.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w)*/)
 				Terry2position.x += speed;
 		}
@@ -500,13 +532,11 @@ update_status ModulePlayer2::Update()
 	//MOVE FORWARD							CAMERA FIX NEEDED
 	{
 		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE2)
-		{
 			currentstate = ST_WALK_FORWARD2;
-			if (mirror2) current_animation = &TerryForwardM;
-			else current_animation = &TerryBackwards;
-		}
 		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && currentstate == ST_WALK_FORWARD2)
 		{
+			if (mirror2) current_animation = &TerryForwardM;
+			else current_animation = &TerryBackwards;
 			if (Terry2position.x < 700 /*&& Terry2position.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w)*/)
 				Terry2position.x -= speed;
 		}
@@ -539,9 +569,9 @@ update_status ModulePlayer2::Update()
 			}
 			App->audio->PlayFX("Assets/FX/punch.wav");
 		}
+		if (TerryPunchM.Finished())Terry2position.x += 38;
 		if (TerryPunch.Finished() || TerryPunchM.Finished())
 		{
-			if (mirror2)Terry2position.x += 38;
 			colp->to_delete = true;
 			TerryPunch.resetLoops(0);
 			TerryPunchM.resetLoops(0);
@@ -570,24 +600,25 @@ update_status ModulePlayer2::Update()
 			currentstate = ST_KICK_STANDING2;
 			if (mirror2)
 			{
+				Terry2position.x -= 63;
 				current_animation = &TerryKickM;
-				colk = App->collisions->AddCollider({ Terry2position.x + 45, Terry2position.y + 48, 55, 20 }, COLLIDER_ENEMY_SHOT, App->player);
+				colk = App->collisions->AddCollider({ Terry2position.x + 16, Terry2position.y + 48, 55, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
 			}
 			else
 			{
 				current_animation = &TerryKick;
-				colk = App->collisions->AddCollider({ Terry2position.x + 45, Terry2position.y + 48, 55, 20 }, COLLIDER_ENEMY_SHOT, App->player);
-				Terry2position.x += 5;
-
+				colk = App->collisions->AddCollider({ Terry2position.x + 45, Terry2position.y + 48, 55, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
 			}
 			App->audio->PlayFX("Assets/FX/Voice/Attacks/FX_Attack4/FX_Attack4.wav");
 		}
+		if (TerryKickM.Finished())Terry2position.x += 63;
 		if (TerryKick.Finished() == true || TerryKickM.Finished() == true)
 		{
+			if (mirror2) Terry2position.x -= 10;
+			else Terry2position.x += 10;
 			colk->to_delete = true;
 			TerryKick.resetLoops(0);
 			TerryKickM.resetLoops(0);
-
 			if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_WALK_BACKWARD2;
@@ -600,13 +631,89 @@ update_status ModulePlayer2::Update()
 				if (mirror2)current_animation = &TerryForwardM;
 				else current_animation = &TerryBackwards;
 			}
-			else
-				currentstate = ST_IDLE2;
+			else currentstate = ST_IDLE2;
 			App->player2->collided = false;
 		}
 	}
 
-	//PPWER WAVE
+	//JUMP
+	{
+		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE2)
+		{
+			currentstate = ST_GOING_UP2;
+			col->to_delete = true;
+			if (!gmode) colj = App->collisions->AddCollider({ Terry2position.x + 13, Terry2position.y + 50, 36, 60 }, COLLIDER_ENEMY);
+		}
+		if (currentstate == ST_GOING_UP2)
+		{
+			colj->rect.y = Terry2position.y + 13;
+			if (mirror2)current_animation = &TerryGoingUpM;
+			else current_animation = &TerryGoingUp;
+			speed -= 0.01;
+			Terry2position.y = Terry2position.y - 3 * speed;
+			App->render->camera.y = App->render->camera.y + speed;
+			if (Terry2position.y <= 45)
+			{
+				currentstate = ST_TOP2;
+				speed = 1.0;
+			}
+		}
+		if (currentstate == ST_TOP2)
+		{
+			colj->rect.y = Terry2position.y + 43;
+			if (mirror2)current_animation = &TerryTopM;
+			else current_animation = &TerryTop;
+			TerryGoingUp.resetLoops(0);
+			TerryGoingUpM.resetLoops(0);
+			speed += 0.01;
+			Terry2position.y = Terry2position.y - 3 * speed;
+			if (Terry2position.y <= 25)
+				currentstate = ST_GOING_DOWN2;
+		}
+		if (currentstate == ST_GOING_DOWN2)
+		{
+			if (mirror2) current_animation = &TerryGoingDownM;
+			else current_animation = &TerryGoingDown;
+
+			colj->rect.y = Terry2position.y + 53;
+			Terry2position.y = Terry2position.y + 3 * (speed + 0.6);
+			App->render->camera.y = App->render->camera.y - speed;
+			if (App->render->camera.y <= -10)
+				App->render->camera.y = -10;
+
+			if (Terry2position.y >= 100)
+			{
+				Terry2position.y = 100;
+				if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+				{
+					currentstate = ST_WALK_FORWARD2;
+					if (mirror2)current_animation = &TerryForwardM;
+					else current_animation = &TerryBackwards;
+				}
+				else if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+				{
+					currentstate = ST_WALK_BACKWARD2;
+					if (mirror2)current_animation = &TerryBackwardsM;
+					else current_animation = &TerryForward;
+				}
+				else if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+				{
+					currentstate = ST_CROUCH2;
+					if (mirror2)current_animation = &TerryCrouchM;
+					else current_animation = &TerryCrouch;
+				}
+				else currentstate = ST_IDLE2;
+
+				TerryGoingDown.resetLoops(0);
+				TerryGoingDownM.resetLoops(0);
+				speed = 1.0;
+				colj->to_delete = true;
+				if (!gmode) col = App->collisions->AddCollider({ 0, 0, 31, 101 }, COLLIDER_ENEMY, App->player2);
+			}
+		}
+	}
+
+	//POWER WAVE
 	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
 	{
 		App->particles->AddEnemyParticle(App->particles->terryenergy, Terry2position.x + 40, Terry2position.y + 12);
@@ -631,7 +738,7 @@ update_status ModulePlayer2::Update()
 		else
 		{
 			LOG("GOD MODE off");
-			col = App->collisions->AddCollider({ 0, 0, 31, 103 }, COLLIDER_ENEMY, App->player2);
+			col = App->collisions->AddCollider({ 0, 0, 30, 103 }, COLLIDER_ENEMY, App->player2);
 			gmode = false;
 		}
 	}
@@ -696,11 +803,19 @@ update_status ModulePlayer2::Update()
 	//col->rect.y = Terryposition.y;
 	if (currentstate == ST_PUNCH_STANDING2 && mirror2)
 		col->rect.x = Terry2position.x + 53;
+	else if (currentstate == ST_KICK_STANDING2 && mirror2)
+		col->rect.x = Terry2position.x + 71;
 	else
 	{
-		col->rect.x = Terry2position.x + 15;
+		col->rect.x = Terry2position.x + 14;
 		col->rect.y = Terry2position.y + 10;
 	}
+	if (currentstate != ST_PUNCH_STANDING2 && currentstate != ST_KICK_STANDING2)
+	{
+		colj->rect.x = Terry2position.x + 13;
+		colc->rect.x = Terry2position.x + 13;
+	}
+
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
@@ -714,7 +829,8 @@ update_status ModulePlayer2::Update()
 			App->render->Blit(graphics2, Terry2position.x, Terry2position.y, &(current_animation->GetCurrentFrame()));
 		}
 
-		else if (current_animation == &TerryKickM || current_animation == &TerryJumpM || current_animation == &TerryForwardM
+		else if (current_animation == &TerryKickM || current_animation == &TerryGoingUpM || current_animation == &TerryGoingDownM
+			|| current_animation == &TerryTopM || current_animation == &TerryForwardM
 			|| current_animation == &TerryBackwardsM || current_animation == &TerryDPM || current_animation == &TerryDKM || current_animation == &TerryCrouchPunchM
 			|| current_animation == &TerryCrouchKickM || current_animation == &TerryJumpForwardM || current_animation == &TerryJumpBackwardsM || current_animation == &TerryCrouchM)
 		{
@@ -754,8 +870,4 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 		collided = true;
 	}
 }
-
-
-
-
-#endif;
+//#endif;
