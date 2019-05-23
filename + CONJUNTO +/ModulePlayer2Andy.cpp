@@ -29,29 +29,30 @@ ModulePlayer2::ModulePlayer2()
 
 	//IDLE
 	{
-		Terryidle.PushBack({  28, 909, 58, 112 });
-		Terryidle.PushBack({  96, 910, 59, 112 });
-		Terryidle.PushBack({ 165, 909, 58, 112 });
-		Terryidle.PushBack({  96, 910, 59, 112 });
-		Terryidle.speed = 0.08f;
+		Andy2idle.PushBack({ 401, 799, 61, 112 });
+		Andy2idle.PushBack({ 464, 799, 61, 112 });
+		Andy2idle.PushBack({ 526, 799, 62, 112 });
+		Andy2idle.PushBack({ 590, 800, 61, 112 });
+		Andy2idle.PushBack({ 655, 800, 61, 112 });
+		Andy2idle.speed = 0.09f;
 	}
 
 	// WALK FORWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
 	{
-		TerryForward.PushBack({ 21, 268, 59, 112 });
-		TerryForward.PushBack({ 96, 268, 69, 112 });
-		TerryForward.PushBack({ 178, 268, 59, 112 });
-		TerryForward.PushBack({ 252, 268, 59, 112 });
-		TerryForward.speed = 0.1f;
+		Andy2Forward.PushBack({ 749, 589, 64, 112 });
+		Andy2Forward.PushBack({ 819, 589, 57, 112 });
+		Andy2Forward.PushBack({ 882, 589, 65, 112 });
+		Andy2Forward.PushBack({ 955, 589, 62, 112 });
+		Andy2Forward.speed = 0.08f;
 	}
 
 	// WALK BACKWARD animation of Terry					//spritesTerryBogard2extres.png
 	{
-		TerryBackwards.PushBack({ 382, 270, 59, 112 });
-		TerryBackwards.PushBack({ 442, 270, 55, 112 });
-		TerryBackwards.PushBack({ 497, 270, 56, 112 });
-		TerryBackwards.PushBack({ 553, 270, 57, 112 });
-		TerryBackwards.speed = 0.1f;
+		Andy2Backwards.PushBack({ 744, 473, 51, 100 });
+		Andy2Backwards.PushBack({ 800, 471, 50, 102 });
+		Andy2Backwards.PushBack({ 865, 474, 55, 99 });
+		Andy2Backwards.PushBack({ 947, 476, 54, 97 });
+		Andy2Backwards.speed = 0.1f;
 	}
 
 	// JUMP animation of Terry							//spritesTerryBogard2extres.png

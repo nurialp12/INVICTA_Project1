@@ -112,6 +112,26 @@ public:
 	Animation TerryCrouchPunchM;
 	Animation TerryCrouchKickM;
 	Animation hitM;
+
+	//-------ANDY
+	Animation Andy2idle;
+	Animation Andy2Forward;
+	Animation Andy2Backwards;
+	Animation Andy2GoingUp;
+	Animation Andy2Top;
+	Animation Andy2GoingDown;
+	Animation Andy2Kick;
+	Animation Andy2Punch;
+	Animation Andy2PW;
+	Animation Andy2DP;
+	Animation Andy2DK;
+	Animation Andy2JumpPunch;
+	Animation Andy2JumpKick;
+	Animation Andy2Crouch;
+	Animation Andy2JumpForward;
+	Animation Andy2JumpBackwards;
+	Animation Andy2CrouchPunch;
+	Animation Andy2CrouchKick;
 	bool mirror2 = true;
 
 	iPoint Terry2position;

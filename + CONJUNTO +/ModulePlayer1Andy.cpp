@@ -44,20 +44,20 @@ ModulePlayer::ModulePlayer()
 
 	// WALK FORWARD animation of Andy					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
 	{
-		AndyForward.PushBack({ 749, 602, 64, 99 });
-		AndyForward.PushBack({ 819, 601, 57, 100 });
-		AndyForward.PushBack({ 882, 601, 65, 100 });
-		AndyForward.PushBack({ 955, 599, 62, 102 });
-		AndyForward.speed = 0.1f;
+		AndyForward.PushBack({ 749, 589, 64, 112 });
+		AndyForward.PushBack({ 819, 589, 57, 112 });
+		AndyForward.PushBack({ 882, 589, 65, 112 });
+		AndyForward.PushBack({ 955, 589, 62, 112 });
+		AndyForward.speed = 0.06f;
 	}
 
 	// WALK BACKWARD animation of Andy					//spritesTerryBogard2extres.png
 	{
-		AndyBackwards.PushBack({ 744, 473, 51, 100 });
-		AndyBackwards.PushBack({ 800, 471, 50, 102 });
-		AndyBackwards.PushBack({ 865, 474, 55, 99 });
-		AndyBackwards.PushBack({ 947, 476, 54, 97 });
-		AndyBackwards.speed = 0.1f;
+		AndyBackwards.PushBack({ 744, 461, 51, 112 });
+		AndyBackwards.PushBack({ 800, 461, 50, 112 });
+		AndyBackwards.PushBack({ 865, 461, 55, 112 });
+		//AndyBackwards.PushBack({ 947, 461, 54, 112 });
+		AndyBackwards.speed = 0.06f;
 	}
 
 	// JUMP animation of Terry							//spritesTerryBogard2extres.png
@@ -897,23 +897,24 @@ update_status ModulePlayer::Update()
 			{
 				currentstate = ST_WALK_FORWARD;
 				current_animation = &AndyForward;
+				TerryCrouch.resetLoops(0);
 			}
 			else if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_WALK_BACKWARD;
 				current_animation = &AndyBackwards;
+				TerryCrouch.resetLoops(0);
 			}
 			else
 			{
 				currentstate = ST_IDLE;
 				current_animation = &Andyidle;
+				TerryCrouch.resetLoops(0);
 			}
 			colc->to_delete = true;
 			if (gmode != true)
 				col->rect.y = Andyposition.y + 10;
 		}
-		if (TerryCrouch.Finished() == true && currentstate != ST_CROUCH)
-			TerryCrouch.Reset();
 	}
 
 	//CROUCHPUNCH
@@ -944,7 +945,6 @@ update_status ModulePlayer::Update()
 				currentstate = ST_IDLE;
 				current_animation = &Andyidle;
 			}
-			TerryCrouchPunch.Reset();
 			colc->to_delete = true;
 		}
 	}
@@ -956,7 +956,6 @@ update_status ModulePlayer::Update()
 			currentstate = ST_KICK_CROUCH;
 			current_animation = &TerryCrouchKick;
 			App->audio->PlayFX("Assets/FX/Voice/Attacks/FX_Attack4/FX_Attack4.wav");
-
 
 			colck->rect.x = Andyposition.x + 50;
 			colck->rect.y = Andyposition.y + 90;
@@ -975,7 +974,7 @@ update_status ModulePlayer::Update()
 				currentstate = ST_IDLE;
 				current_animation = &Andyidle;
 			}
-			TerryCrouchKick.Reset();
+			TerryCrouchKick.resetLoops(0);
 			App->player2->collided = false;
 			colck = App->collisions->AddCollider({ 0, 0, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 		}
@@ -1033,7 +1032,7 @@ update_status ModulePlayer::Update()
 				currentstate = ST_IDLE;
 				current_animation = &Andyidle;
 			}
-			TerryPW.Reset();
+			TerryPW.resetLoops(0);
 		}
 	}
 
