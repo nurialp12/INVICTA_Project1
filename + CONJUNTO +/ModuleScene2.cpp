@@ -89,7 +89,7 @@ bool ModuleScene2::Start()
 	// TODO 1: Add colliders for the first columns of the level
 	
 
-	App->audio->PlayMusic("Assets/music/Haremar religion/Haremar religion.ogg", -1);
+	App->audio->PlayMusic("Assets/music/The ocean knows/The ocean knows.ogg", -1);
 
 
 	return ret;
