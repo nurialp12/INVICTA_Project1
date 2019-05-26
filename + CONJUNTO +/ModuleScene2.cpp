@@ -100,7 +100,7 @@ bool ModuleScene2::CleanUp()
 {
 	// TODO 4: Remove all memory leaks
 	graphics = nullptr;
-	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Pao_Pao_Cafe.png"));
+	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Sound_Beach.png"));
 
 	LOG("Unloading second stage");
 	
@@ -131,7 +131,7 @@ update_status ModuleScene2::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_F9] == 1)
 	{
-		App->audio->MuteMusic("Assets/music/Haremar religion/Haremar religion.ogg", -1);
+		App->audio->MuteMusic("Assets/music/The ocean knows/The ocean knows.ogg", -1);
 	}
 
 
