@@ -44,6 +44,10 @@ enum terry_states
 };
 
 struct InputP1 {
+	bool J_UP;
+	bool J_DOWN;
+	bool J_LEFT;
+	bool J_RIGHT;
 	bool A_DOWN; //LEFT
 	bool S_DOWN; //CROUCH
 	bool D_DOWN; //RIGHT

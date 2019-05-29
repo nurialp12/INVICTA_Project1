@@ -44,6 +44,10 @@ update_status ModuleInput::PreUpdate()
 	if (SDL_NumJoysticks() >= 1)
 	{
 		gController1 = SDL_GameControllerOpen(0);
+		if (gController1 == NULL)
+		{
+			LOG("Game controller 1 wasn't initialized")
+		}
 	}
 
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
