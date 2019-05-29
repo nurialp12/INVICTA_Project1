@@ -125,8 +125,6 @@ public:
 	Animation AndyJumpPunch;
 	Animation AndyJumpKick;
 	Animation AndyCrouch;
-	Animation AndyJumpForward;
-	Animation AndyJumpBackwards;
 	Animation AndyCrouchPunch;
 	Animation AndyCrouchKick;
 	Animation hit;
@@ -180,8 +178,6 @@ public:
 	Animation AndyJumpPunchM;
 	Animation AndyJumpKickM;
 	Animation AndyCrouchM;
-	Animation AndyJumpForwardM;
-	Animation AndyJumpBackwardsM;
 	Animation AndyCrouchPunchM;
 	Animation AndyCrouchKickM;
 	Animation hitM;							
