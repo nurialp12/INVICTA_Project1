@@ -55,9 +55,9 @@ ModuleScene2::ModuleScene2()
 	background.h = 117;
 
 	// flag animation
-	background1.PushBack({ 28, 139, 557, 224 });
-	background1.PushBack({ 596, 139, 557, 224 });
-	background1.PushBack({ 1171, 141, 557, 224 });
+	background1.PushBack({ 718, 390, 619, 224 });
+	background1.PushBack({ 1349, 390, 619, 224 });
+	background1.PushBack({ 718, 642, 619, 224 });
 	background1.speed = 0.05f;
 }
 
@@ -75,7 +75,7 @@ bool ModuleScene2::Start()
 	App->render->camera.y = -10;
 
 
-	graphics = App->textures->Load("Assets/Sprites/Sound_Beach.png");
+	graphics = App->textures->Load("Assets/Sprites/Sound_Beach2.png");
 
 	App->player->Enable();
 	App->player2->Enable();
@@ -100,7 +100,7 @@ bool ModuleScene2::CleanUp()
 {
 	// TODO 4: Remove all memory leaks
 	graphics = nullptr;
-	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Sound_Beach.png"));
+	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Sound_Beach2.png"));
 
 	LOG("Unloading second stage");
 	
@@ -114,7 +114,7 @@ update_status ModuleScene2::Update()
 {
 	// Draw everything --------------------------------------	
 	//App->render->Blit(graphics, 0, 160, &ground);
-	App->render->Blit(graphics, 0, 0, &background, 0.50f);
+	App->render->Blit(graphics, -20, -25, &background, 0.70f);
 	App->render->Blit(graphics, 0, 0, &(background1.GetCurrentFrame()), 0.70f); // back of the room
 	
 
