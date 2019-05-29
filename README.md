@@ -88,6 +88,7 @@ Space to change screens
 ESC to leave the game
 
 DEBUG:
+
 	F1 collisions
 	F2 direct win (PLAYER 1)
 	F3 direct lose (PLAYER 1)
