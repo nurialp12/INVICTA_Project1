@@ -80,37 +80,43 @@ public:
 	Animation* current_animation;
 
 	//TERRY-------------------------------------
-	Animation Terryidle;
-	Animation TerryForward;
-	Animation TerryBackwards;
-	Animation TerryGoingUp;
-	Animation TerryGoingUpForward;
-	Animation TerryGoingUpBackwards;
-	Animation TerryTop;
-	Animation TerryTopForward;
-	Animation TerryTopBackwards;
-	Animation TerryGoingDown;
-	Animation TerryGoingDownForward;
-	Animation TerryGoingDownBackwards;
-	Animation TerryKick;
-	Animation TerryPunch;
-	Animation TerryPW;
-	Animation TerryDP;
-	Animation TerryDK;
-	Animation TerryJumpPunch;
-	Animation TerryJumpKick;	
-	Animation TerryCrouch;
-	Animation TerryJumpForward;
-	Animation TerryJumpBackwards;
-	Animation TerryCrouchPunch;
-	Animation TerryCrouchKick;
-	//ANDY--------------------------------------
-	Animation Andyidle;
+	/*Animation TerryidleM;
+	Animation TerryForwardM;
+	Animation TerryBackwardsM;
+	Animation AndyGoingUpM;
+	Animation TerryGoingUpForwardM;
+	Animation TerryGoingUpBackwardsM;
+	Animation TerryTopM;
+	Animation TerryTopForwardM;
+	Animation TerryTopBackwardsM;
+	Animation TerryGoingDownM;
+	Animation TerryGoingDownForwardM;
+	Animation TerryGoingDownBackwardsM;
+	Animation TerryKickM;
+	Animation TerryPunchM;
+	Animation TerryPWM;
+	Animation TerryDPM;
+	Animation TerryDKM;
+	Animation TerryJumpPunchM;
+	Animation TerryJumpKickM;
+	Animation TerryCrouchM;
+	Animation TerryJumpForwardM;
+	Animation TerryJumpBackwardsM;
+	Animation TerryCrouchPunchM;
+	Animation TerryCrouchKickM;*/
+	//-----------------------------------------
+	Animation AndyIdle;
 	Animation AndyForward;
 	Animation AndyBackwards;
 	Animation AndyGoingUp;
+	Animation AndyGoingUpForward;
+	Animation AndyGoingUpBackwards;
 	Animation AndyTop;
+	Animation AndyTopForward;
+	Animation AndyTopBackwards;
 	Animation AndyGoingDown;
+	Animation AndyGoingDownForward;
+	Animation AndyGoingDownBackwards;
 	Animation AndyKick;
 	Animation AndyPunch;
 	Animation AndyPW;
@@ -123,36 +129,49 @@ public:
 	Animation AndyJumpBackwards;
 	Animation AndyCrouchPunch;
 	Animation AndyCrouchKick;
-	//-----------------------------------------
 	Animation hit;
 
 	SDL_Texture* graphicsM = nullptr;
 	SDL_Texture* graphics2M = nullptr;
 
 	//TERRY-----------------------------------
-	Animation TerryidleM;						
-	Animation TerryForwardM;					
-	Animation TerryBackwardsM;		
-	Animation TerryGoingUpM;
+/*Animation TerryidleM;
+	Animation TerryForwardM;
+	Animation TerryBackwardsM;
+	Animation AndyGoingUpM;
+	Animation TerryGoingUpForwardM;
+	Animation TerryGoingUpBackwardsM;
 	Animation TerryTopM;
+	Animation TerryTopForwardM;
+	Animation TerryTopBackwardsM;
 	Animation TerryGoingDownM;
-	Animation TerryKickM;						
-	Animation TerryPunchM;						
-	Animation TerryPWM;						
-	Animation TerryDPM;							
-	Animation TerryDKM;							
-	Animation TerryJumpPunchM;			
-	Animation TerryJumpKickM;				
-	Animation TerryCrouchM;						
-	Animation TerryJumpForwardM;				
-	Animation TerryJumpBackwardsM;				
-	Animation TerryCrouchPunchM;				
-	Animation TerryCrouchKickM;		
-	//ANDY--------------------------------------
-	Animation AndyidleM;
+	Animation TerryGoingDownForwardM;
+	Animation TerryGoingDownBackwardsM;
+	Animation TerryKickM;
+	Animation TerryPunchM;
+	Animation TerryPWM;
+	Animation TerryDPM;
+	Animation TerryDKM;
+	Animation TerryJumpPunchM;
+	Animation TerryJumpKickM;
+	Animation TerryCrouchM;
+	Animation TerryJumpForwardM;
+	Animation TerryJumpBackwardsM;
+	Animation TerryCrouchPunchM;
+	Animation TerryCrouchKickM;*/
+	//-----------------------------------------
+	Animation AndyIdleM;
 	Animation AndyForwardM;
 	Animation AndyBackwardsM;
-	Animation AndyJumpM;
+	Animation AndyGoingUpM;
+	Animation AndyGoingUpForwardM;
+	Animation AndyGoingUpBackwardsM;
+	Animation AndyTopM;
+	Animation AndyTopForwardM;
+	Animation AndyTopBackwardsM;
+	Animation AndyGoingDownM;
+	Animation AndyGoingDownForwardM;
+	Animation AndyGoingDownBackwardsM;
 	Animation AndyKickM;
 	Animation AndyPunchM;
 	Animation AndyPWM;
@@ -165,7 +184,6 @@ public:
 	Animation AndyJumpBackwardsM;
 	Animation AndyCrouchPunchM;
 	Animation AndyCrouchKickM;
-	//-----------------------------------------
 	Animation hitM;							
 
 	bool mirror = false;
