@@ -405,6 +405,7 @@ update_status ModulePlayer::PreUpdate()
 	inputTerry.J_LEFT = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < -JOYSTICK_DEAD_ZONE;
 	inputTerry.J_UP = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) < -20000;
 	inputTerry.J_DOWN = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > JOYSTICK_DEAD_ZONE;
+	inputTerry.J_B = SDL_GameControllerGetButton(App->input->gController1, SDL_CONTROLLER_BUTTON_B) == 1;
 	inputTerry.A_DOWN = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT;
 	inputTerry.D_DOWN = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT;
 	inputTerry.S_DOWN = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT;
@@ -831,7 +832,7 @@ update_status ModulePlayer::Update()
 
 	//PUNCH
 	{
-		if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_FORWARD) || (currentstate == ST_WALK_BACKWARD)))
+		if ((inputTerry.J_B || App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN) && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_FORWARD) || (currentstate == ST_WALK_BACKWARD)) && (current_animation != &AndyPunch) && (current_animation != &AndyPunchM))
 		{
 			currentstate = ST_PUNCH_STANDING;
 			if (mirror)
@@ -953,7 +954,7 @@ update_status ModulePlayer::Update()
 
 	//CROUCHPUNCH
 	{
-		if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && currentstate == ST_CROUCH)
+		if ((inputTerry.J_B || ->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN) && currentstate == ST_CROUCH)
 		{
 			currentstate = ST_PUNCH_CROUCH;
 			current_animation = &AndyCrouchPunch;
