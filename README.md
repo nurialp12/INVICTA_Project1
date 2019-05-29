@@ -1,5 +1,4 @@
 ﻿
-***
 
 ***
 
@@ -11,7 +10,8 @@
 
 
 ![Fatalfurylogo](https://user-images.githubusercontent.com/45202050/54493944-936ae180-48d5-11e9-84dd-8394be766b35.png)
-
+![Fatalfurylogo](https://user-images.githubusercontent.com/45202050/54493944-936ae180-48d5-11e9-84dd-8394be766b35.png)
+![Fatalfurylogo](https://user-images.githubusercontent.com/45202050/54493944-936ae180-48d5-11e9-84dd-8394be766b35.png)
 
 
 ### Team members:
@@ -24,12 +24,15 @@
 **QA:** Tomás Carreras Ugarte
 
 	GitHub: tomascarreras1000
+
 **Art:** Enric Durán
 
 	GitHub:	EnricGDV
+
 **Design and Management:** Núria Lamonja
 
 	GitHub:	 nurialp12
+
 **Code:** Alex López Agudo
 
 	GitHub: AlexLA99
@@ -102,12 +105,7 @@ DEBUG:
 
 
 ## Credits
-Invicta Studios:
-
-Tomás Carreras
-Enric-Guillem Durán
-Núria Lamonja
-Alex Lopez
+Developed by Invicta Studios:
 
 Github: https://github.com/nurialp12/INVICTA_Project1
 
