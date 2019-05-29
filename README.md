@@ -9,11 +9,6 @@
 ***
 
 
-![Fatalfurylogo](https://user-images.githubusercontent.com/45202050/54493944-936ae180-48d5-11e9-84dd-8394be766b35.png)
-![Fatalfurylogo](https://user-images.githubusercontent.com/45202050/54493944-936ae180-48d5-11e9-84dd-8394be766b35.png)
-![Fatalfurylogo](https://user-images.githubusercontent.com/45202050/54493944-936ae180-48d5-11e9-84dd-8394be766b35.png)
-
-
 ## Team members:
 
 
@@ -46,6 +41,11 @@ The gameplay follows the typical formula of most fighting games:
 the player fights against their opponent in best two-out-of-three matches. 
 Each of the playable characters has special techniques that are performed by inputting specific commands in combination with the joystick and buttons. 
 Fatal Fury was developed around the same time as Street Fighter II but Fatal Fury focused more on the timing of special moves and storytelling instead of the combos which Street Fighter II emphasised.
+
+
+
+![Fatalfurylogo](https://user-images.githubusercontent.com/45202050/54493944-936ae180-48d5-11e9-84dd-8394be766b35.png)
+
 
 
 ## Fatal Fury Gameplay
