@@ -61,6 +61,23 @@ update_status ModuleRender::Update()
 {
 	float speed = 1.7;
 
+	//camera controls---------------------------------------------------------- // hacia la derecha va lento, izq rápido a no ser que esté fuera de los límites de escenario
+
+	if (App->input->keyboard[SDL_SCANCODE_7] == KEY_STATE::KEY_REPEAT)
+		camera.x += speed;
+
+	if (App->input->keyboard[SDL_SCANCODE_8] == KEY_STATE::KEY_REPEAT)
+		camera.x -= speed;
+
+	if (App->input->keyboard[SDL_SCANCODE_9] == KEY_STATE::KEY_REPEAT)
+		camera.y += speed;
+
+	if (App->input->keyboard[SDL_SCANCODE_0] == KEY_STATE::KEY_REPEAT)
+		camera.y -= speed;
+
+	//--------------------------------------------------------------------------
+
+
 	if(App->input->keyboard[SDL_SCANCODE_COMMA] == KEY_STATE::KEY_REPEAT)
 		camera.y += speed;
 
