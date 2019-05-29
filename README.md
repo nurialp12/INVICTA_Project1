@@ -35,6 +35,7 @@
 
 
 ## Fatal Fury: The Game
+
 Recreation of the the game Fatal Fury.
 Fatal Fury is a fighting game series developed by SNK for the Neo Geo system which allowed player to choose one of three characters to fight against eight computer controlled characters.
 The gameplay follows the typical formula of most fighting games: 
@@ -65,6 +66,8 @@ Enjoy!
 
 ## Usage
 
+CONTROLS:
+
 	PLAYER 1
 	A move left
 	S crouch
@@ -84,8 +87,11 @@ Enjoy!
 	O kick
 	P Power Wave
 	
+
 Space to change screens
+
 ESC to leave the game
+
 
 DEBUG:
 
@@ -103,18 +109,20 @@ DEBUG:
 
 
 ## Content
+
 	Introduction sequence
 	Andy Bogard as Player 1 and 2
 	Sound Beach Stage
-	Sound effects and mmusic
+	Sound effects and music
 	Debug functionality
-	Score
+	Score and UI
 	Play in Full Screen
 	Gamepad or keyboard to play
 		
 
 
 ## Credits
+
 Developed by Invicta Studios:
 
 Github: https://github.com/nurialp12/INVICTA_Project1
@@ -125,6 +133,7 @@ Wiki: https://github.com/nurialp12/INVICTA_Project1/wiki
 
 
 ## License
+
 All rights reserved to the developers and publishers of the original release. 
 The aim of this project (link to the github project can be found above) and respectively wiki is only educational. 
 The content can only be used for non-commercial purposes.
