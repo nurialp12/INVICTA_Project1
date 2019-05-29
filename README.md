@@ -1,4 +1,42 @@
-﻿# Fatal Fury
+﻿
+***
+
+***
+
+![Logo](https://user-images.githubusercontent.com/45202050/54493833-9a452480-48d4-11e9-974f-eff72c589dc6.png)
+
+***
+
+***
+
+
+![Fatalfurylogo](https://user-images.githubusercontent.com/45202050/54493944-936ae180-48d5-11e9-84dd-8394be766b35.png)
+
+
+
+### Team members:
+
+
+
+![foto](https://user-images.githubusercontent.com/45202050/54494645-dd0afa80-48dc-11e9-9ecb-0e7b0ffe4e87.png)
+
+
+**QA:** Tomás Carreras Ugarte
+
+	GitHub: tomascarreras1000
+**Art:** Enric Durán
+
+	GitHub:	EnricGDV
+**Design and Management:** Núria Lamonja
+
+	GitHub:	 nurialp12
+**Code:** Alex López Agudo
+
+	GitHub: AlexLA99
+
+
+
+# Fatal Fury
 Recreation of the the game Fatal Fury.
 Fatal Fury is a fighting game series developed by SNK for the Neo Geo system which allowed player to choose one of three characters to fight against eight computer controlled characters.
 The gameplay follows the typical formula of most fighting games: 
@@ -35,12 +73,6 @@ Enjoy!
 	P Power Wave
 	
 Space to change screens
-, to move up the camera
-. to move down the camera
-	7 to move left the camera
-	8 to move right the camera
-	9 to move up the camera
-	0 to move down the camera
 ESC to leave the game
 
 DEBUG:
@@ -57,70 +89,15 @@ DEBUG:
 	F9 mute/unmute sound
 
 
-## Contributing
-1. Fork it!
-2. Create your feature branch: 'git checkout -b my-new-feature'
-3. Commit your changes: 'git commit -am 'Add some feature'
-4. Push to the branch: 'git push origin my-new-feature'
-5. Submit a pull request :D
-
-
-## History
-TODO: Write history
-0.1
-	Added:
-		a) Scroll empty background
-		b) Audio Module
-		c) Music has a slow fade out / in
-		d) The player (Terry) can throw a Punch, Kick and Jump (only upwards)
-	Removed:
-	Note: Base code already implemented (PreUpdate, Update, PostUdate, etc)
-0.2
-	Added:
-		a) Welcome screen
-		b) First level (Sound Beach - Street Fighter II)
-		c) Second level (Pao Pao Cafe)
-		d) Congrats screen
-		e) Game over screen
-		f) Back to Welcome screen
-		e) Sound on
-	Removed:
-	Note: First level (Sound Beach - Street Fighter II) (b) is only to show the implementation of the scene change
-0.3
-	Added:
-		a) The player (Terry) can move around with animations
-		b) Power Wave (Terry) can be shot with FX
-	Removed:
-	Note: There aren't any collisions
-0.4 
-	Added:
-		a) Camera limits for the Player (not Player 2)
-		b) Colliders for the Player (not Player 2) and its particles
-		c) Player (not Player 2) can collide with something in the environment 
-		d) God Mode for Player (not Player 2)
-	Removed:
-	Note: The collider is going to be Player 2 in b).
-
-0.45 
-	Added:
-		a) State Machine
-		b) Player 2 (also Terry) mirrored
-	Removed:
-	Note: 
-0.5
-	Playable version of the game to try it out with Terry Bogard in the Stage Pao Pao Café. 
-	This content (the player ans stage) shall be removed upon the next release.
-1.0
-	Attempt to make an exact copy of the game in the Stage Sound Beach with Andy Bogard as the only player
-	CONTENT:
-		Introduction sequence
-		Andy Bogard as Player 1 and 2
-		Sound Beach Stage
-		Sound effects and mmusic
-		Debug functionality
-		Score
-		Play in Full Screen
-		Gamepad or keyboard to play
+## Content
+	Introduction sequence
+	Andy Bogard as Player 1 and 2
+	Sound Beach Stage
+	Sound effects and mmusic
+	Debug functionality
+	Score
+	Play in Full Screen
+	Gamepad or keyboard to play
 		
 
 
@@ -133,7 +110,9 @@ Núria Lamonja
 Alex Lopez
 
 Github: https://github.com/nurialp12/INVICTA_Project1
+
 Releases: https://github.com/nurialp12/INVICTA_Project1/releases
+
 Wiki: https://github.com/nurialp12/INVICTA_Project1/wiki
 
 
