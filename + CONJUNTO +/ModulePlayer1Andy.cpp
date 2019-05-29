@@ -37,17 +37,24 @@ ModulePlayer::ModulePlayer()
 		Andyidle.PushBack({ 401, 799, 61, 112 });
 		Andyidle.PushBack({ 464, 799, 61, 112 });
 		Andyidle.PushBack({ 526, 799, 62, 112 });
-		Andyidle.PushBack({ 590, 800, 61, 112 });
-		Andyidle.PushBack({ 655, 800, 61, 112 });
+		Andyidle.PushBack({ 590, 799, 61, 112 });
+		Andyidle.PushBack({ 655, 799, 61, 112 });
 		Andyidle.speed = 0.09f;
 	}
 
 	// WALK FORWARD animation of Andy					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
 	{
+		AndyForward.PushBack({ 819, 589, 57, 112 });
+		AndyForward.PushBack({ 955, 589, 62, 112 });
+		AndyForward.PushBack({ 882, 589, 65, 112 });
+		AndyForward.PushBack({ 749, 589, 64, 112 });
+
+		/*
 		AndyForward.PushBack({ 749, 589, 64, 112 });
 		AndyForward.PushBack({ 819, 589, 57, 112 });
 		AndyForward.PushBack({ 882, 589, 65, 112 });
 		AndyForward.PushBack({ 955, 589, 62, 112 });
+		*/
 		AndyForward.speed = 0.06f;
 	}
 
