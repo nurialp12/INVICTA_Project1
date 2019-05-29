@@ -14,7 +14,7 @@
 ![Fatalfurylogo](https://user-images.githubusercontent.com/45202050/54493944-936ae180-48d5-11e9-84dd-8394be766b35.png)
 
 
-### Team members:
+## Team members:
 
 
 
@@ -39,7 +39,7 @@
 
 
 
-# Fatal Fury
+## Fatal Fury: The Game
 Recreation of the the game Fatal Fury.
 Fatal Fury is a fighting game series developed by SNK for the Neo Geo system which allowed player to choose one of three characters to fight against eight computer controlled characters.
 The gameplay follows the typical formula of most fighting games: 
@@ -48,10 +48,19 @@ Each of the playable characters has special techniques that are performed by inp
 Fatal Fury was developed around the same time as Street Fighter II but Fatal Fury focused more on the timing of special moves and storytelling instead of the combos which Street Fighter II emphasised.
 
 
+## Fatal Fury Gameplay
+
+**_Under construction!_ Soon you'll be able to find a short gameplay of our game featuring debug functionality**
+
+
 ## Installation
 Download the .zip (which can be found in our Github Project -link below- in releases and in our github wewb page).
 Go to the file "Game" and click "SDL5 Handout"
 Enjoy!
+
+## Download to the latest release
+
+**_Under construction!_ Soon you'll be able to find a link to the latest release**
 
 
 ## Usage
