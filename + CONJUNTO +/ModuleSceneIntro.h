@@ -19,8 +19,15 @@ public:
 public:
 
 	SDL_Texture* graphics = nullptr;
-	
+	SDL_Texture* graphics1 = nullptr;
+	SDL_Texture* graphics2 = nullptr;
+
+	Animation background1;
+	Animation background2;
 	Animation background;
+
+	bool finish1 = false;
+	bool finish2 = false;
 	//Animation game;
 
 
