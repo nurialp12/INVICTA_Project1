@@ -16,6 +16,14 @@ enum KEY_STATE
 	KEY_UP
 };
 
+enum BUTTON_STATE
+{
+	BUT_IDLE = 0,
+	BUT_DOWN,
+	BUT_REPEAT,
+	BUT_UP
+};
+
 class ModuleInput : public Module
 {
 public:

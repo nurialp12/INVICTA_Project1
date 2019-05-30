@@ -34,50 +34,45 @@ ModulePlayer::ModulePlayer()
 
 	//IDLE
 	{
-		AndyIdle.PushBack({ 402, 799, 59, 112 });
-		AndyIdle.PushBack({ 465, 799, 59, 112 });
-		AndyIdle.PushBack({ 527, 799, 60, 112 });
-		AndyIdle.PushBack({ 591, 799, 59, 112 });
-		AndyIdle.PushBack({ 656, 799, 59, 112 });
-		AndyIdle.speed = 0.09f;
+		AndyIdle.PushBack({   0, 150, 59, 150 });
+		AndyIdle.PushBack({  59, 150, 59, 150 });
+		AndyIdle.PushBack({ 118, 150, 60, 150 });
+		AndyIdle.PushBack({ 178, 150, 59, 150 });
+		AndyIdle.PushBack({ 237, 150, 59, 150 });
+		AndyIdle.speed = 0.1f;
 	}
 
 	// WALK FORWARD animation of Andy					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
 	{
-		AndyForward.PushBack({ 819, 589, 57, 112 });
-		AndyForward.PushBack({ 955, 589, 62, 112 });
-		AndyForward.PushBack({ 882, 589, 65, 112 });
-		AndyForward.PushBack({ 749, 589, 64, 112 });
-		AndyForward.speed = 0.06f;
+		AndyForward.PushBack({ 784, 150, 55, 150 });//2
+		AndyForward.PushBack({ 839, 150, 60, 150 });//4
+		AndyForward.PushBack({ 899, 150, 63, 150 });//3
+		AndyForward.PushBack({ 962, 150, 62, 150 });//1
+		AndyForward.speed = 0.07f;
 	}
 
 	// WALK BACKWARD animation of Andy					//spritesTerryBogard2extres.png
 	{
-		AndyBackwards.PushBack({ 744, 461, 51, 112 });
-		AndyBackwards.PushBack({ 800, 461, 50, 112 });
-		AndyBackwards.PushBack({ 865, 461, 55, 112 });
-		//AndyBackwards.PushBack({ 947, 461, 54, 112 });
-		AndyBackwards.speed = 0.06f;
+		AndyBackwards.PushBack({ 543, 150, 49, 150 });
+		AndyBackwards.PushBack({ 592, 150, 48, 150 });//
+		AndyBackwards.PushBack({ 640, 150, 53, 150 });
+		AndyBackwards.PushBack({ 592, 150, 48, 150 });//
+		AndyBackwards.speed = 0.07f;
 	}
 
 	// JUMP animation of Terry							//spritesTerryBogard2extres.png
 	{
 		//LAUNCH AND UP
-		AndyGoingUp.PushBack({ 802, 0, 53, 123 });
-		AndyGoingUp.PushBack({ 859, 0, 51, 123 });
-		AndyGoingUp.loop = false;
+		AndyGoingUp.PushBack({ 296, 150, 53, 150 });
+		AndyGoingUp.PushBack({ 349, 150, 42, 150 });
 		AndyGoingUp.speed = 0.1f;
+		AndyGoingUp.loop = false;
 
-		AndyTop.PushBack({ 910, 0, 53, 123 });
+		AndyTop.PushBack({ 391, 150, 51, 150 });
 
 		//GOING DOWN AND LAND
-		AndyGoingDown.PushBack({ 967, 0, 57, 123 });
-		AndyGoingDown.PushBack({ 967, 0, 57, 123 });
-		AndyGoingDown.PushBack({ 967, 0, 57, 123 });
-		AndyGoingDown.PushBack({ 967, 0, 57, 123 });
-		AndyGoingDown.PushBack({ 967, 0, 57, 123 });
-		AndyGoingDown.PushBack({ 967, 0, 57, 123 });
-		//TerryGoingDown.PushBack({ 802, 0, 57, 123 });
+		AndyGoingDown.PushBack({ 442, 150, 48, 150 });
+      //TerryGoingDown.PushBack({ 490, 0, 53, 123 });
 		AndyGoingDown.speed = 0.08f;
 	}
 
@@ -109,6 +104,18 @@ ModulePlayer::ModulePlayer()
 		AndyPW.PushBack({ 263, 683, 65, 112 });
 		AndyPW.PushBack({ 198, 683, 60, 112 });
 		AndyPW.speed = 0.1f;
+	}
+
+	// HELIPUNCH
+	{
+		AndyHeliPunch.PushBack({ 297, 0,  61, 150 });
+		AndyHeliPunch.PushBack({ 358, 0,  88, 150 });
+		AndyHeliPunch.PushBack({ 446, 0,  92, 150 });
+		AndyHeliPunch.PushBack({ 538, 0, 110, 150 });
+		AndyHeliPunch.PushBack({ 648, 0,  86, 150 });
+		AndyHeliPunch.PushBack({ 734, 0,  62, 150 });
+		AndyHeliPunch.PushBack({ 796, 0,  53, 150 });
+		AndyHeliPunch.speed = 0.1f;
 	}
 
 	//DAMAGED BY PUNCH
@@ -294,24 +301,10 @@ ModulePlayer::ModulePlayer()
 		AndyCrouchM.loop = false;
 
 		//JUMPFORWARD
-		AndyJumpForwardM.PushBack({ 624, 912, 57, 112 });
-		AndyJumpForwardM.PushBack({ 681, 912, 56, 112 });
-		AndyJumpForwardM.PushBack({ 737, 912, 87, 112 });
-		AndyJumpForwardM.PushBack({ 824, 912, 53, 112 });
-		AndyJumpForwardM.PushBack({ 877, 912, 87, 112 });
-		AndyJumpForwardM.PushBack({ 964, 912, 60, 112 });
-		AndyJumpForwardM.PushBack({ 624, 912, 57, 112 });
-		AndyJumpForwardM.speed = 0.1f;
+	;
 
 		//JUMPBACKWARDS
-		AndyJumpBackwardsM.PushBack({ 624, 912, 57, 112 });
-		AndyJumpBackwardsM.PushBack({ 964, 912, 60, 112 });
-		AndyJumpBackwardsM.PushBack({ 877, 912, 87, 112 });
-		AndyJumpBackwardsM.PushBack({ 824, 912, 53, 112 });
-		AndyJumpBackwardsM.PushBack({ 737, 912, 87, 112 });
-		AndyJumpBackwardsM.PushBack({ 681, 912, 56, 112 });
-		AndyJumpBackwardsM.PushBack({ 624, 912, 57, 112 });
-		AndyJumpBackwardsM.speed = 0.1f;
+		
 
 		//CROUCHPUNCH
 		AndyCrouchPunchM.PushBack({ 279, 912, 56, 112 }); //Charge
@@ -364,11 +357,11 @@ bool ModulePlayer::Start()
 
 	destroyed = false;
 	Andyposition.x = 5 + (250);
-	Andyposition.y = 100;
+	Andyposition.y = 60;
 	score = 0;
-	col = App->collisions->AddCollider({ 0, Andyposition.y + 10, 31, 101 }, COLLIDER_PLAYER, App->player);
-	colc = App->collisions->AddCollider({ 0, 10000, 36, 60 }, COLLIDER_PLAYER, App->player);
-	colj = App->collisions->AddCollider({ 1000, 10000, 36, 60 }, COLLIDER_PLAYER, App->player);
+	col   = App->collisions->AddCollider({    0, Andyposition.y + 10, 31, 101 }, COLLIDER_PLAYER, App->player);
+	colc  = App->collisions->AddCollider({    0, 10000, 36, 60 }, COLLIDER_PLAYER, App->player);
+	colj  = App->collisions->AddCollider({ 1000, 10000, 36, 60 }, COLLIDER_PLAYER, App->player);
 	colcp = App->collisions->AddCollider({ 1000, 10000, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 	colck = App->collisions->AddCollider({ 1000, 10000, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 
@@ -401,6 +394,11 @@ bool ModulePlayer::CleanUp()
 
 update_status ModulePlayer::PreUpdate()
 {
+	inputTerry.J_RIGHT = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) > JOYSTICK_DEAD_ZONE;
+	inputTerry.J_LEFT = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < -JOYSTICK_DEAD_ZONE;
+	inputTerry.J_UP = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) < -20000;
+	inputTerry.J_DOWN = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > JOYSTICK_DEAD_ZONE;
+	inputTerry.J_B = SDL_GameControllerGetButton(App->input->gController1, SDL_CONTROLLER_BUTTON_B) == 1;
 	inputTerry.A_DOWN = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT;
 	inputTerry.D_DOWN = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT;
 	inputTerry.S_DOWN = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT;
@@ -476,21 +474,21 @@ update_status ModulePlayer::Update()
 
 	//MOVE FORWARD						CAMERA FIX NEEDED
 	{
-		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
+		if ((inputTerry.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN) && currentstate == ST_IDLE)
 			currentstate = ST_WALK_FORWARD;
-		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && currentstate == ST_WALK_FORWARD)
+		if ((inputTerry.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && currentstate == ST_WALK_FORWARD)
 		{
 			if (mirror) current_animation = &AndyBackwardsM;
 			else current_animation = &AndyForward;
 			if (Andyposition.x < 700 /*&&
 				Terryposition.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w)*/)
-				Andyposition.x++;
+				Andyposition.x += 2;
 		}
-		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP && currentstate == ST_WALK_FORWARD)
+		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < 14000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) > 4000 || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP) && currentstate == ST_WALK_FORWARD)
 		{
 			AndyForward.resetLoops(0);
 			AndyForwardM.resetLoops(0);
-			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+			if (inputTerry.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 				currentstate = ST_WALK_BACKWARD;
 			else
 				currentstate = ST_IDLE;
@@ -499,20 +497,20 @@ update_status ModulePlayer::Update()
 
 	//MOVE BACKWARD						CAMERA FIX NEEDED
 	{
-		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
+		if ((inputTerry.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) && currentstate == ST_IDLE)
 			currentstate = ST_WALK_BACKWARD;
-		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && currentstate == ST_WALK_BACKWARD)
+		if ((inputTerry.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && currentstate == ST_WALK_BACKWARD)
 		{
 			if (mirror) current_animation = &AndyForwardM;
 			else current_animation = &AndyBackwards;
 			if (Andyposition.x > 0 /*&& Terryposition.x * 2 > -App->render->camera.x*/)
 				Andyposition.x--;
 		}
-		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_UP && currentstate == ST_WALK_BACKWARD)
+		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) > -14000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < -4000 || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_UP) && currentstate == ST_WALK_BACKWARD)
 		{
 			AndyForward.resetLoops(0);
 			AndyForwardM.resetLoops(0);
-			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+			if (inputTerry.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 				currentstate = ST_WALK_FORWARD;
 			else
 				currentstate = ST_IDLE;
@@ -521,7 +519,7 @@ update_status ModulePlayer::Update()
 
 	//JUMP
 	{
-		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && currentstate == ST_IDLE)
+		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > -10000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) < -4000 || App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN) && currentstate == ST_IDLE)
 		{
 			currentstate = ST_GOING_UP;
 			col->rect.y = Andyposition.y + 10000;
@@ -532,12 +530,11 @@ update_status ModulePlayer::Update()
 			colj->rect.y = Andyposition.y + 13;
 			if (mirror)current_animation = &AndyGoingUpM;
 			else current_animation = &AndyGoingUp;
-			t += 0.0005;
-			speed -= t;
-			if (Andyposition.y > 50) Andyposition.y = Andyposition.y - 3 * speed;
-			else Andyposition.y = Andyposition.y - 3 * speed / 2;
-			App->render->camera.y = App->render->camera.y + speed;
-			if (Andyposition.y <= 5) currentstate = ST_TOP;
+			t += 0.002;
+			speed += t;
+			if (Andyposition.y > 10) { Andyposition.y = Andyposition.y - 3 * speed;	App->render->camera.y = App->render->camera.y - speed; }
+			else { Andyposition.y = Andyposition.y - 3 * speed / 2; App->render->camera.y = App->render->camera.y + speed; }
+			if (Andyposition.y <= 30) currentstate = ST_TOP;
 		}
 		if (currentstate == ST_TOP)
 		{
@@ -547,12 +544,11 @@ update_status ModulePlayer::Update()
 			AndyGoingUp.resetLoops(0);
 			AndyGoingUpM.resetLoops(0);
 
-			t = 0;
-			t += 0.0005;
-			speed += 0.01*t;
-			Andyposition.y -= speed * 1.5;
-
-			if (Andyposition.y <= -5) currentstate = ST_GOING_DOWN;
+			t += 0.005;
+			speed -= t;
+			Andyposition.y = Andyposition.y - 3 * speed;
+			App->render->camera.y = App->render->camera.y + speed;
+			if (Andyposition.y <= -40) currentstate = ST_GOING_DOWN;
 		}
 		if (currentstate == ST_GOING_DOWN)
 		{
@@ -561,33 +557,30 @@ update_status ModulePlayer::Update()
 
 			colj->rect.y = Andyposition.y + 53;
 
-			t = 0;
-			t += 0.0005;
-			speed += 3 * t;
-			if (Andyposition.y > 25 && Andyposition.y < 99)
-				Andyposition.y += 4 * speed;
-			else
-				Andyposition.y += 3 * speed / 2;
-			App->render->camera.y = App->render->camera.y - speed;
+			t += 0.005;
+			speed -= t;
+			Andyposition.y = Andyposition.y - 3 * speed;
+			if (Andyposition.y > 20) { Andyposition.y = Andyposition.y - 3 * speed; App->render->camera.y = App->render->camera.y + speed; }
+			else { Andyposition.y = Andyposition.y - 3 * speed / 2; App->render->camera.y = App->render->camera.y + speed; }
 			if (App->render->camera.y <= -10)
 				App->render->camera.y = -10;
 
-			if (Andyposition.y >= 100)
+			if (Andyposition.y >= 50)
 			{
-				Andyposition.y = 100;
-				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+				Andyposition.y = 50;
+				if (inputTerry.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 				{
 					currentstate = ST_WALK_BACKWARD;
 					if (mirror)current_animation = &AndyForwardM;
 					else current_animation = &AndyBackwards;
 				}
-				else if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+				else if (inputTerry.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 				{
 					currentstate = ST_WALK_FORWARD;
 					if (mirror)current_animation = &AndyBackwardsM;
 					else current_animation = &AndyForward;
 				}
-				else if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+				else if (inputTerry.J_DOWN || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 				{
 					currentstate = ST_CROUCH;
 					if (mirror)current_animation = &AndyCrouchM;
@@ -607,7 +600,7 @@ update_status ModulePlayer::Update()
 
 	//JUMP FORWARD				PENDIENTE
 	{
-		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && currentstate == ST_WALK_FORWARD)
+		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > -10000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) < -4000 || App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN) && currentstate == ST_WALK_FORWARD)
 		{
 			currentstate = ST_GOING_UP_FORWARD;
 			col->rect.y = 10000;
@@ -657,19 +650,19 @@ update_status ModulePlayer::Update()
 			if (Andyposition.y >= 100)
 			{
 				Andyposition.y = 100;
-				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+				if (inputTerry.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 				{
 					currentstate = ST_WALK_BACKWARD;
 					if (mirror)current_animation = &AndyForwardM;
 					else current_animation = &AndyBackwards;
 				}
-				else if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+				else if (inputTerry.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 				{
 					currentstate = ST_WALK_FORWARD;
 					if (mirror)current_animation = &AndyBackwardsM;
 					else current_animation = &AndyForward;
 				}
-				else if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+				else if (inputTerry.J_DOWN || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 				{
 					currentstate = ST_CROUCH;
 					if (mirror)current_animation = &AndyCrouchM;
@@ -688,7 +681,7 @@ update_status ModulePlayer::Update()
 
 	//JUMP BACKWARDS  PENDIENTE
 	{
-		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && currentstate == ST_WALK_BACKWARD)
+		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > -10000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) < -4000 || App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN) && currentstate == ST_WALK_BACKWARD)
 		{
 			currentstate = ST_GOING_UP_BACKWARD;
 			col->rect.y = 10000;
@@ -739,19 +732,19 @@ update_status ModulePlayer::Update()
 			if (Andyposition.y >= 100)
 			{
 				Andyposition.y = 100;
-				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+				if (inputTerry.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 				{
 					currentstate = ST_WALK_BACKWARD;
 					if (mirror)current_animation = &AndyForwardM;
 					else current_animation = &AndyBackwards;
 				}
-				else if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+				else if (inputTerry.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 				{
 					currentstate = ST_WALK_FORWARD;
 					if (mirror)current_animation = &AndyBackwardsM;
 					else current_animation = &AndyForward;
 				}
-				else if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+				else if (inputTerry.J_DOWN || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 				{
 					currentstate = ST_CROUCH;
 					if (mirror)current_animation = &AndyCrouchM;
@@ -827,7 +820,7 @@ update_status ModulePlayer::Update()
 
 	//PUNCH
 	{
-		if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_FORWARD) || (currentstate == ST_WALK_BACKWARD)))
+		if ((inputTerry.J_B || App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN) && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_FORWARD) || (currentstate == ST_WALK_BACKWARD)) && (current_animation != &AndyPunch) && (current_animation != &AndyPunchM))
 		{
 			currentstate = ST_PUNCH_STANDING;
 			if (mirror)
@@ -849,12 +842,12 @@ update_status ModulePlayer::Update()
 			colp->to_delete = true;
 			AndyPunch.resetLoops(0);
 			AndyPunchM.resetLoops(0);
-			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+			if (inputTerry.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_WALK_FORWARD;
 				current_animation = &AndyForward;
 			}
-			else if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+			else if (inputTerry.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_WALK_BACKWARD;
 				current_animation = &AndyBackwards;
@@ -895,13 +888,13 @@ update_status ModulePlayer::Update()
 			AndyKickM.resetLoops(0);
 			AndyKick.resetLoops(0);
 
-			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+			if (inputTerry.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_WALK_FORWARD;
 				if (mirror2)current_animation = &AndyBackwardsM;
 				else current_animation = &AndyForward;
 			}
-			else if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+			else if (inputTerry.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_WALK_BACKWARD;
 				if (mirror2)current_animation = &AndyForwardM;
@@ -914,22 +907,22 @@ update_status ModulePlayer::Update()
 
 	//CROUCH
 	{
-		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && (currentstate == ST_IDLE || currentstate == ST_WALK_FORWARD || currentstate == ST_WALK_BACKWARD))
+		if ((inputTerry.J_DOWN || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN) && (currentstate == ST_IDLE || currentstate == ST_WALK_FORWARD || currentstate == ST_WALK_BACKWARD))
 		{
 			currentstate = ST_CROUCH;
 			current_animation = &AndyCrouch;
 			col->rect.y = 10000;
 			if (gmode != true)	colc = App->collisions->AddCollider({ Andyposition.x + 13, Andyposition.y + 50, 36, 60 }, COLLIDER_PLAYER, App->player);
 		}
-		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP && currentstate == ST_CROUCH)
+		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) < 14000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > 4000 || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP) && currentstate == ST_CROUCH)
 		{
-			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+			if (inputTerry.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_WALK_FORWARD;
 				current_animation = &AndyForward;
 				AndyCrouch.resetLoops(0);
 			}
-			else if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+			else if (inputTerry.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_WALK_BACKWARD;
 				current_animation = &AndyBackwards;
@@ -949,7 +942,7 @@ update_status ModulePlayer::Update()
 
 	//CROUCHPUNCH
 	{
-		if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && currentstate == ST_CROUCH)
+		if ((inputTerry.J_B || App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN) && currentstate == ST_CROUCH)
 		{
 			currentstate = ST_PUNCH_CROUCH;
 			current_animation = &AndyCrouchPunch;
@@ -965,7 +958,7 @@ update_status ModulePlayer::Update()
 			AndyCrouchPunch.resetLoops(0);
 			App->player2->collided = false;
 
-			if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+			if (inputTerry.J_DOWN || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_CROUCH;
 				current_animation = &AndyCrouch;
@@ -994,7 +987,7 @@ update_status ModulePlayer::Update()
 		{
 			colck->to_delete = true;
 			AndyCrouchKick.resetLoops(0);
-			if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+			if (inputTerry.J_DOWN || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_CROUCH;
 				current_animation = &AndyCrouch;
@@ -1008,14 +1001,14 @@ update_status ModulePlayer::Update()
 			App->player2->collided = false;
 			colck = App->collisions->AddCollider({ 0, 0, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 		}
-		if (currentstate == ST_CROUCH && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN)
+		if (currentstate == ST_CROUCH && (inputTerry.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN))
 		{
 			currentstate = ST_SD;
 			current_animation = &AndyCrouch;
 		}
-		if (currentstate == ST_SD && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP)
+		if (currentstate == ST_SD && (inputTerry.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP))
 			currentstate = ST_CROUCH;
-		if (currentstate == ST_SD && App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP)
+		if (currentstate == ST_SD && (SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) < 14000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > 4000 || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP))
 		{
 			currentstate = ST_WALK_FORWARD;
 			current_animation = &AndyForward;
@@ -1047,12 +1040,12 @@ update_status ModulePlayer::Update()
 				App->particles->terryenergy.col->to_delete == true;
 			}
 			AndyPW.resetLoops(0);
-			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+			if (inputTerry.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_WALK_FORWARD;
 				current_animation = &AndyForward;
 			}
-			else if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+			else if (inputTerry.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_WALK_BACKWARD;
 				current_animation = &AndyBackwards;

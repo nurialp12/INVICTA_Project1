@@ -44,6 +44,13 @@ enum terry_states
 };
 
 struct InputP1 {
+	bool J_UP;
+	bool J_DOWN;
+	bool J_LEFT;
+	bool J_RIGHT;
+	bool J_B;
+	bool J_A;
+	bool J_X;
 	bool A_DOWN; //LEFT
 	bool S_DOWN; //CROUCH
 	bool D_DOWN; //RIGHT
@@ -120,13 +127,12 @@ public:
 	Animation AndyKick;
 	Animation AndyPunch;
 	Animation AndyPW;
+	Animation AndyHeliPunch;
 	Animation AndyDP;
 	Animation AndyDK;
 	Animation AndyJumpPunch;
 	Animation AndyJumpKick;
 	Animation AndyCrouch;
-	Animation AndyJumpForward;
-	Animation AndyJumpBackwards;
 	Animation AndyCrouchPunch;
 	Animation AndyCrouchKick;
 	Animation hit;
@@ -180,8 +186,6 @@ public:
 	Animation AndyJumpPunchM;
 	Animation AndyJumpKickM;
 	Animation AndyCrouchM;
-	Animation AndyJumpForwardM;
-	Animation AndyJumpBackwardsM;
 	Animation AndyCrouchPunchM;
 	Animation AndyCrouchKickM;
 	Animation hitM;							
