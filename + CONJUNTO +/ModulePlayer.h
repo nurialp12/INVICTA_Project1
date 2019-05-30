@@ -127,6 +127,7 @@ public:
 	Animation AndyKick;
 	Animation AndyPunch;
 	Animation AndyPW;
+	Animation AndyHeliPunch;
 	Animation AndyDP;
 	Animation AndyDK;
 	Animation AndyJumpPunch;

@@ -39,25 +39,25 @@ ModulePlayer::ModulePlayer()
 		AndyIdle.PushBack({ 118, 150, 60, 150 });
 		AndyIdle.PushBack({ 178, 150, 59, 150 });
 		AndyIdle.PushBack({ 237, 150, 59, 150 });
-		AndyIdle.speed = 0.09f;
+		AndyIdle.speed = 0.1f;
 	}
 
 	// WALK FORWARD animation of Andy					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
 	{
-		AndyForward.PushBack({ 819, 589, 57, 112 });
-		AndyForward.PushBack({ 955, 589, 62, 112 });
-		AndyForward.PushBack({ 882, 589, 65, 112 });
-		AndyForward.PushBack({ 749, 589, 64, 112 });
-		AndyForward.speed = 0.06f;
+		AndyForward.PushBack({ 784, 150, 55, 150 });//2
+		AndyForward.PushBack({ 839, 150, 60, 150 });//4
+		AndyForward.PushBack({ 899, 150, 63, 150 });//3
+		AndyForward.PushBack({ 962, 150, 62, 150 });//1
+		AndyForward.speed = 0.07f;
 	}
 
 	// WALK BACKWARD animation of Andy					//spritesTerryBogard2extres.png
 	{
-		AndyBackwards.PushBack({ 744, 461, 51, 112 });
-		AndyBackwards.PushBack({ 800, 461, 50, 112 });
-		AndyBackwards.PushBack({ 865, 461, 55, 112 });
-		//AndyBackwards.PushBack({ 947, 461, 54, 112 });
-		AndyBackwards.speed = 0.06f;
+		AndyBackwards.PushBack({ 543, 150, 49, 150 });
+		AndyBackwards.PushBack({ 592, 150, 48, 150 });//
+		AndyBackwards.PushBack({ 640, 150, 53, 150 });
+		AndyBackwards.PushBack({ 592, 150, 48, 150 });//
+		AndyBackwards.speed = 0.07f;
 	}
 
 	// JUMP animation of Terry							//spritesTerryBogard2extres.png
@@ -104,6 +104,18 @@ ModulePlayer::ModulePlayer()
 		AndyPW.PushBack({ 263, 683, 65, 112 });
 		AndyPW.PushBack({ 198, 683, 60, 112 });
 		AndyPW.speed = 0.1f;
+	}
+
+	// HELIPUNCH
+	{
+		AndyHeliPunch.PushBack({ 297, 0,  61, 150 });
+		AndyHeliPunch.PushBack({ 358, 0,  88, 150 });
+		AndyHeliPunch.PushBack({ 446, 0,  92, 150 });
+		AndyHeliPunch.PushBack({ 538, 0, 110, 150 });
+		AndyHeliPunch.PushBack({ 648, 0,  86, 150 });
+		AndyHeliPunch.PushBack({ 734, 0,  62, 150 });
+		AndyHeliPunch.PushBack({ 796, 0,  53, 150 });
+		AndyHeliPunch.speed = 0.1f;
 	}
 
 	//DAMAGED BY PUNCH
@@ -470,7 +482,7 @@ update_status ModulePlayer::Update()
 			else current_animation = &AndyForward;
 			if (Andyposition.x < 700 /*&&
 				Terryposition.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w)*/)
-				Andyposition.x++;
+				Andyposition.x += 2;
 		}
 		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < 14000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) > 4000 || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP) && currentstate == ST_WALK_FORWARD)
 		{
@@ -930,7 +942,7 @@ update_status ModulePlayer::Update()
 
 	//CROUCHPUNCH
 	{
-		if ((inputTerry.J_B || ->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN) && currentstate == ST_CROUCH)
+		if ((inputTerry.J_B || App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN) && currentstate == ST_CROUCH)
 		{
 			currentstate = ST_PUNCH_CROUCH;
 			current_animation = &AndyCrouchPunch;
