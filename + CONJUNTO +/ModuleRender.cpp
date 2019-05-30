@@ -77,12 +77,11 @@ update_status ModuleRender::Update()
 
 	//--------------------------------------------------------------------------
 
+	//if(App->input->keyboard[SDL_SCANCODE_COMMA] == KEY_STATE::KEY_REPEAT)
+	//	camera.y += speed;
+	//if(App->input->keyboard[SDL_SCANCODE_PERIOD] == KEY_STATE::KEY_REPEAT)
+	//	camera.y -= speed;
 
-	if(App->input->keyboard[SDL_SCANCODE_COMMA] == KEY_STATE::KEY_REPEAT)
-		camera.y += speed;
-
-	if(App->input->keyboard[SDL_SCANCODE_PERIOD] == KEY_STATE::KEY_REPEAT)
-		camera.y -= speed;
 
 	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT )
 		if (camera.x < 0 && App->player->destroyed == false &&

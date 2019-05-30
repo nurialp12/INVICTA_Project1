@@ -43,10 +43,10 @@ ModuleScene2::ModuleScene2()
 	water.speed = 0.02f;*/
 
 	// bus
-	bus.x = 480;
+	/*bus.x = 480;
 	bus.y = 525;
 	bus.w = 145;
-	bus.h = 73;
+	bus.h = 73;*/
 
 	// Background / sky
 	background.x = 3;
@@ -114,7 +114,7 @@ update_status ModuleScene2::Update()
 {
 	// Draw everything --------------------------------------	
 	//App->render->Blit(graphics, 0, 160, &ground);
-	App->render->Blit(graphics, -20, -25, &background, 0.70f);
+	App->render->Blit(graphics, 0, -25, &background, 0.60f);
 	App->render->Blit(graphics, 0, 0, &(background1.GetCurrentFrame()), 0.70f); // back of the room
 	
 
@@ -122,7 +122,7 @@ update_status ModuleScene2::Update()
 	//App->render->camera.x = -480;
 	//App->render->camera.y = 0;
 
-	App->render->Blit(graphics, 412, 111, &bus, 0.70f);
+	//App->render->Blit(graphics, 412, 111, &bus, 0.70f);
 
 	//App->render->Blit(graphics, 280, 125, &foreground);
 	//App->render->Blit(graphics, 305, 136, &(water.GetCurrentFrame())); // water animation
