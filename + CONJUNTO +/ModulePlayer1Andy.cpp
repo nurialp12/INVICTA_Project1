@@ -954,7 +954,7 @@ update_status ModulePlayer::Update()
 
 	//CROUCHPUNCH
 	{
-		if ((inputTerry.J_B || ->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN) && currentstate == ST_CROUCH)
+		if ((inputTerry.J_B || App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN) && currentstate == ST_CROUCH)
 		{
 			currentstate = ST_PUNCH_CROUCH;
 			current_animation = &AndyCrouchPunch;
