@@ -140,14 +140,14 @@ ModulePlayer::ModulePlayer()
 		AndyHeliPunch.speed = 0.1f;
 	}
 
-	//DAMAGED BY PUNCH
+	//DAMAGED BY PUNCH						 //!!!
 	{
-		AndyDP.PushBack({ 0, 912, 59, 112 });
+		AndyDP.PushBack({  0, 912, 59, 112 });
 		AndyDP.PushBack({ 64, 912, 67, 112 });
 		AndyDP.speed = 0.1f;
 	}
 
-	//DAMAGED BY KICK
+	//DAMAGED BY KICK						 //!!!
 	{
 		AndyDK.PushBack({ 136, 912, 63, 112 });
 		AndyDK.PushBack({ 211, 912, 68, 112 });
@@ -204,10 +204,11 @@ ModulePlayer::ModulePlayer()
 
 	//CROUCHKICK
 	{
-		AndyCrouchKick.PushBack({   0, 788, 56, 112 });   //Charge
-		AndyCrouchKick.PushBack({  56, 788, 58, 112 });  //Riposte
-		AndyCrouchKick.PushBack({ 114, 788, 92, 112 }); //Punch
-		AndyCrouchKick.PushBack({ 206, 788, 58, 112 }); //Riposte x2
+		AndyCrouchKick.PushBack({   0, 600,  79, 150 });   //Charge
+		AndyCrouchKick.PushBack({  79, 600,  79, 150 });  //Riposte
+		AndyCrouchKick.PushBack({ 158, 600, 119, 150 }); //Punch
+		AndyCrouchKick.PushBack({  79, 600,  79, 150 });
+		AndyCrouchKick.PushBack({   0, 600,  79, 150 });
 		AndyCrouchKick.speed = 0.1f;
 	}
 	//JUMPPUNCH
@@ -936,16 +937,30 @@ update_status ModulePlayer::Update()
 		if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN && currentstate == ST_CROUCH)
 		{
 			currentstate = ST_KICK_CROUCH;
-			current_animation = &AndyCrouchKick;
-			App->audio->PlayFX("Assets/FX/Voice/Attacks/FX_Attack4/FX_Attack4.wav");
-
 			colck->rect.x = Andyposition.x + 50;
 			colck->rect.y = Andyposition.y + 90;
+			if (mirror)
+			{
+				current_animation = &AndyCrouchKickM;
+			}
+			else
+			{
+				current_animation = &AndyCrouchKick;
+				Andyposition.x -= 30;
+				colc->rect.x -= 50;
+				colck->rect.x = Andyposition.x + 20;
+				colck->rect.y = Andyposition.y + 90;
+			}
+			App->audio->PlayFX("Assets/FX/Voice/Attacks/FX_Attack4/FX_Attack4.wav");
 		}
 		if (AndyCrouchKick.Finished() == true)
 		{
+			Andyposition.x += 30;
+			colc->rect.x += 30;
 			colck->to_delete = true;
 			AndyCrouchKick.resetLoops(0);
+			AndyCrouchKickM.resetLoops(0);
+
 			if (inputTerry.J_DOWN || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_CROUCH;
@@ -954,7 +969,6 @@ update_status ModulePlayer::Update()
 			else
 			{
 				currentstate = ST_IDLE;
-				current_animation = &AndyIdle;
 				colc->rect.y = 10000;
 				if (!gmode)col->rect.y = Andyposition.y + 50;
 			}
@@ -1102,6 +1116,7 @@ update_status ModulePlayer::Update()
 	else col->rect.x = Andyposition.x + 14;
 
 	colj->rect.x = Andyposition.x + 13;
+	if (currentstate != ST_KICK_CROUCH)
 	colc->rect.x = Andyposition.x + 13;
 	if (currentstate == ST_JUMP_FORWARD || currentstate == ST_JUMP_BACKWARD)
 		colj->rect.y = Andyposition.y + 50;
