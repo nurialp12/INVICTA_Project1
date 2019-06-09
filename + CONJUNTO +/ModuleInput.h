@@ -7,6 +7,8 @@
 #include "SDL/include/SDL.h"
 
 #define MAX_KEYS 300
+#define MAX_BUTTONS 15
+#define MAX_GAMEPADS 2
 
 enum KEY_STATE
 {
@@ -37,6 +39,7 @@ public:
 
 public:
 	KEY_STATE keyboard[MAX_KEYS];
+	Uint8 gpad[MAX_BUTTONS][MAX_GAMEPADS];
 	SDL_GameController* gController1 = NULL;
 	SDL_GameController* gController2 = NULL;
 };

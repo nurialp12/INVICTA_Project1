@@ -414,8 +414,8 @@ update_status ModulePlayer::PreUpdate()
 	inputTerry.J_LEFT = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < -JOYSTICK_DEAD_ZONE;
 	inputTerry.J_UP = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) < -20000;
 	inputTerry.J_DOWN = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > JOYSTICK_DEAD_ZONE;
-	inputTerry.J_B = SDL_GameControllerGetButton(App->input->gController1, SDL_CONTROLLER_BUTTON_B) == 1;
-	inputTerry.J_A = SDL_GameControllerGetButton(App->input->gController1, SDL_CONTROLLER_BUTTON_A) == 1;
+	inputTerry.J_B = App->input->gpad[SDL_CONTROLLER_BUTTON_B][1] == KEY_DOWN;
+	inputTerry.J_A = App->input->gpad[SDL_CONTROLLER_BUTTON_A][1] == KEY_DOWN;
 	inputAndy.J_RIGHT = SDL_GameControllerGetAxis(App->input->gController2, SDL_CONTROLLER_AXIS_LEFTX) > JOYSTICK_DEAD_ZONE;
 
 	SDL_Event event;

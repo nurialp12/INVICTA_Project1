@@ -25,6 +25,7 @@ public:
 	//SDL_Rect roof;
 	//SDL_Rect foreground;
 	SDL_Rect background;
+	SDL_Rect shadow;
 	Animation background1;
 
 	Animation people1;
