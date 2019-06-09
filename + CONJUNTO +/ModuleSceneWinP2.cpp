@@ -51,7 +51,7 @@ bool ModuleSceneWinP2::CleanUp()
 {
 
 	graphics = nullptr;
-	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Win_p2.png"));
+	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Win_p2_Andy.png"));
 
 	LOG("Unloading end stage");
 

@@ -707,9 +707,12 @@ bool ModuleSceneIntro::Start()
 
 	bool ret = true;
 	
-
-	graphics1 = App->textures->Load("Assets/Sprites/Intro_1.png");
-	graphics2 = App->textures->Load("Assets/Sprites/Intro_2.png");
+	if (!finish1)
+	{
+		graphics1 = App->textures->Load("Assets/Sprites/Intro_1.png");
+		graphics2 = App->textures->Load("Assets/Sprites/Intro_2.png");
+	}
+	
 	graphics = App->textures->Load("Assets/Sprites/Intro7.png");
 	App->audio->PlayMusic("Assets/music/Fatal_Fury_Intro/Fatal_Fury_Intro.ogg", 0);
 
@@ -766,10 +769,10 @@ update_status ModuleSceneIntro::Update()
 	}
 		
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && finish2)
 	{
-		finish1 = false;
-		finish2 = false;
+		finish1 = true;
+		finish2 = true;
 		App->fade->FadeToBlack(App->intro, App->scene_2, 2.5);
 	}
 
