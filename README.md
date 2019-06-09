@@ -93,9 +93,8 @@ CONTROLS:
 	P Power Wave
 	
 
-Space to change screens
-
-ESC to leave the game
+	Space to change screens
+	ESC to leave the game
 
 
 DEBUG:
