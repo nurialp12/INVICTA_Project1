@@ -16,6 +16,7 @@
 ![foto](https://user-images.githubusercontent.com/45202050/54494645-dd0afa80-48dc-11e9-9ecb-0e7b0ffe4e87.png)
 
 
+
 **QA:** Tomás Carreras Ugarte
 
 	GitHub: tomascarreras1000
@@ -54,14 +55,18 @@ Fatal Fury was developed around the same time as Street Fighter II but Fatal Fur
 **_Under construction!_ Soon you'll be able to find a short gameplay of our game featuring debug functionality**
 
 
+
 ## Installation
 Download the .zip (which can be found in our Github Project -link below- in releases and in our github wewb page).
 Go to the file "Game" and click "SDL5 Handout"
 Enjoy!
 
+
+
 ## Download to the latest release
 
 **_Under construction!_ Soon you'll be able to find a link to the latest release**
+
 
 
 ## Usage
@@ -108,6 +113,7 @@ DEBUG:
 	F9 mute/unmute sound
 
 
+
 ## Content
 
 	Introduction sequence
@@ -118,7 +124,7 @@ DEBUG:
 	Score and UI
 	Play in Full Screen
 	Gamepad or keyboard to play
-		
+
 
 
 ## Credits
@@ -131,10 +137,14 @@ Releases: https://github.com/nurialp12/INVICTA_Project1/releases
 
 Wiki: https://github.com/nurialp12/INVICTA_Project1/wiki
 
+Our web page: https://nurialp12.github.io/INVICTA_Project1/
+
+
 
 ## License
 
 All rights reserved to the developers and publishers of the original release. 
 The aim of this project (link to the github project can be found above) and respectively wiki is only educational. 
 The content can only be used for non-commercial purposes.
+
 
