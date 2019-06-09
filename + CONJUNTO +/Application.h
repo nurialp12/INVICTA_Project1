@@ -50,6 +50,9 @@ public:
 	ModuleAudio* audio;
 	ModuleFonts* fonts;
 
+	bool p1won = false;
+	bool p2won = false;
+
 public:
 
 	Application();
