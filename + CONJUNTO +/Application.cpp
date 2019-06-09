@@ -55,13 +55,13 @@ bool Application::Init()
 	player->Disable();
 	player2->Disable();
 	// Disable the map that you do not start with
-	//scene_2->Disable();
+	scene_2->Disable();
 	ini->Disable();
 	scene_1->Disable();
 	end_game1->Disable();
 	end_game2->Disable();
 	tie->Disable();
-	intro->Disable();
+	//intro->Disable();
 	collisions->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
