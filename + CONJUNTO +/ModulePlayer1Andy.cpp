@@ -942,7 +942,6 @@ update_status ModulePlayer::Update()
 				colc->rect.y = 10000;
 				if (!gmode)col->rect.y = Andyposition.y + 50;
 			}
-			
 		}
 	}
 
@@ -1198,10 +1197,11 @@ update_status ModulePlayer::Update()
 }
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_PLAYER && collided == false)
+	if (c1->type == COLLIDER_ENEMY_SHOT && c2->type == COLLIDER_PLAYER && collided == false && App->player2->currentstate == ST_PUNCH_STANDING2)
 	{
 		life_score -= stantardDMG;
 		collided = true;
+		currentstate;
 	}
 }
 
