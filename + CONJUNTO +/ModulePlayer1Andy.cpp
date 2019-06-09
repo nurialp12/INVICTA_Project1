@@ -68,20 +68,25 @@ ModulePlayer::ModulePlayer()
 		AndyGoingUp.speed = 0.1f;
 		AndyGoingUp.loop = false;
 
-		AndyTop.PushBack({ 349, 150, 42, 150 });
-		AndyTop.PushBack({ 349, 150, 42, 150 });
-		AndyTop.PushBack({ 349, 150, 42, 150 });
-		AndyTop.PushBack({ 349, 150, 42, 150 });
-		AndyTop.PushBack({ 349, 150, 42, 150 });
-		AndyTop.PushBack({ 349, 150, 42, 150 });
-		AndyTop.PushBack({ 391, 150, 51, 150 });
-		AndyTop.speed = 0.1f;
-		AndyTop.loop = false;
+		//AndyTop.PushBack({ 349, 150, 42, 150 });
+		//AndyTop.PushBack({ 349, 150, 42, 150 });
+		//AndyTop.PushBack({ 349, 150, 42, 150 });
+		//AndyTop.PushBack({ 349, 150, 42, 150 });
+		//AndyTop.PushBack({ 349, 150, 42, 150 });
+		//AndyTop.PushBack({ 349, 150, 42, 150 });
+		//AndyTop.PushBack({ 391, 150, 51, 150 });
+		//AndyTop.speed = 0.1f;
+		//AndyTop.loop = false;
 
 		//GOING DOWN AND LAND
 		AndyGoingDown.PushBack({ 391, 150, 51, 150 });
 		AndyGoingDown.PushBack({ 442, 150, 48, 150 });
-		AndyGoingDown.loop = false;
+		AndyGoingDown.PushBack({ 442, 150, 48, 150 });
+		AndyGoingDown.PushBack({ 442, 150, 48, 150 });
+		AndyGoingDown.PushBack({ 442, 150, 48, 150 });
+		AndyGoingDown.PushBack({ 442, 150, 48, 150 });
+		AndyGoingDown.PushBack({ 442, 150, 48, 150 });
+
 		AndyGoingDown.speed = 0.08f;
 	}
 
@@ -378,7 +383,7 @@ bool ModulePlayer::Start()
 	score = 0;
 	col   = App->collisions->AddCollider({    0, Andyposition.y +50, 31, 101 }, COLLIDER_PLAYER, App->player);
 	colc  = App->collisions->AddCollider({    0, 10000, 36, 60 }, COLLIDER_PLAYER, App->player);
-	colj  = App->collisions->AddCollider({ 1000, 10000, 36, 60 }, COLLIDER_PLAYER, App->player);
+	colj  = App->collisions->AddCollider({    0, 10000, 36, 60 }, COLLIDER_PLAYER, App->player);
 	colcp = App->collisions->AddCollider({ 1000, 10000, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 	colck = App->collisions->AddCollider({ 1000, 10000, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 
@@ -402,9 +407,9 @@ bool ModulePlayer::CleanUp()
 	App->fonts->UnLoad(font_score);
 	if (col)
 		col->to_delete = true;
-	if (colj)
+	if(colj)
 		colj->to_delete = true;
-	if (colc)
+	if(colc)
 		colc->to_delete = true;
 	return true;
 }
@@ -412,21 +417,20 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::PreUpdate()
 {
 	inputTerry.J_RIGHT = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) > JOYSTICK_DEAD_ZONE;
-	inputTerry.J_LEFT = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < -JOYSTICK_DEAD_ZONE;
-	inputTerry.J_UP = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) < -20000;
-	inputTerry.J_DOWN = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > JOYSTICK_DEAD_ZONE;
-	inputTerry.J_B = SDL_GameControllerGetButton(App->input->gController1, SDL_CONTROLLER_BUTTON_B) == 1;
-	inputTerry.A_DOWN = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT;
-	inputTerry.D_DOWN = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT;
-	inputTerry.S_DOWN = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT;
-	inputTerry.W_DOWN = App->input->keyboard[SDL_SCANCODE_W] == KEY_REPEAT;
-	inputTerry.F_DOWN = App->input->keyboard[SDL_SCANCODE_F] == KEY_DOWN;
-	inputTerry.G_DOWN = App->input->keyboard[SDL_SCANCODE_G] == KEY_DOWN;
-	inputTerry.H_DOWN = App->input->keyboard[SDL_SCANCODE_H] == KEY_DOWN;
+	inputTerry.J_LEFT  = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < -JOYSTICK_DEAD_ZONE;
+	inputTerry.J_UP    = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) < -20000;
+	inputTerry.J_DOWN  = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > JOYSTICK_DEAD_ZONE;
+	inputTerry.J_B     = SDL_GameControllerGetButton(App->input->gController1, SDL_CONTROLLER_BUTTON_B) == 1;
+	inputTerry.A_DOWN  = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT;
+	inputTerry.D_DOWN  = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT;
+	inputTerry.S_DOWN  = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT;
+	inputTerry.W_DOWN  = App->input->keyboard[SDL_SCANCODE_W] == KEY_REPEAT;
+	inputTerry.F_DOWN  = App->input->keyboard[SDL_SCANCODE_F] == KEY_DOWN;
+	inputTerry.G_DOWN  = App->input->keyboard[SDL_SCANCODE_G] == KEY_DOWN;
+	inputTerry.H_DOWN  = App->input->keyboard[SDL_SCANCODE_H] == KEY_DOWN;
 	inputTerry.SD_DOWN = (App->input->keyboard[SDL_SCANCODE_S] == KEY_DOWN) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_DOWN);
 
 	SDL_Event event;
-
 	while (SDL_PollEvent(&event) != 0)
 	{
 		if (event.type == SDL_KEYUP && event.key.repeat == 0)
@@ -554,8 +558,6 @@ update_status ModulePlayer::Update()
 		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > -10000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) < -4000 
 			|| App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN) && currentstate == ST_IDLE)
 		{
-			AndyGoingDown.Reset();
-			AndyGoingDownM.Reset();
 			currentstate = ST_GOING_UP;
 			col->rect.y = Andyposition.y + 10000;
 			if (!gmode) colj->rect.y = Andyposition.y + 50;
@@ -616,21 +618,29 @@ update_status ModulePlayer::Update()
 					currentstate = ST_WALK_BACKWARD;
 					if (mirror)current_animation = &AndyForwardM;
 					else current_animation = &AndyBackwards;
+					AndyGoingDown.resetLoops(0);
+					AndyGoingDownM.resetLoops(0);
 				}
 				else if (inputTerry.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 				{
 					currentstate = ST_WALK_FORWARD;
 					if (mirror)current_animation = &AndyBackwardsM;
 					else current_animation = &AndyForward;
+					AndyGoingDown.resetLoops(0);
+					AndyGoingDownM.resetLoops(0);
 				}
 				else if (inputTerry.J_DOWN || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 				{
 					currentstate = ST_CROUCH;
 					if (mirror)current_animation = &AndyCrouchM;
 					else current_animation = &AndyCrouch;
+					AndyGoingDown.resetLoops(0);
+					AndyGoingDownM.resetLoops(0);
 				}
 				else currentstate = ST_IDLE;
-
+				AndyGoingDown.resetLoops(0);
+				AndyGoingDownM.resetLoops(0);
+				
 				speed = 2.0;
 				t = 0;
 				colj->rect.y = 10000;
