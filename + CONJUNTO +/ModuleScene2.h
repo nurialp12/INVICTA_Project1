@@ -26,6 +26,11 @@ public:
 	//SDL_Rect foreground;
 	SDL_Rect background;
 	Animation background1;
+
+	Animation people1;
+	Animation people2;
+	Animation people3;
+	Animation people4;
 	//Animation water;
 };
 
