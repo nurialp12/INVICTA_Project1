@@ -499,7 +499,7 @@ update_status ModulePlayer::Update()
 			if (mirror)
 			{
 				current_animation = &AndyBackwardsM;
-				if (Andyposition.x < 700)Andyposition.x ++;
+				if (Andyposition.x < 700) Andyposition.x ++;
 			}
 			else
 			{
@@ -507,6 +507,8 @@ update_status ModulePlayer::Update()
 				if (Andyposition.x < 700 /*&&
 					Terryposition.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w)*/)
 					Andyposition.x += 2;
+
+				
 			}
 		}
 		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < 14000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) > 4000 
