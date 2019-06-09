@@ -490,13 +490,13 @@ update_status ModulePlayer::Update()
 			if (mirror)
 			{
 				current_animation = &AndyBackwardsM;
-				if (Andyposition.x < 700 && App->player2->Terry2position.x + SCREEN_WIDTH - 60 > Andyposition.x)Andyposition.x ++;
+				if (Andyposition.x < 700 && App->player2->Andy2position.x + SCREEN_WIDTH - 60 > Andyposition.x)Andyposition.x ++;
 			}
 			else
 			{
 				current_animation = &AndyForward;
 
-				if (Andyposition.x < 700 && App->player2->Terry2position.x + SCREEN_WIDTH - 60 > Andyposition.x)
+				if (Andyposition.x < 700 && App->player2->Andy2position.x + SCREEN_WIDTH - 60 > Andyposition.x)
 					Andyposition.x += 2;
 			}
 		}
@@ -521,12 +521,12 @@ update_status ModulePlayer::Update()
 			if (mirror)
 			{
 				current_animation = &AndyForwardM;
-				if (Andyposition.x > 0 && App->player2->Terry2position.x - SCREEN_WIDTH + 60 < Andyposition.x) Andyposition.x -= 2;
+				if (Andyposition.x > 0 && App->player2->Andy2position.x - SCREEN_WIDTH + 60 < Andyposition.x) Andyposition.x -= 2;
 			}
 			else
 			{
 				current_animation = &AndyBackwards;
-				if (Andyposition.x > 0 && App->player2->Terry2position.x - SCREEN_WIDTH + 60 < Andyposition.x)
+				if (Andyposition.x > 0 && App->player2->Andy2position.x - SCREEN_WIDTH + 60 < Andyposition.x)
 					Andyposition.x--;
 			}
 		}

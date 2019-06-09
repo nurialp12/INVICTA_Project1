@@ -29,8 +29,8 @@ ModulePlayer2::ModulePlayer2()
 
 	//IDLE
 	{
-		AndyIdle.PushBack({ 0, 150, 59, 150 });
-		AndyIdle.PushBack({ 59, 150, 59, 150 });
+		AndyIdle.PushBack({   0, 150, 59, 150 });
+		AndyIdle.PushBack({  59, 150, 59, 150 });
 		AndyIdle.PushBack({ 118, 150, 60, 150 });
 		AndyIdle.PushBack({ 178, 150, 59, 150 });
 		AndyIdle.PushBack({ 237, 150, 59, 150 });
