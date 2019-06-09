@@ -158,6 +158,11 @@ update_status ModuleScene2::Update()
 	App->render->Blit(graphics, 150, 100, &(people3.GetCurrentFrame()), 0.60f);
 	App->render->Blit(graphics, 200, 100, &(people4.GetCurrentFrame()), 0.60f);
 
+	App->render->Blit(graphics, 250, 100, &(people1.GetCurrentFrame()), 0.60f);
+	App->render->Blit(graphics, 300, 100, &(people2.GetCurrentFrame()), 0.60f);
+	App->render->Blit(graphics, 350, 100, &(people3.GetCurrentFrame()), 0.60f);
+	App->render->Blit(graphics, 400, 100, &(people4.GetCurrentFrame()), 0.60f);
+
 
 	// TODO 3: make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_F2] == 1)
