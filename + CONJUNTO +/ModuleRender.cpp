@@ -83,7 +83,7 @@ update_status ModuleRender::Update()
 	//	camera.y -= speed;
 
 
-	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT )
+	if(App->player->inputTerry.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT )
 		if (camera.x < 0 && App->player->destroyed == false &&
 			(App->player2->Terry2position.x * 2 - 160) < (-(camera.x-camera.w)) &&
 			App->input->keyboard[SDL_SCANCODE_LEFT] != KEY_STATE::KEY_REPEAT &&
@@ -93,7 +93,7 @@ update_status ModuleRender::Update()
 		}
 
 	if( App->player->inputTerry.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-		if (camera.x > -380 && App->player->destroyed == false &&
+		if (camera.x > -940 && App->player->destroyed == false &&
 			App->player2->Terry2position.x * 2 > -camera.x &&
 			App->input->keyboard[SDL_SCANCODE_RIGHT] != KEY_STATE::KEY_REPEAT &&
 			App->player->currentstate == ST_WALK_FORWARD)
@@ -101,7 +101,7 @@ update_status ModuleRender::Update()
 			camera.x -= speed;
 		}
 
-	if (App->player->inputTerry.J_LEFT || App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 		if (camera.x < 0 && App->player->destroyed == false &&
 			(App->player->Terryposition.x * 2 - 160) < (-(camera.x - camera.w)) &&
 			App->player2->currentstate == ST_WALK_FORWARD2)
@@ -111,7 +111,7 @@ update_status ModuleRender::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 		if (App->player->Terryposition.x * 2 > -camera.x &&
-			camera.x > -380 && App->player->destroyed == false &&
+			camera.x > -940 && App->player->destroyed == false &&
 			App->player2->currentstate == ST_WALK_BACKWARD2)
 		{
 			camera.x -= speed;
