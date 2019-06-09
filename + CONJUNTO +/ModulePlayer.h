@@ -130,6 +130,7 @@ public:
 	Animation AndyGoingDownBackwards;
 	Animation AndyKick;
 	Animation AndyPunch;
+	Animation AndyPunchLong;
 	Animation AndyPW;
 	Animation AndyHeliPunch;
 	Animation AndyDP;
@@ -184,6 +185,7 @@ public:
 	Animation AndyGoingDownBackwardsM;
 	Animation AndyKickM;
 	Animation AndyPunchM;
+	Animation AndyPunchLongM;
 	Animation AndyPWM;
 	Animation AndyDPM;
 	Animation AndyDKM;

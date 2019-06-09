@@ -368,9 +368,6 @@ bool ModulePlayer::Start()
 	LOG("Loading player");
 	bool ret = true;
 	graphics = App->textures->Load("Assets/Sprites/Sprites_AndyBogard_ok.png");
-	//graphics2 = App->textures->Load("Assets/Sprites/spritesTerryBogard2extres.png");
-	graphicsM = App->textures->Load("Assets/Sprites/Sprites_AndyBogard_okM.png");
-	//graphics2M = App->textures->Load("Assets/Sprites/spritesTerryBogard2extresMIRROR.png");
 
 	UI = App->textures->Load("Assets/Sprites/UI.png");
 
@@ -378,7 +375,7 @@ bool ModulePlayer::Start()
 	Andyposition.x = 5 + (250);
 	Andyposition.y = 60;
 	score = 0;
-	col   = App->collisions->AddCollider({    0, Andyposition.y +50, 31, 101 }, COLLIDER_PLAYER, App->player);
+	col   = App->collisions->AddCollider({    0, Andyposition.y + 50, 31, 101 }, COLLIDER_PLAYER, App->player);
 	colc  = App->collisions->AddCollider({    0, 10000, 36, 60 }, COLLIDER_PLAYER, App->player);
 	colj  = App->collisions->AddCollider({    0, 10000, 36, 60 }, COLLIDER_PLAYER, App->player);
 	colcp = App->collisions->AddCollider({ 1000, 10000, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
@@ -1150,47 +1147,10 @@ update_status ModulePlayer::Update()
 	// Draw everything --------------------------------------
 	if (destroyed == false)
 	{
-			if (mirror)
-			App->render->Blit(graphicsM, Andyposition.x, Andyposition.y, &(current_animation->GetCurrentFrame()));
-			else
-			App->render->Blit(graphics, Andyposition.x, Andyposition.y, &(current_animation->GetCurrentFrame()));
-
-
-		//if ((current_animation == (&TerryKick)) || current_animation == &TerryGoingUp || current_animation == &TerryGoingDown || current_animation == &TerryTop
-		//	|| current_animation == (&TerryForward) || current_animation == (&TerryBackwards) || current_animation == &TerryDP || current_animation == &TerryDK || current_animation == &TerryCrouchPunch
-		//	|| current_animation == &TerryCrouchKick || current_animation == &TerryJumpForward || current_animation == &TerryJumpBackwards || current_animation == &TerryCrouch
-		//	|| current_animation == &TerryGoingUpForward || current_animation == &TerryTopForward || current_animation == &TerryGoingDownForward)
-		//{
-		//	App->render->Blit(graphics2, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
-		//}
-
-		//else if (current_animation == &TerryKickM || current_animation == &TerryForwardM || current_animation == &TerryGoingUpM || current_animation == &TerryGoingDownM
-		//	|| current_animation == &TerryTopM
-		//	|| current_animation == &TerryBackwardsM || current_animation == &TerryDPM || current_animation == &TerryDKM || current_animation == &TerryCrouchPunchM
-		//	|| current_animation == &TerryCrouchKickM || current_animation == &TerryJumpForwardM || current_animation == &TerryJumpBackwardsM || current_animation == &TerryCrouchM)
-		//{
-		//	App->render->Blit(graphics2M, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
-		//}
-
-		//else if (current_animation == &TerryidleM || current_animation == &TerryPunchM || current_animation == &TerryPWM || current_animation == &TerryJumpPunchM
-		//	|| current_animation == &TerryJumpKickM || current_animation == &hitM)
-		//{
-		//	App->render->Blit(graphicsM, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
-		//}
-
-		//else
-		//{
-		//	App->render->Blit(graphics, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
-		//}
-
-		/*else if()
-		else if()*/
+		App->render->Blit(graphics, Andyposition.x, Andyposition.y, &(current_animation->GetCurrentFrame()));
 	}
 
-	// Draw UI (score) --------------------------------------
-	//sprintf_s(score_text, 10, "%7d", score);
-
-	// TODO 3: Blit the text of the score in at the bottom of the screen
+	// Draw UI (score) --------------------------------------k
 	App->fonts->BlitText(10, 150, font_score, "546");
 
 	return UPDATE_CONTINUE;
@@ -1201,7 +1161,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		life_score -= stantardDMG;
 		collided = true;
-		currentstate;
+		currentstate = ST_BEING_PUNCHED;
+		if(mirror) App->player2->current_animation = &AndyPunchLongM;
+		else App->player2->current_animation = &AndyPunchLong;
+	}
+	if (c1->type == COLLIDER_ENEMY && c2->type == COLLIDER_PLAYER && collided == false)
+	{
+
 	}
 }
 
