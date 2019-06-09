@@ -768,6 +768,8 @@ update_status ModuleSceneIntro::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
+		finish1 = false;
+		finish2 = false;
 		App->fade->FadeToBlack(App->intro, App->scene_2, 2.5);
 	}
 
