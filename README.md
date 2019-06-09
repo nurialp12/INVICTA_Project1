@@ -58,6 +58,10 @@ A sneak peak to our tribute game featuring main debug functionality.
 [ORIGINAL GAME GAMEPLAY](https://www.youtube.com/watch?reload=9&v=HaGLQx7gU8U)
 
 
+[OUR VERSION OF THE GAME GAMEPLAY _(Under construction!)_](https://www.youtube.com/watch?reload=9&v=HaGLQx7gU8U)
+
+
+
 **_Under construction!_ Soon you'll be able to find a short gameplay of our game featuring debug functionality**
 
 
@@ -77,6 +81,10 @@ Instructions can be found in this same web page or in the readme.md file include
 
 
 [Releases](https://github.com/nurialp12/INVICTA_Project1/releases)
+
+[Release 1.0 _(Under construction!)_](https://github.com/nurialp12/INVICTA_Project1/releases)
+
+[Download here _(Under construction!)_](https://github.com/nurialp12/INVICTA_Project1/releases)
 
 
 
