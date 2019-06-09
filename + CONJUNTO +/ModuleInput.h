@@ -38,6 +38,7 @@ public:
 public:
 	KEY_STATE keyboard[MAX_KEYS];
 	SDL_GameController* gController1 = NULL;
+	SDL_GameController* gController2 = NULL;
 };
 
 #endif // __ModuleInput_H__

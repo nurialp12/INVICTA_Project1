@@ -908,7 +908,7 @@ update_status ModulePlayer::Update()
 				currentstate = ST_IDLE;
 				current_animation = &AndyIdle;
 			}
-			AndyCrouch.resetLoops(0);
+			AndyCrouch.Reset();
 			colc->rect.y = 10000;
 			if (gmode != true) col->rect.y = Andyposition.y + 50;
 		}

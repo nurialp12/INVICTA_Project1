@@ -83,7 +83,6 @@ update_status ModuleParticles::Update()
 			}
 		}
 	}
-
 	return UPDATE_CONTINUE;
 }
 
@@ -93,9 +92,6 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Uint32
 	p->born = SDL_GetTicks() + delay;
 	p->position.x = x;
 	p->position.y = y;
-
-	p->col = App->collisions->AddCollider({ x, y, p->anim.GetCurrentFrame().w, p->anim.GetCurrentFrame().h }, COLLIDER_PLAYER_SHOT, this);
-
 
 	active[last_particle++] = p;
 }
