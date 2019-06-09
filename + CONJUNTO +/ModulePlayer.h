@@ -40,7 +40,11 @@ enum terry_states
 	ST_PUNCH_CROUCH,
 	ST_KICK_STANDING,
 	ST_KICK_CROUCH,
-	ST_SD
+	ST_SD,
+	ST_BEING_PUNCHED,
+	ST_BEING_KICKED,
+	ST_BEING_THROWN,
+	ST_THROWING
 };
 
 struct InputP1 {
@@ -126,6 +130,7 @@ public:
 	Animation AndyGoingDownBackwards;
 	Animation AndyKick;
 	Animation AndyPunch;
+	Animation AndyPunchLong;
 	Animation AndyPW;
 	Animation AndyHeliPunch;
 	Animation AndyDP;
@@ -180,6 +185,7 @@ public:
 	Animation AndyGoingDownBackwardsM;
 	Animation AndyKickM;
 	Animation AndyPunchM;
+	Animation AndyPunchLongM;
 	Animation AndyPWM;
 	Animation AndyDPM;
 	Animation AndyDKM;

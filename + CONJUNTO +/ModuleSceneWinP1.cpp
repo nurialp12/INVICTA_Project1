@@ -35,7 +35,7 @@ bool ModuleSceneWinP1::Start()
 	
 	LOG("Loading background assets");
 	bool ret = true;
-	graphics = App->textures->Load("Assets/Sprites/Win_p1.png");
+	graphics = App->textures->Load("Assets/Sprites/Win_p1_Andy.png");
 	App->audio->PlayMusic("Assets/music/Results are everything/Results are everything.ogg", 0);
 
 	// TODO 1: Enable (and properly disable) the player module
@@ -51,7 +51,7 @@ bool ModuleSceneWinP1::CleanUp()
 {
 
 	graphics = nullptr;
-	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Win_p1.png"));
+	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Win_p1_Andy.png"));
 
 	LOG("Unloading end stage");
 
@@ -63,7 +63,7 @@ bool ModuleSceneWinP1::CleanUp()
 update_status ModuleSceneWinP1::Update()
 {
 	// Draw everything --------------------------------------	
-	App->render->Blit(graphics, -7, 0, &background);
+	App->render->Blit(graphics, -2, -3, &background);
 	
 
 	
