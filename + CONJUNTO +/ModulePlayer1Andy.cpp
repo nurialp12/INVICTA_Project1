@@ -121,7 +121,7 @@ ModulePlayer::ModulePlayer()
 		AndyCrouch.loop = false;
 	}
 
-	// POWER WAVE animation of Terrry
+	// POWER WAVE animation of Andy
 	{
 		AndyPW.PushBack({   0, 300, 65, 150 });
 		AndyPW.PushBack({  65, 300, 48, 150 });
@@ -145,15 +145,15 @@ ModulePlayer::ModulePlayer()
 
 	//DAMAGED BY PUNCH						 //!!!
 	{
-		AndyDP.PushBack({  0, 912, 59, 112 });
-		AndyDP.PushBack({ 64, 912, 67, 112 });
+		AndyDP.PushBack({ 585, 450, 62, 150 });
+		AndyDP.PushBack({ 647, 450, 65, 150 });
 		AndyDP.speed = 0.1f;
 	}
 
 	//DAMAGED BY KICK						 //!!!
 	{
-		AndyDK.PushBack({ 136, 912, 63, 112 });
-		AndyDK.PushBack({ 211, 912, 68, 112 });
+		AndyDK.PushBack({ 712, 450, 54, 150 });
+		AndyDK.PushBack({ 766, 450, 64, 150 }); //830
 		AndyDK.speed = 0.1f;
 	}
 
@@ -198,10 +198,8 @@ ModulePlayer::ModulePlayer()
 
 	//CROUCHPUNCH
 	{
-		AndyCrouchPunch.PushBack({ 279, 912, 56, 112 }); //Charge
-		AndyCrouchPunch.PushBack({ 416, 912, 49, 112 }); //Riposte
-		AndyCrouchPunch.PushBack({ 335, 912, 81, 112 }); //Punch
-		AndyCrouchPunch.PushBack({ 416, 912, 49, 112 }); //Riposte x2
+		AndyCrouchPunch.PushBack({ 624, 600, 49, 150 }); //Charge
+		AndyCrouchPunch.PushBack({ 673, 600, 78, 150 }); //Riposte //751
 		AndyCrouchPunch.speed = 0.1f;
 	}
 
