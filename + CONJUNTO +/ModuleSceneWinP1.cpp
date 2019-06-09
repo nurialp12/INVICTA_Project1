@@ -35,7 +35,7 @@ bool ModuleSceneWinP1::Start()
 	
 	LOG("Loading background assets");
 	bool ret = true;
-	graphics = App->textures->Load("Assets/Sprites/Win_p1.png");
+	graphics = App->textures->Load("Assets/Sprites/Win_p1_Andy.png");
 	App->audio->PlayMusic("Assets/music/Results are everything/Results are everything.ogg", 0);
 
 	// TODO 1: Enable (and properly disable) the player module
