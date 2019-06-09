@@ -20,7 +20,7 @@ public:
 public:
 
 	SDL_Texture* graphics = nullptr;
-	SDL_Rect bus;
+	Animation bus;
 	//SDL_Rect ground;
 	//SDL_Rect roof;
 	//SDL_Rect foreground;

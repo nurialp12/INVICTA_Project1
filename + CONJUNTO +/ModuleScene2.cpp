@@ -42,11 +42,10 @@ ModuleScene2::ModuleScene2()
 	water.PushBack({588, 447, 283, 18});
 	water.speed = 0.02f;*/
 
-	// bus
-	/*bus.x = 480;
-	bus.y = 525;
-	bus.w = 145;
-	bus.h = 73;*/
+	//bus
+	bus.PushBack({ 480, 525, 145, 73 });
+	bus.PushBack({ 480, 524, 145, 74 });
+	bus.speed = 0.05f;
 
 	// Background / sky
 	background.x = 3;
@@ -66,19 +65,19 @@ ModuleScene2::ModuleScene2()
 
 	people1.PushBack({ 39, 403, 64, 100 });  
 	people1.PushBack({ 39, 512, 64, 100 });
-	people1.speed = 0.07f;
+	people1.speed = 0.05f;
 
 	people2.PushBack({ 143, 411, 65, 97 });  
 	people2.PushBack({ 143, 518, 65, 97 });
-	people2.speed = 0.07f;
+	people2.speed = 0.05f;
 
 	people3.PushBack({ 246, 404, 62, 99 }); 
 	people3.PushBack({ 246, 512, 62, 99 });
-	people3.speed = 0.07f;
+	people3.speed = 0.05f;
 
 	people4.PushBack({ 347, 402, 69, 95 }); 
 	people4.PushBack({ 347, 514, 69, 95 });
-	people4.speed = 0.07f;
+	people4.speed = 0.05f;
 
 
 }
@@ -138,7 +137,7 @@ update_status ModuleScene2::Update()
 	//App->render->Blit(graphics, 0, 160, &ground);
 	App->render->Blit(graphics, 0, -25, &background, 0.60f);
 	App->render->Blit(graphics, 0, 0, &(background1.GetCurrentFrame()), 0.60f); // back of the room
-	
+	App->render->Blit(graphics, 474, 110, &(bus.GetCurrentFrame()), 0.60f);
 
 	//NÚRIA: BLOQUEA LA CÁMARA EN EL CENTRO DURANTE EL PAOPAO
 	//App->render->camera.x = -480;
