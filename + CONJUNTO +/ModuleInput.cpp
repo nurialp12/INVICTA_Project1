@@ -50,6 +50,15 @@ update_status ModuleInput::PreUpdate()
 		}
 	}
 
+	if (SDL_NumJoysticks() >= 2)
+	{
+		gController2 = SDL_GameControllerOpen(1);
+		if (gController2 == NULL)
+		{
+			LOG("Game controller 2 wasn't initialized")
+		}
+	}
+
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
 
 	for (int i = 0; i < MAX_KEYS; ++i)
@@ -67,6 +76,32 @@ update_status ModuleInput::PreUpdate()
 				keyboard[i] = KEY_UP;
 			else
 				keyboard[i] = KEY_IDLE;
+		}
+	}
+
+	for (int i = 0; i < MAX_BUTTONS; ++i) {
+		gpad[i][1] = SDL_GameControllerGetButton(gController1, (SDL_GameControllerButton)i);
+		gpad[i][2] = SDL_GameControllerGetButton(gController2, (SDL_GameControllerButton)i);
+	}
+
+	for (int i = 0; i < MAX_BUTTONS; ++i) {
+
+		for (int j = 0; j < MAX_GAMEPADS; ++j) 
+		{
+			if (gpad[i][j] == 1)
+			{
+				if (gpad[i][j] == KEY_IDLE)
+					gpad[i][j] == KEY_DOWN;
+				else
+					gpad[i][j] == KEY_REPEAT;
+			}
+			else
+			{
+				if (gpad[i][j] == KEY_REPEAT || gpad[i][j] == KEY_DOWN)
+					gpad[i][j] == KEY_UP;
+				else
+					gpad[i][j] == KEY_IDLE;
+			}
 		}
 	}
 

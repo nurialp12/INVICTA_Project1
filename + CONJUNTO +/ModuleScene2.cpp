@@ -53,6 +53,12 @@ ModuleScene2::ModuleScene2()
 	background.w = 473;
 	background.h = 117;
 
+	//Shadow
+	shadow.x = 522;
+	shadow.y = 478;
+	shadow.w = 66;
+	shadow.h = 12;
+
 	// flag animation
 	background1.PushBack({ 718, 390, 619, 224 });
 	background1.PushBack({ 1349, 390, 619, 224 });
@@ -137,7 +143,10 @@ update_status ModuleScene2::Update()
 	//App->render->Blit(graphics, 0, 160, &ground);
 	App->render->Blit(graphics, 0, -25, &background, 0.60f);
 	App->render->Blit(graphics, 0, 0, &(background1.GetCurrentFrame()), 0.60f); // back of the room
+
+	App->render->Blit(graphics, App->player->Andyposition.x - 10, 202, &shadow);
 	App->render->Blit(graphics, 474, 110, &(bus.GetCurrentFrame()), 0.60f);
+
 
 	//NÚRIA: BLOQUEA LA CÁMARA EN EL CENTRO DURANTE EL PAOPAO
 	//App->render->camera.x = -480;

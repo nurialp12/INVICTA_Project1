@@ -368,9 +368,6 @@ bool ModulePlayer::Start()
 	LOG("Loading player");
 	bool ret = true;
 	graphics = App->textures->Load("Assets/Sprites/Sprites_AndyBogard_ok.png");
-	//graphics2 = App->textures->Load("Assets/Sprites/spritesTerryBogard2extres.png");
-	graphicsM = App->textures->Load("Assets/Sprites/Sprites_AndyBogard_okM.png");
-	//graphics2M = App->textures->Load("Assets/Sprites/spritesTerryBogard2extresMIRROR.png");
 
 	UI = App->textures->Load("Assets/Sprites/UI.png");
 
@@ -378,7 +375,7 @@ bool ModulePlayer::Start()
 	Andyposition.x = 5 + (250);
 	Andyposition.y = 60;
 	score = 0;
-	col   = App->collisions->AddCollider({    0, Andyposition.y +50, 31, 101 }, COLLIDER_PLAYER, App->player);
+	col   = App->collisions->AddCollider({    0, Andyposition.y + 50, 31, 101 }, COLLIDER_PLAYER, App->player);
 	colc  = App->collisions->AddCollider({    0, 10000, 36, 60 }, COLLIDER_PLAYER, App->player);
 	colj  = App->collisions->AddCollider({    0, 10000, 36, 60 }, COLLIDER_PLAYER, App->player);
 	colcp = App->collisions->AddCollider({ 1000, 10000, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
@@ -414,18 +411,12 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::PreUpdate()
 {
 	inputTerry.J_RIGHT = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) > JOYSTICK_DEAD_ZONE;
-	inputTerry.J_LEFT  = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < -JOYSTICK_DEAD_ZONE;
-	inputTerry.J_UP    = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) < -20000;
-	inputTerry.J_DOWN  = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > JOYSTICK_DEAD_ZONE;
-	inputTerry.J_B     = SDL_GameControllerGetButton(App->input->gController1, SDL_CONTROLLER_BUTTON_B) == 1;
-	inputTerry.A_DOWN  = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT;
-	inputTerry.D_DOWN  = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT;
-	inputTerry.S_DOWN  = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT;
-	inputTerry.W_DOWN  = App->input->keyboard[SDL_SCANCODE_W] == KEY_REPEAT;
-	inputTerry.F_DOWN  = App->input->keyboard[SDL_SCANCODE_F] == KEY_DOWN;
-	inputTerry.G_DOWN  = App->input->keyboard[SDL_SCANCODE_G] == KEY_DOWN;
-	inputTerry.H_DOWN  = App->input->keyboard[SDL_SCANCODE_H] == KEY_DOWN;
-	inputTerry.SD_DOWN = (App->input->keyboard[SDL_SCANCODE_S] == KEY_DOWN) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_DOWN);
+	inputTerry.J_LEFT = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < -JOYSTICK_DEAD_ZONE;
+	inputTerry.J_UP = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) < -20000;
+	inputTerry.J_DOWN = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > JOYSTICK_DEAD_ZONE;
+	inputTerry.J_B = App->input->gpad[SDL_CONTROLLER_BUTTON_B][1] == KEY_DOWN;
+	inputTerry.J_A = App->input->gpad[SDL_CONTROLLER_BUTTON_A][1] == KEY_DOWN;
+	inputAndy.J_RIGHT = SDL_GameControllerGetAxis(App->input->gController2, SDL_CONTROLLER_AXIS_LEFTX) > JOYSTICK_DEAD_ZONE;
 
 	SDL_Event event;
 	while (SDL_PollEvent(&event) != 0)
@@ -499,16 +490,14 @@ update_status ModulePlayer::Update()
 			if (mirror)
 			{
 				current_animation = &AndyBackwardsM;
-				if (Andyposition.x < 700) Andyposition.x ++;
+				if (Andyposition.x < 700 && App->player2->Terry2position.x + SCREEN_WIDTH - 60 > Andyposition.x) Andyposition.x ++;
+
 			}
 			else
 			{
 				current_animation = &AndyForward;
-				if (Andyposition.x < 700 /*&&
-					Terryposition.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w)*/)
+				if (Andyposition.x < 700 && App->player2->Terry2position.x + SCREEN_WIDTH - 60 > Andyposition.x)
 					Andyposition.x += 2;
-
-				
 			}
 		}
 		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < 14000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) > 4000 
@@ -532,12 +521,12 @@ update_status ModulePlayer::Update()
 			if (mirror)
 			{
 				current_animation = &AndyForwardM;
-				if (Andyposition.x > 0) Andyposition.x -= 2;
+				if (Andyposition.x > 0 && App->player2->Terry2position.x - SCREEN_WIDTH + 60 < Andyposition.x) Andyposition.x -= 2;
 			}
 			else
 			{
 				current_animation = &AndyBackwards;
-				if (Andyposition.x > 0 /*&& Terryposition.x * 2 > -App->render->camera.x*/)
+				if (Andyposition.x > 0 && App->player2->Terry2position.x - SCREEN_WIDTH + 60 < Andyposition.x)
 					Andyposition.x--;
 			}
 		}
@@ -841,7 +830,7 @@ update_status ModulePlayer::Update()
 
 	//KICK
 	{
-		if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_FORWARD) || (currentstate == ST_WALK_BACKWARD)))
+		if ((inputTerry.J_A || App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN) && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_FORWARD) || (currentstate == ST_WALK_BACKWARD)))
 		{
 			currentstate = ST_KICK_STANDING;
 			if (mirror)
@@ -949,7 +938,7 @@ update_status ModulePlayer::Update()
 
 	//CROUCHKICK
 	{
-		if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN && currentstate == ST_CROUCH)
+		if ((inputTerry.J_A || App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN) && currentstate == ST_CROUCH)
 		{
 			currentstate = ST_KICK_CROUCH;
 			colck->rect.x = Andyposition.x + 50;
@@ -1152,47 +1141,10 @@ update_status ModulePlayer::Update()
 	// Draw everything --------------------------------------
 	if (destroyed == false)
 	{
-			if (mirror)
-			App->render->Blit(graphicsM, Andyposition.x, Andyposition.y, &(current_animation->GetCurrentFrame()));
-			else
-			App->render->Blit(graphics, Andyposition.x, Andyposition.y, &(current_animation->GetCurrentFrame()));
-
-
-		//if ((current_animation == (&TerryKick)) || current_animation == &TerryGoingUp || current_animation == &TerryGoingDown || current_animation == &TerryTop
-		//	|| current_animation == (&TerryForward) || current_animation == (&TerryBackwards) || current_animation == &TerryDP || current_animation == &TerryDK || current_animation == &TerryCrouchPunch
-		//	|| current_animation == &TerryCrouchKick || current_animation == &TerryJumpForward || current_animation == &TerryJumpBackwards || current_animation == &TerryCrouch
-		//	|| current_animation == &TerryGoingUpForward || current_animation == &TerryTopForward || current_animation == &TerryGoingDownForward)
-		//{
-		//	App->render->Blit(graphics2, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
-		//}
-
-		//else if (current_animation == &TerryKickM || current_animation == &TerryForwardM || current_animation == &TerryGoingUpM || current_animation == &TerryGoingDownM
-		//	|| current_animation == &TerryTopM
-		//	|| current_animation == &TerryBackwardsM || current_animation == &TerryDPM || current_animation == &TerryDKM || current_animation == &TerryCrouchPunchM
-		//	|| current_animation == &TerryCrouchKickM || current_animation == &TerryJumpForwardM || current_animation == &TerryJumpBackwardsM || current_animation == &TerryCrouchM)
-		//{
-		//	App->render->Blit(graphics2M, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
-		//}
-
-		//else if (current_animation == &TerryidleM || current_animation == &TerryPunchM || current_animation == &TerryPWM || current_animation == &TerryJumpPunchM
-		//	|| current_animation == &TerryJumpKickM || current_animation == &hitM)
-		//{
-		//	App->render->Blit(graphicsM, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
-		//}
-
-		//else
-		//{
-		//	App->render->Blit(graphics, Terryposition.x, Terryposition.y, &(current_animation->GetCurrentFrame()));
-		//}
-
-		/*else if()
-		else if()*/
+		App->render->Blit(graphics, Andyposition.x, Andyposition.y, &(current_animation->GetCurrentFrame()));
 	}
 
-	// Draw UI (score) --------------------------------------
-	//sprintf_s(score_text, 10, "%7d", score);
-
-	// TODO 3: Blit the text of the score in at the bottom of the screen
+	// Draw UI (score) --------------------------------------k
 	App->fonts->BlitText(10, 150, font_score, "546");
 
 	return UPDATE_CONTINUE;
@@ -1203,7 +1155,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		life_score -= stantardDMG;
 		collided = true;
-		currentstate;
+		currentstate = ST_BEING_PUNCHED;
+		if(mirror) App->player2->current_animation = &AndyPunchLongM;
+		else App->player2->current_animation = &AndyPunchLong;
+	}
+	if (c1->type == COLLIDER_ENEMY && c2->type == COLLIDER_PLAYER && collided == false)
+	{
+
 	}
 }
 

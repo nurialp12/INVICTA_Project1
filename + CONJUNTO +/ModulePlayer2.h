@@ -12,7 +12,7 @@
 
 struct SDL_Texture;
 
-enum terry2_states
+enum Andy2_states
 {
 	ST_UNKNOWN2,
 
@@ -90,6 +90,30 @@ public:
 	Animation TerryCrouchPunch;
 	Animation TerryCrouchKick;
 	Animation hit;
+	Animation AndyIdle;
+	Animation AndyForward;
+	Animation AndyBackwards;
+	Animation AndyGoingUp;
+	Animation AndyGoingUpForward;
+	Animation AndyGoingUpBackwards;
+	Animation AndyTop;
+	Animation AndyTopForward;
+	Animation AndyTopBackwards;
+	Animation AndyGoingDown;
+	Animation AndyGoingDownForward;
+	Animation AndyGoingDownBackwards;
+	Animation AndyKick;
+	Animation AndyPunch;
+	Animation AndyPunchLong;
+	Animation AndyPW;
+	Animation AndyHeliPunch;
+	Animation AndyDP;
+	Animation AndyDK;
+	Animation AndyJumpPunch;
+	Animation AndyJumpKick;
+	Animation AndyCrouch;
+	Animation AndyCrouchPunch;
+	Animation AndyCrouchKick;
 
 	SDL_Texture* graphicsM = nullptr;
 	SDL_Texture* graphics2M = nullptr;
@@ -114,27 +138,32 @@ public:
 	Animation hitM;
 
 	//-------ANDY
-	Animation Andy2idle;
-	Animation Andy2Forward;
-	Animation Andy2Backwards;
-	Animation Andy2GoingUp;
-	Animation Andy2Top;
-	Animation Andy2GoingDown;
-	Animation Andy2Kick;
-	Animation Andy2Punch;
-	Animation Andy2PW;
-	Animation Andy2DP;
-	Animation Andy2DK;
-	Animation Andy2JumpPunch;
-	Animation Andy2JumpKick;
-	Animation Andy2Crouch;
-	Animation Andy2JumpForward;
-	Animation Andy2JumpBackwards;
-	Animation Andy2CrouchPunch;
-	Animation Andy2CrouchKick;
+	Animation AndyIdleM;
+	Animation AndyForwardM;
+	Animation AndyBackwardsM;
+	Animation AndyGoingUpM;
+	Animation AndyGoingUpForwardM;
+	Animation AndyGoingUpBackwardsM;
+	Animation AndyTopM;
+	Animation AndyTopForwardM;
+	Animation AndyTopBackwardsM;
+	Animation AndyGoingDownM;
+	Animation AndyGoingDownForwardM;
+	Animation AndyGoingDownBackwardsM;
+	Animation AndyKickM;
+	Animation AndyPunchM;
+	Animation AndyPunchLongM;
+	Animation AndyPWM;
+	Animation AndyDPM;
+	Animation AndyDKM;
+	Animation AndyJumpPunchM;
+	Animation AndyJumpKickM;
+	Animation AndyCrouchM;
+	Animation AndyCrouchPunchM;
+	Animation AndyCrouchKickM;
 	bool mirror2 = true;
 
-	iPoint Terry2position;
+	iPoint Andy2position;
 	Collider* col;
 	Collider* colj;
 	Collider* colp;
@@ -153,8 +182,8 @@ public:
 	Uint32 jump_timer = 0;
 	Uint32 punch_timer = 0;
 
-	InputP2 inputTerry;
-	terry2_states currentstate;
+	InputP2 inputAndy;
+	Andy2_states currentstate;
 };
 
 #endif
