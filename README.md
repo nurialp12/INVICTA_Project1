@@ -52,11 +52,18 @@ Fatal Fury was developed around the same time as Street Fighter II but Fatal Fur
 
 ## Fatal Fury Gameplay
 
+A sneak peak to our tribute game featuring main debug functionality.
+
+
+[ORIGINAL GAME GAMEPLAY](https://www.youtube.com/watch?reload=9&v=HaGLQx7gU8U)
+
+
 **_Under construction!_ Soon you'll be able to find a short gameplay of our game featuring debug functionality**
 
 
 
 ## Installation
+
 Download the .zip (which can be found in our Github Project -link below- in releases and in our github wewb page).
 Go to the file "Game" and click "SDL5 Handout"
 Enjoy!
@@ -64,6 +71,14 @@ Enjoy!
 
 
 ## Download to the latest release
+
+Here you can go to the release page and download the version 1.0. Just click on the release, unzip it once downloaded and you can play clicking the Application.
+Instructions can be found in this same web page or in the readme.md file included in the zip.
+
+
+[Releases](https://github.com/nurialp12/INVICTA_Project1/releases)
+
+
 
 **_Under construction!_ Soon you'll be able to find a link to the latest release**
 
@@ -130,13 +145,13 @@ DEBUG:
 
 Developed by Invicta Studios:
 
-Github: https://github.com/nurialp12/INVICTA_Project1
+[Github](https://github.com/nurialp12/INVICTA_Project1): https://github.com/nurialp12/INVICTA_Project1
 
-Releases: https://github.com/nurialp12/INVICTA_Project1/releases
+[Releases](https://github.com/nurialp12/INVICTA_Project1/releases): https://github.com/nurialp12/INVICTA_Project1/releases
 
-Wiki: https://github.com/nurialp12/INVICTA_Project1/wiki
+[Wiki](https://github.com/nurialp12/INVICTA_Project1/wiki): https://github.com/nurialp12/INVICTA_Project1/wiki
 
-Our web page: https://nurialp12.github.io/INVICTA_Project1/
+[Our web page](https://nurialp12.github.io/INVICTA_Project1/): https://nurialp12.github.io/INVICTA_Project1/
 
 
 
