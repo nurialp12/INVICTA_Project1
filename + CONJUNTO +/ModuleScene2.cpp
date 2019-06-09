@@ -61,21 +61,24 @@ ModuleScene2::ModuleScene2()
 	background1.speed = 0.05f;
 
 
-	people1.PushBack({ /*x*/40, /*y*//*411*/406, /*h*//*502-411=91*/96, /*w*/62 });  //surt l'animació tallada i cal posar-la on toca del mapa
-	people1.PushBack({ 40, 515, /*611-515=91*/96, 62 });
-	people1.speed = 0.1f;
+	//{ /*x*/, /*y*/, /*w*/, /*h*/ });  
 
-	people2.PushBack({ 144, 414, /*508-414*/94, /*207-144*/63 }); //cal col·locar-les de tal manera que 
-	people2.PushBack({ 144, 534, 94, 63 });
-	people2.speed = 0.1f;
 
-	people3.PushBack({ 247, 409, 40, 40 }); // falta fer
-	people3.PushBack({ 247, 524, 40, 40 });
-	people3.speed = 0.1f;
+	people1.PushBack({ 39, 403, 64, 100 });  
+	people1.PushBack({ 39, 512, 64, 100 });
+	people1.speed = 0.07f;
 
-	people4.PushBack({ 848, 208, 40, 40 }); // falta fer
-	people4.PushBack({ 848, 208, 40, 40 });
-	people4.speed = 0.1f;
+	people2.PushBack({ 143, 411, 65, 97 });  
+	people2.PushBack({ 143, 518, 65, 97 });
+	people2.speed = 0.07f;
+
+	people3.PushBack({ 246, 404, 62, 99 }); 
+	people3.PushBack({ 246, 512, 62, 99 });
+	people3.speed = 0.07f;
+
+	people4.PushBack({ 347, 402, 69, 95 }); 
+	people4.PushBack({ 347, 514, 69, 95 });
+	people4.speed = 0.07f;
 
 
 }
@@ -153,15 +156,15 @@ update_status ModuleScene2::Update()
 		App->audio->MuteMusic("Assets/music/The ocean knows/The ocean knows.ogg", -1);
 	}
 
-	App->render->Blit(graphics, 50, 100, &(people1.GetCurrentFrame()), 0.60f);
-	App->render->Blit(graphics, 100, 100, &(people2.GetCurrentFrame()), 0.60f);
-	App->render->Blit(graphics, 150, 100, &(people3.GetCurrentFrame()), 0.60f);
-	App->render->Blit(graphics, 200, 100, &(people4.GetCurrentFrame()), 0.60f);
+	App->render->Blit(graphics, 27, 100, &(people1.GetCurrentFrame()), 0.60f);
+	App->render->Blit(graphics, 92, 100, &(people3.GetCurrentFrame()), 0.60f);
+	App->render->Blit(graphics, 153, 100, &(people2.GetCurrentFrame()), 0.60f);
+	App->render->Blit(graphics, 217, 100, &(people4.GetCurrentFrame()), 0.60f);
 
-	App->render->Blit(graphics, 250, 100, &(people1.GetCurrentFrame()), 0.60f);
-	App->render->Blit(graphics, 300, 100, &(people2.GetCurrentFrame()), 0.60f);
-	App->render->Blit(graphics, 350, 100, &(people3.GetCurrentFrame()), 0.60f);
-	App->render->Blit(graphics, 400, 100, &(people4.GetCurrentFrame()), 0.60f);
+	App->render->Blit(graphics, 282, 100, &(people1.GetCurrentFrame()), 0.60f);
+	App->render->Blit(graphics, 348, 100, &(people3.GetCurrentFrame()), 0.60f);
+	App->render->Blit(graphics, 409, 100, &(people2.GetCurrentFrame()), 0.60f);
+	/*App->render->Blit(graphics, 200, 100, &(people4.GetCurrentFrame()), 0.60f);*/
 
 
 	// TODO 3: make so pressing SPACE the KEN stage is loaded
