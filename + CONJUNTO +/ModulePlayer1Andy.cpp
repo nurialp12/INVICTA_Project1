@@ -496,6 +496,7 @@ update_status ModulePlayer::Update()
 			else
 			{
 				current_animation = &AndyForward;
+
 				if (Andyposition.x < 700 && App->player2->Terry2position.x + SCREEN_WIDTH - 60 > Andyposition.x)
 					Andyposition.x += 2;
 			}
@@ -1159,11 +1160,9 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if(mirror) App->player2->current_animation = &AndyPunchLongM;
 		else App->player2->current_animation = &AndyPunchLong;
 	}
-	if (c1->type == COLLIDER_ENEMY && c2->type == COLLIDER_PLAYER && collided == false)
+	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY)
 	{
-
+		Andyposition.x++;
 	}
 }
-
-
-//#endif;
+//#endwaaif;
