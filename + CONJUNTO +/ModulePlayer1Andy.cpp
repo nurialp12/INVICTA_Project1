@@ -57,7 +57,7 @@ ModulePlayer::ModulePlayer()
 		AndyBackwards.PushBack({ 592, 150, 48, 150 });//
 		AndyBackwards.PushBack({ 640, 150, 53, 150 });
 		AndyBackwards.PushBack({ 592, 150, 48, 150 });//
-		AndyBackwards.speed = 0.07f;
+		AndyBackwards.speed = 0.04f;
 	}
 
 	// JUMP animation of Terry							//spritesTerryBogard2extres.png
@@ -488,19 +488,27 @@ update_status ModulePlayer::Update()
 		else current_animation = &AndyIdle;
 	}
 
-	//MOVE FORWARD						CAMERA FIX NEEDED
+	//MOVE RIGHT						CAMERA FIX NEEDED
 	{
 		if ((inputTerry.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN) && currentstate == ST_IDLE)
 			currentstate = ST_WALK_FORWARD;
 		if ((inputTerry.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && currentstate == ST_WALK_FORWARD)
 		{
-			if (mirror) current_animation = &AndyBackwardsM;
-			else current_animation = &AndyForward;
-			if (Andyposition.x < 700 /*&&
-				Terryposition.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w)*/)
-				Andyposition.x += 2;
+			if (mirror)
+			{
+				current_animation = &AndyBackwardsM;
+				if (Andyposition.x < 700)Andyposition.x ++;
+			}
+			else
+			{
+				current_animation = &AndyForward;
+				if (Andyposition.x < 700 /*&&
+					Terryposition.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w)*/)
+					Andyposition.x += 2;
+			}
 		}
-		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < 14000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) > 4000 || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP) && currentstate == ST_WALK_FORWARD)
+		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < 14000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) > 4000 
+			|| App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP) && currentstate == ST_WALK_FORWARD)
 		{
 			AndyForward.resetLoops(0);
 			AndyForwardM.resetLoops(0);
@@ -511,16 +519,23 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	//MOVE BACKWARD						CAMERA FIX NEEDED
+	//MOVE LEFT						CAMERA FIX NEEDED
 	{
 		if ((inputTerry.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) && currentstate == ST_IDLE)
 			currentstate = ST_WALK_BACKWARD;
 		if ((inputTerry.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && currentstate == ST_WALK_BACKWARD)
 		{
-			if (mirror) current_animation = &AndyForwardM;
-			else current_animation = &AndyBackwards;
-			if (Andyposition.x > 0 /*&& Terryposition.x * 2 > -App->render->camera.x*/)
-				Andyposition.x--;
+			if (mirror)
+			{
+				current_animation = &AndyForwardM;
+				if (Andyposition.x > 0) Andyposition.x -= 2;
+			}
+			else
+			{
+				current_animation = &AndyBackwards;
+				if (Andyposition.x > 0 /*&& Terryposition.x * 2 > -App->render->camera.x*/)
+					Andyposition.x--;
+			}
 		}
 		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) > -14000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < -4000 || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_UP) && currentstate == ST_WALK_BACKWARD)
 		{
