@@ -324,7 +324,7 @@ ModuleSceneIntro::ModuleSceneIntro()
 	background1.PushBack({ 3952, 4256, 303, 224 });
 	background1.PushBack({ 4256, 4256, 303, 224 });
 
-	background1.speed = 0.6f;
+	background1.speed = 0.8f;
 
 
 
@@ -616,7 +616,7 @@ ModuleSceneIntro::ModuleSceneIntro()
 	background2.PushBack({ 3648, 4032, 303, 224 });
 	background2.PushBack({ 3952, 4032, 303, 224 });
 	background2.PushBack({ 4256, 4032, 303, 224 });
-	background2.speed = 0.6f;
+	background2.speed = 0.8f;
 
 
 
@@ -690,7 +690,7 @@ ModuleSceneIntro::ModuleSceneIntro()
 	background.PushBack({ 304, 2912, 303, 224 });
 	background.PushBack({ 608, 2912, 303, 224 });
 	
-	background.speed = 0.6f;
+	background.speed = 0.8f;
 
 }
 
@@ -711,7 +711,7 @@ bool ModuleSceneIntro::Start()
 	graphics1 = App->textures->Load("Assets/Sprites/Intro_1.png");
 	graphics2 = App->textures->Load("Assets/Sprites/Intro_2.png");
 	graphics = App->textures->Load("Assets/Sprites/Intro7.png");
-	//App->audio->PlayMusic("Assets/music/Fatal_Fury_Intro/Fatal_Fury_Intro.ogg", 0);
+	App->audio->PlayMusic("Assets/music/Fatal_Fury_Intro/Fatal_Fury_Intro.ogg", 0);
 
 	// TODO 1: Enable (and properly disable) the player module
 	App->render->camera.x = 0;
