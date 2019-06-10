@@ -29,8 +29,8 @@ ModulePlayer2::ModulePlayer2()
 
 	//IDLE
 	{
-		AndyIdle.PushBack({ 0, 150, 59, 150 });
-		AndyIdle.PushBack({ 59, 150, 59, 150 });
+		AndyIdle.PushBack({   0, 150, 59, 150 });
+		AndyIdle.PushBack({  59, 150, 59, 150 });
 		AndyIdle.PushBack({ 118, 150, 60, 150 });
 		AndyIdle.PushBack({ 178, 150, 59, 150 });
 		AndyIdle.PushBack({ 237, 150, 59, 150 });
@@ -391,35 +391,26 @@ ModulePlayer2::~ModulePlayer2()
 // Load assets
 bool ModulePlayer2::Start()
 {
-	if (Andy2position.x <= App->player->/*Terryposition*/Andyposition.x) mirror2 = false;
-	else mirror2 = true;
-
 	LOG("Loading player");
 	bool ret = true;
-
 	graphics = App->textures->Load("Assets/Sprites/Sprites_AndyBogard_ok.png");
-
 
 	UI = App->textures->Load("Assets/Sprites/UI.png");
 
 	destroyed = false;
-	//Terryposition.x = 150;
-	//Terryposition.y = 115;
 	Andy2position.x = 215 + (250);
-	Andy2position.y = 100;
+	Andy2position.y = 60;
 	score = 0;
-
-	currentstate = ST_IDLE2;
-
-	// TODO 2: Add a collider to the player
-	col = App->collisions->AddCollider({ 0, 1000, 31, 101 }, COLLIDER_ENEMY, App->player2);
-	colc = App->collisions->AddCollider({ 0, 1000, 36, 60 }, COLLIDER_ENEMY, App->player2);
-	colj = App->collisions->AddCollider({ 0, 1000, 36, 60 }, COLLIDER_ENEMY, App->player2);
+	col   = App->collisions->AddCollider({    0, 1000, 31, 101 }, COLLIDER_ENEMY, App->player2);
+	colc  = App->collisions->AddCollider({    0, 1000, 36, 60 }, COLLIDER_ENEMY, App->player2);
+	colj  = App->collisions->AddCollider({    0, 1000, 36, 60 }, COLLIDER_ENEMY, App->player2);
 	colcp = App->collisions->AddCollider({ 1000, 1000, 25, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
 	colck = App->collisions->AddCollider({ 1000, 1000, 40, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
 
-	// TODO 0: Notice how a font is loaded and the meaning of all its arguments 
-	font_score = App->fonts->Load("Assets/Sprites/fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
+	currentstate = ST_IDLE2;
+	current_animation = &AndyIdleM;
+
+	font_score = App->fonts->Load("Assets/Sprites/fonts/scorenums.png", "1234567890", 1);
 	return ret;
 }
 
@@ -429,11 +420,6 @@ bool ModulePlayer2::CleanUp()
 	LOG("Unloading player");
 
 	App->textures->Unload(graphics);
-	App->textures->Unload(graphics2);
-
-	App->textures->Unload(graphicsM);
-	App->textures->Unload(graphics2M);
-
 
 	App->fonts->UnLoad(font_score);
 	if (col)
