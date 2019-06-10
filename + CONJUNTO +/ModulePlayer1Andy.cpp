@@ -1291,17 +1291,42 @@ update_status ModulePlayer::Update()
 }
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == COLLIDER_ENEMY_SHOT && c2->type == COLLIDER_PLAYER && collided == false && App->player2->currentstate == ST_PUNCH_STANDING2)
+	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY_SHOT && App->player2->currentstate == ST_PUNCH_STANDING2)
 	{
-		life_score -= stantardDMG;
-		collided = true;
-		currentstate = ST_BEING_PUNCHED;
-		if(mirror) App->player2->current_animation = &AndyPunchLongM;
-		else App->player2->current_animation = &AndyPunchLong;
+		if (!collided)
+		{
+			life_score -= stantardDMG;
+			collided = true;
+		}
+		if (App->player2->current_animation != &AndyPunch && App->player2->current_animation != &AndyPunchM)
+			collided = false;
+		//currentstate = ST_BEING_PUNCHED;
+		//if(mirror) App->player2->current_animation = &AndyPunchLongM;
+		//else App->player2->current_animation = &AndyPunchLong;
 	}
+
 	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY)
 	{
-		Andyposition.x++;
+		if (currentstate == ST_WALK_FORWARD && App->player2->currentstate == ST_WALK_FORWARD)
+		{
+			Andyposition.x -= 2;
+			App->player2->Andy2position.x += 2;
+		}
+		else if (currentstate == ST_WALK_BACKWARD && App->player2->currentstate == ST_WALK_BACKWARD)
+		{
+			Andyposition.x += 2;
+			App->player2->Andy2position.x -= 2;
+		}
+		else if (Andyposition.x < App->player2->Andy2position.x)
+		{
+			Andyposition.x --;
+			App->player2->Andy2position.x++;
+		}
+		else if (Andyposition.x < App->player2->Andy2position.x)
+		{
+			Andyposition.x++;
+			App->player2->Andy2position.x--;
+		}
 	}
 }
 //#endwaaif;
