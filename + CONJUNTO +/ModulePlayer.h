@@ -80,10 +80,26 @@ public:
 public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* UI = nullptr;
+	SDL_Texture* score = nullptr;
 	SDL_Rect lifebar;
 	SDL_Rect life1;
 	SDL_Rect life2;
 	SDL_Rect lifered;
+	SDL_Rect zero;
+	SDL_Rect one;
+	SDL_Rect two;
+	SDL_Rect three;
+	SDL_Rect four;
+	SDL_Rect five;
+	SDL_Rect six;
+	SDL_Rect seven;
+	SDL_Rect eight;
+	SDL_Rect nine;
+	iPoint position;
+	int n[5];
+	SDL_Rect r[5];
+	int pastscore;
+	int player;
 	float life_score = 92;
 	int font_score = -1;
 	char score_text[10];
