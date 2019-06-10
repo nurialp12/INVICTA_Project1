@@ -110,6 +110,8 @@ bool ModuleScene2::Start()
 	App->collisions->Enable();
 	App->player->life_score = 94;
 	App->player2->life_score = 94;
+	p1won = false;
+	p2won = false;
 
 	// TODO 1: Add colliders for the first columns of the level
 	
@@ -142,7 +144,7 @@ update_status ModuleScene2::Update()
 {
 	// Draw everything --------------------------------------	
 	//App->render->Blit(graphics, 0, 160, &ground);
-	if (reboot)
+	if (reboot && (p1won || p2won))
 	{
 		App->player->Disable();
 		App->player2->Disable();
@@ -247,7 +249,8 @@ update_status ModuleScene2::Update()
 	}
 	else if (App->player2->life_score <= 0 && App->player->life_score <= 0)
 	{
-		App->fade->FadeToBlack(App->scene_2, App->end_game1, 2.5);
+		reboot = true;
+		App->fade->Reboot(2.5);
 	}
 
 
