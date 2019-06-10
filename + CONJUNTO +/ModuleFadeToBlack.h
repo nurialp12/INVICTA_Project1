@@ -13,6 +13,7 @@ public:
 	bool Start();
 	update_status Update();
 	bool FadeToBlack(Module* module_off, Module* module_on, float time = 2.0f);
+	bool Reboot(float time = 2.0f);
 
 private:
 
@@ -20,7 +21,8 @@ private:
 	{
 		none,
 		fade_to_black,
-		fade_from_black
+		fade_from_black,
+		reboot
 	} current_step = fade_step::none;
 
 	Uint32 start_time = 0;
