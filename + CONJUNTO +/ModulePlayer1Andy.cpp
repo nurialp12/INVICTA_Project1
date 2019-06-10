@@ -900,7 +900,8 @@ update_status ModulePlayer::Update()
 		if (currentstate == ST_GOING_UP_FORWARD)
 		{
 			if(!gmode) colj->rect.y = Andyposition.y + 50;
-			current_animation = &AndyGoingUpForward;
+			if (mirror) current_animation = &AndyGoingUpBackwardsM;
+			else current_animation = &AndyGoingUpForward;
 			Andyposition.x += 2;
 			t += 0.002;
 			speed += t;
