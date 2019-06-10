@@ -160,6 +160,9 @@ public:
 	Animation AndyBlock;
 	Animation AndyDodge;
 
+	Animation AndyHeliPunchM;
+
+
 	//-----------------------------------------------
 
 
