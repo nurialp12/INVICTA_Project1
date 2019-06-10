@@ -260,12 +260,12 @@ ModulePlayer::ModulePlayer()
 
 	//JUMP BACKWARDS
 	{
-		AndyJumpForward.PushBack({ 901, 900,  48, 150 });//949
-		AndyJumpForward.PushBack({ 834, 900,  67, 150 });
-		AndyJumpForward.PushBack({ 767, 900,  67, 150 });
-		AndyJumpForward.PushBack({ 700, 900,  67, 150 });
-		AndyJumpForward.PushBack({ 645, 900,  55, 150 });
-		AndyJumpForward.speed = 0.1f;
+		AndyJumpBackwards.PushBack({ 901, 900,  48, 150 });//949
+		AndyJumpBackwards.PushBack({ 834, 900,  67, 150 });
+		AndyJumpBackwards.PushBack({ 767, 900,  67, 150 });
+		AndyJumpBackwards.PushBack({ 700, 900,  67, 150 });
+		AndyJumpBackwards.PushBack({ 645, 900,  55, 150 });
+		AndyJumpBackwards.speed = 0.1f;
 	}
 
 	//THROW ---- SPRITES NEEDED KAWWAKS
@@ -519,12 +519,12 @@ ModulePlayer::ModulePlayer()
 
 		//JUMP BACKWARDS
 		{
-			AndyJumpForwardM.PushBack({ 901, 900,  48, 150 });//949
-			AndyJumpForwardM.PushBack({ 834, 900,  67, 150 });
-			AndyJumpForwardM.PushBack({ 767, 900,  67, 150 });
-			AndyJumpForwardM.PushBack({ 700, 900,  67, 150 });
-			AndyJumpForwardM.PushBack({ 645, 900,  55, 150 });
-			AndyJumpForwardM.speed = 0.1f;
+			AndyJumpBackwardsM.PushBack({ 901, 900,  48, 150 });//949
+			AndyJumpBackwardsM.PushBack({ 834, 900,  67, 150 });
+			AndyJumpBackwardsM.PushBack({ 767, 900,  67, 150 });
+			AndyJumpBackwardsM.PushBack({ 700, 900,  67, 150 });
+			AndyJumpBackwardsM.PushBack({ 645, 900,  55, 150 });
+			AndyJumpBackwardsM.speed = 0.1f;
 		}
 
 		//THROW ---- SPRITES NEEDED KAWWAKS
@@ -1407,6 +1407,7 @@ update_status ModulePlayer::Update()
 
 	return UPDATE_CONTINUE;
 }
+
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY_SHOT && App->player2->currentstate == ST_PUNCH_STANDING2)

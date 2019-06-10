@@ -154,6 +154,9 @@ public:
 	Animation AndyKickM;
 	Animation AndyPunchM;
 	Animation AndyPunchLongM;
+
+	Animation AndyHeliPunchM;
+
 	Animation AndyPWM;
 	Animation AndyDPM;
 	Animation AndyDKM;
