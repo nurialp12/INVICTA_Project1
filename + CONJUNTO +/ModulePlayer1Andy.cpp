@@ -688,7 +688,7 @@ update_status ModulePlayer::PreUpdate()
 	inputTerry.J_DOWN = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > JOYSTICK_DEAD_ZONE;
 	inputTerry.J_B = App->input->gpad[SDL_CONTROLLER_BUTTON_B][1] == KEY_DOWN;
 	inputTerry.J_A = App->input->gpad[SDL_CONTROLLER_BUTTON_A][1] == KEY_DOWN;
-	inputAndy.J_RIGHT = SDL_GameControllerGetAxis(App->input->gController2, SDL_CONTROLLER_AXIS_LEFTX) > JOYSTICK_DEAD_ZONE;
+	
 
 	SDL_Event event;
 	while (SDL_PollEvent(&event) != 0)
@@ -1333,6 +1333,8 @@ update_status ModulePlayer::Update()
 	}
 
 	App->render->Blit(UI, 0, 0, &lifebar, 0);
+	//if(life_score <= 20)
+		
 	if (life_score >= 4)
 	{
 		App->render->Blit(UI, 26, 26, &life1, 0);
@@ -1417,15 +1419,19 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY_SHOT && App->player2->currentstate == ST_PUNCH_STANDING2)
+	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY_SHOT && !collided && App->player2->currentstate == ST_PUNCH_STANDING2)
 	{
-		if (!collided)
-		{
-			life_score -= stantardDMG;
-			collided = true;
-		}
-		if (App->player2->current_animation != &AndyPunch && App->player2->current_animation != &AndyPunchM)
-			collided = false;
+		life_score -= 14;
+		collided = true;
+		//currentstate = ST_BEING_PUNCHED;
+		//if(mirror) App->player2->current_animation = &AndyPunchLongM;
+		//else App->player2->current_animation = &AndyPunchLong;
+	}
+
+	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY_SHOT && !collided && App->player2->currentstate == ST_KICK_STANDING2)
+	{
+		life_score -= 16;
+		collided = true;
 		//currentstate = ST_BEING_PUNCHED;
 		//if(mirror) App->player2->current_animation = &AndyPunchLongM;
 		//else App->player2->current_animation = &AndyPunchLong;
