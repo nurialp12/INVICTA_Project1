@@ -494,7 +494,7 @@ ModulePlayer::ModulePlayer()
 
 		//NÚRIA -----------------------------------------------
 
-//FLYING KICK        ///KUHADAN
+		//FLYING KICK        ///KUHADAN
 		{
 			AndyFKM.PushBack({ 0, 0,  61, 150 });
 			AndyFKM.PushBack({ 86, 0,  88, 150 });
@@ -642,7 +642,7 @@ bool ModulePlayer::Start()
 	UI = App->textures->Load("Assets/Sprites/UI.png");
 
 	destroyed = false;
-	Andyposition.x = 5 + (250);
+	Andyposition.x = 5 + (250)								/*uncomment for full screen*/-100;
 	Andyposition.y = 60;
 	score = 0;
 	col   = App->collisions->AddCollider({  -30, Andyposition.y+50, 31, 101 }, COLLIDER_PLAYER, App->player);

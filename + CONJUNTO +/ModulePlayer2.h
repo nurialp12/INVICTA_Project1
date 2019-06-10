@@ -65,7 +65,7 @@ public:
 	SDL_Rect lifebar;
 	SDL_Rect life1;
 	SDL_Rect life2;
-	float life_score = 92;
+	float life_score = 92; 
 	int font_score = -1;
 	char score_text[10];
 	uint score = 0;
@@ -93,6 +93,7 @@ public:
 	Animation hit;
 
 	Animation AndyIdle;
+	Animation AndyIdleB;
 	Animation AndyForward;
 	Animation AndyBackwards;
 	Animation AndyGoingUp;
@@ -135,10 +136,10 @@ public:
 	Animation TerryJumpBackwardsM;
 	Animation TerryCrouchPunchM;
 	Animation TerryCrouchKickM;
-	Animation hitM;
 
 	//-------ANDY
 	Animation AndyIdleM;
+	Animation AndyIdleBM;
 	Animation AndyForwardM;
 	Animation AndyBackwardsM;
 	Animation AndyGoingUpM;
@@ -161,6 +162,7 @@ public:
 	Animation AndyCrouchM;
 	Animation AndyCrouchPunchM;
 	Animation AndyCrouchKickM;
+	Animation hitM;
 	bool mirror2 = true;
 
 	iPoint Andy2position;

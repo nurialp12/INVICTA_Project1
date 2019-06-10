@@ -215,7 +215,9 @@ public:
 	Animation AndyCrouchM;
 	Animation AndyCrouchPunchM;
 	Animation AndyCrouchKickM;
-	Animation hitM;							
+	Animation hitM;		
+
+	Animation AndyHeliPunchM;
 
 
 	//NÚRIA -----------------------------------------------
