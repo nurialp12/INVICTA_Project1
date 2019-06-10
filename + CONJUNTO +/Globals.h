@@ -22,6 +22,8 @@ enum update_status
 // Useful typedefs ---------
 typedef unsigned int uint;
 
+
+
 // Configuration -----------
 #define SCREEN_SIZE 2
 #define SCREEN_WIDTH 290

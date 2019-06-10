@@ -19,6 +19,10 @@ public:
 
 public:
 
+	bool p1won;
+	bool p2won;
+	bool reboot;
+
 	SDL_Texture* graphics = nullptr;
 	Animation bus;
 	//SDL_Rect ground;

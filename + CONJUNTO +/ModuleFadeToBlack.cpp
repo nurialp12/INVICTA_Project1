@@ -13,6 +13,8 @@
 #include "ModuleSceneIni.h"
 #include "ModuleAudio.h"
 #include "ModuleCollision.h"
+#include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 
 ModuleFadeToBlack::ModuleFadeToBlack()
 {
@@ -41,6 +43,21 @@ update_status ModuleFadeToBlack::Update()
 
 	switch(current_step)
 	{
+		case fade_step::reboot:
+		{
+			if (now >= total_time)
+			{
+				//App->collisions->Disable();
+
+				// ---
+
+				total_time += total_time;
+				start_time = SDL_GetTicks();
+				
+				current_step = fade_step::fade_from_black;
+			}
+		} break;
+
 		case fade_step::fade_to_black:
 		{
 			if(now >= total_time)
@@ -89,5 +106,27 @@ bool ModuleFadeToBlack::FadeToBlack(Module* module_off, Module* module_on, float
 		ret = true;
 	}
 
+	return ret;
+}
+
+bool ModuleFadeToBlack::Reboot(float time)
+{
+	bool ret = false;
+
+	if (current_step == fade_step::none)
+	{
+		current_step = fade_step::reboot;
+		start_time = SDL_GetTicks();
+		total_time = (Uint32)(time * 0.5f * 1000.0f);
+
+		ret = true;
+	}
+	//App->player->Enable();
+	//App->player2->Enable();
+	//App->collisions->Enable();
+	//App->render->camera.x = -245;
+	//App->render->camera.y = -10;
+
+	App->scene_2->reboot = true;
 	return ret;
 }

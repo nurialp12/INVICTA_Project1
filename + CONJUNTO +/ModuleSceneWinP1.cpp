@@ -42,6 +42,8 @@ bool ModuleSceneWinP1::Start()
 	App->render->camera.x = App->render->camera.y = -10;
 	App->player->destroyed = true;
 	App->player2->destroyed = true;
+	App->player->Disable();
+	App->player2->Disable();
 	App->particles->Disable();
 	return ret;
 }
