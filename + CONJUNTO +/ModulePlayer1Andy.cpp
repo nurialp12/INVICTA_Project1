@@ -234,10 +234,11 @@ ModulePlayer::ModulePlayer()
 	//MIRROR -----------------------------------------------------------------------------------------				//spritesTerryBogardMIRROR.png				//spritesTerryBogard2extresMIRROR.png
 	{
 		//IDLE
-		AndyIdleM.PushBack({   0, 912, 59, 112 });		//1
-		AndyIdleM.PushBack({  59, 912, 59, 112 });		//2
-		AndyIdleM.PushBack({ 118, 912, 59, 112 });		//3
-		AndyIdleM.PushBack({  59, 912, 59, 112 });		//2
+		AndyIdleM.PushBack({ 1752, 150, 59, 150 });
+		AndyIdleM.PushBack({ 1811, 150, 59, 150 });
+		AndyIdleM.PushBack({ 1870, 150, 60, 150 });
+		AndyIdleM.PushBack({ 1930, 150, 59, 150 });
+		AndyIdleM.PushBack({ 1989, 150, 59, 150 });
 		AndyIdleM.speed = 0.1f;
 
 		// WALK FORWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
@@ -454,9 +455,6 @@ update_status ModulePlayer::PreUpdate()
 
 update_status ModulePlayer::Update()
 {
-	if (Andyposition.y >= 100)
-		Andyposition.y;
-
 	// MIRROR
 	if (App->player2->col->rect.x < App->player->col->rect.x ||
 		App->player2->colc->rect.x < App->player->col->rect.x ||
@@ -485,14 +483,12 @@ update_status ModulePlayer::Update()
 			if (mirror)
 			{
 				current_animation = &AndyBackwardsM;
-				if (Andyposition.x < 700 && App->player2->Andy2position.x + SCREEN_WIDTH - 60 > Andyposition.x)Andyposition.x ++;
+				if (Andyposition.x < 700 && App->player2->Andy2position.x + SCREEN_WIDTH - 60 > Andyposition.x) Andyposition.x ++;
 			}
 			else
 			{
 				current_animation = &AndyForward;
-
-				if (Andyposition.x < 700 && App->player2->Andy2position.x + SCREEN_WIDTH - 60 > Andyposition.x)
-					Andyposition.x += 2;
+				if (Andyposition.x < 700 && App->player2->Andy2position.x + SCREEN_WIDTH - 60 > Andyposition.x)	Andyposition.x += 2;
 			}
 		}
 		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < 14000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) > 4000 
