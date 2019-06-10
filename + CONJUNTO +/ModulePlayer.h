@@ -217,6 +217,29 @@ public:
 	Animation AndyCrouchKickM;
 	Animation hitM;							
 
+
+	//NÚRIA -----------------------------------------------
+
+	Animation AndyFKM;
+	Animation AndyJumpForwardM;
+	Animation AndyJumpBackwardsM;
+	Animation AndyThrowM;
+	Animation AndyThrowingM;
+	Animation AndyBeingThrownM;
+	Animation AndyWinM;
+	Animation AndyGetUpM;
+	//	Animation AndyJumpPunchM;
+	Animation AndyPunchJumpM;
+	//	Animation AndyJumpKick;
+	Animation AndyKickJumpM;
+	Animation AndyHurtM;
+	Animation AndyRunningM;
+	Animation AndyBlockM;
+	Animation AndyDodgeM;
+
+	//-----------------------------------------------
+
+
 	bool mirror = false;
 	bool mirror2 = true;
 
