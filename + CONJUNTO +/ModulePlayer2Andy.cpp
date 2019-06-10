@@ -571,34 +571,34 @@ update_status ModulePlayer2::Update()
 			if (mirror2)
 			{
 				Andy2position.x -= 38;
-				current_animation = &TerryPunchM;
+				current_animation = &AndyPunchM;
 				colp = App->collisions->AddCollider({ Andy2position.x - 28 + 38, Andy2position.y + 20, 43, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
 			}
 			else
 			{
-				current_animation = &TerryPunch;
+				current_animation = &AndyPunch;
 				colp = App->collisions->AddCollider({ Andy2position.x + 45, Andy2position.y + 20, 43, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
 			}
 			App->audio->PlayFX("Assets/FX/punch.wav");
 		}
-		if (TerryPunchM.Finished())Andy2position.x += 38;
-		if (TerryPunch.Finished() || TerryPunchM.Finished())
+		if (AndyPunchM.Finished())Andy2position.x += 38;
+		if (AndyPunch.Finished() || AndyPunchM.Finished())
 		{
 			colp->to_delete = true;
 			App->player->collided = false;
-			TerryPunch.resetLoops(0);
-			TerryPunchM.resetLoops(0);
+			AndyPunch.resetLoops(0);
+			AndyPunchM.resetLoops(0);
 			if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_WALK_FORWARD2;
-				if (mirror2)current_animation = &TerryForwardM;
-				else current_animation = &TerryBackwards;
+				if (mirror2) current_animation = &AndyForwardM;
+				else current_animation = &AndyBackwards;
 			}
 			else if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_WALK_BACKWARD2;
-				if (mirror2)current_animation = &TerryBackwardsM;
-				else current_animation = &TerryForward;
+				if (mirror2) current_animation = &AndyBackwardsM;
+				else current_animation = &AndyForward;
 			}
 			else
 				currentstate = ST_IDLE2;
@@ -613,37 +613,34 @@ update_status ModulePlayer2::Update()
 			currentstate = ST_KICK_STANDING2;
 			if (mirror2)
 			{
-				Andy2position.x -= 63;
-				current_animation = &TerryKickM;
-				colk = App->collisions->AddCollider({ Andy2position.x + 16, Andy2position.y + 48, 55, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
+				Andy2position.x -= 50;
+				current_animation = &AndyKickM;
+				colk = App->collisions->AddCollider({ Andy2position.x + 16, Andy2position.y + 48, 55, 40 }, COLLIDER_ENEMY_SHOT, App->player2);
 			}
 			else
 			{
-				current_animation = &TerryKick;
-				colk = App->collisions->AddCollider({ Andy2position.x + 45, Andy2position.y + 48, 55, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
+				current_animation = &AndyKick;
+				colk = App->collisions->AddCollider({ Andy2position.x + 40, Andy2position.y + 45, 55, 40 }, COLLIDER_ENEMY_SHOT, App->player2);
 			}
 			App->audio->PlayFX("Assets/FX/Voice/Attacks/FX_Attack4/FX_Attack4.wav");
 		}
-		if (TerryKickM.Finished())Andy2position.x += 63;
-		if (TerryKick.Finished() == true || TerryKickM.Finished() == true)
+		if (AndyKickM.Finished())Andy2position.x += 50;
+		if (AndyKick.Finished() == true || AndyKickM.Finished() == true)
 		{
-			if (mirror2) Andy2position.x -= 10;
-			else Andy2position.x += 10;
 			colk->to_delete = true;
-			App->player->collided = false;
-			TerryKick.resetLoops(0);
-			TerryKickM.resetLoops(0);
+			AndyKick.resetLoops(0);
+			AndyKickM.resetLoops(0);
 			if (inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_WALK_BACKWARD2;
-				if (mirror2)current_animation = &TerryBackwardsM;
-				else current_animation = &TerryForward;
+				if (mirror2) current_animation = &AndyBackwardsM;
+				else current_animation = &AndyForward;
 			}
 			else if (inputAndy.J_LEFT || App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_WALK_FORWARD2;
-				if (mirror2)current_animation = &TerryForwardM;
-				else current_animation = &TerryBackwards;
+				if (mirror2)current_animation = &AndyForwardM;
+				else current_animation = &AndyBackwards;
 			}
 			else currentstate = ST_IDLE2;
 			App->player2->collided = false;

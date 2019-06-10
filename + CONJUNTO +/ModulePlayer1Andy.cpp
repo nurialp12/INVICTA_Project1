@@ -1096,23 +1096,21 @@ update_status ModulePlayer::Update()
 			{
 				Andyposition.x -= 50;
 				current_animation = &AndyKickM;
-				colk = App->collisions->AddCollider({ Andyposition.x + 16, Andyposition.y + 88, 55, 40 }, COLLIDER_PLAYER_SHOT, App->player);
+				colk = App->collisions->AddCollider({ Andyposition.x + 16, Andyposition.y + 48, 55, 40 }, COLLIDER_PLAYER_SHOT, App->player);
 			}
 			else
 			{
 				current_animation = &AndyKick;
-				colk = App->collisions->AddCollider({ Andyposition.x + 45, Andyposition.y + 45, 55, 42 }, COLLIDER_PLAYER_SHOT, App->player);
+				colk = App->collisions->AddCollider({ Andyposition.x + 40, Andyposition.y + 45, 55, 40 }, COLLIDER_PLAYER_SHOT, App->player);
 			}
 			App->audio->PlayFX("Assets/FX/Voice/Attacks/FX_Attack4/FX_Attack4.wav");
 		}
 		if (AndyKickM.Finished())Andyposition.x += 50;
 		if (AndyKick.Finished() == true || AndyKickM.Finished() == true)
 		{
-		
 			colk->to_delete = true;
 			AndyKickM.resetLoops(0);
 			AndyKick.resetLoops(0);
-
 			if (inputTerry.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_WALK_FORWARD;
