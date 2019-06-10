@@ -34,11 +34,11 @@ struct CommandSpecialAttack : public InputCommand {
 	bool Check(uint frames_past) const override;
 };
 
-struct History {
-	uint frame = 0u;
-	KEY_STATE keyboard[MAX_KEYS];
-	Uint8 gpad[MAX_GAMEPADS];
-};
+//struct History {
+//	uint frame = 0u;
+//	KEY_STATE keyboard[MAX_KEYS];
+//	Uint8 gpad[MAX_GAMEPADS];
+//};
 
 enum KEY_STATE
 {
