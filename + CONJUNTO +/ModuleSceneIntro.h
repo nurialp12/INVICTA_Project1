@@ -28,6 +28,9 @@ public:
 
 	bool finish1 = false;
 	bool finish2 = false;
+
+
+
 	//Animation game;
 
 

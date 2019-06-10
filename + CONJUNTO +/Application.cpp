@@ -39,6 +39,7 @@ Application::Application()
 	modules[15] = particles = new ModuleParticles();
 	modules[16] = collisions = new ModuleCollision();
 	modules[17] = fonts = new ModuleFonts();
+
 }	
 
 Application::~Application()

@@ -142,6 +142,21 @@ update_status ModuleScene2::Update()
 {
 	// Draw everything --------------------------------------	
 	//App->render->Blit(graphics, 0, 160, &ground);
+	if (reboot)
+	{
+		App->player->Disable();
+		App->player2->Disable();
+
+		App->player->Enable();
+		App->player2->Enable();
+		App->collisions->Enable();
+		App->render->camera.x = -245;
+		App->render->camera.y = -10;
+		App->player->life_score = 94;
+		App->player2->life_score = 94;
+		reboot = false;
+	}
+
 	App->render->Blit(graphics, 0, -5, &background, 0.35f);
 	App->render->Blit(graphics, 0, -11, &(background1.GetCurrentFrame()), 0.60f); // back of the room
 
@@ -198,31 +213,36 @@ update_status ModuleScene2::Update()
 	{
 		App->fade->FadeToBlack(App->scene_2, App->end_game1, 2.5);
 	}
-	if (App->player->life_score <= 0 && !App->p2won)
+	if (App->player->life_score <= 0 && !p2won)
 	{
-		App->p2won = true;
+		p2won = true;
 		App->collisions->Disable();
-		App->fade->FadeToBlack(App->scene_2, App->scene_2, 2.5);
+		//App->player->Disable();
+		//App->player2->Disable();
+		reboot = true;
+		App->fade->Reboot(2.5);
 	}
-	if (App->player2->life_score <= 0 && !App->p1won)
+	else if (App->player2->life_score <= 0 && !p1won)
 	{
-		App->p1won = true;
+		p1won = true;
 		App->collisions->Disable();
-		App->fade->FadeToBlack(App->scene_2, App->scene_2, 2.5);
+		
+		reboot = true;
+		App->fade->Reboot(2.5);
 	}
-	if (App->player->life_score <= 0 && App->p2won)
+	else if (App->player->life_score <= 0 && p2won)
 	{
-		App->p1won = false;
-		App->p2won = false;
+		p1won = false;
+		p2won = false;
 		App->fade->FadeToBlack(App->scene_2, App->end_game2, 2.5);
 	}
-	if (App->player2->life_score <= 0 && App->p1won)
+	else if (App->player2->life_score <= 0 && p1won)
 	{
-		App->p1won = false;
-		App->p2won = false;
+		p1won = false;
+		p2won = false;
 		App->fade->FadeToBlack(App->scene_2, App->end_game1, 2.5);
 	}
-	if (App->player2->life_score <= 0 && App->player->life_score <= 0)
+	else if (App->player2->life_score <= 0 && App->player->life_score <= 0)
 	{
 		App->fade->FadeToBlack(App->scene_2, App->end_game1, 2.5);
 	}
