@@ -31,6 +31,14 @@ ModulePlayer::ModulePlayer()
 	lifebar = { 15, 69, 166, 75 };
 	life1 = { 10, 77, 1, 6 };
 	life2 = { 11, 77, 4, 6 };
+	lifered = { 42, 149, 94, 5 };
+
+	//LIFE BLINK
+	{
+		LifeBlink.PushBack(lifered);
+		LifeBlink.PushBack({ 0, 0, 1, 1 });
+		LifeBlink.speed = 0.1f;
+	}
 
 	//IDLE
 	{
@@ -1312,7 +1320,8 @@ update_status ModulePlayer::Update()
 	}
 
 	App->render->Blit(UI, 0, 0, &lifebar, 0);
-	//if(life_score <= 20)
+	if (life_score <= 24)
+		App->render->Blit(UI, 27, 27, &(LifeBlink.GetCurrentFrame()), 0);
 		
 	if (life_score >= 4)
 	{

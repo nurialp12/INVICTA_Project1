@@ -26,6 +26,14 @@ ModulePlayer2::ModulePlayer2()
 	lifebar = { 180, 69, 117, 80 };
 	life1 = { 10, 77, 1, 6 };
 	life2 = { 11, 77, 4, 6 };
+	lifered = { 42, 149, 94, 5 };
+
+	//LIFE BLINK
+	{
+		LifeBlink.PushBack(lifered);
+		LifeBlink.PushBack({ 0, 0, 1, 1 });
+		LifeBlink.speed = 0.1f;
+	}
 
 	//IDLE
 	{
@@ -834,6 +842,9 @@ update_status ModulePlayer2::Update()
 
 
 	App->render->Blit(UI, 165, 0, &lifebar, 0);
+	if (life_score <= 24)
+		App->render->Blit(UI, 27, 27, &(LifeBlink.GetCurrentFrame()), 0);
+
 	if (life_score >= 4)
 	{
 		App->render->Blit(UI, 263, 26, &life1, 0);
@@ -917,10 +928,22 @@ update_status ModulePlayer2::Update()
 
 void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == COLLIDER_ENEMY && c2->type == COLLIDER_PLAYER_SHOT && collided == false)
+	if (c1->type == COLLIDER_ENEMY && c2->type == COLLIDER_PLAYER_SHOT && !collided && App->player2->currentstate == ST_PUNCH_STANDING2)
 	{
-		life_score -= 12;
-		collided = false;
+		life_score -= 14;
+		collided = true;
+		//currentstate = ST_BEING_PUNCHED;
+		//if(mirror) App->player2->current_animation = &AndyPunchLongM;
+		//else App->player2->current_animation = &AndyPunchLong;
+	}
+
+	if (c1->type == COLLIDER_ENEMY && c2->type == COLLIDER_PLAYER_SHOT && !collided && App->player2->currentstate == ST_KICK_STANDING2)
+	{
+		life_score -= 16;
+		collided = true;
+		//currentstate = ST_BEING_PUNCHED;
+		//if(mirror) App->player2->current_animation = &AndyPunchLongM;
+		//else App->player2->current_animation = &AndyPunchLong;
 	}
 }
 //#endif;
