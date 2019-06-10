@@ -128,7 +128,12 @@ ModulePlayer::ModulePlayer()
 		AndyPW.PushBack({  65, 300, 48, 150 });
 		AndyPW.PushBack({ 113, 300, 48, 150 });
 		AndyPW.PushBack({ 161, 300, 98, 150 });
-		
+		AndyPW.PushBack({ 161, 300, 98, 150 });
+		AndyPW.PushBack({ 161, 300, 98, 150 });
+		AndyPW.PushBack({ 161, 300, 98, 150 });
+		AndyPW.PushBack({ 161, 300, 98, 150 });
+		AndyPW.PushBack({ 161, 300, 98, 150 });
+
 		AndyPW.speed = 0.07f;
 	}
 
@@ -367,7 +372,7 @@ ModulePlayer::ModulePlayer()
 	//------------------------------------------------------------
 
 
-	//MIRROR -----------------------------------------------------------------------------------------				//spritesTerryBogardMIRROR.png				//spritesTerryBogard2extresMIRROR.png
+//MIRROR -----------------------------------------------------------------------------------------				
 	{
 		//IDLE
 		AndyIdleM.PushBack({ 1748, 150, 60, 150 });
@@ -377,7 +382,7 @@ ModulePlayer::ModulePlayer()
 		AndyIdleM.PushBack({ 1988, 150, 60, 150 });
 		AndyIdleM.speed = 0.1f;
 
-		AndyIdleBM.PushBack({ 1275, 0, 53, 150 });
+		AndyIdleBM.PushBack({ 1268, 0, 60, 150 });
 
 		// WALK FORWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
 		AndyForwardM.PushBack({ 1441, 150, 63, 150 });
@@ -1385,13 +1390,15 @@ update_status ModulePlayer::Update()
 		col->rect.x = Andyposition.x + 53;
 	else if (currentstate == ST_KICK_STANDING && mirror)
 		col->rect.x = Andyposition.x + 71;
-	else col->rect.x = Andyposition.x + 9;
+	else 
+	{
+		if (mirror) col->rect.x = Andyposition.x + 20;
+		else col->rect.x = Andyposition.x + 9;
+	}
 
 	colj->rect.x = Andyposition.x + 13;
-	if (currentstate != ST_KICK_CROUCH)
-	colc->rect.x = Andyposition.x + 13;
-	if (currentstate == ST_JUMP_FORWARD || currentstate == ST_JUMP_BACKWARD)
-		colj->rect.y = Andyposition.y + 50;
+	if (currentstate != ST_KICK_CROUCH)	colc->rect.x = Andyposition.x + 13;
+
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();

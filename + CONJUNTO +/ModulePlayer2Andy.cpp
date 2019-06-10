@@ -36,7 +36,7 @@ ModulePlayer2::ModulePlayer2()
 		AndyIdle.PushBack({ 237, 150, 59, 150 });
 		AndyIdle.speed = 0.1f;
 	}
-	AndyIdleB.PushBack({ 1275, 0, 53, 150 });
+	AndyIdleB.PushBack({ 720, 0, 53, 150 });
 
 	// WALK FORWARD animation of Andy					
 	{
@@ -238,7 +238,7 @@ ModulePlayer2::ModulePlayer2()
 		AndyIdleM.PushBack({ 1988, 150, 60, 150 });
 		AndyIdleM.speed = 0.1f;
 
-		AndyIdleBM.PushBack({ 1275, 0, 53, 150 });
+		AndyIdleBM.PushBack({ 1268, 0, 60, 150 });
 
 		// WALK FORWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
 		AndyForwardM.PushBack({ 1441, 150, 63, 150 });
@@ -386,7 +386,7 @@ bool ModulePlayer2::Start()
 	Andy2position.x = 215 + (250)							/*uncomment for full screen*/ -130;
 	Andy2position.y = 60;
 	score = 0;
-	col   = App->collisions->AddCollider({    0, 1000, 31, 101 }, COLLIDER_ENEMY, App->player2);
+	col   = App->collisions->AddCollider({    -2000, Andy2position.y+50, 31, 101 }, COLLIDER_ENEMY, App->player2);
 	colc  = App->collisions->AddCollider({    0, 1000, 36, 60 }, COLLIDER_ENEMY, App->player2);
 	colj  = App->collisions->AddCollider({    0, 1000, 36, 60 }, COLLIDER_ENEMY, App->player2);
 	colcp = App->collisions->AddCollider({ 1000, 1000, 25, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
@@ -810,14 +810,14 @@ update_status ModulePlayer2::Update()
 		col->rect.x = Andy2position.x + 53;
 	else if (currentstate == ST_KICK_STANDING2 && mirror2)
 		col->rect.x = Andy2position.x + 71;
-	else col->rect.x = Andy2position.x + 9;
+	else
+	{
+		if (mirror2) col->rect.x = Andy2position.x + 20;
+		else col->rect.x = Andy2position.x + 9;
+	}
 
 	colj->rect.x = Andy2position.x + 13;
-	if (currentstate != ST_KICK_CROUCH2)
-		colc->rect.x = Andy2position.x + 13;
-	if (currentstate == ST_JUMP_FORWARD2 || currentstate == ST_JUMP_BACKWARD2)
-		colj->rect.y = Andy2position.y + 50;
-
+	if (currentstate != ST_KICK_CROUCH2) colc->rect.x = Andy2position.x + 13;
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
