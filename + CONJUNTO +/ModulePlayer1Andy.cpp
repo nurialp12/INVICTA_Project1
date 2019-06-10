@@ -1210,6 +1210,8 @@ update_status ModulePlayer::Update()
 	}
 
 	App->render->Blit(UI, 0, 0, &lifebar, 0);
+	//if(life_score <= 20)
+		
 	if (life_score >= 4)
 	{
 		App->render->Blit(UI, 26, 26, &life1, 0);
@@ -1291,15 +1293,10 @@ update_status ModulePlayer::Update()
 }
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY_SHOT && App->player2->currentstate == ST_PUNCH_STANDING2)
+	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY_SHOT && !collided && App->player2->currentstate == ST_PUNCH_STANDING2)
 	{
-		if (!collided)
-		{
-			life_score -= stantardDMG;
-			collided = true;
-		}
-		if (App->player2->current_animation != &AndyPunch && App->player2->current_animation != &AndyPunchM)
-			collided = false;
+		life_score -= stantardDMG;
+		collided = true;
 		//currentstate = ST_BEING_PUNCHED;
 		//if(mirror) App->player2->current_animation = &AndyPunchLongM;
 		//else App->player2->current_animation = &AndyPunchLong;

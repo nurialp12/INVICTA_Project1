@@ -587,6 +587,7 @@ update_status ModulePlayer2::Update()
 		if (TerryPunch.Finished() || TerryPunchM.Finished())
 		{
 			colp->to_delete = true;
+			App->player->collided = false;
 			TerryPunch.resetLoops(0);
 			TerryPunchM.resetLoops(0);
 			if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
