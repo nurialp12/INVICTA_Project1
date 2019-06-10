@@ -17,8 +17,8 @@ enum terry_states
 	ST_UNKNOWN,
 
 	ST_IDLE,
-	ST_WALK_FORWARD,
-	ST_WALK_BACKWARD,
+	ST_WALK_RIGHT,
+	ST_WALK_LEFT,
 	ST_GOING_UP,
 	ST_GOING_UP_FORWARD,
 	ST_GOING_UP_BACKWARD,
@@ -270,7 +270,6 @@ public:
 	Uint32 jump_timer = 0;
 	Uint32 punch_timer = 0;
 
-	InputP1 inputTerry;
 	InputP1 inputAndy;
 	terry_states currentstate; //Terry and Andy's states are the same
 

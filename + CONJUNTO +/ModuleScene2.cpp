@@ -133,8 +133,6 @@ bool ModuleScene2::CleanUp()
 	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Sound_Beach.png"));
 
 	LOG("Unloading second stage");
-	
-	
 	App->player->Disable();
 	return true;
 }
