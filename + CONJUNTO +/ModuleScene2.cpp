@@ -160,7 +160,10 @@ update_status ModuleScene2::Update()
 	App->render->Blit(graphics, 0, -5, &background, 0.35f);
 	App->render->Blit(graphics, 0, -11, &(background1.GetCurrentFrame()), 0.60f); // back of the room
 
-	App->render->Blit(graphics, App->player->Andyposition.x - 10, 202, &shadow);
+	if(App->player->mirror) App->render->Blit(graphics, App->player->Andyposition.x, 202, &shadow);
+	else App->render->Blit(graphics, App->player->Andyposition.x - 10, 202, &shadow);
+	if(App->player2->mirror2)App->render->Blit(graphics, App->player2->Andy2position.x, 202, &shadow);
+	else App->render->Blit(graphics, App->player2->Andy2position.x - 10, 202, &shadow);
 	App->render->Blit(graphics, 474, 110, &(bus.GetCurrentFrame()), 0.60f);
 
 

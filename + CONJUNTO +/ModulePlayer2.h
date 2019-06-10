@@ -38,6 +38,13 @@ enum Andy2_states
 };
 
 struct InputP2 {
+	bool J_UP;
+	bool J_DOWN;
+	bool J_LEFT;
+	bool J_RIGHT;
+	bool J_B;
+	bool J_A;
+	bool J_X;
 	bool A_DOWN; //LEFT
 	bool S_DOWN; //CROUCH
 	bool D_DOWN; //RIGHT
@@ -65,7 +72,7 @@ public:
 	SDL_Rect lifebar;
 	SDL_Rect life1;
 	SDL_Rect life2;
-	float life_score = 92;
+	float life_score = 92; 
 	int font_score = -1;
 	char score_text[10];
 	uint score = 0;
@@ -93,6 +100,7 @@ public:
 	Animation hit;
 
 	Animation AndyIdle;
+	Animation AndyIdleB;
 	Animation AndyForward;
 	Animation AndyBackwards;
 	Animation AndyGoingUp;
@@ -135,10 +143,10 @@ public:
 	Animation TerryJumpBackwardsM;
 	Animation TerryCrouchPunchM;
 	Animation TerryCrouchKickM;
-	Animation hitM;
 
 	//-------ANDY
 	Animation AndyIdleM;
+	Animation AndyIdleBM;
 	Animation AndyForwardM;
 	Animation AndyBackwardsM;
 	Animation AndyGoingUpM;
@@ -153,6 +161,9 @@ public:
 	Animation AndyKickM;
 	Animation AndyPunchM;
 	Animation AndyPunchLongM;
+
+	Animation AndyHeliPunchM;
+
 	Animation AndyPWM;
 	Animation AndyDPM;
 	Animation AndyDKM;
@@ -161,6 +172,7 @@ public:
 	Animation AndyCrouchM;
 	Animation AndyCrouchPunchM;
 	Animation AndyCrouchKickM;
+	Animation hitM;
 	bool mirror2 = true;
 
 	iPoint Andy2position;

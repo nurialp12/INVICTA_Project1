@@ -128,7 +128,12 @@ ModulePlayer::ModulePlayer()
 		AndyPW.PushBack({  65, 300, 48, 150 });
 		AndyPW.PushBack({ 113, 300, 48, 150 });
 		AndyPW.PushBack({ 161, 300, 98, 150 });
-		
+		AndyPW.PushBack({ 161, 300, 98, 150 });
+		AndyPW.PushBack({ 161, 300, 98, 150 });
+		AndyPW.PushBack({ 161, 300, 98, 150 });
+		AndyPW.PushBack({ 161, 300, 98, 150 });
+		AndyPW.PushBack({ 161, 300, 98, 150 });
+
 		AndyPW.speed = 0.07f;
 	}
 
@@ -260,12 +265,12 @@ ModulePlayer::ModulePlayer()
 
 	//JUMP BACKWARDS
 	{
-		AndyJumpForward.PushBack({ 901, 900,  48, 150 });//949
-		AndyJumpForward.PushBack({ 834, 900,  67, 150 });
-		AndyJumpForward.PushBack({ 767, 900,  67, 150 });
-		AndyJumpForward.PushBack({ 700, 900,  67, 150 });
-		AndyJumpForward.PushBack({ 645, 900,  55, 150 });
-		AndyJumpForward.speed = 0.1f;
+		AndyJumpBackwards.PushBack({ 901, 900,  48, 150 });//949
+		AndyJumpBackwards.PushBack({ 834, 900,  67, 150 });
+		AndyJumpBackwards.PushBack({ 767, 900,  67, 150 });
+		AndyJumpBackwards.PushBack({ 700, 900,  67, 150 });
+		AndyJumpBackwards.PushBack({ 645, 900,  55, 150 });
+		AndyJumpBackwards.speed = 0.1f;
 	}
 
 	//THROW ---- SPRITES NEEDED KAWWAKS
@@ -367,7 +372,7 @@ ModulePlayer::ModulePlayer()
 	//------------------------------------------------------------
 
 
-	//MIRROR -----------------------------------------------------------------------------------------				//spritesTerryBogardMIRROR.png				//spritesTerryBogard2extresMIRROR.png
+//MIRROR -----------------------------------------------------------------------------------------				
 	{
 		//IDLE
 		AndyIdleM.PushBack({ 1748, 150, 60, 150 });
@@ -377,7 +382,7 @@ ModulePlayer::ModulePlayer()
 		AndyIdleM.PushBack({ 1988, 150, 60, 150 });
 		AndyIdleM.speed = 0.1f;
 
-		AndyIdleBM.PushBack({ 1275, 0, 53, 150 });
+		AndyIdleBM.PushBack({ 1268, 0, 60, 150 });
 
 		// WALK FORWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
 		AndyForwardM.PushBack({ 1441, 150, 63, 150 });
@@ -494,7 +499,7 @@ ModulePlayer::ModulePlayer()
 
 		//NÚRIA -----------------------------------------------
 
-//FLYING KICK        ///KUHADAN
+		//FLYING KICK        ///KUHADAN
 		{
 			AndyFKM.PushBack({ 0, 0,  61, 150 });
 			AndyFKM.PushBack({ 86, 0,  88, 150 });
@@ -519,12 +524,12 @@ ModulePlayer::ModulePlayer()
 
 		//JUMP BACKWARDS
 		{
-			AndyJumpForwardM.PushBack({ 901, 900,  48, 150 });//949
-			AndyJumpForwardM.PushBack({ 834, 900,  67, 150 });
-			AndyJumpForwardM.PushBack({ 767, 900,  67, 150 });
-			AndyJumpForwardM.PushBack({ 700, 900,  67, 150 });
-			AndyJumpForwardM.PushBack({ 645, 900,  55, 150 });
-			AndyJumpForwardM.speed = 0.1f;
+			AndyJumpBackwardsM.PushBack({ 901, 900,  48, 150 });//949
+			AndyJumpBackwardsM.PushBack({ 834, 900,  67, 150 });
+			AndyJumpBackwardsM.PushBack({ 767, 900,  67, 150 });
+			AndyJumpBackwardsM.PushBack({ 700, 900,  67, 150 });
+			AndyJumpBackwardsM.PushBack({ 645, 900,  55, 150 });
+			AndyJumpBackwardsM.speed = 0.1f;
 		}
 
 		//THROW ---- SPRITES NEEDED KAWWAKS
@@ -642,10 +647,10 @@ bool ModulePlayer::Start()
 	UI = App->textures->Load("Assets/Sprites/UI.png");
 
 	destroyed = false;
-	Andyposition.x = 5 + (250);
+	Andyposition.x = 5 + (250)								/*uncomment for full screen*/-100;
 	Andyposition.y = 60;
 	score = 0;
-	col   = App->collisions->AddCollider({  -30, Andyposition.y+50, 31, 101 }, COLLIDER_PLAYER, App->player);
+	col   = App->collisions->AddCollider({  -30, Andyposition.y + 50, 31, 101 }, COLLIDER_PLAYER, App->player);
 	colc  = App->collisions->AddCollider({    0, 10000, 36, 60 }, COLLIDER_PLAYER, App->player);
 	colj  = App->collisions->AddCollider({    0, 10000, 36, 60 }, COLLIDER_PLAYER, App->player);
 	colcp = App->collisions->AddCollider({ 1000, 10000, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
@@ -683,7 +688,7 @@ update_status ModulePlayer::PreUpdate()
 	inputTerry.J_DOWN = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > JOYSTICK_DEAD_ZONE;
 	inputTerry.J_B = App->input->gpad[SDL_CONTROLLER_BUTTON_B][1] == KEY_DOWN;
 	inputTerry.J_A = App->input->gpad[SDL_CONTROLLER_BUTTON_A][1] == KEY_DOWN;
-	inputAndy.J_RIGHT = SDL_GameControllerGetAxis(App->input->gController2, SDL_CONTROLLER_AXIS_LEFTX) > JOYSTICK_DEAD_ZONE;
+	
 
 	SDL_Event event;
 	while (SDL_PollEvent(&event) != 0)
@@ -1328,6 +1333,8 @@ update_status ModulePlayer::Update()
 	}
 
 	App->render->Blit(UI, 0, 0, &lifebar, 0);
+	//if(life_score <= 20)
+		
 	if (life_score >= 4)
 	{
 		App->render->Blit(UI, 26, 26, &life1, 0);
@@ -1383,15 +1390,17 @@ update_status ModulePlayer::Update()
 
 	if (currentstate == ST_PUNCH_STANDING && mirror)
 		col->rect.x = Andyposition.x + 53;
-	if (currentstate == ST_KICK_STANDING && mirror)
+	else if (currentstate == ST_KICK_STANDING && mirror)
 		col->rect.x = Andyposition.x + 71;
-	else col->rect.x = Andyposition.x + 14;
+	else 
+	{
+		if (mirror) col->rect.x = Andyposition.x + 20;
+		else col->rect.x = Andyposition.x + 9;
+	}
 
 	colj->rect.x = Andyposition.x + 13;
-	if (currentstate != ST_KICK_CROUCH)
-	colc->rect.x = Andyposition.x + 13;
-	if (currentstate == ST_JUMP_FORWARD || currentstate == ST_JUMP_BACKWARD)
-		colj->rect.y = Andyposition.y + 50;
+	if (currentstate != ST_KICK_CROUCH)	colc->rect.x = Andyposition.x + 13;
+
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
@@ -1407,17 +1416,22 @@ update_status ModulePlayer::Update()
 
 	return UPDATE_CONTINUE;
 }
+
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY_SHOT && App->player2->currentstate == ST_PUNCH_STANDING2)
+	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY_SHOT && !collided && App->player2->currentstate == ST_PUNCH_STANDING2)
 	{
-		if (!collided)
-		{
-			life_score -= stantardDMG;
-			collided = true;
-		}
-		if (App->player2->current_animation != &AndyPunch && App->player2->current_animation != &AndyPunchM)
-			collided = false;
+		life_score -= 14;
+		collided = true;
+		//currentstate = ST_BEING_PUNCHED;
+		//if(mirror) App->player2->current_animation = &AndyPunchLongM;
+		//else App->player2->current_animation = &AndyPunchLong;
+	}
+
+	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY_SHOT && !collided && App->player2->currentstate == ST_KICK_STANDING2)
+	{
+		life_score -= 16;
+		collided = true;
 		//currentstate = ST_BEING_PUNCHED;
 		//if(mirror) App->player2->current_animation = &AndyPunchLongM;
 		//else App->player2->current_animation = &AndyPunchLong;

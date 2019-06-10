@@ -160,6 +160,9 @@ public:
 	Animation AndyBlock;
 	Animation AndyDodge;
 
+	Animation AndyHeliPunchM;
+
+
 	//-----------------------------------------------
 
 
@@ -215,7 +218,8 @@ public:
 	Animation AndyCrouchM;
 	Animation AndyCrouchPunchM;
 	Animation AndyCrouchKickM;
-	Animation hitM;							
+	Animation hitM;		
+
 
 
 	//NÚRIA -----------------------------------------------
