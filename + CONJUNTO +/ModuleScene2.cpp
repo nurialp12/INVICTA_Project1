@@ -158,7 +158,7 @@ update_status ModuleScene2::Update()
 		App->player2->life_score = 94;
 		reboot = false;
 	}
-
+	
 	App->render->Blit(graphics, 0, -5, &background, 0.35f);
 	App->render->Blit(graphics, 0, -11, &(background1.GetCurrentFrame()), 0.60f); // back of the room
 
@@ -218,41 +218,36 @@ update_status ModuleScene2::Update()
 	{
 		App->fade->FadeToBlack(App->scene_2, App->end_game1, 2.5);
 	}
+
 	if (App->player->life_score <= 0 && !p2won)
 	{
 		p2won = true;
 		App->collisions->Disable();
 		//App->player->Disable();
 		//App->player2->Disable();
-		reboot = true;
 		App->fade->Reboot(2.5);
+		
 	}
 	else if (App->player2->life_score <= 0 && !p1won)
 	{
 		p1won = true;
 		App->collisions->Disable();
 		
-		reboot = true;
-		App->fade->Reboot(2.5);
+		App->fade->Reboot(1.5);
 	}
 	else if (App->player->life_score <= 0 && p2won)
 	{
-		p1won = false;
-		p2won = false;
 		App->fade->FadeToBlack(App->scene_2, App->end_game2, 2.5);
 	}
 	else if (App->player2->life_score <= 0 && p1won)
 	{
-		p1won = false;
-		p2won = false;
+	
 		App->fade->FadeToBlack(App->scene_2, App->end_game1, 2.5);
 	}
 	else if (App->player2->life_score <= 0 && App->player->life_score <= 0)
 	{
-		reboot = true;
-		App->fade->Reboot(2.5);
+		App->fade->Reboot(1.5);
 	}
-
 
 	return UPDATE_CONTINUE;
 }

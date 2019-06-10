@@ -126,5 +126,7 @@ bool ModuleFadeToBlack::Reboot(float time)
 	//App->collisions->Enable();
 	//App->render->camera.x = -245;
 	//App->render->camera.y = -10;
+
+	App->scene_2->reboot = true;
 	return ret;
 }

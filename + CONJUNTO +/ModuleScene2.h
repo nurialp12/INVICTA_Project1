@@ -19,9 +19,9 @@ public:
 
 public:
 
-	bool p1won = false;
-	bool p2won = false;
-	bool reboot = false;
+	bool p1won;
+	bool p2won;
+	bool reboot;
 
 	SDL_Texture* graphics = nullptr;
 	Animation bus;
