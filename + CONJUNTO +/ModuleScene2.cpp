@@ -47,11 +47,29 @@ ModuleScene2::ModuleScene2()
 	bus.PushBack({ 480, 524, 145, 74 });
 	bus.speed = 0.05f;
 
+	busT.PushBack({ 480, 1026, 145, 73 });
+	busT.PushBack({ 480, 1025, 145, 74 });
+	busT.speed = 0.05f;
+
+	busN.PushBack({ 480, 525, 145, 73 });
+	busN.PushBack({ 480, 524, 145, 74 });
+	busN.speed = 0.05f;
+
 	// Background / sky
 	background.x = 1349;
 	background.y = 631;
 	background.w = 469;
 	background.h = 107;
+
+	backgroundT.x = 1349;
+	backgroundT.y = 1132;
+	backgroundT.h = 107;
+	backgroundT.w = 469;
+
+	backgroundN.x = 1349;
+	backgroundN.y = 631;
+	backgroundN.w = 469;
+	backgroundN.h = 107;
 
 	//Shadow
 	shadow.x = 522;
@@ -64,6 +82,16 @@ ModuleScene2::ModuleScene2()
 	background1.PushBack({ 1349, 379 , 619, 235 });
 	background1.PushBack({ 718, 631, 619, 235 });
 	background1.speed = 0.05f;
+
+	background1T.PushBack({ 718, 880, 619, 235 });
+	background1T.PushBack({ 1349, 880 , 619, 235 });
+	background1T.PushBack({ 718, 1132, 619, 235 });
+	background1T.speed = 0.05f;
+
+	background1N.PushBack({ 718, 379, 619, 235 });
+	background1N.PushBack({ 1349, 379 , 619, 235 });
+	background1N.PushBack({ 718, 631, 619, 235 });
+	background1N.speed = 0.05f;
 
 
 	//{ /*x*/, /*y*/, /*w*/, /*h*/ });  
@@ -85,6 +113,37 @@ ModuleScene2::ModuleScene2()
 	people4.PushBack({ 347, 514, 69, 95 });
 	people4.speed = 0.05f;
 
+	people1T.PushBack({ 39, 904, 64, 100 });
+	people1T.PushBack({ 39, 1013, 64, 100 });
+	people1T.speed = 0.05f;
+
+	people2T.PushBack({ 143, 912, 65, 97 });
+	people2T.PushBack({ 143, 1019, 65, 97 });
+	people2T.speed = 0.05f;
+
+	people3T.PushBack({ 246, 905, 62, 99 });
+	people3T.PushBack({ 246, 1013, 62, 99 });
+	people3T.speed = 0.05f;
+
+	people4T.PushBack({ 347, 903, 69, 95 });
+	people4T.PushBack({ 347, 1015, 69, 95 });
+	people4T.speed = 0.05f;
+
+	people1N.PushBack({ 39, 403, 64, 100 });
+	people1N.PushBack({ 39, 512, 64, 100 });
+	people1N.speed = 0.05f;
+		   
+	people2N.PushBack({ 143, 411, 65, 97 });
+	people2N.PushBack({ 143, 518, 65, 97 });
+	people2N.speed = 0.05f;
+		   
+	people3N.PushBack({ 246, 404, 62, 99 });
+	people3N.PushBack({ 246, 512, 62, 99 });
+	people3N.speed = 0.05f;
+		   
+	people4N.PushBack({ 347, 402, 69, 95 });
+	people4N.PushBack({ 347, 514, 69, 95 });
+	people4N.speed = 0.05f;
 
 }
 
@@ -101,8 +160,9 @@ bool ModuleScene2::Start()
 	App->render->camera.x = -245;
 	App->render->camera.y = -10;
 
+	round = 1;
 
-	graphics = App->textures->Load("Assets/Sprites/Sound_Beach.png");
+	graphics = App->textures->Load("Assets/Sprites/Sound_Beach1.png");
 
 	App->player->Enable();
 	App->player2->Enable();
@@ -130,7 +190,7 @@ bool ModuleScene2::CleanUp()
 {
 	// TODO 4: Remove all memory leaks
 	graphics = nullptr;
-	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Sound_Beach.png"));
+	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Sound_Beach1.png"));
 
 	LOG("Unloading second stage");
 	App->player->Disable();
@@ -157,25 +217,76 @@ update_status ModuleScene2::Update()
 		reboot = false;
 	}
 	
-	App->render->Blit(graphics, 0, -5, &background, 0.35f);
-	App->render->Blit(graphics, 0, -11, &(background1.GetCurrentFrame()), 0.60f); // back of the room
+	if (round == 1)
+	{
+		App->render->Blit(graphics, 0, -5, &background, 0.35f);
+		App->render->Blit(graphics, 0, -11, &(background1.GetCurrentFrame()), 0.60f); // back of the room
+
+
+		App->render->Blit(graphics, 27, 100, &(people1.GetCurrentFrame()), 0.60f);
+		App->render->Blit(graphics, 92, 100, &(people3.GetCurrentFrame()), 0.60f);
+		App->render->Blit(graphics, 153, 100, &(people2.GetCurrentFrame()), 0.60f);
+		App->render->Blit(graphics, 217, 100, &(people4.GetCurrentFrame()), 0.60f);
+
+		App->render->Blit(graphics, 282, 100, &(people1.GetCurrentFrame()), 0.60f);
+		App->render->Blit(graphics, 348, 100, &(people3.GetCurrentFrame()), 0.60f);
+		App->render->Blit(graphics, 409, 100, &(people2.GetCurrentFrame()), 0.60f);
+		/*App->render->Blit(graphics, 200, 100, &(people4.GetCurrentFrame()), 0.60f);*/
+
+		App->render->Blit(graphics, 474, 110, &(bus.GetCurrentFrame()), 0.60f);
+	}
+
+	else if (round == 2)
+	{
+		App->render->Blit(graphics, 0, -5, &backgroundT, 0.35f);
+		App->render->Blit(graphics, 0, -11, &(background1T.GetCurrentFrame()), 0.60f); // back of the room
+
+
+		App->render->Blit(graphics, 27, 100, &(people1T.GetCurrentFrame()), 0.60f);
+		App->render->Blit(graphics, 92, 100, &(people3T.GetCurrentFrame()), 0.60f);
+		App->render->Blit(graphics, 153, 100, &(people2T.GetCurrentFrame()), 0.60f);
+		App->render->Blit(graphics, 217, 100, &(people4T.GetCurrentFrame()), 0.60f);
+
+		App->render->Blit(graphics, 282, 100, &(people1T.GetCurrentFrame()), 0.60f);
+		App->render->Blit(graphics, 348, 100, &(people3T.GetCurrentFrame()), 0.60f);
+		App->render->Blit(graphics, 409, 100, &(people2T.GetCurrentFrame()), 0.60f);
+		/*App->render->Blit(graphics, 200, 100, &(people4.GetCurrentFrame()), 0.60f);*/
+
+		App->render->Blit(graphics, 474, 110, &(busT.GetCurrentFrame()), 0.60f);
+	}
+
+	else if (round == 3)
+	{
+		App->render->Blit(graphics, 0, -5, &backgroundN, 0.35f);
+		App->render->Blit(graphics, 0, -11, &(background1N.GetCurrentFrame()), 0.60f); // back of the room
+
+
+		App->render->Blit(graphics, 27, 100, &(people1N.GetCurrentFrame()), 0.60f);
+		App->render->Blit(graphics, 92, 100, &(people3N.GetCurrentFrame()), 0.60f);
+		App->render->Blit(graphics, 153, 100, &(people2N.GetCurrentFrame()), 0.60f);
+		App->render->Blit(graphics, 217, 100, &(people4N.GetCurrentFrame()), 0.60f);
+
+		App->render->Blit(graphics, 282, 100, &(people1N.GetCurrentFrame()), 0.60f);
+		App->render->Blit(graphics, 348, 100, &(people3N.GetCurrentFrame()), 0.60f);
+		App->render->Blit(graphics, 409, 100, &(people2N.GetCurrentFrame()), 0.60f);
+		/*App->render->Blit(graphics, 200, 100, &(people4.GetCurrentFrame()), 0.60f);*/
+
+		App->render->Blit(graphics, 474, 110, &(busN.GetCurrentFrame()), 0.60f);
+	}
+	
+	
+
 
 	if(App->player->mirror) App->render->Blit(graphics, App->player->Andyposition.x, 202, &shadow);
 	else App->render->Blit(graphics, App->player->Andyposition.x - 10, 202, &shadow);
 	if(App->player2->mirror2)App->render->Blit(graphics, App->player2->Andy2position.x, 202, &shadow);
 	else App->render->Blit(graphics, App->player2->Andy2position.x - 10, 202, &shadow);
-	App->render->Blit(graphics, 474, 110, &(bus.GetCurrentFrame()), 0.60f);
+	
 
 
-	//NÚRIA: BLOQUEA LA CÁMARA EN EL CENTRO DURANTE EL PAOPAO
-	//App->render->camera.x = -480;
-	//App->render->camera.y = 0;
 
-	//App->render->Blit(graphics, 412, 111, &bus, 0.70f);
 
-	//App->render->Blit(graphics, 280, 125, &foreground);
-	//App->render->Blit(graphics, 305, 136, &(water.GetCurrentFrame())); // water animation
-	//App->render->Blit(graphics, 0, -16, &roof, 0.75f);
+	
 
 
 	if (App->input->keyboard[SDL_SCANCODE_F9] == 1)
@@ -183,18 +294,11 @@ update_status ModuleScene2::Update()
 		App->audio->MuteMusic("Assets/music/The ocean knows/The ocean knows.ogg", -1);
 	}
 
-	App->render->Blit(graphics, 27, 100, &(people1.GetCurrentFrame()), 0.60f);
-	App->render->Blit(graphics, 92, 100, &(people3.GetCurrentFrame()), 0.60f);
-	App->render->Blit(graphics, 153, 100, &(people2.GetCurrentFrame()), 0.60f);
-	App->render->Blit(graphics, 217, 100, &(people4.GetCurrentFrame()), 0.60f);
-
-	App->render->Blit(graphics, 282, 100, &(people1.GetCurrentFrame()), 0.60f);
-	App->render->Blit(graphics, 348, 100, &(people3.GetCurrentFrame()), 0.60f);
-	App->render->Blit(graphics, 409, 100, &(people2.GetCurrentFrame()), 0.60f);
-	/*App->render->Blit(graphics, 200, 100, &(people4.GetCurrentFrame()), 0.60f);*/
+	
+	
 
 
-	// TODO 3: make so pressing SPACE the KEN stage is loaded
+	
 	if (App->input->keyboard[SDL_SCANCODE_F2] == 1)
 	{
 		
@@ -221,16 +325,31 @@ update_status ModuleScene2::Update()
 	{
 		p2won = true;
 		App->collisions->Disable();
-		//App->player->Disable();
-		//App->player2->Disable();
+		if (round == 3)
+		{
+			round = 1;
+		}
+		else
+		{
+			++round;
+		}
 		App->fade->Reboot(2.5);
+		
+		
 		
 	}
 	else if (App->player2->life_score <= 0 && !p1won)
 	{
 		p1won = true;
 		App->collisions->Disable();
-		
+		if (round == 3)
+		{
+			round = 1;
+		}
+		else
+		{
+			++round;
+		}
 		App->fade->Reboot(1.5);
 	}
 	else if (App->player->life_score <= 0 && p2won)
@@ -244,6 +363,14 @@ update_status ModuleScene2::Update()
 	}
 	else if (App->player2->life_score <= 0 && App->player->life_score <= 0)
 	{
+		if (round == 3)
+		{
+			round = 1;
+		}
+		else
+		{
+			++round;
+		}
 		App->fade->Reboot(1.5);
 	}
 
