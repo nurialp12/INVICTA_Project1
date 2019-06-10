@@ -283,10 +283,10 @@ ModulePlayer2::ModulePlayer2()
 
 		//PUNCH
 		{
-			TerryPunchM.PushBack({ 453, 910, 95, 112 });
-			TerryPunchM.PushBack({ 358, 911, 95, 112 });
-			TerryPunchM.PushBack({ 263, 911, 95, 112 });
-			TerryPunchM.speed = 0.1f;
+		TerryPunchM.PushBack({ 453, 910, 95, 112 });
+		TerryPunchM.PushBack({ 358, 911, 95, 112 });
+		TerryPunchM.PushBack({ 263, 911, 95, 112 });
+		TerryPunchM.speed = 0.1f;
 		}
 
 		// POWER WAVE animation of Terrry
@@ -506,7 +506,7 @@ update_status ModulePlayer2::Update()
 		}
 	}
 
-	//MOVE BACKWARD							CAMERA FIX NEEDED	
+	//MOVE RIGHT							CAMERA FIX NEEDED	
 	{
 		if ((inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_DOWN) && currentstate == ST_IDLE2)
 			currentstate = ST_WALK_BACKWARD2;
@@ -514,13 +514,13 @@ update_status ModulePlayer2::Update()
 		{
 			if (mirror2)
 			{
+				current_animation = &AndyBackwardsM;
 				if (Andy2position.x < 700 && App->player2->Andy2position.x + SCREEN_WIDTH - 60 > Andy2position.x) Andy2position.x++;
-				current_animation = &TerryBackwardsM;
 			}
 			else 
 			{
+				current_animation = &AndyForward;
 				if (Andy2position.x < 700 && App->player2->Andy2position.x + SCREEN_WIDTH - 60 > Andy2position.x) Andy2position.x += 2;
-				current_animation = &TerryForward;
 			}
 		}
 		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < 14000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) > 4000 || App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_UP) && currentstate == ST_WALK_BACKWARD2)
@@ -534,7 +534,7 @@ update_status ModulePlayer2::Update()
 		}
 	}
 
-	//MOVE FORWARD							CAMERA FIX NEEDED
+	//MOVE LEFT							CAMERA FIX NEEDED
 	{
 		if ((inputAndy.J_LEFT || App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_DOWN) && currentstate == ST_IDLE2)
 			currentstate = ST_WALK_FORWARD2;
@@ -542,12 +542,12 @@ update_status ModulePlayer2::Update()
 		{
 			if (mirror2)
 			{
-				current_animation = &TerryForwardM;
+				current_animation = &AndyForwardM;
 				if (Andy2position.x > 0 && App->player2->Andy2position.x - SCREEN_WIDTH + 60 < Andy2position.x) Andy2position.x -= 2;
 			}
 			else
 			{
-				current_animation = &TerryBackwards;
+				current_animation = &AndyBackwards;
 				if (Andy2position.x > 0 && App->player2->Andy2position.x - SCREEN_WIDTH + 60 < Andy2position.x)
 					Andy2position.x--;
 			}

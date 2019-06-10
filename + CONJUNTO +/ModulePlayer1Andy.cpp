@@ -164,25 +164,39 @@ ModulePlayer::ModulePlayer()
 	}
 
 	
-	////JUMPFORWARD
-	//{
-	//	AndyGoingUpForward.PushBack({ 586, 912, 57, 112 });//CROUNCH
-	//	AndyGoingUpForward.PushBack({ 643, 912, 56, 112 });//GOING UP
-	//	AndyGoingUpForward.speed = 0.08f;
-	//	AndyGoingUpForward.loop = false;
+	//JUMPFORWARD
+	{
+		//AndyGoingUpForward.PushBack({ 586, 912, 57, 112 });//CROUNCH				!!!
+		AndyGoingUpForward.PushBack({ 645, 900, 55, 150 });//GOING UP
+		AndyGoingUpForward.speed = 0.08f;
+		//AndyGoingUpForward.loop = false;
 
-	//	AndyTopForward.PushBack({ 703, 912, 87, 112 });//HORIZONTAL
-	//	AndyTopForward.PushBack({ 790, 912, 87, 112 });//VERTICAL		
-	//	AndyTopForward.PushBack({ 877, 912, 87, 112 });//HORIZONTAL
-	//	AndyTopForward.speed = 1.2f;
-	//	AndyTopForward.loop = false;
+		AndyGoingDownForward.PushBack({ 700, 900, 67, 150 });//GOING DOWN
+		AndyGoingDownForward.PushBack({ 767, 900, 67, 150 });//GOING DOWN
+		AndyGoingDownForward.PushBack({ 834, 900, 67, 150 });//GOING DOWN
+		AndyGoingDownForward.PushBack({ 586, 900, 48, 150 });//CROUCH				!!!
+		AndyGoingDownForward.speed = 0.1f;
+		AndyGoingDownForward.loop = false;
+	}
+	/*	//JUMP FORWARD
+	{
+		AndyJumpForward.PushBack({ 645, 900,  55, 150 });
+		AndyJumpForward.PushBack({ 700, 900,  67, 150 });
+		AndyJumpForward.PushBack({ 767, 900,  67, 150 });
+		AndyJumpForward.PushBack({ 834, 900,  67, 150 });
+		AndyJumpForward.PushBack({ 901, 900,  48, 150 });//949
+		AndyJumpForward.speed = 0.1f;
+	}
 
-	//	AndyGoingDownForward.PushBack({ 964, 912, 60, 112 });//GOING DOWN
-	//	AndyGoingDownForward.PushBack({ 586, 912, 57, 112 });//CROUCH
-	//	AndyGoingDownForward.speed = 0.02f;
-	//	AndyGoingDownForward.loop = false;
-	//}
-
+	//JUMP BACKWARDS
+	{
+		AndyJumpBackwards.PushBack({ 901, 900,  48, 150 });//949
+		AndyJumpBackwards.PushBack({ 834, 900,  67, 150 });
+		AndyJumpBackwards.PushBack({ 767, 900,  67, 150 });
+		AndyJumpBackwards.PushBack({ 700, 900,  67, 150 });
+		AndyJumpBackwards.PushBack({ 645, 900,  55, 150 });
+		AndyJumpBackwards.speed = 0.1f;
+	}*/
 	////JUMPBACKWARDS
 	//{
 	//	AndyGoingUpBackwards.PushBack({ 586, 912, 57, 112 });//CROUNCH
@@ -253,25 +267,7 @@ ModulePlayer::ModulePlayer()
 		AndyFK.speed = 0.1f;
 	}
 
-	//JUMP FORWARD
-	{
-		AndyJumpForward.PushBack({ 645, 900,  55, 150 });
-		AndyJumpForward.PushBack({ 700, 900,  67, 150 });
-		AndyJumpForward.PushBack({ 767, 900,  67, 150 });
-		AndyJumpForward.PushBack({ 834, 900,  67, 150 });
-		AndyJumpForward.PushBack({ 901, 900,  48, 150 });//949
-		AndyJumpForward.speed = 0.1f;
-	}
 
-	//JUMP BACKWARDS
-	{
-		AndyJumpBackwards.PushBack({ 901, 900,  48, 150 });//949
-		AndyJumpBackwards.PushBack({ 834, 900,  67, 150 });
-		AndyJumpBackwards.PushBack({ 767, 900,  67, 150 });
-		AndyJumpBackwards.PushBack({ 700, 900,  67, 150 });
-		AndyJumpBackwards.PushBack({ 645, 900,  55, 150 });
-		AndyJumpBackwards.speed = 0.1f;
-	}
 
 	//THROW ---- SPRITES NEEDED KAWWAKS
 	{
@@ -926,13 +922,11 @@ update_status ModulePlayer::Update()
 			Andyposition.y = Andyposition.y - 3 * speed;
 			App->render->camera.y = App->render->camera.y + speed;
 			if (Andyposition.y <= -40) currentstate = ST_GOING_DOWN_FORWARD; 
-			if (AndyTopForward.Finished())
-				currentstate = ST_GOING_DOWN_FORWARD;
 		}
 		if (currentstate == ST_GOING_DOWN_FORWARD)
 		{
 			current_animation = &AndyGoingDownForward;
-			AndyTopForward.resetLoops(0);
+			AndyGoingUpForward.resetLoops(0);
 			if(!gmode) colj->rect.y = Andyposition.y + 50;
 			Andyposition.x += 2;
 			t += 0.002;
