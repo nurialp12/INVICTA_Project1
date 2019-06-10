@@ -274,6 +274,17 @@ ModulePlayer::ModulePlayer()
 		AndyThrow.speed = 0.1f;
 	}
 
+	//THROWING ---- SPRITES NEEDED KAWWAKS
+	{
+		AndyThrowing.PushBack({ 0, 0, 0, 0 });
+		AndyThrowing.speed = 0.1f;
+	}
+
+	//BEING THROWN ---- SPRITES NEEDED KAWWAKS
+	{
+		AndyBeingThrown.PushBack({ 0, 0, 0, 0 });
+		AndyBeingThrown.speed = 0.1f;
+	}
 	//WIN ---- SPRITES NEEDED KAWWAKS
 	{
 		AndyWin.PushBack({ 0, 0, 0, 0 });
@@ -480,6 +491,141 @@ ModulePlayer::ModulePlayer()
 		hitM.PushBack({ 721, 263, 32, 33 });
 		hitM.PushBack({ 757, 263, 32, 33 });
 		hitM.speed = 0.5f;
+
+		//NÚRIA -----------------------------------------------
+
+//FLYING KICK        ///KUHADAN
+		{
+			AndyFKM.PushBack({ 0, 0,  61, 150 });
+			AndyFKM.PushBack({ 86, 0,  88, 150 });
+			AndyFKM.PushBack({ 166, 0,  92, 150 });
+			AndyFKM.PushBack({ 224, 0, 110, 150 });
+			AndyFKM.PushBack({ 311, 0,  86, 150 });
+			AndyFKM.PushBack({ 430, 0,  62, 150 });
+			AndyFKM.PushBack({ 555, 0,  53, 150 });
+			AndyFKM.PushBack({ 555, 0,  53, 150 });
+			AndyFKM.speed = 0.1f;
+		}
+
+		//JUMP FORWARD
+		{
+			AndyJumpForwardM.PushBack({ 645, 900,  55, 150 });
+			AndyJumpForwardM.PushBack({ 700, 900,  67, 150 });
+			AndyJumpForwardM.PushBack({ 767, 900,  67, 150 });
+			AndyJumpForwardM.PushBack({ 834, 900,  67, 150 });
+			AndyJumpForwardM.PushBack({ 901, 900,  48, 150 });//949
+			AndyJumpForwardM.speed = 0.1f;
+		}
+
+		//JUMP BACKWARDS
+		{
+			AndyJumpForwardM.PushBack({ 901, 900,  48, 150 });//949
+			AndyJumpForwardM.PushBack({ 834, 900,  67, 150 });
+			AndyJumpForwardM.PushBack({ 767, 900,  67, 150 });
+			AndyJumpForwardM.PushBack({ 700, 900,  67, 150 });
+			AndyJumpForwardM.PushBack({ 645, 900,  55, 150 });
+			AndyJumpForwardM.speed = 0.1f;
+		}
+
+		//THROW ---- SPRITES NEEDED KAWWAKS
+		{
+			AndyThrowM.PushBack({ 0, 0, 0, 0 });
+			AndyThrowM.speed = 0.1f;
+		}
+
+		//THROWING ---- SPRITES NEEDED KAWWAKS
+		{
+			AndyThrowingM.PushBack({ 0, 0, 0, 0 });
+			AndyThrowingM.speed = 0.1f;
+		}
+
+		//BEING THROWN ---- SPRITES NEEDED KAWWAKS
+		{
+			AndyBeingThrownM.PushBack({ 0, 0, 0, 0 });
+			AndyBeingThrownM.speed = 0.1f;
+		}
+		//WIN ---- SPRITES NEEDED KAWWAKS
+		{
+			AndyWinM.PushBack({ 0, 0, 0, 0 });
+			AndyWinM.speed = 0.1f;
+		}
+
+		//GET UP ---- SPRITES NEEDED KAWWAKS
+		{
+			AndyGetUpM.PushBack({ 0, 0, 0, 0 });
+			AndyGetUpM.speed = 0.1f;
+		}
+
+		//JUMP + PUNCH
+		{
+			AndyJumpPunchM.PushBack({ 170, 750, 62, 150 });
+			AndyJumpPunchM.PushBack({ 232, 750, 79, 150 });//311
+			AndyJumpPunchM.speed = 0.1f;
+		}
+
+		//KICK + JUMP
+		{
+			AndyKickJumpM.PushBack({ 277, 600,  50, 150 });
+			AndyKickJumpM.PushBack({ 327, 600,  56, 150 });
+			AndyKickJumpM.PushBack({ 383, 600,  94, 150 });//477
+			AndyKickJumpM.speed = 0.1f;
+		}
+
+		//JUMP + KICK
+		{
+			AndyJumpKickM.PushBack({ 477, 600,  55, 150 });
+			AndyJumpKickM.PushBack({ 532, 600,  92, 150 });//624
+			AndyJumpKickM.speed = 0.1f;
+		}
+
+		//PUNCH + JUMP
+		{
+			AndyPunchJumpM.PushBack({ 0, 750, 50, 150 });
+			AndyPunchJumpM.PushBack({ 50, 750, 66, 150 });
+			AndyPunchJumpM.PushBack({ 116, 750, 54, 150 });//170
+			AndyPunchJumpM.speed = 0.1f;
+		}
+
+		//HURT
+		{
+			AndyHurtM.PushBack({ 311, 750,  91, 150 });
+			AndyHurtM.PushBack({ 402, 750,  98, 150 });
+			AndyHurtM.PushBack({ 500, 750,  88, 150 });
+			AndyHurtM.PushBack({ 588, 750,  99, 150 });
+			AndyHurtM.PushBack({ 687, 750, 111, 150 });
+			AndyHurtM.PushBack({ 798, 750, 108, 150 });//906
+			AndyHurtM.speed = 0.1f;
+		}
+
+		//RUNNING        ///ZAINEKEN
+		{
+			AndyRunningM.PushBack({ 0, 450,  53, 150 });
+			AndyRunningM.PushBack({ 53, 450,  59, 150 });
+			AndyRunningM.PushBack({ 112, 450,  55, 150 });
+			AndyRunningM.PushBack({ 167, 450,  57, 150 });
+			AndyRunningM.PushBack({ 224, 450,  57, 150 });//SE SUPERPONEN
+			AndyRunningM.PushBack({ 281, 450,  75, 150 });
+			AndyRunningM.PushBack({ 356, 450,  89, 150 });
+			AndyRunningM.PushBack({ 445, 450,  87, 150 });
+			AndyRunningM.PushBack({ 532, 450,  53, 150 });//585
+			AndyRunningM.speed = 0.1f;
+		}
+
+		//BLOCK ---- SPRITES NEEDED KAWWAKS
+		{
+			AndyBlockM.PushBack({ 0, 0,  61, 50 });
+			AndyBlockM.speed = 0.1f;
+		}
+
+		//DODGE ---- SPRITES NEEDED KAWWAKS
+		{
+			AndyDodgeM.PushBack({ 0, 0,  61, 50 });
+			AndyDodgeM.speed = 0.1f;
+		}
+
+		//------------------------------------------------------------
+
+
 	}
 }
 
@@ -1263,17 +1409,42 @@ update_status ModulePlayer::Update()
 }
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == COLLIDER_ENEMY_SHOT && c2->type == COLLIDER_PLAYER && collided == false && App->player2->currentstate == ST_PUNCH_STANDING2)
+	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY_SHOT && App->player2->currentstate == ST_PUNCH_STANDING2)
 	{
-		life_score -= stantardDMG;
-		collided = true;
-		currentstate = ST_BEING_PUNCHED;
-		if(mirror) App->player2->current_animation = &AndyPunchLongM;
-		else App->player2->current_animation = &AndyPunchLong;
+		if (!collided)
+		{
+			life_score -= stantardDMG;
+			collided = true;
+		}
+		if (App->player2->current_animation != &AndyPunch && App->player2->current_animation != &AndyPunchM)
+			collided = false;
+		//currentstate = ST_BEING_PUNCHED;
+		//if(mirror) App->player2->current_animation = &AndyPunchLongM;
+		//else App->player2->current_animation = &AndyPunchLong;
 	}
+
 	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY)
 	{
-		Andyposition.x++;
+		if (currentstate == ST_WALK_FORWARD && App->player2->currentstate == ST_WALK_FORWARD)
+		{
+			Andyposition.x -= 2;
+			App->player2->Andy2position.x += 2;
+		}
+		else if (currentstate == ST_WALK_BACKWARD && App->player2->currentstate == ST_WALK_BACKWARD)
+		{
+			Andyposition.x += 2;
+			App->player2->Andy2position.x -= 2;
+		}
+		else if (Andyposition.x < App->player2->Andy2position.x)
+		{
+			Andyposition.x --;
+			App->player2->Andy2position.x++;
+		}
+		else if (Andyposition.x < App->player2->Andy2position.x)
+		{
+			Andyposition.x++;
+			App->player2->Andy2position.x--;
+		}
 	}
 }
 //#endwaaif;
