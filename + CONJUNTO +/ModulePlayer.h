@@ -147,16 +147,21 @@ public:
 	Animation AndyJumpForward;
 	Animation AndyJumpBackwards;
 	Animation AndyThrow;
+	Animation AndyThrowing;
+	Animation AndyBeingThrown;
 	Animation AndyWin;
 	Animation AndyGetUp;
-	Animation AndyJumpPunch;
+//	Animation AndyJumpPunch;
 	Animation AndyPunchJump;
-	Animation AndyJumpKick;
+//	Animation AndyJumpKick;
 	Animation AndyKickJump;
 	Animation AndyHurt;
 	Animation AndyRunning;
 	Animation AndyBlock;
 	Animation AndyDodge;
+
+	Animation AndyHeliPunchM;
+
 
 	//-----------------------------------------------
 
@@ -213,7 +218,31 @@ public:
 	Animation AndyCrouchM;
 	Animation AndyCrouchPunchM;
 	Animation AndyCrouchKickM;
-	Animation hitM;							
+	Animation hitM;		
+
+
+
+	//NÚRIA -----------------------------------------------
+
+	Animation AndyFKM;
+	Animation AndyJumpForwardM;
+	Animation AndyJumpBackwardsM;
+	Animation AndyThrowM;
+	Animation AndyThrowingM;
+	Animation AndyBeingThrownM;
+	Animation AndyWinM;
+	Animation AndyGetUpM;
+	//	Animation AndyJumpPunchM;
+	Animation AndyPunchJumpM;
+	//	Animation AndyJumpKick;
+	Animation AndyKickJumpM;
+	Animation AndyHurtM;
+	Animation AndyRunningM;
+	Animation AndyBlockM;
+	Animation AndyDodgeM;
+
+	//-----------------------------------------------
+
 
 	bool mirror = false;
 	bool mirror2 = true;
