@@ -220,7 +220,6 @@ public:
 	Animation AndyCrouchKickM;
 	Animation hitM;		
 
-	Animation AndyHeliPunchM;
 
 
 	//NÚRIA -----------------------------------------------

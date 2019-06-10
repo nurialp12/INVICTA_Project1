@@ -645,7 +645,7 @@ bool ModulePlayer::Start()
 	Andyposition.x = 5 + (250)								/*uncomment for full screen*/-100;
 	Andyposition.y = 60;
 	score = 0;
-	col   = App->collisions->AddCollider({  -30, Andyposition.y+50, 31, 101 }, COLLIDER_PLAYER, App->player);
+	col   = App->collisions->AddCollider({  -30, Andyposition.y + 50, 31, 101 }, COLLIDER_PLAYER, App->player);
 	colc  = App->collisions->AddCollider({    0, 10000, 36, 60 }, COLLIDER_PLAYER, App->player);
 	colj  = App->collisions->AddCollider({    0, 10000, 36, 60 }, COLLIDER_PLAYER, App->player);
 	colcp = App->collisions->AddCollider({ 1000, 10000, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
@@ -1383,9 +1383,9 @@ update_status ModulePlayer::Update()
 
 	if (currentstate == ST_PUNCH_STANDING && mirror)
 		col->rect.x = Andyposition.x + 53;
-	if (currentstate == ST_KICK_STANDING && mirror)
+	else if (currentstate == ST_KICK_STANDING && mirror)
 		col->rect.x = Andyposition.x + 71;
-	else col->rect.x = Andyposition.x + 14;
+	else col->rect.x = Andyposition.x + 9;
 
 	colj->rect.x = Andyposition.x + 13;
 	if (currentstate != ST_KICK_CROUCH)

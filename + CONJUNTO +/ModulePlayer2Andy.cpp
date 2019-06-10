@@ -804,20 +804,20 @@ update_status ModulePlayer2::Update()
 		App->render->Blit(UI, 171, 26, &life2, 0);
 		App->render->Blit(UI, 170, 26, &life1, 0);
 	}
+
+
 	if (currentstate == ST_PUNCH_STANDING2 && mirror2)
 		col->rect.x = Andy2position.x + 53;
 	else if (currentstate == ST_KICK_STANDING2 && mirror2)
 		col->rect.x = Andy2position.x + 71;
-	else
-	{
-		col->rect.x = Andy2position.x + 14;
-		col->rect.y = Andy2position.y + 10;
-	}
-	if (currentstate != ST_PUNCH_STANDING2 && currentstate != ST_KICK_STANDING2)
-	{
-		colj->rect.x = Andy2position.x + 13;
+	else col->rect.x = Andy2position.x + 9;
+
+	colj->rect.x = Andy2position.x + 13;
+	if (currentstate != ST_KICK_CROUCH2)
 		colc->rect.x = Andy2position.x + 13;
-	}
+	if (currentstate == ST_JUMP_FORWARD2 || currentstate == ST_JUMP_BACKWARD2)
+		colj->rect.y = Andy2position.y + 50;
+
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
