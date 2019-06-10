@@ -17,8 +17,8 @@ enum terry_states
 	ST_UNKNOWN,
 
 	ST_IDLE,
-	ST_WALK_FORWARD,
-	ST_WALK_BACKWARD,
+	ST_WALK_RIGHT,
+	ST_WALK_LEFT,
 	ST_GOING_UP,
 	ST_GOING_UP_FORWARD,
 	ST_GOING_UP_BACKWARD,
@@ -83,6 +83,7 @@ public:
 	SDL_Rect lifebar;
 	SDL_Rect life1;
 	SDL_Rect life2;
+	SDL_Rect lifered;
 	float life_score = 92;
 	int font_score = -1;
 	char score_text[10];
@@ -115,6 +116,7 @@ public:
 	Animation TerryCrouchPunchM;
 	Animation TerryCrouchKickM;*/
 	//-----------------------------------------
+	Animation LifeBlink;
 	Animation AndyIdle;
 	Animation AndyIdleB;
 	Animation AndyForward;
@@ -270,7 +272,6 @@ public:
 	Uint32 jump_timer = 0;
 	Uint32 punch_timer = 0;
 
-	InputP1 inputTerry;
 	InputP1 inputAndy;
 	terry_states currentstate; //Terry and Andy's states are the same
 

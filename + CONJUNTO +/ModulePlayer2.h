@@ -17,11 +17,17 @@ enum Andy2_states
 	ST_UNKNOWN2,
 
 	ST_IDLE2,
-	ST_WALK_FORWARD2,
-	ST_WALK_BACKWARD2,
+	ST_WALK_LEFT2,
+	ST_WALK_RIGHT2,
 	ST_GOING_UP2,
+	ST_GOING_UP_FORWARD2,
+	ST_GOING_UP_BACKWARD2,
 	ST_TOP2,
+	ST_TOP_FORWARD2,
+	ST_TOP_BACKWARD2,
 	ST_GOING_DOWN2,
+	ST_GOING_DOWN_FORWARD2,
+	ST_GOING_DOWN_BACKWARD2,
 	ST_JUMP_NEUTRAL2,
 	ST_JUMP_FORWARD2,
 	ST_JUMP_BACKWARD2,
@@ -34,7 +40,11 @@ enum Andy2_states
 	ST_PUNCH_CROUCH2,
 	ST_KICK_STANDING2,
 	ST_KICK_CROUCH2,
-	ST_SD2
+	ST_SD2,
+	ST_BEING_PUNCHED2,
+	ST_BEING_KICKED2,
+	ST_BEING_THROWN2,
+	ST_THROWING2
 };
 
 struct InputP2 {
@@ -72,11 +82,13 @@ public:
 	SDL_Rect lifebar;
 	SDL_Rect life1;
 	SDL_Rect life2;
+	SDL_Rect lifered;
 	float life_score = 92; 
 	int font_score = -1;
 	char score_text[10];
 	uint score = 0;
 	Animation* current_animation;
+	Animation LifeBlink;
 	Animation Terryidle;
 	Animation TerryForward;
 	Animation TerryBackwards;
@@ -189,7 +201,8 @@ public:
 	bool gmode = false;
 	bool destroyed = false;
 
-	float speed = 1.0;
+	float t = 0;
+	float speed = 2.0;
 
 	Uint32 jump_timer = 0;
 	Uint32 punch_timer = 0;

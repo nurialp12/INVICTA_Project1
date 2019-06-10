@@ -9,6 +9,36 @@
 #define MAX_KEYS 300
 #define MAX_BUTTONS 15
 #define MAX_GAMEPADS 2
+#define MAX_COMMAND_FRAMES 180
+
+enum class InputCommandTypes {
+	special_attack,
+	punch,
+	max
+};
+
+struct InputCommand {
+	InputCommandTypes type = InputCommandTypes::max;
+
+	InputCommand(InputCommandTypes type) :type(type) {}
+	virtual bool Check(uint past_frames) const = 0;
+};
+
+struct CommandPunch :public InputCommand {
+	CommandPunch() :InputCommand(InputCommandTypes::punch) {}
+	bool Check(uint frames_past) const override;
+};
+
+struct CommandSpecialAttack : public InputCommand {
+	CommandSpecialAttack() :InputCommand(InputCommandTypes::special_attack) {}
+	bool Check(uint frames_past) const override;
+};
+
+//struct History {
+//	uint frame = 0u;
+//	KEY_STATE keyboard[MAX_KEYS];
+//	Uint8 gpad[MAX_GAMEPADS];
+//};
 
 enum KEY_STATE
 {
