@@ -44,7 +44,7 @@ struct InputP2 {
 	bool W_DOWN; //JUMP
 	bool F_DOWN; //PUNCH
 	bool G_DOWN; //KICK
-	bool H_DOWN; //POEWER WAVE         ¡¡¡PROVISIONAL!!!
+	bool H_DOWN; //POWER WAVE         ¡¡¡PROVISIONAL!!!
 	bool SD_DOWN;
 };
 class ModulePlayer2 : public Module 
@@ -61,7 +61,6 @@ public:
 
 public:
 	SDL_Texture* graphics = nullptr;
-	SDL_Texture* graphics2 = nullptr;
 	SDL_Texture* UI = nullptr;
 	SDL_Rect lifebar;
 	SDL_Rect life1;
@@ -89,7 +88,10 @@ public:
 	Animation TerryJumpBackwards;
 	Animation TerryCrouchPunch;
 	Animation TerryCrouchKick;
+
+
 	Animation hit;
+
 	Animation AndyIdle;
 	Animation AndyForward;
 	Animation AndyBackwards;
@@ -115,8 +117,6 @@ public:
 	Animation AndyCrouchPunch;
 	Animation AndyCrouchKick;
 
-	SDL_Texture* graphicsM = nullptr;
-	SDL_Texture* graphics2M = nullptr;
 	Animation TerryidleM;
 	Animation TerryForwardM;
 	Animation TerryBackwardsM;

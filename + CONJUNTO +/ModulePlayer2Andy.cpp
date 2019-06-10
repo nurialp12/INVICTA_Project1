@@ -230,11 +230,11 @@ ModulePlayer2::ModulePlayer2()
 	//MIRROR -----------------------------------------------------------------------------------------				//spritesTerryBogardMIRROR.png				//spritesTerryBogard2extresMIRROR.png
 	{
 		//IDLE
-		AndyIdleM.PushBack({ 1752, 150, 59, 150 });
-		AndyIdleM.PushBack({ 1811, 150, 59, 150 });
-		AndyIdleM.PushBack({ 1870, 150, 60, 150 });
-		AndyIdleM.PushBack({ 1930, 150, 59, 150 });
-		AndyIdleM.PushBack({ 1989, 150, 59, 150 });
+		AndyIdleM.PushBack({ 1748, 150, 60, 150 });
+		AndyIdleM.PushBack({ 1808, 150, 60, 150 });
+		AndyIdleM.PushBack({ 1868, 150, 60, 150 });
+		AndyIdleM.PushBack({ 1928, 150, 60, 150 });
+		AndyIdleM.PushBack({ 1988, 150, 60, 150 });
 		AndyIdleM.speed = 0.1f;
 
 		// WALK FORWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png

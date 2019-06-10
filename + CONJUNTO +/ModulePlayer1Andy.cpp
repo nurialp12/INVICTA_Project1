@@ -41,6 +41,7 @@ ModulePlayer::ModulePlayer()
 		AndyIdle.PushBack({ 237, 150, 59, 150 });
 		AndyIdle.speed = 0.1f;
 	}
+		AndyIdleB.PushBack({ 720, 0, 53, 150 });
 
 	// WALK FORWARD animation of Andy					
 	{
@@ -241,39 +242,39 @@ ModulePlayer::ModulePlayer()
 		AndyIdleM.PushBack({ 1988, 150, 60, 150 });
 		AndyIdleM.speed = 0.1f;
 
+		AndyIdleBM.PushBack({ 1275, 0, 53, 150 });
+
 		// WALK FORWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
-		AndyForwardM.PushBack({  21, 268, 59, 112 });
-		AndyForwardM.PushBack({  96, 268, 69, 112 });
-		AndyForwardM.PushBack({ 178, 268, 59, 112 });
-		AndyForwardM.PushBack({ 252, 268, 59, 112 });
-		AndyForwardM.speed = 0.1f;
+		AndyForwardM.PushBack({ 1441, 150, 63, 150 });
+		AndyForwardM.PushBack({ 1378, 150, 63, 150 });
+		AndyForwardM.PushBack({ 1315, 150, 63, 150 });
+		AndyForwardM.PushBack({ 1252, 150, 63, 150 });
+		AndyForwardM.speed = 0.05f;
 
 		// WALK BACKWARD animation of Terry					//spritesTerryBogard2extres.png
-		AndyBackwardsM.PushBack({ 382, 270, 59, 112 });
-		AndyBackwardsM.PushBack({ 442, 270, 55, 112 });
-		AndyBackwardsM.PushBack({ 497, 270, 56, 112 });
-		AndyBackwardsM.PushBack({ 553, 270, 57, 112 });
-		AndyBackwardsM.speed = 0.1f;
+		AndyBackwardsM.PushBack({ 1504, 150, 61, 150 });
+		AndyBackwardsM.PushBack({ 1565, 150, 61, 150 });
+		AndyBackwardsM.PushBack({ 1626, 150, 61, 150 });
+		AndyBackwardsM.PushBack({ 1687, 150, 61, 150 });
+		AndyBackwardsM.speed = 0.05f;
 
 		// JUMP animation of Terry							//spritesTerryBogard2extres.png
 		{
 			//LAUNCH AND UP
-			AndyGoingUpM.PushBack({ 557, 0, 57, 123 });
-			AndyGoingUpM.PushBack({ 614, 0, 51, 123 });
-			AndyGoingUpM.loop = false;
+			AndyGoingUpM.PushBack({ 1331, 300, 53, 150 });
+			AndyGoingUpM.PushBack({ 1278, 300, 53, 150 });
 			AndyGoingUpM.speed = 0.1f;
-
-			AndyTopM.PushBack({ 665, 0, 53, 123 });
+			AndyGoingUpM.loop = false;
 
 			//GOING DOWN AND LAND
-			AndyGoingDownM.PushBack({ 722, 0, 57, 123 });
-			AndyGoingDownM.PushBack({ 722, 0, 57, 123 });
-			AndyGoingDownM.PushBack({ 722, 0, 57, 123 });
-			AndyGoingDownM.PushBack({ 722, 0, 57, 123 });
-			AndyGoingDownM.PushBack({ 722, 0, 57, 123 });
-			AndyGoingDownM.PushBack({ 722, 0, 57, 123 });
-			AndyGoingDownM.PushBack({ 557, 0, 57, 123 });
-			AndyGoingDownM.speed = 0.1f;
+			AndyGoingDownM.PushBack({ 1225, 300, 53, 150 });
+			AndyGoingDownM.PushBack({ 1172, 300, 53, 150 });
+			AndyGoingDownM.PushBack({ 1172, 300, 53, 150 });
+			AndyGoingDownM.PushBack({ 1172, 300, 53, 150 });
+			AndyGoingDownM.PushBack({ 1172, 300, 53, 150 });
+			AndyGoingDownM.PushBack({ 1172, 300, 53, 150 });
+			AndyGoingDownM.PushBack({ 1172, 300, 53, 150 });
+			AndyGoingDownM.speed = 0.08f;
 		}
 
 		// KICK animation of Terry							//spritesTerryBogard2extres.png
@@ -470,8 +471,16 @@ update_status ModulePlayer::Update()
 	//IDLE
 	if (currentstate == ST_IDLE)
 	{
-		if (mirror)current_animation = &AndyIdleM;
-		else current_animation = &AndyIdle;
+		if (mirror) 
+		{
+			if (Andyposition.x - App->player2->Andy2position.x <= 70) current_animation = &AndyIdleBM;
+			else current_animation = &AndyIdleM;
+		}
+		else
+		{
+			if (App->player2->Andy2position.x - Andyposition.x <= 70) current_animation = &AndyIdleB;
+			else current_animation = &AndyIdle;
+		}
 	}
 
 	//MOVE RIGHT						CAMERA FIX NEEDED
