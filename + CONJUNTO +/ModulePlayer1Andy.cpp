@@ -121,7 +121,7 @@ ModulePlayer::ModulePlayer()
 		AndyCrouch.loop = false;
 	}
 
-	// POWER WAVE animation of Andy
+	// POWER WAVE animation of Andy        ///HISHOKEN
 	{
 		AndyPW.PushBack({   0, 300, 65, 150 });
 		AndyPW.PushBack({  65, 300, 48, 150 });
@@ -131,7 +131,7 @@ ModulePlayer::ModulePlayer()
 		AndyPW.speed = 0.07f;
 	}
 
-	// HELIPUNCH
+	// HELIPUNCH        ///SHORYUDAN
 	{
 		AndyHeliPunch.PushBack({ 297, 0,  61, 150 });
 		AndyHeliPunch.PushBack({ 358, 0,  88, 150 });
@@ -158,43 +158,43 @@ ModulePlayer::ModulePlayer()
 	}
 
 	
-	//JUMPFORWARD
-	{
-		AndyGoingUpForward.PushBack({ 586, 912, 57, 112 });//CROUNCH
-		AndyGoingUpForward.PushBack({ 643, 912, 56, 112 });//GOING UP
-		AndyGoingUpForward.speed = 0.08f;
-		AndyGoingUpForward.loop = false;
+	////JUMPFORWARD
+	//{
+	//	AndyGoingUpForward.PushBack({ 586, 912, 57, 112 });//CROUNCH
+	//	AndyGoingUpForward.PushBack({ 643, 912, 56, 112 });//GOING UP
+	//	AndyGoingUpForward.speed = 0.08f;
+	//	AndyGoingUpForward.loop = false;
 
-		AndyTopForward.PushBack({ 703, 912, 87, 112 });//HORIZONTAL
-		AndyTopForward.PushBack({ 790, 912, 87, 112 });//VERTICAL		
-		AndyTopForward.PushBack({ 877, 912, 87, 112 });//HORIZONTAL
-		AndyTopForward.speed = 1.2f;
-		AndyTopForward.loop = false;
+	//	AndyTopForward.PushBack({ 703, 912, 87, 112 });//HORIZONTAL
+	//	AndyTopForward.PushBack({ 790, 912, 87, 112 });//VERTICAL		
+	//	AndyTopForward.PushBack({ 877, 912, 87, 112 });//HORIZONTAL
+	//	AndyTopForward.speed = 1.2f;
+	//	AndyTopForward.loop = false;
 
-		AndyGoingDownForward.PushBack({ 964, 912, 60, 112 });//GOING DOWN
-		AndyGoingDownForward.PushBack({ 586, 912, 57, 112 });//CROUCH
-		AndyGoingDownForward.speed = 0.02f;
-		AndyGoingDownForward.loop = false;
-	}
+	//	AndyGoingDownForward.PushBack({ 964, 912, 60, 112 });//GOING DOWN
+	//	AndyGoingDownForward.PushBack({ 586, 912, 57, 112 });//CROUCH
+	//	AndyGoingDownForward.speed = 0.02f;
+	//	AndyGoingDownForward.loop = false;
+	//}
 
-	//JUMPBACKWARDS
-	{
-		AndyGoingUpBackwards.PushBack({ 586, 912, 57, 112 });//CROUNCH
-		AndyGoingUpBackwards.PushBack({ 643, 912, 56, 112 });//GOING UP
-		AndyGoingUpBackwards.speed = 0.08f;
-		AndyGoingUpBackwards.loop = false;
+	////JUMPBACKWARDS
+	//{
+	//	AndyGoingUpBackwards.PushBack({ 586, 912, 57, 112 });//CROUNCH
+	//	AndyGoingUpBackwards.PushBack({ 643, 912, 56, 112 });//GOING UP
+	//	AndyGoingUpBackwards.speed = 0.08f;
+	//	AndyGoingUpBackwards.loop = false;
 
-		AndyTopBackwards.PushBack({ 703, 912, 87, 112 });//HORIZONTAL
-		AndyTopBackwards.PushBack({ 790, 912, 87, 112 });//VERTICAL		
-		AndyTopBackwards.PushBack({ 877, 912, 87, 112 });//HORIZONTAL
-		AndyTopBackwards.speed = 1.2f;
-		AndyTopBackwards.loop = false;
+	//	AndyTopBackwards.PushBack({ 703, 912, 87, 112 });//HORIZONTAL
+	//	AndyTopBackwards.PushBack({ 790, 912, 87, 112 });//VERTICAL		
+	//	AndyTopBackwards.PushBack({ 877, 912, 87, 112 });//HORIZONTAL
+	//	AndyTopBackwards.speed = 1.2f;
+	//	AndyTopBackwards.loop = false;
 
-		AndyGoingDownBackwards.PushBack({ 964, 912, 60, 112 });//GOING DOWN
-		AndyGoingDownBackwards.PushBack({ 586, 912, 57, 112 });//CROUCH
-		AndyGoingDownBackwards.speed = 0.02f;
-		AndyGoingDownBackwards.loop = false;
-	}
+	//	AndyGoingDownBackwards.PushBack({ 964, 912, 60, 112 });//GOING DOWN
+	//	AndyGoingDownBackwards.PushBack({ 586, 912, 57, 112 });//CROUCH
+	//	AndyGoingDownBackwards.speed = 0.02f;
+	//	AndyGoingDownBackwards.loop = false;
+	//}
 
 	//CROUCHPUNCH
 	{
@@ -212,16 +212,16 @@ ModulePlayer::ModulePlayer()
 		AndyCrouchKick.PushBack({   0, 600,  79, 150 });
 		AndyCrouchKick.speed = 0.1f;
 	}
-	//JUMPPUNCH
-	AndyJumpPunch.PushBack({ 488, 789, 44, 112 }); //Charge
-	AndyJumpPunch.PushBack({ 544, 805, 68,  96 });   //Punch
-	AndyJumpPunch.PushBack({ 802,   0, 57, 123 });     //Land
+	////JUMPPUNCH
+	//AndyJumpPunch.PushBack({ 488, 789, 44, 112 }); //Charge
+	//AndyJumpPunch.PushBack({ 544, 805, 68,  96 });   //Punch
+	//AndyJumpPunch.PushBack({ 802,   0, 57, 123 });     //Land
 
-	//JUMPKICK
-	AndyJumpKick.PushBack({ 304, 830, 56,  70 });  //Charge
-	AndyJumpKick.PushBack({ 376, 789, 78, 111 }); //Kick
-	AndyJumpKick.PushBack({ 304, 830, 56,  70 });  //Discharge
-	AndyJumpKick.PushBack({ 802,   0, 57, 123 });   //Land
+	////JUMPKICK
+	//AndyJumpKick.PushBack({ 304, 830, 56,  70 });  //Charge
+	//AndyJumpKick.PushBack({ 376, 789, 78, 111 }); //Kick
+	//AndyJumpKick.PushBack({ 304, 830, 56,  70 });  //Discharge
+	//AndyJumpKick.PushBack({ 802,   0, 57, 123 });   //Land
 
 		//hit particle animation
 	hit.PushBack({ 671, 263, 22, 33 });
@@ -229,6 +229,130 @@ ModulePlayer::ModulePlayer()
 	hit.PushBack({ 721, 263, 32, 33 });
 	hit.PushBack({ 757, 263, 32, 33 });
 	hit.speed = 0.5f;
+
+
+
+	//NÚRIA -----------------------------------------------
+
+	//FLYING KICK        ///KUHADAN
+	{
+		AndyFK.PushBack({ 0, 0,  61, 150 });
+		AndyFK.PushBack({ 86, 0,  88, 150 });
+		AndyFK.PushBack({ 166, 0,  92, 150 });
+		AndyFK.PushBack({ 224, 0, 110, 150 });
+		AndyFK.PushBack({ 311, 0,  86, 150 });
+		AndyFK.PushBack({ 430, 0,  62, 150 });
+		AndyFK.PushBack({ 555, 0,  53, 150 });
+		AndyFK.PushBack({ 555, 0,  53, 150 });
+		AndyFK.speed = 0.1f;
+	}
+
+	//JUMP FORWARD
+	{
+		AndyJumpForward.PushBack({ 645, 900,  55, 150 });
+		AndyJumpForward.PushBack({ 700, 900,  67, 150 });
+		AndyJumpForward.PushBack({ 767, 900,  67, 150 });
+		AndyJumpForward.PushBack({ 834, 900,  67, 150 });
+		AndyJumpForward.PushBack({ 901, 900,  48, 150 });//949
+		AndyJumpForward.speed = 0.1f;
+	}
+
+	//JUMP BACKWARDS
+	{
+		AndyJumpForward.PushBack({ 901, 900,  48, 150 });//949
+		AndyJumpForward.PushBack({ 834, 900,  67, 150 });
+		AndyJumpForward.PushBack({ 767, 900,  67, 150 });
+		AndyJumpForward.PushBack({ 700, 900,  67, 150 });
+		AndyJumpForward.PushBack({ 645, 900,  55, 150 });
+		AndyJumpForward.speed = 0.1f;
+	}
+
+	//THROW ---- SPRITES NEEDED KAWWAKS
+	{
+		AndyThrow.PushBack({ 0, 0, 0, 0 });
+		AndyThrow.speed = 0.1f;
+	}
+
+	//WIN ---- SPRITES NEEDED KAWWAKS
+	{
+		AndyWin.PushBack({ 0, 0, 0, 0 });
+		AndyWin.speed = 0.1f;
+	}
+
+	//GET UP ---- SPRITES NEEDED KAWWAKS
+	{
+		AndyGetUp.PushBack({ 0, 0, 0, 0 });
+		AndyGetUp.speed = 0.1f;
+	}
+
+	//JUMP + PUNCH
+	{
+		AndyJumpPunch.PushBack({ 170, 750, 62, 150 });
+		AndyJumpPunch.PushBack({ 232, 750, 79, 150 });//311
+		AndyJumpPunch.speed = 0.1f;
+	}
+
+	//KICK + JUMP
+	{
+		AndyKickJump.PushBack({ 277, 600,  50, 150 });
+		AndyKickJump.PushBack({ 327, 600,  56, 150 });
+		AndyKickJump.PushBack({ 383, 600,  94, 150 });//477
+		AndyKickJump.speed = 0.1f;
+	}
+
+	//JUMP + KICK
+	{
+		AndyJumpKick.PushBack({ 477, 600,  55, 150 });
+		AndyJumpKick.PushBack({ 532, 600,  92, 150 });//624
+		AndyJumpKick.speed = 0.1f;
+	}
+
+	//PUNCH + JUMP
+	{
+		AndyPunchJump.PushBack({   0, 750, 50, 150 });
+		AndyPunchJump.PushBack({  50, 750, 66, 150 });
+		AndyPunchJump.PushBack({ 116, 750, 54, 150 });//170
+		AndyPunchJump.speed = 0.1f;
+	}
+
+	//HURT
+	{
+		AndyHurt.PushBack({ 311, 750,  91, 150 });
+		AndyHurt.PushBack({ 402, 750,  98, 150 });
+		AndyHurt.PushBack({ 500, 750,  88, 150 });
+		AndyHurt.PushBack({ 588, 750,  99, 150 });
+		AndyHurt.PushBack({ 687, 750, 111, 150 });
+		AndyHurt.PushBack({ 798, 750, 108, 150 });//906
+		AndyHurt.speed = 0.1f;
+	}
+
+	//RUNNING        ///ZAINEKEN
+	{
+		AndyRunning.PushBack({   0, 450,  53, 150 });
+		AndyRunning.PushBack({  53, 450,  59, 150 });
+		AndyRunning.PushBack({ 112, 450,  55, 150 });
+		AndyRunning.PushBack({ 167, 450,  57, 150 });
+		AndyRunning.PushBack({ 224, 450,  57, 150 });//SE SUPERPONEN
+		AndyRunning.PushBack({ 281, 450,  75, 150 });
+		AndyRunning.PushBack({ 356, 450,  89, 150 });
+		AndyRunning.PushBack({ 445, 450,  87, 150 });
+		AndyRunning.PushBack({ 532, 450,  53, 150 });//585
+		AndyRunning.speed = 0.1f;
+	}
+
+	//BLOCK ---- SPRITES NEEDED KAWWAKS
+	{
+		AndyBlock.PushBack({ 0, 0,  61, 50 });
+		AndyBlock.speed = 0.1f;
+	}
+
+	//DODGE ---- SPRITES NEEDED KAWWAKS
+	{
+		AndyDodge.PushBack({ 0, 0,  61, 50 });
+		AndyDodge.speed = 0.1f;
+	}
+
+	//------------------------------------------------------------
 
 
 	//MIRROR -----------------------------------------------------------------------------------------				//spritesTerryBogardMIRROR.png				//spritesTerryBogard2extresMIRROR.png
