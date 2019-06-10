@@ -738,13 +738,13 @@ update_status ModulePlayer2::Update()
 
 	//JUMP RIGHT
 	{
-	//if ((SDL_GameControllerGetAxis(App->input->gController2, SDL_CONTROLLER_AXIS_LEFTY) > -10000 && SDL_GameControllerGetAxis(App->input->gController2, SDL_CONTROLLER_AXIS_LEFTY) < -4000
-	//	|| App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_DOWN) && currentstate == ST_WALK_RIGHT2)
-	//{
-	//	currentstate = ST_GOING_UP_FORWARD2;
-	//	col->rect.y = 10000;
-	//	if (gmode != true) colj->rect.y = Andy2position.y + 50;
-	//}
+	if ((SDL_GameControllerGetAxis(App->input->gController2, SDL_CONTROLLER_AXIS_LEFTY) > -10000 && SDL_GameControllerGetAxis(App->input->gController2, SDL_CONTROLLER_AXIS_LEFTY) < -4000
+		|| App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_DOWN) && currentstate == ST_WALK_RIGHT2)
+	{
+		currentstate = ST_GOING_UP_FORWARD2;
+		col->rect.y = 10000;
+		if (gmode != true) colj->rect.y = Andy2position.y + 50;
+	}
 	if (currentstate == ST_GOING_UP_FORWARD2)
 	{
 		if (!gmode) colj->rect.y = Andy2position.y + 50;

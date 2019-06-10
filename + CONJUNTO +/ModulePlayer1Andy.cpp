@@ -107,7 +107,7 @@ ModulePlayer::ModulePlayer()
 		AndyKick.PushBack({ 281, 0, 113, 150 });
 		AndyKick.PushBack({ 394, 0,  83, 150 });
 		AndyKick.PushBack({ 477, 0,  53, 150 });
-		AndyKick.speed = 0.01f;
+		AndyKick.speed = 0.1f;
 	}
 
 	//PUNCH
@@ -375,21 +375,21 @@ ModulePlayer::ModulePlayer()
 
 		AndyIdleBM.PushBack({ 1025, 150, 60, 150 });
 
-		// WALK FORWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
+		// WALK FORWARD 
 		AndyForwardM.PushBack({ 1441, 150, 63, 150 });
 		AndyForwardM.PushBack({ 1378, 150, 63, 150 });
 		AndyForwardM.PushBack({ 1315, 150, 63, 150 });
 		AndyForwardM.PushBack({ 1252, 150, 63, 150 });
 		AndyForwardM.speed = 0.05f;
 
-		// WALK BACKWARD animation of Terry					//spritesTerryBogard2extres.png
+		// WALK BACKWARDS
 		AndyBackwardsM.PushBack({ 1504, 150, 61, 150 });
 		AndyBackwardsM.PushBack({ 1565, 150, 61, 150 });
 		AndyBackwardsM.PushBack({ 1626, 150, 61, 150 });
 		AndyBackwardsM.PushBack({ 1687, 150, 61, 150 });
 		AndyBackwardsM.speed = 0.05f;
 
-		// JUMP animation of Terry							//spritesTerryBogard2extres.png
+		// JUMP 
 		{
 			//LAUNCH AND UP
 			AndyGoingUpM.PushBack({ 1331, 300, 53, 150 });
@@ -408,15 +408,15 @@ ModulePlayer::ModulePlayer()
 			AndyGoingDownM.speed = 0.08f;
 		}
 
-		// KICK animation of Terry							//spritesTerryBogard2extres.png
+		// KICK
 		AndyKickM.PushBack({   0, 137, 116, 112 });
 		AndyKickM.PushBack({ 116, 137, 116, 112 });
 		AndyKickM.PushBack({ 232, 137, 116, 112 });
 		AndyKickM.PushBack({ 348, 137, 116, 112 });
 		AndyKickM.PushBack({ 464, 137, 116, 112 });
-		AndyKickM.speed = 0.01f;
+		AndyKickM.speed = 0.1f;
 
-		//PUNCH MIRROR
+		//PUNCH
 		{
 			AndyPunchM.PushBack({ 453, 910, 95, 112 });
 			AndyPunchM.PushBack({ 358, 911, 95, 112 });
@@ -424,7 +424,7 @@ ModulePlayer::ModulePlayer()
 			AndyPunchM.speed = 0.1f;
 		}
 
-		// POWER WAVE animation of Terrry
+		// POWER WAVE 
 		AndyPWM.PushBack({ 623, 683, 51, 112 });
 		AndyPWM.PushBack({ 550, 683, 54, 112 });
 		AndyPWM.PushBack({ 485, 683, 60, 112 });
@@ -451,7 +451,7 @@ ModulePlayer::ModulePlayer()
 		AndyCrouchM.loop = false;
 
 		//JUMPFORWARD
-	;
+	
 
 		//JUMPBACKWARDS
 		
@@ -472,14 +472,14 @@ ModulePlayer::ModulePlayer()
 
 		//JUMPPUNCH
 		AndyJumpPunchM.PushBack({ 488, 789, 44, 112 }); //Charge
-		AndyJumpPunchM.PushBack({ 544, 805, 68,  96 });   //Punch
-		AndyJumpPunchM.PushBack({ 802,   0, 57, 123 });     //Land
+		AndyJumpPunchM.PushBack({ 544, 805, 68,  96 }); //Punch
+		AndyJumpPunchM.PushBack({ 802,   0, 57, 123 }); //Land
 
 		//JUMPKICK
 		AndyJumpKickM.PushBack({ 304, 830, 56,  70 });  //Charge
-		AndyJumpKickM.PushBack({ 376, 789, 78, 111 }); //Kick
+		AndyJumpKickM.PushBack({ 376, 789, 78, 111 });  //Kick
 		AndyJumpKickM.PushBack({ 304, 830, 56,  70 });  //Discharge
-		AndyJumpKickM.PushBack({ 802,   0, 57, 123 });   //Land
+		AndyJumpKickM.PushBack({ 802,   0, 57, 123 });  //Land
 
 				//hit particle animation
 		hitM.PushBack({ 671, 263, 22, 33 });
@@ -492,8 +492,8 @@ ModulePlayer::ModulePlayer()
 
 		//FLYING KICK        ///KUHADAN
 		{
-			AndyFKM.PushBack({ 0, 0,  61, 150 });
-			AndyFKM.PushBack({ 86, 0,  88, 150 });
+			AndyFKM.PushBack({   0, 0,  61, 150 });
+			AndyFKM.PushBack({  86, 0,  88, 150 });
 			AndyFKM.PushBack({ 166, 0,  92, 150 });
 			AndyFKM.PushBack({ 224, 0, 110, 150 });
 			AndyFKM.PushBack({ 311, 0,  86, 150 });
@@ -501,26 +501,6 @@ ModulePlayer::ModulePlayer()
 			AndyFKM.PushBack({ 555, 0,  53, 150 });
 			AndyFKM.PushBack({ 555, 0,  53, 150 });
 			AndyFKM.speed = 0.1f;
-		}
-
-		//JUMP FORWARD
-		{
-			AndyJumpForwardM.PushBack({ 645, 900,  55, 150 });
-			AndyJumpForwardM.PushBack({ 700, 900,  67, 150 });
-			AndyJumpForwardM.PushBack({ 767, 900,  67, 150 });
-			AndyJumpForwardM.PushBack({ 834, 900,  67, 150 });
-			AndyJumpForwardM.PushBack({ 901, 900,  48, 150 });//949
-			AndyJumpForwardM.speed = 0.1f;
-		}
-
-		//JUMP BACKWARDS
-		{
-			AndyJumpBackwardsM.PushBack({ 901, 900,  48, 150 });//949
-			AndyJumpBackwardsM.PushBack({ 834, 900,  67, 150 });
-			AndyJumpBackwardsM.PushBack({ 767, 900,  67, 150 });
-			AndyJumpBackwardsM.PushBack({ 700, 900,  67, 150 });
-			AndyJumpBackwardsM.PushBack({ 645, 900,  55, 150 });
-			AndyJumpBackwardsM.speed = 0.1f;
 		}
 
 		//THROW ---- SPRITES NEEDED KAWWAKS
@@ -1054,7 +1034,7 @@ update_status ModulePlayer::Update()
 			else
 			{
 				current_animation = &AndyPunch;
-				colp = App->collisions->AddCollider({ Andyposition.x + 45, Andyposition.y + 65, 43, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+				colp = App->collisions->AddCollider({ Andyposition.x + 40, Andyposition.y + 65, 43, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 			}
 			App->audio->PlayFX("Assets/FX/punch.wav");
 		}
