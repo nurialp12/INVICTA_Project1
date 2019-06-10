@@ -48,10 +48,10 @@ ModuleScene2::ModuleScene2()
 	bus.speed = 0.05f;
 
 	// Background / sky
-	background.x = 3;
-	background.y = 3;
-	background.w = 473;
-	background.h = 117;
+	background.x = 1349;
+	background.y = 631;
+	background.w = 469;
+	background.h = 107;
 
 	//Shadow
 	shadow.x = 522;
@@ -60,9 +60,9 @@ ModuleScene2::ModuleScene2()
 	shadow.h = 12;
 
 	// flag animation
-	background1.PushBack({ 718, 390, 619, 224 });
-	background1.PushBack({ 1349, 390, 619, 224 });
-	background1.PushBack({ 718, 642, 619, 224 });
+	background1.PushBack({ 718, 379, 619, 235 });
+	background1.PushBack({ 1349, 379 , 619, 235 });
+	background1.PushBack({ 718, 631, 619, 235 });
 	background1.speed = 0.05f;
 
 
@@ -102,12 +102,14 @@ bool ModuleScene2::Start()
 	App->render->camera.y = -10;
 
 
-	graphics = App->textures->Load("Assets/Sprites/Sound_Beach2.png");
+	graphics = App->textures->Load("Assets/Sprites/Sound_Beach.png");
 
 	App->player->Enable();
 	App->player2->Enable();
 	App->particles->Enable();
 	App->collisions->Enable();
+	App->player->life_score = 94;
+	App->player2->life_score = 94;
 
 	// TODO 1: Add colliders for the first columns of the level
 	
@@ -126,7 +128,7 @@ bool ModuleScene2::CleanUp()
 {
 	// TODO 4: Remove all memory leaks
 	graphics = nullptr;
-	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Sound_Beach2.png"));
+	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Sound_Beach.png"));
 
 	LOG("Unloading second stage");
 	
@@ -140,8 +142,8 @@ update_status ModuleScene2::Update()
 {
 	// Draw everything --------------------------------------	
 	//App->render->Blit(graphics, 0, 160, &ground);
-	App->render->Blit(graphics, 0, -25, &background, 0.60f);
-	App->render->Blit(graphics, 0, 0, &(background1.GetCurrentFrame()), 0.60f); // back of the room
+	App->render->Blit(graphics, 0, -5, &background, 0.35f);
+	App->render->Blit(graphics, 0, -11, &(background1.GetCurrentFrame()), 0.60f); // back of the room
 
 	App->render->Blit(graphics, App->player->Andyposition.x - 10, 202, &shadow);
 	App->render->Blit(graphics, 474, 110, &(bus.GetCurrentFrame()), 0.60f);
@@ -199,11 +201,13 @@ update_status ModuleScene2::Update()
 	if (App->player->life_score <= 0 && !App->p2won)
 	{
 		App->p2won = true;
+		App->collisions->Disable();
 		App->fade->FadeToBlack(App->scene_2, App->scene_2, 2.5);
 	}
 	if (App->player2->life_score <= 0 && !App->p1won)
 	{
 		App->p1won = true;
+		App->collisions->Disable();
 		App->fade->FadeToBlack(App->scene_2, App->scene_2, 2.5);
 	}
 	if (App->player->life_score <= 0 && App->p2won)

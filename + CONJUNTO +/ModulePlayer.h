@@ -140,6 +140,27 @@ public:
 	Animation AndyCrouch;
 	Animation AndyCrouchPunch;
 	Animation AndyCrouchKick;
+
+	//NÚRIA -----------------------------------------------
+
+	Animation AndyFK;
+	Animation AndyJumpForward;
+	Animation AndyJumpBackwards;
+	Animation AndyThrow;
+	Animation AndyWin;
+	Animation AndyGetUp;
+	Animation AndyJumpPunch;
+	Animation AndyPunchJump;
+	Animation AndyJumpKick;
+	Animation AndyKickJump;
+	Animation AndyHurt;
+	Animation AndyRunning;
+	Animation AndyBlock;
+	Animation AndyDodge;
+
+	//-----------------------------------------------
+
+
 	Animation hit;
 
 	//TERRY-----------------------------------
