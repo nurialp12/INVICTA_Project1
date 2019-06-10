@@ -99,7 +99,7 @@ ModulePlayer::ModulePlayer()
 		AndyKick.PushBack({ 281, 0, 113, 150 });
 		AndyKick.PushBack({ 394, 0,  83, 150 });
 		AndyKick.PushBack({ 477, 0,  53, 150 });
-		AndyKick.speed = 0.1f;
+		AndyKick.speed = 0.01f;
 	}
 
 	//PUNCH
@@ -418,7 +418,7 @@ ModulePlayer::ModulePlayer()
 		AndyKickM.PushBack({ 232, 137, 116, 112 });
 		AndyKickM.PushBack({ 348, 137, 116, 112 });
 		AndyKickM.PushBack({ 464, 137, 116, 112 });
-		AndyKickM.speed = 0.1f;
+		AndyKickM.speed = 0.01f;
 
 		//PUNCH MIRROR
 		{
@@ -1097,12 +1097,12 @@ update_status ModulePlayer::Update()
 			{
 				Andyposition.x -= 50;
 				current_animation = &AndyKickM;
-				colk = App->collisions->AddCollider({ Andyposition.x + 16, Andyposition.y + 88, 55, 20 }, COLLIDER_PLAYER_SHOT, App->player);
+				colk = App->collisions->AddCollider({ Andyposition.x + 16, Andyposition.y + 88, 55, 40 }, COLLIDER_PLAYER_SHOT, App->player);
 			}
 			else
 			{
 				current_animation = &AndyKick;
-				colk = App->collisions->AddCollider({ Andyposition.x + 45, Andyposition.y + 60, 55, 30 }, COLLIDER_PLAYER_SHOT, App->player);
+				colk = App->collisions->AddCollider({ Andyposition.x + 45, Andyposition.y + 45, 55, 42 }, COLLIDER_PLAYER_SHOT, App->player);
 			}
 			App->audio->PlayFX("Assets/FX/Voice/Attacks/FX_Attack4/FX_Attack4.wav");
 		}
