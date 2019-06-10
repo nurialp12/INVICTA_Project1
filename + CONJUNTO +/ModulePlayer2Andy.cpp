@@ -140,15 +140,15 @@ ModulePlayer2::ModulePlayer2()
 
 	//DAMAGED BY PUNCH						 //!!!
 	{
-		AndyDP.PushBack({ 0, 912, 59, 112 });
-		AndyDP.PushBack({ 64, 912, 67, 112 });
+		AndyDP.PushBack({ 585, 450, 62, 150 });
+		AndyDP.PushBack({ 647, 450, 65, 150 });
 		AndyDP.speed = 0.1f;
 	}
 
 	//DAMAGED BY KICK						 //!!!
 	{
-		AndyDK.PushBack({ 136, 912, 63, 112 });
-		AndyDK.PushBack({ 211, 912, 68, 112 });
+		AndyDK.PushBack({ 712, 450, 54, 150 });
+		AndyDK.PushBack({ 766, 450, 64, 150 }); //830
 		AndyDK.speed = 0.1f;
 	}
 
@@ -193,12 +193,11 @@ ModulePlayer2::ModulePlayer2()
 
 	//CROUCHPUNCH
 	{
-		AndyCrouchPunch.PushBack({ 279, 912, 56, 112 }); //Charge
-		AndyCrouchPunch.PushBack({ 416, 912, 49, 112 }); //Riposte
-		AndyCrouchPunch.PushBack({ 335, 912, 81, 112 }); //Punch
-		AndyCrouchPunch.PushBack({ 416, 912, 49, 112 }); //Riposte x2
+		AndyCrouchPunch.PushBack({ 624, 600, 49, 150 }); //Charge
+		AndyCrouchPunch.PushBack({ 673, 600, 78, 150 }); //Riposte //751
 		AndyCrouchPunch.speed = 0.1f;
 	}
+
 
 	//CROUCHKICK
 	{
@@ -231,11 +230,12 @@ ModulePlayer2::ModulePlayer2()
 	//MIRROR -----------------------------------------------------------------------------------------				//spritesTerryBogardMIRROR.png				//spritesTerryBogard2extresMIRROR.png
 	{
 		//IDLE
-		TerryidleM.PushBack({ 0, 912, 59, 112 });		//1
-		TerryidleM.PushBack({ 59, 912, 59, 112 });		//2
-		TerryidleM.PushBack({ 118, 912, 59, 112 });		//3
-		TerryidleM.PushBack({ 59, 912, 59, 112 });		//2
-		TerryidleM.speed = 0.08f;
+		AndyIdleM.PushBack({ 1748, 150, 60, 150 });
+		AndyIdleM.PushBack({ 1808, 150, 60, 150 });
+		AndyIdleM.PushBack({ 1868, 150, 60, 150 });
+		AndyIdleM.PushBack({ 1928, 150, 60, 150 });
+		AndyIdleM.PushBack({ 1988, 150, 60, 150 });
+		AndyIdleM.speed = 0.1f;
 
 		// WALK FORWARD animation of Terry					//TerryAvanzar+SaltoEstatico+Patada+Retroceder.png
 		TerryForwardM.PushBack({ 21, 268, 59, 112 });
@@ -391,7 +391,7 @@ ModulePlayer2::~ModulePlayer2()
 // Load assets
 bool ModulePlayer2::Start()
 {
-	LOG("Loading player");
+	LOG("Loading player 2");
 	bool ret = true;
 	graphics = App->textures->Load("Assets/Sprites/Sprites_AndyBogard_ok.png");
 
@@ -417,7 +417,7 @@ bool ModulePlayer2::Start()
 // Unload assets
 bool ModulePlayer2::CleanUp()
 {
-	LOG("Unloading player");
+	LOG("Unloading player 2");
 
 	App->textures->Unload(graphics);
 
@@ -430,6 +430,7 @@ bool ModulePlayer2::CleanUp()
 		colc->to_delete = true;
 	return true;
 }
+
 update_status ModulePlayer2::PreUpdate()
 {
 	inputAndy.A_DOWN = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT;
@@ -493,7 +494,6 @@ update_status ModulePlayer2::PreUpdate()
 	return UPDATE_CONTINUE;
 }
 
-// Update: draw background
 update_status ModulePlayer2::Update()
 {
 	// MIRROR
@@ -510,8 +510,10 @@ update_status ModulePlayer2::Update()
 
 	//IDLE
 	if (currentstate == ST_IDLE2)
+	{
 		if (mirror2)current_animation = &TerryidleM;
 		else current_animation = &Terryidle;
+	}
 
 	//MOVE BACKWARD							CAMERA FIX NEEDED	
 	{
@@ -519,10 +521,16 @@ update_status ModulePlayer2::Update()
 			currentstate = ST_WALK_BACKWARD2;
 		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && currentstate == ST_WALK_BACKWARD2)
 		{
-			if (mirror2) current_animation = &TerryBackwardsM;
-			else current_animation = &TerryForward;
-			if (Andy2position.x < 700 /*&& Terry2position.x * 2 - 160 < -(App->render->camera.x - App->render->camera.w)*/)
-				Andy2position.x += speed;
+			if (mirror2)
+			{
+				if (Andy2position.x < 700) Andy2position.x++;
+				current_animation = &TerryBackwardsM;
+			}
+			else 
+			{
+				if (Andy2position.x < 700) Andy2position.x += 2;
+				current_animation = &TerryForward;
+			}
 		}
 		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_UP && currentstate == ST_WALK_BACKWARD2)
 		{

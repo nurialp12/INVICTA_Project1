@@ -79,7 +79,6 @@ public:
 
 public:
 	SDL_Texture* graphics = nullptr;
-	SDL_Texture* graphics2 = nullptr;
 	SDL_Texture* UI = nullptr;
 	SDL_Rect lifebar;
 	SDL_Rect life1;
@@ -117,6 +116,7 @@ public:
 	Animation TerryCrouchKickM;*/
 	//-----------------------------------------
 	Animation AndyIdle;
+	Animation AndyIdleB;
 	Animation AndyForward;
 	Animation AndyBackwards;
 	Animation AndyGoingUp;
@@ -140,10 +140,28 @@ public:
 	Animation AndyCrouch;
 	Animation AndyCrouchPunch;
 	Animation AndyCrouchKick;
-	Animation hit;
 
-	SDL_Texture* graphicsM = nullptr;
-	SDL_Texture* graphics2M = nullptr;
+	//NÚRIA -----------------------------------------------
+
+	Animation AndyFK;
+	Animation AndyJumpForward;
+	Animation AndyJumpBackwards;
+	Animation AndyThrow;
+	Animation AndyWin;
+	Animation AndyGetUp;
+	Animation AndyJumpPunch;
+	Animation AndyPunchJump;
+	Animation AndyJumpKick;
+	Animation AndyKickJump;
+	Animation AndyHurt;
+	Animation AndyRunning;
+	Animation AndyBlock;
+	Animation AndyDodge;
+
+	//-----------------------------------------------
+
+
+	Animation hit;
 
 	//TERRY-----------------------------------
 /*Animation TerryidleM;
@@ -172,6 +190,7 @@ public:
 	Animation TerryCrouchKickM;*/
 	//-----------------------------------------
 	Animation AndyIdleM;
+	Animation AndyIdleBM;
 	Animation AndyForwardM;
 	Animation AndyBackwardsM;
 	Animation AndyGoingUpM;
