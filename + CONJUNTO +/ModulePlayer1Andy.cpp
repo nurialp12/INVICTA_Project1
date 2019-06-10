@@ -149,14 +149,14 @@ ModulePlayer::ModulePlayer()
 		AndyHeliPunch.speed = 0.1f;
 	}
 
-	//DAMAGED BY PUNCH						 //!!!
+	//DAMAGED BY PUNCH						 //!!!   moved
 	{
 		AndyDP.PushBack({ 585, 450, 62, 150 });
 		AndyDP.PushBack({ 647, 450, 65, 150 });
 		AndyDP.speed = 0.1f;
 	}
 
-	//DAMAGED BY KICK						 //!!!
+	//DAMAGED BY KICK						 //!!!   moved
 	{
 		AndyDK.PushBack({ 712, 450, 54, 150 });
 		AndyDK.PushBack({ 766, 450, 64, 150 }); //830
