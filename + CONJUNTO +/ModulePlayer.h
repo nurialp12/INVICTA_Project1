@@ -147,11 +147,13 @@ public:
 	Animation AndyJumpForward;
 	Animation AndyJumpBackwards;
 	Animation AndyThrow;
+	Animation AndyThrowing;
+	Animation AndyBeingThrown;
 	Animation AndyWin;
 	Animation AndyGetUp;
-	Animation AndyJumpPunch;
+//	Animation AndyJumpPunch;
 	Animation AndyPunchJump;
-	Animation AndyJumpKick;
+//	Animation AndyJumpKick;
 	Animation AndyKickJump;
 	Animation AndyHurt;
 	Animation AndyRunning;
