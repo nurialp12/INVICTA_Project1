@@ -83,6 +83,7 @@ public:
 	SDL_Rect lifebar;
 	SDL_Rect life1;
 	SDL_Rect life2;
+	SDL_Rect lifered;
 	float life_score = 92;
 	int font_score = -1;
 	char score_text[10];
@@ -115,6 +116,7 @@ public:
 	Animation TerryCrouchPunchM;
 	Animation TerryCrouchKickM;*/
 	//-----------------------------------------
+	Animation LifeBlink;
 	Animation AndyIdle;
 	Animation AndyIdleB;
 	Animation AndyForward;
