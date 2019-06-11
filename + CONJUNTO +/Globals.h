@@ -33,6 +33,6 @@ typedef unsigned int uint;
 #define WIN_BORDERLESS 0
 #define WIN_RESIZABLE 0
 #define REN_VSYNC 1
-#define JOYSTICK_DEAD_ZONE 10000
+#define JOYSTICK_DEAD_ZONE 20000
 
 #endif // __GLOBALS_H__
