@@ -1078,9 +1078,9 @@ update_status ModulePlayer::Update()
 			}
 			App->audio->PlayFX("Assets/FX/Voice/Attacks/FX_Attack4/FX_Attack4.wav");
 		}
-		if (AndyKickM.Finished())Andyposition.x += 50;
 		if (AndyKick.Finished() == true || AndyKickM.Finished() == true)
 		{
+			if(mirror) Andyposition.x += 50;
 			colk->to_delete = true;
 			AndyKickM.resetLoops(0);
 			AndyKick.resetLoops(0);
