@@ -142,12 +142,6 @@ ModulePlayer::ModulePlayer()
 		AndyPW.PushBack({  65, 300, 48, 150 });
 		AndyPW.PushBack({ 113, 300, 48, 150 });
 		AndyPW.PushBack({ 161, 300, 98, 150 });
-		AndyPW.PushBack({ 161, 300, 98, 150 });
-		AndyPW.PushBack({ 161, 300, 98, 150 });
-		AndyPW.PushBack({ 161, 300, 98, 150 });
-		AndyPW.PushBack({ 161, 300, 98, 150 });
-		AndyPW.PushBack({ 161, 300, 98, 150 });
-
 		AndyPW.speed = 0.07f;
 	}
 
@@ -778,29 +772,32 @@ update_status ModulePlayer::Update()
 			App->particles->AddParticle(App->particles->andyenergy, Andyposition.x - 10, Andyposition.y + 12);
 			App->particles->andyenergy.speed.x = -2;
 		}
-		AndyPW.resetLoops(0);
-		if (inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		if (//TODO)
 		{
-			currentstate = ST_WALK_RIGHT;
-			current_animation = &AndyForward;
+			if (inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+			{
+				currentstate = ST_WALK_RIGHT;
+				current_animation = &AndyForward;
+			}
+			else if (inputAndy.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+			{
+				currentstate = ST_WALK_LEFT;
+				current_animation = &AndyBackwards;
+			}
+			else
+			{
+				currentstate = ST_IDLE;
+				current_animation = &AndyIdle;
+			}
+			if (inputAndy.J_DOWN || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+			{
+				col->rect.y = 10000;
+				if (!gmode)
+					colc->rect.y = Andyposition.y + 91;
+			}
+			AndyPW.resetLoops(0);
+			AndyPWM.resetLoops(0);
 		}
-		else if (inputAndy.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
-		{
-			currentstate = ST_WALK_LEFT;
-			current_animation = &AndyBackwards;
-		}
-		else
-		{
-			currentstate = ST_IDLE;
-			current_animation = &AndyIdle;
-		}
-		if (inputAndy.J_DOWN || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
-		{
-			col->rect.y = 10000;
-			if (!gmode)
-				colc->rect.y = Andyposition.y + 91;
-		}
-		AndyPW.resetLoops(0);
 	}
 
 
