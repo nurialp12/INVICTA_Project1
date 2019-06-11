@@ -61,7 +61,7 @@ A sneak peak to our tribute game featuring main debug functionality.
 ](https://youtu.be/EdcM2x3tSDQ)
 
 
-[OUR VERSION OF THE GAME GAMEPLAY _(Under construction!)_](https://youtu.be/1VTVzMcLEoY)
+[OUR VERSION OF THE GAME GAMEPLAY](https://youtu.be/1VTVzMcLEoY)
 
 [![Captura](https://user-images.githubusercontent.com/45202050/59235514-faa4e300-8bf1-11e9-9f13-34d3cfcfa31b.PNG)
 ](https://youtu.be/1VTVzMcLEoY)
@@ -87,11 +87,8 @@ Instructions can be found in this same web page or in the readme.md file include
 
 [Releases](https://github.com/nurialp12/INVICTA_Project1/releases)
 
-[Release 1.0 _(Under construction!)_](https://github.com/nurialp12/INVICTA_Project1/releases/tag/0.1-test)
+[Release 1.0 _(Under construction!)_](https://github.com/nurialp12/INVICTA_Project1/releases/tag/1.0)
 
-
-
-**_Under construction!_ Soon you'll be able to find a link to the latest release**
 
 
 
@@ -189,7 +186,7 @@ COMBOS:
 
 *The player has to be close to the enemy.
 
-Combos implemented: Throw, Hishoken
+Combos implemented: Throw, Hishoken (midways)
 
 
 
