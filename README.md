@@ -141,10 +141,15 @@ CONTROLS:
 
 
 
+
 *When using one (1) gamepad, it becomes the player 1 and its keyboard keys are disabled.
+
 *When using two (2) gamepads, their keyboard keys are disabled.
+
 *When using two (2) gamepads, if you disconnect P2's gamepad, it will enable P2's keys.
+
 *When using two (2) gamepads, if you disconnect P1's gamepad, it will enable P2's keys.
+
 
 
 
