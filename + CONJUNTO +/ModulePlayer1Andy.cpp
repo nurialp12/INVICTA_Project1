@@ -395,20 +395,20 @@ ModulePlayer::ModulePlayer()
 		// JUMP 
 		{
 			//LAUNCH AND UP
-			AndyGoingUpM.PushBack({ /*1331*/1716, /*300*/800, 53, 150 });
-			AndyGoingUpM.PushBack({ /*1278*/1663, /*300*/800, 53, 150 });
-			AndyGoingUpM.speed = /*0.1f*/0.05f;
+			AndyGoingUpM.PushBack({ 1331/*1716*/, 300/*800*/, 53, 150 });
+			AndyGoingUpM.PushBack({ 1278/*1663*/, 300/*800*/, 53, 150 });
+			AndyGoingUpM.speed = 0.1f/*0.05f*/;
 			AndyGoingUpM.loop = false;
 
 			//GOING DOWN AND LAND
-			AndyGoingDownM.PushBack({ /*1225*/1610, /*300*/800, 53, 150 });
-			AndyGoingDownM.PushBack({ /*1172*/1557, /*300*/800, 53, 150 });
-			AndyGoingDownM.PushBack({ /*1172*/1557, /*300*/800, 53, 150 });
-			AndyGoingDownM.PushBack({ /*1172*/1557, /*300*/800, 53, 150 });
-			AndyGoingDownM.PushBack({ /*1172*/1557, /*300*/800, 53, 150 });
-			AndyGoingDownM.PushBack({ /*1172*/1557, /*300*/800, 53, 150 });
-			AndyGoingDownM.PushBack({ /*1172*/1557, /*300*/800, 53, 150 });
-			AndyGoingDownM.speed = /*0.08f*/0.05f;
+			AndyGoingDownM.PushBack({ 1225/*1610*/, 300/*800*/, 53, 150 });
+			AndyGoingDownM.PushBack({ 1172/*1557*/, 300/*800*/, 53, 150 });
+			AndyGoingDownM.PushBack({ 1172/*1557*/, 300/*800*/, 53, 150 });
+			AndyGoingDownM.PushBack({ 1172/*1557*/, 300/*800*/, 53, 150 });
+			AndyGoingDownM.PushBack({ 1172/*1557*/, 300/*800*/, 53, 150 });
+			AndyGoingDownM.PushBack({ 1172/*1557*/, 300/*800*/, 53, 150 });
+			AndyGoingDownM.PushBack({ 1172/*1557*/, 300/*800*/, 53, 150 });
+			AndyGoingDownM.speed = 0.08f/*0.05f*/;
 		}
 
 		//KICK--------------------------IMPL 
@@ -422,23 +422,27 @@ ModulePlayer::ModulePlayer()
 			AndyKick.speed = 0.1f;
 		}
 
-		//PUNCH
+		//PUNCH--------------------------IMPL 
 		{
-			AndyPunchM.PushBack({ 453, 910, 95, 112 });
-			AndyPunchM.PushBack({ 358, 911, 95, 112 });
-			AndyPunchM.PushBack({ 263, 911, 95, 112 });
-			AndyPunchM.speed = 0.1f;
+			AndyPunch.PushBack({ 1955, 1800, 93, 150 });
+			AndyPunch.PushBack({ 1862, 1800, 93, 150 });
+			AndyPunch.PushBack({ 1769, 1800, 93, 150 });//
+			AndyPunch.PushBack({ 1769, 1800, 93, 150 });//
+			AndyPunch.PushBack({ 1769, 1800, 93, 150 });//
+			AndyPunch.PushBack({ 1862, 1800, 93, 150 });
+			AndyPunch.PushBack({ 1862, 1800, 93, 150 });
+			AndyPunch.speed = 0.15f;
 		}
 
-		// POWER WAVE 
-		AndyPWM.PushBack({ 623, 683, 51, 112 });
-		AndyPWM.PushBack({ 550, 683, 54, 112 });
-		AndyPWM.PushBack({ 485, 683, 60, 112 });
-		AndyPWM.PushBack({ 402, 683, 79, 112 });
-		AndyPWM.PushBack({ 330, 683, 67, 112 });
-		AndyPWM.PushBack({ 263, 683, 65, 112 });
-		AndyPWM.PushBack({ 198, 683, 60, 112 });
-		AndyPWM.speed = 0.1f;
+
+		// POWER WAVE animation of Andy        ///HISHOKEN--------------------------IMPL 
+		{
+			AndyPW.PushBack({ 1876, 300, 98, 150 });
+			AndyPW.PushBack({ 1778, 300, 98, 150 });
+			AndyPW.PushBack({ 1680, 300, 98, 150 });
+			AndyPW.PushBack({ 1582, 300, 98, 150 });
+			AndyPW.speed = 0.07f;
+		}
 
 		//DAMAGED BY PUNCH--------------------------IMPL 
 		AndyDPM.PushBack({ 1983, 1650, 65, 150 });
