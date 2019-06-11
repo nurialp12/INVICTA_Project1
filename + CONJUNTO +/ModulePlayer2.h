@@ -71,6 +71,7 @@ public:
 	~ModulePlayer2();
 
 	bool Start();
+	int Score();
 	update_status PreUpdate();				
 	update_status Update();
 	bool CleanUp();
@@ -86,7 +87,7 @@ public:
 	float life_score = 92; 
 	int font_score = -1;
 	char score_text[10];
-	uint score = 0;
+	int p_score = 0;
 	Animation* current_animation;
 	Animation LifeBlink;
 	Animation Terryidle;
