@@ -626,7 +626,7 @@ bool ModulePlayer::Start()
 	colj  = App->collisions->AddCollider({    0, 10000, 36, 60 }, COLLIDER_PLAYER, App->player);
 	colcp = App->collisions->AddCollider({ 1000, 10000, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 	colck = App->collisions->AddCollider({ 1000, 10000, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
-
+	colt  = App->collisions->AddCollider({ 1000, 10000, 50, 50 }, COLLIDER_PLAYER_SHOT, App->player);
 	currentstate = ST_IDLE;
 	current_animation = &AndyIdle;
 
@@ -746,9 +746,6 @@ update_status ModulePlayer::Update()
 				if (Andyposition.x < 700 && App->player2->Andy2position.x + SCREEN_WIDTH - 60 > Andyposition.x)	Andyposition.x += 2;
 			}
 		}
-
-		
-
 		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < 14000
 			|| App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP) && currentstate == ST_WALK_RIGHT)
 		{
@@ -1288,6 +1285,31 @@ update_status ModulePlayer::Update()
 			AndyPW.resetLoops(0);
 		}
 	}
+
+	//THROW
+	{
+		if (App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_DOWN && (currentstate == ST_WALK_RIGHT || currentstate == ST_WALK_LEFT || currentstate == ST_IDLE))
+		{
+			if (currentstate == ST_IDLE) colt = App->collisions->AddCollider({ Andyposition.x + 80, Andyposition.y + 65, 30, 60 }, COLLIDER_PLAYER_SHOT, App->player);
+
+			currentstate = ST_THROWING;
+			if (mirror) current_animation = &AndyThrowM;
+			else current_animation = &AndyThrow;
+		}
+	}
+
+
+	//THROWING
+	{
+
+	}
+
+
+	//VOLANDING
+	{
+
+	}
+
 
 	//GOD MODE
 	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN)

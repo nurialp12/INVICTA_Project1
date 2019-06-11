@@ -160,8 +160,5 @@
     <ClCompile Include="ModulePlayer2Andy.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModulePlayer2Andy_practice.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>
