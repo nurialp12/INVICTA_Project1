@@ -655,7 +655,7 @@ update_status ModulePlayer::PreUpdate()
 {
 	inputAndy.J_RIGHT = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) > JOYSTICK_DEAD_ZONE;
 	inputAndy.J_LEFT = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < -JOYSTICK_DEAD_ZONE;
-	inputAndy.J_UP = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) < -20000;
+	inputAndy.J_UP = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) < -JOYSTICK_DEAD_ZONE;
 	inputAndy.J_DOWN = SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > JOYSTICK_DEAD_ZONE;
 	inputAndy.J_B = App->input->gpad[SDL_CONTROLLER_BUTTON_B][1] == KEY_DOWN;
 	inputAndy.J_A = App->input->gpad[SDL_CONTROLLER_BUTTON_A][1] == KEY_DOWN;
@@ -714,6 +714,44 @@ update_status ModulePlayer::Update()
 		mirror = true;
 	else mirror = false;
 
+	//HADOUKEN
+	if (counterdown < 0)
+		counterdown = 0;
+	if (counterdownleft < 0)
+		counterdownleft = 0;
+	if (counterdownright < 0)
+		counterdownright = 0;
+
+	if (currentstate == ST_IDLE)
+		if (inputAndy.J_DOWN || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN)
+			counterdown = 60;
+	counterdown--;
+	if (currentstate == ST_CROUCH && mirror && counterdown > 0)
+	{
+		if ((inputAndy.J_DOWN && inputAndy.J_LEFT) || (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN))
+		{
+			counterdownleft = 60;
+		}
+	}
+	else if (currentstate == ST_CROUCH && counterdown > 0)
+	{
+		if ((inputAndy.J_DOWN && inputAndy.J_RIGHT) || (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN))
+		{
+			counterdownright = 60;
+		}
+	}
+	counterdownleft--;
+	counterdownright--;
+
+	if (currentstate == ST_CROUCH && mirror && counterdownleft > 0)
+	{
+		//hacer hadouken hacia la izquierda
+	}
+	else if (currentstate == ST_CROUCH && counterdownright > 0)
+	{
+		//hacer hadouken hacia la derecha
+	}
+
 	//IDLE
 	if (currentstate == ST_IDLE)
 	{
@@ -746,15 +784,30 @@ update_status ModulePlayer::Update()
 				if (Andyposition.x < 700 && App->player2->Andy2position.x + SCREEN_WIDTH - 60 > Andyposition.x)	Andyposition.x += 2;
 			}
 		}
-		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < 14000
-			|| App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP) && currentstate == ST_WALK_RIGHT)
+	
+		if (App->input->gController1 != NULL)
 		{
-			AndyForward.resetLoops(0);
-			AndyForwardM.resetLoops(0);
-			if (inputAndy.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
-				currentstate = ST_WALK_LEFT;
-			else
-				currentstate = ST_IDLE;
+			if ((!inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP) && currentstate == ST_WALK_RIGHT)
+			{
+				AndyForward.resetLoops(0);
+				AndyForwardM.resetLoops(0);
+				if (inputAndy.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+					currentstate = ST_WALK_LEFT;
+				else
+					currentstate = ST_IDLE;
+			}
+		}
+		else
+		{
+			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP && currentstate == ST_WALK_RIGHT)
+			{
+				AndyForward.resetLoops(0);
+				AndyForwardM.resetLoops(0);
+				if (inputAndy.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+					currentstate = ST_WALK_LEFT;
+				else
+					currentstate = ST_IDLE;
+			}
 		}
 	}
 
@@ -776,21 +829,37 @@ update_status ModulePlayer::Update()
 					Andyposition.x--;
 			}
 		}
-		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) > -14000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < -4000 || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_UP) && currentstate == ST_WALK_LEFT)
+
+		if (App->input->gController1 != NULL)
 		{
-			AndyForward.resetLoops(0);
-			AndyForwardM.resetLoops(0);
-			if (inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-				currentstate = ST_WALK_RIGHT;
-			else
-				currentstate = ST_IDLE;
+			if ((!inputAndy.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_UP) && currentstate == ST_WALK_LEFT)
+			{
+				AndyForward.resetLoops(0);
+				AndyForwardM.resetLoops(0);
+				if (inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+					currentstate = ST_WALK_RIGHT;
+				else
+					currentstate = ST_IDLE;
+			}
 		}
+		else
+		{
+			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_UP && currentstate == ST_WALK_LEFT)
+			{
+				AndyForward.resetLoops(0);
+				AndyForwardM.resetLoops(0);
+				if (inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+					currentstate = ST_WALK_RIGHT;
+				else
+					currentstate = ST_IDLE;
+			}
+		}
+		
 	}
 
 	//JUMP
 	{
-		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > -10000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) < -4000 
-			|| App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN) && currentstate == ST_IDLE)
+		if ((inputAndy.J_UP || App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN) && currentstate == ST_IDLE)
 		{
 			currentstate = ST_GOING_UP;
 			col->rect.y = Andyposition.y + 10000;
@@ -870,8 +939,7 @@ update_status ModulePlayer::Update()
 
 	//JUMP RIGHT				PENDIENTE
 	{
-		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > -10000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) < -4000 
-			|| App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN) && currentstate == ST_WALK_RIGHT)
+		if ((inputAndy.J_UP || App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN) && currentstate == ST_WALK_RIGHT)
 		{
 			currentstate = ST_GOING_UP_FORWARD;
 			col->rect.y = 10000;
@@ -946,7 +1014,7 @@ update_status ModulePlayer::Update()
 
 	//JUMP BACKWARDS  PENDIENTE
 	{
-		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > -10000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) < -4000 || App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN) && currentstate == ST_WALK_LEFT)
+		if ((inputAndy.J_UP || App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN) && currentstate == ST_WALK_LEFT)
 		{
 			currentstate = ST_GOING_UP_BACKWARD;
 			col->rect.y = 10000;
@@ -1022,13 +1090,12 @@ update_status ModulePlayer::Update()
 
 	//PUNCH
 	{
-		if (punch_controller != 0 && !((inputAndy.J_B || App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN) && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_RIGHT) || (currentstate == ST_WALK_LEFT)) && (current_animation != &AndyPunch) && (current_animation != &AndyPunchM))) {
-			punch_controller = 0;
+		if (punched && !((inputAndy.J_B || App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN) && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_RIGHT) || (currentstate == ST_WALK_LEFT)) && (current_animation != &AndyPunch) && (current_animation != &AndyPunchM))) {
+			punched = false;
 		}
 
-		if ((punch_controller == 0) && (inputAndy.J_B || App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN) && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_RIGHT) || (currentstate == ST_WALK_LEFT)) && (current_animation != &AndyPunch) && (current_animation != &AndyPunchM))
+		if (!punched && (inputAndy.J_B || App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN) && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_RIGHT) || (currentstate == ST_WALK_LEFT)) && (current_animation != &AndyPunch) && (current_animation != &AndyPunchM))
 		{
-			punch_controller++;
 			currentstate = ST_PUNCH_STANDING;
 			if (mirror)
 			{
@@ -1046,6 +1113,7 @@ update_status ModulePlayer::Update()
 		}
 		if (AndyPunch.Finished() || AndyPunchM.Finished())
 		{
+			punched = true;
 			if (mirror)Andyposition.x += 38;
 			colp->to_delete = true;
 			AndyPunch.resetLoops(0);
@@ -1068,7 +1136,10 @@ update_status ModulePlayer::Update()
 
 	//KICK
 	{
-		if ((inputAndy.J_A || App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN) && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_RIGHT) || (currentstate == ST_WALK_LEFT)))
+		if (kicked && !((inputAndy.J_A || App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN) && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_RIGHT) || (currentstate == ST_WALK_LEFT)))) {
+			kicked = false;
+		}
+		if (!kicked && (inputAndy.J_A || App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN) && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_RIGHT) || (currentstate == ST_WALK_LEFT)))
 		{
 			currentstate = ST_KICK_STANDING;
 			if (mirror)
@@ -1086,6 +1157,7 @@ update_status ModulePlayer::Update()
 		}
 		if (AndyKick.Finished() == true || AndyKickM.Finished() == true)
 		{
+			kicked = true;
 			if(mirror) Andyposition.x += 50;
 			colk->to_delete = true;
 			AndyKickM.resetLoops(0);
