@@ -151,13 +151,12 @@ public:
 	Animation AndyDP;
 	Animation AndyDK;
 	Animation AndyJumpPunch;
+	Animation AndyPunchJump;
 	Animation AndyJumpKick;
+	Animation AndyKickJump;
 	Animation AndyCrouch;
 	Animation AndyCrouchPunch;
 	Animation AndyCrouchKick;
-
-	//NÚRIA -----------------------------------------------
-
 	Animation AndyFK;
 	Animation AndyJumpForward;
 	Animation AndyJumpBackwards;
@@ -166,16 +165,11 @@ public:
 	Animation AndyBeingThrown;
 	Animation AndyWin;
 	Animation AndyGetUp;
-//	Animation AndyJumpPunch;
-	Animation AndyPunchJump;
-//	Animation AndyJumpKick;
-	Animation AndyKickJump;
 	Animation AndyHurt;
 	Animation AndyRunning;
 	Animation AndyBlock;
 	Animation AndyDodge;
 
-	Animation AndyHeliPunchM;
 
 
 	//-----------------------------------------------
@@ -229,16 +223,13 @@ public:
 	Animation AndyDPM;
 	Animation AndyDKM;
 	Animation AndyJumpPunchM;
+	Animation AndyPunchJumpM;
 	Animation AndyJumpKickM;
+	Animation AndyKickJumpM;
 	Animation AndyCrouchM;
 	Animation AndyCrouchPunchM;
 	Animation AndyCrouchKickM;
 	Animation hitM;		
-
-
-
-	//NÚRIA -----------------------------------------------
-
 	Animation AndyFKM;
 	Animation AndyJumpForwardM;
 	Animation AndyJumpBackwardsM;
@@ -247,14 +238,12 @@ public:
 	Animation AndyBeingThrownM;
 	Animation AndyWinM;
 	Animation AndyGetUpM;
-	//	Animation AndyJumpPunchM;
-	Animation AndyPunchJumpM;
-	//	Animation AndyJumpKick;
-	Animation AndyKickJumpM;
 	Animation AndyHurtM;
 	Animation AndyRunningM;
 	Animation AndyBlockM;
 	Animation AndyDodgeM;
+	Animation AndyHeliPunchM;
+
 
 	//-----------------------------------------------
 
@@ -274,6 +263,7 @@ public:
 	Collider* colck;
 	Collider* coljp;
 	Collider* coljk;
+	Collider* colt;
 
 	bool collided = false;
 	bool gmode = false;
