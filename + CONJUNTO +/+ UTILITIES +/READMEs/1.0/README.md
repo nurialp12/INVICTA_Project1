@@ -68,10 +68,10 @@ CONTROLS:
 COMBOS:
 				Command (Computer P1)		Command (Computer P2)		Command (Gamepad) 
 	Backdrop* (Throw)	Moving towards P2 and H		Moving towards P1 and L		Moving towards P1 and X
-	Hishoken		S->SD(->D)->F			(down->down/right->right->B)	
-	Zaneiken		
-	Shoryudan		
-	Kuhadan			
+	Hishoken		S->SD(->D)->F			(down->down/right->right->J)	down->down/right->right->B
+	Zaneiken		A->D->F				left->right->J			left->right->B
+	Shoryudan		S(hold)->W->F			down(hold)->up->J		down(hold)->up->B
+	Kuhadan			AS(hold)->WD->G			left/down(hold)->right/up->K	left/down(hold)->right/up->A
 
 Combos implemented: Throw (midways), Hishoken
 
