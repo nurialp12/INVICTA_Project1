@@ -35,12 +35,6 @@ Enjoy!
 	P Power Wave
 	
 Space to change screens
-, to move up the camera
-. to move down the camera
-	7 to move left the camera
-	8 to move right the camera
-	9 to move up the camera
-	0 to move down the camera
 ESC to leave the game
 
 DEBUG:
@@ -55,6 +49,14 @@ DEBUG:
 	F8 god mode (PLAYER 2)
 
 	F9 mute/unmute sound
+
+	CAMERA:
+	7 to move left the camera
+	8 to move right the camera
+	9 to move up the camera
+	0 to move down the camera
+	, to move up the camera
+	. to move down the camera
 
 
 ## Contributing
@@ -109,7 +111,7 @@ TODO: Write history
 	Note: 
 0.5
 	Playable version of the game to try it out with Terry Bogard in the Stage Pao Pao Café. 
-	This content (the player ans stage) shall be removed upon the next release.
+	This content (the player and stage) shall be removed upon the next release.
 1.0
 	Attempt to make an exact copy of the game in the Stage Sound Beach with Andy Bogard as the only player
 	CONTENT:
@@ -118,9 +120,10 @@ TODO: Write history
 		Sound Beach Stage
 		Sound effects and mmusic
 		Debug functionality
-		Score
+		Score and Fonts
 		Play in Full Screen
 		Gamepad or keyboard to play
+		Collisions
 		
 
 
@@ -135,6 +138,7 @@ Alex Lopez
 Github: https://github.com/nurialp12/INVICTA_Project1
 Releases: https://github.com/nurialp12/INVICTA_Project1/releases
 Wiki: https://github.com/nurialp12/INVICTA_Project1/wiki
+Our Web Page: https://nurialp12.github.io/INVICTA_Project1/
 
 
 ## License
