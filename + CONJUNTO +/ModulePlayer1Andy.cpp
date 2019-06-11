@@ -395,20 +395,20 @@ ModulePlayer::ModulePlayer()
 		// JUMP 
 		{
 			//LAUNCH AND UP
-			AndyGoingUpM.PushBack({ 1331, 300, 53, 150 });
-			AndyGoingUpM.PushBack({ 1278, 300, 53, 150 });
-			AndyGoingUpM.speed = 0.1f;
+			AndyGoingUpM.PushBack({ /*1331*/1716, /*300*/800, 53, 150 });
+			AndyGoingUpM.PushBack({ /*1278*/1663, /*300*/800, 53, 150 });
+			AndyGoingUpM.speed = /*0.1f*/0.05f;
 			AndyGoingUpM.loop = false;
 
 			//GOING DOWN AND LAND
-			AndyGoingDownM.PushBack({ 1225, 300, 53, 150 });
-			AndyGoingDownM.PushBack({ 1172, 300, 53, 150 });
-			AndyGoingDownM.PushBack({ 1172, 300, 53, 150 });
-			AndyGoingDownM.PushBack({ 1172, 300, 53, 150 });
-			AndyGoingDownM.PushBack({ 1172, 300, 53, 150 });
-			AndyGoingDownM.PushBack({ 1172, 300, 53, 150 });
-			AndyGoingDownM.PushBack({ 1172, 300, 53, 150 });
-			AndyGoingDownM.speed = 0.08f;
+			AndyGoingDownM.PushBack({ /*1225*/1610, /*300*/800, 53, 150 });
+			AndyGoingDownM.PushBack({ /*1172*/1557, /*300*/800, 53, 150 });
+			AndyGoingDownM.PushBack({ /*1172*/1557, /*300*/800, 53, 150 });
+			AndyGoingDownM.PushBack({ /*1172*/1557, /*300*/800, 53, 150 });
+			AndyGoingDownM.PushBack({ /*1172*/1557, /*300*/800, 53, 150 });
+			AndyGoingDownM.PushBack({ /*1172*/1557, /*300*/800, 53, 150 });
+			AndyGoingDownM.PushBack({ /*1172*/1557, /*300*/800, 53, 150 });
+			AndyGoingDownM.speed = /*0.08f*/0.05f;
 		}
 
 		//KICK--------------------------IMPL 
@@ -569,14 +569,14 @@ ModulePlayer::ModulePlayer()
 			AndyPunchJumpM.speed = 0.1f;
 		}
 
-		//HURT
+		//HURT--------------------------IMPL 
 		{
-			AndyHurtM.PushBack({ 311, 750,  91, 150 });
-			AndyHurtM.PushBack({ 402, 750,  98, 150 });
-			AndyHurtM.PushBack({ 500, 750,  88, 150 });
-			AndyHurtM.PushBack({ 588, 750,  99, 150 });
-			AndyHurtM.PushBack({ 687, 750, 111, 150 });
-			AndyHurtM.PushBack({ 798, 750, 108, 150 });//906
+			AndyHurtM.PushBack({ 1579, 750, 111, 150 });
+			AndyHurtM.PushBack({ 1468, 750, 111, 150 });
+			AndyHurtM.PushBack({ 1357, 750, 111, 150 });
+			AndyHurtM.PushBack({ 1246, 750, 111, 150 });
+			AndyHurtM.PushBack({ 1135, 750, 111, 150 });
+			AndyHurtM.PushBack({ 1024, 750, 111, 150 });//906
 			AndyHurtM.speed = 0.1f;
 		}
 
