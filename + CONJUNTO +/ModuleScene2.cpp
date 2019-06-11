@@ -134,7 +134,7 @@ ModuleScene2::ModuleScene2()
 	people1.speed = 0.05f;
 
 	people2.PushBack({ 143, 411, 65, 97 });  
-	people2.PushBack({ 143, 518, 65, 97 });
+	people2.PushBack({ 143, 520, 65, 97 });
 	people2.speed = 0.05f;
 
 	people3.PushBack({ 246, 404, 62, 99 }); 
