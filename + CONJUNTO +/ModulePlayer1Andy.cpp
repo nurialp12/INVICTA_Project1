@@ -584,17 +584,17 @@ ModulePlayer::ModulePlayer()
 			AndyHurtM.speed = 0.1f;
 		}
 
-		//RUNNING        ///ZAINEKEN
+		//RUNNING        ///ZAINEKEN--------------------------IMPL 
 		{
-			AndyRunningM.PushBack({ 0, 450,  53, 150 });
-			AndyRunningM.PushBack({ 53, 450,  59, 150 });
-			AndyRunningM.PushBack({ 112, 450,  55, 150 });
-			AndyRunningM.PushBack({ 167, 450,  57, 150 });
-			AndyRunningM.PushBack({ 224, 450,  57, 150 });//SE SUPERPONEN
-			AndyRunningM.PushBack({ 281, 450,  75, 150 });
-			AndyRunningM.PushBack({ 356, 450,  89, 150 });
-			AndyRunningM.PushBack({ 445, 450,  87, 150 });
-			AndyRunningM.PushBack({ 532, 450,  53, 150 });//585
+			AndyRunningM.PushBack({ 1921, 450,  89, 150 });
+			AndyRunningM.PushBack({ 1832, 450,  89, 150 });
+			AndyRunningM.PushBack({ 1743, 450,  89, 150 });
+			AndyRunningM.PushBack({ 1654, 450,  89, 150 });
+			AndyRunningM.PushBack({ 1565, 450,  89, 150 });//SE SUPERPONEN
+			AndyRunningM.PushBack({ 1476, 450,  89, 150 });
+			AndyRunningM.PushBack({ 1387, 450,  89, 150 });
+			AndyRunningM.PushBack({ 1298, 450,  89, 150 });
+			AndyRunningM.PushBack({ 1209, 450,  89, 150 });//585
 			AndyRunningM.speed = 0.1f;
 		}
 
@@ -776,7 +776,7 @@ update_status ModulePlayer::Update()
 			App->particles->AddParticle(App->particles->andyenergy, Andyposition.x - 10, Andyposition.y + 12);
 			App->particles->andyenergy.speed.x = -2;
 		}
-		if (//TODO)
+		if (/*TODO*/)
 		{
 			if (inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 			{
@@ -1520,6 +1520,7 @@ update_status ModulePlayer::Update()
 	{
 		if (currentstate == ST_DOWN)
 		{
+			cold = App->collisions->AddCollider({ Andyposition.x, Andyposition.y, 50, 10 }, COLLIDER_PLAYER, App->player);
 			if (mirror) current_animation = &AndyGetUpM;
 			else current_animation = &AndyGetUp;
 		}
