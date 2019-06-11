@@ -769,7 +769,7 @@ update_status ModuleSceneIntro::Update()
 	}
 		
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && finish2)
+	if ((App->input->gpad[SDL_CONTROLLER_BUTTON_B][1] == KEY_DOWN || App->input->gpad[SDL_CONTROLLER_BUTTON_B][2] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) && finish2)
 	{
 		finish1 = true;
 		finish2 = true;

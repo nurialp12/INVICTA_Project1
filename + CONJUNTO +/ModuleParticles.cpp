@@ -33,7 +33,10 @@ bool ModuleParticles::Start()
 	terryenergy.anim.PushBack({ 978, 695, 16, 105 });
 	terryenergy.anim.loop = false;
 	terryenergy.anim.speed = 0.05f;
-	terryenergy.speed.x = 1;
+	if ((App->player->mirror && App->player->currentstate == ST_POWER_WAVE) || (App->player->mirror2 && App->player2->currentstate == ST_POWER_WAVE2))
+		terryenergy.speed.x = -1;
+	else
+		terryenergy.speed.x = 1;
 
 	return true;
 }
