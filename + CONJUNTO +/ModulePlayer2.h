@@ -84,6 +84,7 @@ public:
 	SDL_Rect life1;
 	SDL_Rect life2;
 	SDL_Rect lifered;
+	Animation ball;
 	float life_score = 92; 
 	int font_score = -1;
 	char score_text[10];
