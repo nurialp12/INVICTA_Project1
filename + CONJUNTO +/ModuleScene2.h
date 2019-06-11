@@ -26,6 +26,8 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* score = nullptr;
+
+	//SCORE
 	SDL_Rect zero;
 	SDL_Rect one;
 	SDL_Rect two;
@@ -36,6 +38,13 @@ public:
 	SDL_Rect seven;
 	SDL_Rect eight;
 	SDL_Rect nine;
+	int positionx;
+	int positiony;
+	int n[5];
+	SDL_Rect r[5];
+	int currentscore;
+	int player;
+
 	Animation bus;
 	Animation busT;
 	Animation busN;

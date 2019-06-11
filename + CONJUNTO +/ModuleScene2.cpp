@@ -42,6 +42,25 @@ ModuleScene2::ModuleScene2()
 	water.PushBack({588, 447, 283, 18});
 	water.speed = 0.02f;*/
 
+	//score
+	one = { 0, 0, 8, 8 };
+	two = { 8, 0, 8, 8 };
+	three = { 16, 0, 8, 8 };
+	four = { 24, 0, 8, 8 };
+	five = { 32, 0, 8, 8 };
+	six = { 40, 0, 8, 8 };
+	seven = { 48, 0, 8, 8 };
+	eight = { 56, 0, 8, 8 };
+	nine = { 64, 0, 8, 8 };
+	zero = { 72, 0, 8, 8 };
+	positionx = 72;
+	positiony = 17;
+	if (player == 0)
+		this->player = 0;
+	if (player == 1)
+		this->player = 1;
+	currentscore = 0;
+
 	//bus
 	bus.PushBack({ 480, 525, 145, 73 });
 	bus.PushBack({ 480, 524, 145, 74 });
@@ -163,6 +182,7 @@ bool ModuleScene2::Start()
 	round = 1;
 
 	graphics = App->textures->Load("Assets/Sprites/Sound_Beach1.png");
+	score = App->textures->Load("Assets/Fonts/scorenums.png");
 
 	App->player->Enable();
 	App->player2->Enable();
@@ -191,6 +211,7 @@ bool ModuleScene2::CleanUp()
 	// TODO 4: Remove all memory leaks
 	graphics = nullptr;
 	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Sound_Beach1.png"));
+	SDL_DestroyTexture(App->textures->Load("Assets/Fonts/scorenums.png"));
 
 	LOG("Unloading second stage");
 	App->player->Disable();
@@ -373,6 +394,88 @@ update_status ModuleScene2::Update()
 		}
 		App->fade->Reboot(1.5);
 	}
+
+	//SCORE
+	positionx = (-App->render->camera.x / SCREEN_SIZE) + 72;
+	int i;
+	SDL_Rect none = { 0,0,0,0 };
+
+	if (player == 0)
+		i= App->player->Score();
+	if (player == 1)
+		i = App->player2->Score();
+
+
+	if (i > 99999)
+	{
+		i = 99999;
+	}
+
+	if (currentscore != i) {
+		n[4] = (int)i / 10000;
+		n[3] = (int)(i - n[4] * 10000) / 1000;
+		n[2] = (int)(i- n[4] * 10000 - n[3] * 1000) / 100;
+		n[1] = (int)(i - n[4] * 10000 - n[3] * 1000 - n[2] * 100) / 10;
+		n[0] = i - n[4] * 10000 - n[3] * 1000 - n[2] * 100 - n[1] * 10;
+
+		for (int i = 0; i < 5; i++)
+		{
+			switch (n[i])
+			{
+			case 0:
+				if (i == 0)
+					r[i] = zero;
+				else
+				{
+					for (int y = i + 1; y < 5; y++)
+					{
+						if (n[y] != 0)
+						{
+							r[i] = zero;
+							break;
+						}
+						r[i] = none;
+					}
+				}
+				break;
+			case 1:
+				r[i] = one;
+				break;
+			case 2:
+				r[i] = two;
+				break;
+			case 3:
+				r[i] = three;
+				break;
+			case 4:
+				r[i] = four;
+				break;
+			case 5:
+				r[i] = five;
+				break;
+			case 6:
+				r[i] = six;
+				break;
+			case 7:
+				r[i] = seven;
+				break;
+			case 8:
+				r[i] = eight;
+				break;
+			case 9:
+				r[i] = nine;
+				break;
+			}
+		}
+	}
+	currentscore = i;
+
+	App->render->Blit(graphics, positionx /*+ (88 * player) + HUD_X*/, positiony, &r[4], 0);
+	App->render->Blit(graphics, positionx, positiony, &r[3], 0);
+	App->render->Blit(graphics, positionx, positiony, &r[2], 0);
+	App->render->Blit(graphics, positionx, positiony, &r[1], 0);
+	App->render->Blit(graphics, positionx, positiony, &r[0], 0);
+
 
 	return UPDATE_CONTINUE;
 }
