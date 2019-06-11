@@ -43,8 +43,12 @@ enum terry_states
 	ST_SD,
 	ST_BEING_PUNCHED,
 	ST_BEING_KICKED,
+	ST_THROW,
+	ST_THROWING,
 	ST_BEING_THROWN,
-	ST_THROWING
+
+	ST_DOWN
+	
 };
 
 struct InputP1 {
@@ -265,6 +269,7 @@ public:
 	Collider* coljp;
 	Collider* coljk;
 	Collider* colt;
+	Collider* colb;
 
 	bool collided = false;
 	bool gmode = false;
@@ -275,6 +280,8 @@ public:
 
 	Uint32 jump_timer = 0;
 	Uint32 punch_timer = 0;
+	bool invencible = false;
+	int tick = 0;
 
 	InputP1 inputAndy;
 	terry_states currentstate; //Terry and Andy's states are the same
