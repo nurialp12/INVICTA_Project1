@@ -1673,10 +1673,10 @@ update_status ModulePlayer::Update()
 			App->render->Blit(UI, 9, 49, &(ball.GetCurrentFrame()), 0);
 		}
 	}
-	/*if (App->scene_2->p1won2)
+	if (App->scene_2->p1won2)
 	{
 		App->render->Blit(UI, 25, 49, &(ball.GetCurrentFrame()), 0);
-	}*/
+	}
 
 	if (currentstate == ST_PUNCH_STANDING && mirror)
 		col->rect.x = Andyposition.x + 58;
