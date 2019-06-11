@@ -43,8 +43,11 @@ enum Andy2_states
 	ST_SD2,
 	ST_BEING_PUNCHED2,
 	ST_BEING_KICKED2,
+	ST_THROW2,
+	ST_THROWING2,
 	ST_BEING_THROWN2,
-	ST_THROWING2
+
+	ST_DOWN2
 };
 
 struct InputP2 {
@@ -235,6 +238,8 @@ public:
 
 	Uint32 jump_timer = 0;
 	Uint32 punch_timer = 0;
+	bool invencible = false;
+	int tick = 0;
 
 	InputP2 inputAndy;
 	Andy2_states currentstate;
