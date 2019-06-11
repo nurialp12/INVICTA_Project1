@@ -107,6 +107,10 @@ public:
 	int counterdown = 0;
 	int counterdownleft = 0;
 	int counterdownright = 0;
+	int abs(int v) {
+		if (v < 0)return -v;
+	}
+
 
 	//TERRY-------------------------------------
 	/*Animation TerryidleM;
@@ -152,6 +156,7 @@ public:
 	Animation AndyPunch;
 	Animation AndyPunchLong;
 	Animation AndyPW;
+	Animation AndyPWLong;
 	Animation AndyHeliPunch;
 	Animation AndyDP;
 	Animation AndyDK;
@@ -285,7 +290,7 @@ public:
 
 	InputP1 inputAndy;
 	terry_states currentstate; //Terry and Andy's states are the same
-
+	int countpw = 0;
 };
 
 #endif
