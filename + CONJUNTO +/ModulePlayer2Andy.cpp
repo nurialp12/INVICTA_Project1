@@ -16,6 +16,7 @@
 #include "SDL\include\SDL.h"
 #include <stdio.h>
 #include "ModulePlayer.h"
+#include "ModuleScene2.h"
 
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
@@ -27,6 +28,12 @@ ModulePlayer2::ModulePlayer2()
 	life1 = { 10, 77, 1, 6 };
 	life2 = { 11, 77, 4, 6 };
 	lifered = { 42, 149, 94, 5 };
+
+	ball.PushBack({ 86, 161, 16, 16 });
+	ball.PushBack({ 54, 161, 16, 16 });
+	ball.PushBack({ 86, 161, 16, 16 });
+	ball.PushBack({ 70, 161, 16, 16 });
+	ball.speed = 0.07f;
 
 	//LIFE BLINK
 	{
@@ -911,6 +918,16 @@ update_status ModulePlayer2::Update()
 	{
 		App->render->Blit(UI, 171, 26, &life2, 0);
 		App->render->Blit(UI, 170, 26, &life1, 0);
+	}
+
+	if (App->scene_2->p2won)
+	{
+		App->render->Blit(UI, 265, 49, &(ball.GetCurrentFrame()), 0);
+	}
+
+	if (App->scene_2->p2won2)
+	{
+		App->render->Blit(UI, 249, 49, &(ball.GetCurrentFrame()), 0);
 	}
 
 
