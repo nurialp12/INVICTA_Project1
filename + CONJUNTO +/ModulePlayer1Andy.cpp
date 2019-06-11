@@ -770,21 +770,13 @@ update_status ModulePlayer::Update()
 		Uint32 inittime = 200;
 		if (SDL_GetTicks() >= inittime && counterdownright && !mirror)
 		{
-			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x + 60, Andyposition.y + 12);
-			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x + 76, Andyposition.y + 12, 200);
-			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x + 92, Andyposition.y + 12, 400);
-			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x + 108, Andyposition.y + 12, 600);
-			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x + 124, Andyposition.y + 12, 800);
-			App->particles->terryenergy.col->to_delete == true;
+			App->particles->AddParticle(App->particles->andyenergy, Andyposition.x + 60, Andyposition.y + 12);
+			App->particles->andyenergy.speed.x = 2;
 		}
 		else if (SDL_GetTicks() >= inittime && counterdownleft && mirror)
 		{
-			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x - 60, Andyposition.y - 12);
-			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x - 76, Andyposition.y - 12, 200);
-			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x - 92, Andyposition.y - 12, 400);
-			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x - 108, Andyposition.y - 12, 600);
-			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x - 124, Andyposition.y - 12, 800);
-			App->particles->terryenergy.col->to_delete == true;
+			App->particles->AddParticle(App->particles->andyenergy, Andyposition.x - 10, Andyposition.y + 12);
+			App->particles->andyenergy.speed.x = -2;
 		}
 		AndyPW.resetLoops(0);
 		if (inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
@@ -810,6 +802,7 @@ update_status ModulePlayer::Update()
 		}
 		AndyPW.resetLoops(0);
 	}
+
 
 	//IDLE
 	if (currentstate == ST_IDLE)

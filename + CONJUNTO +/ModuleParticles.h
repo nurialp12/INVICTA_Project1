@@ -36,6 +36,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+	void OnCollision(Collider* c1, Collider* c2);
 	void AddParticle(const Particle& particle, int x, int y, Uint32 delay = 0);
 	void AddEnemyParticle(const Particle& particle, int x, int y, Uint32 delay = 0);
 
@@ -48,6 +49,7 @@ private:
 public:
 
 	Particle terryenergy;
+	Particle andyenergy;
 };
 
 #endif // __MODULEPARTICLES_H__#pragma once
