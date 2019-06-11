@@ -760,7 +760,7 @@ update_status ModulePlayer::Update()
 	{
 		currentstate = ST_POWER_WAVE;
 		current_animation = &AndyPW;
-		App->audio->PlayFX("Assets/FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
+		App->audio->PlayFX("Assets/FX/Voice/Special Attacks/FX_HishokenAttackAndyBogardVoice/FX_HishokenAttackAndyBogardVoice.wav");
 		colc->rect.y = 10000;
 		if (!gmode)
 			col->rect.y = Andyposition.y + 50;
