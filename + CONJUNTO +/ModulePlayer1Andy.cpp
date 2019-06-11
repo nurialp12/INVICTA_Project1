@@ -359,8 +359,10 @@ ModulePlayer::ModulePlayer()
 
 	//DODGE ---- SPRITES NEEDED KAWWAKS
 	{
-		AndyDodge.PushBack({ 0, 0,  61, 50 });
-		AndyDodge.speed = 0.1f;
+		AndyDodgeM.PushBack({ 1207, 1200,  61, 150 });
+		AndyDodgeM.PushBack({ 1146, 1200,  61, 150 });
+		AndyDodgeM.PushBack({ 1024, 1200,  61, 150 });
+		AndyDodgeM.speed = 0.1f;
 	}
 
 	//------------------------------------------------------------
@@ -467,11 +469,11 @@ ModulePlayer::ModulePlayer()
 		
 
 		//CROUCHPUNCH
-		AndyCrouchPunchM.PushBack({ 279, 912, 56, 112 }); //Charge
-		AndyCrouchPunchM.PushBack({ 416, 912, 49, 112 }); //Riposte
-		AndyCrouchPunchM.PushBack({ 335, 912, 81, 112 }); //Punch
-		AndyCrouchPunchM.PushBack({ 416, 912, 49, 112 }); //Riposte x2
-		AndyCrouchPunchM.speed = 0.1f;
+		{
+			AndyCrouchPunch.PushBack({ 1102, 600, 78, 150 }); //Charge
+			AndyCrouchPunch.PushBack({ 1024, 600, 78, 150 }); //Riposte //751
+			AndyCrouchPunch.speed = 0.1f;
+		}
 
 		//CROUCHKICK--------------------------IMPL 
 		AndyCrouchKick.PushBack({ 1884, 600, 119, 150 });   //Charge
@@ -604,9 +606,11 @@ ModulePlayer::ModulePlayer()
 			AndyBlockM.speed = 0.1f;
 		}
 
-		//DODGE ---- SPRITES NEEDED KAWWAKS
+		//DODGE--------------------------IMPL 
 		{
-			AndyDodgeM.PushBack({ 0, 0,  61, 50 });
+			AndyDodgeM.PushBack({ 1207, 449,  61, 150 });
+			AndyDodgeM.PushBack({ 1146, 449,  61, 150 });
+			AndyDodgeM.PushBack({ 1024, 449,  61, 150 });
 			AndyDodgeM.speed = 0.1f;
 		}
 
