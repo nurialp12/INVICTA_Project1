@@ -99,6 +99,9 @@ public:
 	bool punched = false;
 	bool kicked = false;
 	bool thrown = false;
+	int counterdown = 0;
+	int counterdownleft = 0;
+	int counterdownright = 0;
 
 	//TERRY-------------------------------------
 	/*Animation TerryidleM;

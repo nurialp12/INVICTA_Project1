@@ -714,6 +714,44 @@ update_status ModulePlayer::Update()
 		mirror = true;
 	else mirror = false;
 
+	//HADOUKEN
+	if (counterdown < 0)
+		counterdown = 0;
+	if (counterdownleft < 0)
+		counterdownleft = 0;
+	if (counterdownright < 0)
+		counterdownright = 0;
+
+	if (currentstate == ST_IDLE)
+		if (inputAndy.J_DOWN || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN)
+			counterdown = 60;
+	counterdown--;
+	if (currentstate == ST_CROUCH && mirror && counterdown > 0)
+	{
+		if ((inputAndy.J_DOWN && inputAndy.J_LEFT) || (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN))
+		{
+			counterdownleft = 60;
+		}
+	}
+	else if (currentstate == ST_CROUCH && counterdown > 0)
+	{
+		if ((inputAndy.J_DOWN && inputAndy.J_RIGHT) || (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN))
+		{
+			counterdownright = 60;
+		}
+	}
+	counterdownleft--;
+	counterdownright--;
+
+	if (currentstate == ST_CROUCH && mirror && counterdownleft > 0)
+	{
+		//hacer hadouken hacia la izquierda
+	}
+	else if (currentstate == ST_CROUCH && counterdownright > 0)
+	{
+		//hacer hadouken hacia la derecha
+	}
+
 	//IDLE
 	if (currentstate == ST_IDLE)
 	{
