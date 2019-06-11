@@ -236,7 +236,7 @@ ModulePlayer2::ModulePlayer2()
 	hit.speed = 0.5f;
 
 
-	//MIRROR -----------------------------------------------------------------------------------------				//spritesTerryBogardMIRROR.png				//spritesTerryBogard2extresMIRROR.png
+//MIRROR -----------------------------------------------------------------------------------------				//spritesTerryBogardMIRROR.png				//spritesTerryBogard2extresMIRROR.png
 	{
 		//IDLE
 		AndyIdleM.PushBack({ 1748, 150, 60, 150 });
@@ -287,7 +287,7 @@ ModulePlayer2::ModulePlayer2()
 		TerryKickM.PushBack({ 232, 137, 116, 112 });
 		TerryKickM.PushBack({ 348, 137, 116, 112 });
 		TerryKickM.PushBack({ 464, 137, 116, 112 });
-		TerryKickM.speed = 0.01f;
+		TerryKickM.speed = 0.1f;
 
 		//PUNCH
 		{
@@ -580,20 +580,19 @@ update_status ModulePlayer2::Update()
 			{
 				Andy2position.x -= 38;
 				current_animation = &AndyPunchM;
-				colp = App->collisions->AddCollider({ Andy2position.x - 28 + 38, Andy2position.y + 20, 43, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
+				colp = App->collisions->AddCollider({ Andy2position.x + 10, Andy2position.y + 65, 43, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
 			}
 			else
 			{
 				current_animation = &AndyPunch;
-				colp = App->collisions->AddCollider({ Andy2position.x + 45, Andy2position.y + 20, 43, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
+				colp = App->collisions->AddCollider({ Andy2position.x + 40, Andy2position.y + 65, 43, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
 			}
 			App->audio->PlayFX("Assets/FX/punch.wav");
 		}
-		if (AndyPunchM.Finished())Andy2position.x += 38;
 		if (AndyPunch.Finished() || AndyPunchM.Finished())
 		{
+			if(mirror2)Andy2position.x += 38;
 			colp->to_delete = true;
-			App->player->collided = false;
 			AndyPunch.resetLoops(0);
 			AndyPunchM.resetLoops(0);
 			if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
@@ -610,7 +609,7 @@ update_status ModulePlayer2::Update()
 			}
 			else
 				currentstate = ST_IDLE2;
-			App->player2->collided = false;
+			App->player->collided = false;
 		}
 	}
 

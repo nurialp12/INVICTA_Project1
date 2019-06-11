@@ -1055,10 +1055,7 @@ update_status ModulePlayer::Update()
 				current_animation = &AndyBackwards;
 			}
 			else
-			{
 				currentstate = ST_IDLE;
-				current_animation = &AndyIdle;
-			}
 			App->player2->collided = false;
 		}
 	}
