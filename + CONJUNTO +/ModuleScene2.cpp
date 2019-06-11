@@ -83,8 +83,8 @@ ModuleScene2::ModuleScene2()
 	busT.PushBack({ 480, 1025, 145, 74 });
 	busT.speed = 0.05f;
 
-	busN.PushBack({ 480, 525, 145, 73 });
-	busN.PushBack({ 480, 524, 145, 74 });
+	busN.PushBack({ 480, 1526, 145, 73 });
+	busN.PushBack({ 480, 1525, 145, 74 });
 	busN.speed = 0.05f;
 
 	// Background / sky
@@ -99,7 +99,7 @@ ModuleScene2::ModuleScene2()
 	backgroundT.w = 469;
 
 	backgroundN.x = 1349;
-	backgroundN.y = 631;
+	backgroundN.y = 1632;
 	backgroundN.w = 469;
 	backgroundN.h = 107;
 
@@ -120,9 +120,9 @@ ModuleScene2::ModuleScene2()
 	background1T.PushBack({ 718, 1132, 619, 235 });
 	background1T.speed = 0.05f;
 
-	background1N.PushBack({ 718, 379, 619, 235 });
-	background1N.PushBack({ 1349, 379 , 619, 235 });
-	background1N.PushBack({ 718, 631, 619, 235 });
+	background1N.PushBack({ 718, 1380, 619, 235 });
+	background1N.PushBack({ 1349, 1380 , 619, 235 });
+	background1N.PushBack({ 718, 1632, 619, 235 });
 	background1N.speed = 0.05f;
 
 
@@ -161,20 +161,20 @@ ModuleScene2::ModuleScene2()
 	people4T.PushBack({ 347, 1015, 69, 95 });
 	people4T.speed = 0.05f;
 
-	people1N.PushBack({ 39, 403, 64, 100 });
-	people1N.PushBack({ 39, 512, 64, 100 });
+	people1N.PushBack({ 39, 1404, 64, 100 });
+	people1N.PushBack({ 39, 1513, 64, 100 });
 	people1N.speed = 0.05f;
 		   
-	people2N.PushBack({ 143, 411, 65, 97 });
-	people2N.PushBack({ 143, 518, 65, 97 });
+	people2N.PushBack({ 143, 1412, 65, 97 });
+	people2N.PushBack({ 143, 1519, 65, 97 });
 	people2N.speed = 0.05f;
 		   
-	people3N.PushBack({ 246, 404, 62, 99 });
-	people3N.PushBack({ 246, 512, 62, 99 });
+	people3N.PushBack({ 246, 1405, 62, 99 });
+	people3N.PushBack({ 246, 1513, 62, 99 });
 	people3N.speed = 0.05f;
 		   
-	people4N.PushBack({ 347, 402, 69, 95 });
-	people4N.PushBack({ 347, 514, 69, 95 });
+	people4N.PushBack({ 347, 1403, 69, 95 });
+	people4N.PushBack({ 347, 1515, 69, 95 });
 	people4N.speed = 0.05f;
 
 }
@@ -230,7 +230,7 @@ bool ModuleScene2::CleanUp()
 	timer = nullptr;
 	SDL_DestroyTexture(App->textures->Load("Assets/Fonts/timernums.png"));
 
-	LOG("Unloading second stage");
+	LOG("Unloading stage");
 	App->player->Disable();
 	return true;
 }

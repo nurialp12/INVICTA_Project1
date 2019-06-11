@@ -1084,17 +1084,23 @@ update_status ModulePlayer::Update()
 			colk->to_delete = true;
 			AndyKickM.resetLoops(0);
 			AndyKick.resetLoops(0);
-			if (inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+			if (inputAndy.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_WALK_RIGHT;
+				if (mirror2)current_animation = &AndyForwardM;
+				else current_animation = &AndyBackwards;
+			}
+			else if (inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+			{
+				currentstate = ST_WALK_LEFT;
 				if (mirror2)current_animation = &AndyBackwardsM;
 				else current_animation = &AndyForward;
 			}
-			else if (inputAndy.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+			else if (inputAndy.J_DOWN || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 			{
-				currentstate = ST_WALK_LEFT;
-				if (mirror2)current_animation = &AndyForwardM;
-				else current_animation = &AndyBackwards;
+				currentstate = ST_CROUCH;
+				if (mirror2)current_animation = &AndyCrouchM;
+				else current_animation = &AndyCrouch;
 			}
 			else currentstate = ST_IDLE;
 			App->player2->collided = false;
@@ -1106,7 +1112,8 @@ update_status ModulePlayer::Update()
 		if ((inputAndy.J_DOWN || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN) && (currentstate == ST_IDLE || currentstate == ST_WALK_RIGHT || currentstate == ST_WALK_LEFT))
 		{
 			currentstate = ST_CROUCH;
-			current_animation = &AndyCrouch;
+			if (mirror2)current_animation = &AndyCrouchM;
+			else current_animation = &AndyCrouch;
 			col->rect.y = 10000;
 			if (gmode != true)	colc->rect.y = Andyposition.y + 91;
 		}
@@ -1355,9 +1362,9 @@ update_status ModulePlayer::Update()
 	}
 
 	if (currentstate == ST_PUNCH_STANDING && mirror)
-		col->rect.x = Andyposition.x + 53;
+		col->rect.x = Andyposition.x + 58;
 	else if (currentstate == ST_KICK_STANDING && mirror)
-		col->rect.x = Andyposition.x + 71;
+		col->rect.x = Andyposition.x + 70;
 	else 
 	{
 		if (mirror) col->rect.x = Andyposition.x + 20;
