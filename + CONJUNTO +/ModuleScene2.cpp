@@ -61,6 +61,19 @@ ModuleScene2::ModuleScene2()
 		this->player = 1;
 	currentscore = 0;
 
+	//timer
+	tone = { 0, 0, 13, 21 };
+	ttwo = { 13, 0, 13, 21 };
+	tthree = { 26, 0, 13, 21 };
+	tfour = { 39, 0, 13, 21 };
+	tfive = { 52, 0, 13, 21 };
+	tsix = { 65, 0, 13, 21 };
+	tseven = { 78, 0, 13, 21 };
+	teight = { 91, 0, 13, 21 };
+	tnine = { 104, 0, 13, 21 };
+	tzero = { 117, 0, 13, 21 };
+	tpositionx = 131;
+	tpositiony = 19;
 	//bus
 	bus.PushBack({ 480, 525, 145, 73 });
 	bus.PushBack({ 480, 524, 145, 74 });
@@ -183,6 +196,7 @@ bool ModuleScene2::Start()
 
 	graphics = App->textures->Load("Assets/Sprites/Sound_Beach1.png");
 	score = App->textures->Load("Assets/Fonts/scorenums.png");
+	timer = App->textures->Load("Assets/Fonts/timernums.png");
 
 	App->player->Enable();
 	App->player2->Enable();
@@ -211,7 +225,10 @@ bool ModuleScene2::CleanUp()
 	// TODO 4: Remove all memory leaks
 	graphics = nullptr;
 	SDL_DestroyTexture(App->textures->Load("Assets/Sprites/Sound_Beach1.png"));
+	score = nullptr;
 	SDL_DestroyTexture(App->textures->Load("Assets/Fonts/scorenums.png"));
+	timer = nullptr;
+	SDL_DestroyTexture(App->textures->Load("Assets/Fonts/timernums.png"));
 
 	LOG("Unloading second stage");
 	App->player->Disable();
@@ -342,7 +359,7 @@ update_status ModuleScene2::Update()
 		App->fade->FadeToBlack(App->scene_2, App->end_game1, 2.5);
 	}
 
-	if (App->player->life_score <= 0 && !p2won)
+	if ((App->player->life_score <= 0 (App->player2->life_score > App->player->life_score && timer_num <= 0)) && !p2won)
 	{
 		p2won = true;
 		App->collisions->Disable();
@@ -355,11 +372,10 @@ update_status ModuleScene2::Update()
 			++round;
 		}
 		App->fade->Reboot(2.5);
-		
-		
-		
+		timer_num = 93;
+
 	}
-	else if (App->player2->life_score <= 0 && !p1won)
+	else if ((App->player2->life_score <= 0 || (App->player2->life_score < App->player->life_score && timer_num <= 0)) && !p1won)
 	{
 		p1won = true;
 		App->collisions->Disable();
@@ -372,17 +388,19 @@ update_status ModuleScene2::Update()
 			++round;
 		}
 		App->fade->Reboot(1.5);
+		timer_num = 93;
 	}
-	else if (App->player->life_score <= 0 && p2won)
+	else if ((App->player->life_score <= 0 (App->player2->life_score > App->player->life_score && timer_num <= 0)) && !p2won)
 	{
 		App->fade->FadeToBlack(App->scene_2, App->end_game2, 2.5);
 	}
-	else if (App->player2->life_score <= 0 && p1won)
+	else if ((App->player2->life_score <= 0 || (App->player2->life_score < App->player->life_score && timer_num <= 0)) && !p1won)
 	{
 	
 		App->fade->FadeToBlack(App->scene_2, App->end_game1, 2.5);
+		timer_num = 93;
 	}
-	else if (App->player2->life_score <= 0 && App->player->life_score <= 0)
+	else if (App->player2->life_score <= 0 && App->player->life_score <= 0 || (timer_num <= 0 && App->player2->life_score == App->player->life_score))
 	{
 		if (round == 3)
 		{
@@ -393,10 +411,10 @@ update_status ModuleScene2::Update()
 			++round;
 		}
 		App->fade->Reboot(1.5);
+		timer_num = 93;
 	}
 
 	//SCORE
-	positionx = (-App->render->camera.x / SCREEN_SIZE) + 72;
 	int i;
 	SDL_Rect none = { 0,0,0,0 };
 
@@ -470,12 +488,67 @@ update_status ModuleScene2::Update()
 	}
 	currentscore = i;
 
-	App->render->Blit(graphics, positionx /*+ (88 * player) + HUD_X*/, positiony, &r[4], 0);
-	App->render->Blit(graphics, positionx, positiony, &r[3], 0);
-	App->render->Blit(graphics, positionx, positiony, &r[2], 0);
-	App->render->Blit(graphics, positionx, positiony, &r[1], 0);
-	App->render->Blit(graphics, positionx, positiony, &r[0], 0);
+	App->render->Blit(score, positionx, positiony, &r[4], 0);
+	App->render->Blit(score, positionx+6, positiony, &r[3], 0);
+	App->render->Blit(score, positionx+12, positiony, &r[2], 0);
+	App->render->Blit(score, positionx+18, positiony, &r[1], 0);
+	App->render->Blit(score, positionx+24, positiony, &r[0], 0);
 
+
+	//TIMER
+
+	int time = timer_num;
+	timer_counter++;
+	if (timer_counter == 60)
+	{
+		timer_num--;
+		timer_counter = 0;
+	}
+	if (time > 90)
+		time = 90;
+
+	tn[1] = (int)(time) / 10;
+	tn[0] = time - tn[1] * 10;
+
+	for (int i = 0; i < 2; i++)
+	{
+		switch (tn[i])
+		{
+		case 0:
+			tr[i] = tzero;
+			break;
+		case 1:
+			tr[i] = tone;
+			break;
+		case 2:
+			tr[i] = ttwo;
+			break;
+		case 3:
+			tr[i] = tthree;
+			break;
+		case 4:
+			tr[i] = tfour;
+			break;
+		case 5:
+			tr[i] = tfive;
+			break;
+		case 6:
+			tr[i] = tsix;
+			break;
+		case 7:
+			tr[i] = tseven;
+			break;
+		case 8:
+			tr[i] = teight;
+			break;
+		case 9:
+			tr[i] = tnine;
+			break;
+		}
+	}
+
+	App->render->Blit(timer, tpositionx, tpositiony, &tr[1], 0);
+	App->render->Blit(timer, tpositionx+15, tpositiony, &tr[0], 0);
 
 	return UPDATE_CONTINUE;
 }

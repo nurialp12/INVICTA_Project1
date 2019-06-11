@@ -842,7 +842,7 @@ update_status ModulePlayer2::Update()
 
 	App->render->Blit(UI, 165, 0, &lifebar, 0);
 	if (life_score <= 24)
-		App->render->Blit(UI, 264, 27, &(LifeBlink.GetCurrentFrame()), 0);
+		App->render->Blit(UI, 171, 27, &(LifeBlink.GetCurrentFrame()), 0);
 
 	if (life_score >= 4)
 	{
