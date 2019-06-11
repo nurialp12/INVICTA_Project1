@@ -105,7 +105,7 @@ ModulePlayer::ModulePlayer()
 		AndyGoingDown.speed = 0.08f;
 	}
 
-	// KICK animation of Terry							//spritesTerryBogard2extres.png
+	// KICK animation of Andy
 	{
 		AndyKick.PushBack({ 129, 0,  44, 150 });
 		AndyKick.PushBack({ 173, 0,  56, 150 });
@@ -374,7 +374,7 @@ ModulePlayer::ModulePlayer()
 
 //MIRROR -----------------------------------------------------------------------------------------				
 	{
-		//IDLE                                                IMPL
+		//IDLE--------------------------IMPL 
 		AndyIdleM.PushBack({ 1748, 150, 60, 150 });
 		AndyIdleM.PushBack({ 1808, 150, 60, 150 });
 		AndyIdleM.PushBack({ 1868, 150, 60, 150 });
@@ -384,14 +384,14 @@ ModulePlayer::ModulePlayer()
 
 		AndyIdleBM.PushBack({ 1025, 150, 60, 150 });
 
-		// WALK FORWARD                                                IMPL
+		// WALK FORWARD--------------------------IMPL 
 		AndyForwardM.PushBack({ 1441, 150, 63, 150 });
 		AndyForwardM.PushBack({ 1378, 150, 63, 150 });
 		AndyForwardM.PushBack({ 1315, 150, 63, 150 });
 		AndyForwardM.PushBack({ 1252, 150, 63, 150 });
 		AndyForwardM.speed = 0.05f;
 
-		// WALK BACKWARDS                                                IMPL
+		// WALK BACKWARDS--------------------------IMPL 
 		AndyBackwardsM.PushBack({ 1504, 150, 61, 150 });
 		AndyBackwardsM.PushBack({ 1565, 150, 61, 150 });
 		AndyBackwardsM.PushBack({ 1626, 150, 61, 150 });
@@ -417,13 +417,16 @@ ModulePlayer::ModulePlayer()
 			AndyGoingDownM.speed = 0.08f;
 		}
 
-		// KICK
-		AndyKickM.PushBack({   0, 137, 116, 112 });
-		AndyKickM.PushBack({ 116, 137, 116, 112 });
-		AndyKickM.PushBack({ 232, 137, 116, 112 });
-		AndyKickM.PushBack({ 348, 137, 116, 112 });
-		AndyKickM.PushBack({ 464, 137, 116, 112 });
-		AndyKickM.speed = 0.1f;
+		//KICK--------------------------IMPL 
+		{
+			AndyKick.PushBack({ 1709, 0, 113, 150 });
+			AndyKick.PushBack({ 1596, 0, 113, 150 });
+			AndyKick.PushBack({ 1483, 0, 113, 150 });
+			AndyKick.PushBack({ 1370, 0, 113, 150 });
+			AndyKick.PushBack({ 1257, 0, 113, 150 });
+			AndyKick.PushBack({ 1144, 0, 113, 150 });
+			AndyKick.speed = 0.1f;
+		}
 
 		//PUNCH
 		{
@@ -443,19 +446,19 @@ ModulePlayer::ModulePlayer()
 		AndyPWM.PushBack({ 198, 683, 60, 112 });
 		AndyPWM.speed = 0.1f;
 
-		//DAMAGED BY PUNCH
-		AndyDPM.PushBack({  0, 912, 59, 112 });
-		AndyDPM.PushBack({ 64, 912, 67, 112 });
+		//DAMAGED BY PUNCH--------------------------IMPL 
+		AndyDPM.PushBack({ 1983, 1650, 65, 150 });
+		AndyDPM.PushBack({ 1918, 1650, 65, 150 });
 		AndyDPM.speed = 0.1f;
 
-		//DAMAGED BY KICK
-		AndyDKM.PushBack({ 136, 912, 63, 112 });
-		AndyDKM.PushBack({ 211, 912, 68, 112 });
+		//DAMAGED BY KICK--------------------------IMPL 
+		AndyDKM.PushBack({ 1854, 1650, 64, 150 });
+		AndyDKM.PushBack({ 1790, 1650, 64, 150 });
 		AndyDKM.speed = 0.1f;
 
-		//CROUCH
-		AndyCrouchM.PushBack({ 488, 912, 57, 112 });
-		AndyCrouchM.PushBack({ 545, 912, 52, 112 });
+		//CROUCH--------------------------IMPL 
+		AndyCrouch.PushBack({ 1083, 0, 59, 150 });
+		AndyCrouch.PushBack({ 1024, 0, 59, 150 });
 		AndyCrouchM.speed = 0.2f;
 		AndyCrouchM.loop = false;
 
@@ -472,11 +475,12 @@ ModulePlayer::ModulePlayer()
 		AndyCrouchPunchM.PushBack({ 416, 912, 49, 112 }); //Riposte x2
 		AndyCrouchPunchM.speed = 0.1f;
 
-		//CROUCHKICK
-		AndyCrouchKickM.PushBack({   0, 788, 56, 112 });   //Charge
-		AndyCrouchKickM.PushBack({  56, 788, 58, 112 });  //Riposte
-		AndyCrouchKickM.PushBack({ 114, 788, 92, 112 }); //Punch
-		AndyCrouchKickM.PushBack({ 206, 788, 58, 112 }); //Riposte x2
+		//CROUCHKICK--------------------------IMPL 
+		AndyCrouchKick.PushBack({ 1884, 600, 119, 150 });   //Charge
+		AndyCrouchKick.PushBack({ 1765, 600, 119, 150 });  //Riposte
+		AndyCrouchKick.PushBack({ 1246, 600, 119, 150 }); //Punch
+		AndyCrouchKick.PushBack({ 1765, 600, 119, 150 });
+		AndyCrouchKick.PushBack({ 1884, 600, 119, 150 });
 		AndyCrouchKickM.speed = 0.1f;
 
 		//JUMPPUNCH
