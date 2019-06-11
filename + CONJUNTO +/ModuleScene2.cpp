@@ -134,23 +134,23 @@ ModuleScene2::ModuleScene2()
 	people1.speed = 0.05f;
 
 	people2.PushBack({ 143, 411, 65, 97 });  
-	people2.PushBack({ 143, 520, 65, 97 });
+	people2.PushBack({ 143, 517, 65, 97 });
 	people2.speed = 0.05f;
 
 	people3.PushBack({ 246, 404, 62, 99 }); 
-	people3.PushBack({ 246, 512, 62, 99 });
+	people3.PushBack({ 246, 511, 62, 99 });
 	people3.speed = 0.05f;
 
 	people4.PushBack({ 347, 402, 69, 95 }); 
-	people4.PushBack({ 347, 514, 69, 95 });
-	people4.speed = 0.05f;
+	people4.PushBack({ 350, 515, 69, 95 });
+	people4.speed = 0.07f;
 
 	people1T.PushBack({ 39, 904, 64, 100 });
 	people1T.PushBack({ 39, 1013, 64, 100 });
 	people1T.speed = 0.05f;
 
 	people2T.PushBack({ 143, 912, 65, 97 });
-	people2T.PushBack({ 143, 1019, 65, 97 });
+	people2T.PushBack({ 143, 1018, 65, 97 });
 	people2T.speed = 0.05f;
 
 	people3T.PushBack({ 246, 905, 62, 99 });
@@ -158,7 +158,7 @@ ModuleScene2::ModuleScene2()
 	people3T.speed = 0.05f;
 
 	people4T.PushBack({ 347, 903, 69, 95 });
-	people4T.PushBack({ 347, 1015, 69, 95 });
+	people4T.PushBack({ 347, 1016, 69, 95 });
 	people4T.speed = 0.05f;
 
 	people1N.PushBack({ 39, 1404, 64, 100 });
@@ -166,7 +166,7 @@ ModuleScene2::ModuleScene2()
 	people1N.speed = 0.05f;
 		   
 	people2N.PushBack({ 143, 1412, 65, 97 });
-	people2N.PushBack({ 143, 1519, 65, 97 });
+	people2N.PushBack({ 143, 1518, 65, 97 });
 	people2N.speed = 0.05f;
 		   
 	people3N.PushBack({ 246, 1405, 62, 99 });
@@ -174,7 +174,7 @@ ModuleScene2::ModuleScene2()
 	people3N.speed = 0.05f;
 		   
 	people4N.PushBack({ 347, 1403, 69, 95 });
-	people4N.PushBack({ 347, 1515, 69, 95 });
+	people4N.PushBack({ 347, 1516, 69, 95 });
 	people4N.speed = 0.05f;
 
 }
