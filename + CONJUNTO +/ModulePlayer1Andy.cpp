@@ -33,6 +33,12 @@ ModulePlayer::ModulePlayer()
 	life2 = { 11, 77, 4, 6 };
 	lifered = { 42, 149, 94, 5 };
 
+	ball.PushBack({ 86, 161, 16, 16 });
+	ball.PushBack({ 54, 161, 16, 16 });
+	ball.PushBack({ 86, 161, 16, 16 });
+	ball.PushBack({ 70, 161, 16, 16 });
+	ball.speed = 0.07f;
+
 	//LIFE BLINK
 	{
 		LifeBlink.PushBack(lifered);
@@ -266,8 +272,11 @@ ModulePlayer::ModulePlayer()
 
 	//THROW ---- SPRITES NEEDED KAWWAKS
 	{
-		AndyThrow.PushBack({ 0, 0, 0, 0 });
-		AndyThrow.speed = 0.1f;
+		AndyThrow.PushBack({ 105, 1200, 58, 150 });
+		AndyThrow.PushBack({ 163, 1200, 72, 150 });
+		AndyThrow.PushBack({ 163, 1200, 72, 150 });
+		AndyThrow.PushBack({ 105, 1200, 58, 150 });
+		AndyThrow.speed = 0.01f;
 	}
 
 	//THROWING ---- SPRITES NEEDED KAWWAKS
@@ -626,7 +635,7 @@ bool ModulePlayer::Start()
 	colj  = App->collisions->AddCollider({    0, 10000, 36, 60 }, COLLIDER_PLAYER, App->player);
 	colcp = App->collisions->AddCollider({ 1000, 10000, 25, 20 }, COLLIDER_PLAYER_SHOT, App->player);
 	colck = App->collisions->AddCollider({ 1000, 10000, 40, 20 }, COLLIDER_PLAYER_SHOT, App->player);
-
+	colt  = App->collisions->AddCollider({ 1000, 10000, 50, 50 }, COLLIDER_PLAYER_SHOT, App->player);
 	currentstate = ST_IDLE;
 	current_animation = &AndyIdle;
 
@@ -830,8 +839,7 @@ update_status ModulePlayer::Update()
 				if (Andyposition.x < 700 && App->player2->Andy2position.x + SCREEN_WIDTH - 60 > Andyposition.x)	Andyposition.x += 2;
 			}
 		}
-
-		
+	
 		if (App->input->gController1 != NULL)
 		{
 			if ((!inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP) && currentstate == ST_WALK_RIGHT)
@@ -1433,6 +1441,51 @@ update_status ModulePlayer::Update()
 		}
 	}*/
 
+	//THROW
+	{
+		if (App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_DOWN && (currentstate == ST_WALK_RIGHT || currentstate == ST_WALK_LEFT || currentstate == ST_IDLE))
+		{
+			if (currentstate != ST_IDLE) colt = App->collisions->AddCollider({ Andyposition.x + 65, Andyposition.y + 65, 16, 55 }, COLLIDER_PLAYER_SHOT, App->player);
+			Andyposition.x += 25;
+			currentstate = ST_THROWING;
+			if (mirror) current_animation = &AndyThrowM;
+			else current_animation = &AndyThrow;
+		}
+		if (AndyThrow.Finished())
+		{
+			Andyposition.x -= 25;
+
+			AndyThrow.resetLoops(0);
+			colt->to_delete = true;
+			if (inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+			{
+				currentstate = ST_WALK_RIGHT;
+				current_animation = &AndyForward;
+			}
+			else if (inputAndy.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+			{
+				currentstate = ST_WALK_LEFT;
+				current_animation = &AndyBackwards;
+			}
+			else
+				currentstate = ST_IDLE;
+			App->player2->collided = false;
+		}
+	}
+
+
+	//THROWING
+	{
+
+	}
+
+
+	//VOLANDING
+	{
+
+	}
+
+
 	//GOD MODE
 	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN)
 	{
@@ -1513,6 +1566,17 @@ update_status ModulePlayer::Update()
 		App->render->Blit(UI, 115, 26, &life2, 0);
 		App->render->Blit(UI, 119, 26, &life1, 0);
 	}
+
+	if (App->scene_2->p1won)
+	{
+		App->render->Blit(UI, 9, 49, &(ball.GetCurrentFrame()), 0);
+	}
+
+	if (App->scene_2->p1won2)
+	{
+		App->render->Blit(UI, 25, 49, &(ball.GetCurrentFrame()), 0);
+	}
+
 
 	if (currentstate == ST_PUNCH_STANDING && mirror)
 		col->rect.x = Andyposition.x + 58;

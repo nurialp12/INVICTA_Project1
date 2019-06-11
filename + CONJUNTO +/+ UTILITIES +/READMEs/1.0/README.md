@@ -7,13 +7,19 @@ Each of the playable characters has special techniques that are performed by inp
 Fatal Fury was developed around the same time as Street Fighter II but Fatal Fury focused more on the timing of special moves and storytelling instead of the combos which Street Fighter II emphasised.
 
 
+
 ## Installation
 Download the .zip (which can be found in our Github Project -link below- in releases and in our github wewb page).
 Go to the file "Game" and click "SDL5 Handout"
 Enjoy!
 
 
+
 ## Usage
+
+CONTROLS:
+
+	COMPUTER
 
 	PLAYER 1
 	A move left
@@ -22,7 +28,7 @@ Enjoy!
 	W jump
 	F punch
 	G kick
-	H Power Wave
+	H throw
 	
 
 	PLAYER 2
@@ -30,14 +36,49 @@ Enjoy!
 	DOWN KEY crouch
 	RIGHT KEY move right
 	UP KEY jump
-	I punch
-	O kick
-	P Power Wave
+	J punch
+	K kick
+	L throw
+
+
+	GAMEPAD
+
+	PLAYER 1 and 2
+	(Joystick left) move left
+	(Joystick down) crouch
+	(Joystick right) move right
+	(Joystick uo) jump
+	B punch
+	A kick
+	X throw
 	
-Space to change screens
-ESC to leave the game
+
+	Space to change screens
+	ESC to leave the game	
+
+
+
+*When using one (1) gamepad, it becomes the player 1 and its keyboard keys are disabled.
+*When using two (2) gamepads, their keyboard keys are disabled.
+*When using two (2) gamepads, if you disconnect P2's gamepad, it will enable P2's keys.
+*When using two (2) gamepads, if you disconnect P1's gamepad, it will enable P2's keys.
+
+
+
+COMBOS:
+				Command (Computer P1)		Command (Computer P2)		Command (Gamepad) 
+	Backdrop* (Throw)	Moving towards P2 and H		Moving towards P1 and L		Moving towards P1 and X
+	Hishoken		S->SD(->D)->F			(down->down/right->right->J)	down->down/right->right->B
+	Zaneiken		A->D->F				left->right->J			left->right->B
+	Shoryudan		S(hold)->W->F			down(hold)->up->J		down(hold)->up->B
+	Kuhadan			AS(hold)->WD->G			left/down(hold)->right/up->K	left/down(hold)->right/up->A
+
+Combos implemented: Throw (midways), Hishoken
+
+
 
 DEBUG:
+
 	F1 collisions
 	F2 direct win (PLAYER 1)
 	F3 direct lose (PLAYER 1)
@@ -50,13 +91,15 @@ DEBUG:
 
 	F9 mute/unmute sound
 
-	CAMERA:
+	CAMERA
+	, to move up the camera
+	. to move down the camera
+
 	7 to move left the camera
 	8 to move right the camera
 	9 to move up the camera
 	0 to move down the camera
-	, to move up the camera
-	. to move down the camera
+
 
 
 ## Contributing
@@ -65,6 +108,7 @@ DEBUG:
 3. Commit your changes: 'git commit -am 'Add some feature'
 4. Push to the branch: 'git push origin my-new-feature'
 5. Submit a pull request :D
+
 
 
 ## History
@@ -111,7 +155,7 @@ TODO: Write history
 	Note: 
 0.5
 	Playable version of the game to try it out with Terry Bogard in the Stage Pao Pao Café. 
-	This content (the player and stage) shall be removed upon the next release.
+	This content (the player ans stage) shall be removed upon the next release.
 1.0
 	Attempt to make an exact copy of the game in the Stage Sound Beach with Andy Bogard as the only player
 	CONTENT:
@@ -123,8 +167,9 @@ TODO: Write history
 		Score and Fonts
 		Play in Full Screen
 		Gamepad or keyboard to play
+		Combos
 		Collisions
-		
+
 
 
 ## Credits
@@ -138,7 +183,8 @@ Alex Lopez
 Github: https://github.com/nurialp12/INVICTA_Project1
 Releases: https://github.com/nurialp12/INVICTA_Project1/releases
 Wiki: https://github.com/nurialp12/INVICTA_Project1/wiki
-Our Web Page: https://nurialp12.github.io/INVICTA_Project1/
+Our web page: https://nurialp12.github.io/INVICTA_Project1/
+
 
 
 ## License
