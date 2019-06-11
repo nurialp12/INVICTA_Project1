@@ -15,6 +15,8 @@ Enjoy!
 
 ## Usage
 
+CONTROLS:
+
 	PLAYER 1
 	A move left
 	S crouch
@@ -22,7 +24,7 @@ Enjoy!
 	W jump
 	F punch
 	G kick
-	H Power Wave
+	H throw
 	
 
 	PLAYER 2
@@ -30,17 +32,18 @@ Enjoy!
 	DOWN KEY crouch
 	RIGHT KEY move right
 	UP KEY jump
-	I punch
-	O kick
-	P Power Wave
+	J punch
+	K kick
+	L throw
+
+COMBOS:
+				Command (Computer P1)		Command (Computer P2)		Command (Gamepad) 
+	Backdrop* (Throw)	Moving towards P2 and H		Moving towards P1 and L		Moving towards P1 and X
+	
+
+	
 	
 Space to change screens
-, to move up the camera
-. to move down the camera
-	7 to move left the camera
-	8 to move right the camera
-	9 to move up the camera
-	0 to move down the camera
 ESC to leave the game
 
 DEBUG:
@@ -56,6 +59,14 @@ DEBUG:
 
 	F9 mute/unmute sound
 
+	CAMERA
+	, to move up the camera
+	. to move down the camera
+		7 to move left the camera
+		8 to move right the camera
+		9 to move up the camera
+		0 to move down the camera
+
 
 ## Contributing
 1. Fork it!
@@ -63,6 +74,7 @@ DEBUG:
 3. Commit your changes: 'git commit -am 'Add some feature'
 4. Push to the branch: 'git push origin my-new-feature'
 5. Submit a pull request :D
+
 
 
 ## History
@@ -118,10 +130,11 @@ TODO: Write history
 		Sound Beach Stage
 		Sound effects and mmusic
 		Debug functionality
-		Score
+		Score and Fonts
 		Play in Full Screen
 		Gamepad or keyboard to play
-		
+		Combos
+
 
 
 ## Credits
@@ -135,6 +148,8 @@ Alex Lopez
 Github: https://github.com/nurialp12/INVICTA_Project1
 Releases: https://github.com/nurialp12/INVICTA_Project1/releases
 Wiki: https://github.com/nurialp12/INVICTA_Project1/wiki
+Our web page: https://nurialp12.github.io/INVICTA_Project1/
+
 
 
 ## License
