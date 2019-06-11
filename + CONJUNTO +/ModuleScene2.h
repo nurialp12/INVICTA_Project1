@@ -21,6 +21,9 @@ public:
 
 	bool p1won;
 	bool p2won;
+	bool p1won2;
+	bool p2won2;
+
 	bool reboot;
 	int round;
 

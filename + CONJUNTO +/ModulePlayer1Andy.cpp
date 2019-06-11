@@ -105,7 +105,7 @@ ModulePlayer::ModulePlayer()
 		AndyGoingDown.speed = 0.08f;
 	}
 
-	// KICK animation of Terry							//spritesTerryBogard2extres.png
+	// KICK animation of Andy
 	{
 		AndyKick.PushBack({ 129, 0,  44, 150 });
 		AndyKick.PushBack({ 173, 0,  56, 150 });
@@ -374,7 +374,7 @@ ModulePlayer::ModulePlayer()
 
 //MIRROR -----------------------------------------------------------------------------------------				
 	{
-		//IDLE
+		//IDLE--------------------------IMPL 
 		AndyIdleM.PushBack({ 1748, 150, 60, 150 });
 		AndyIdleM.PushBack({ 1808, 150, 60, 150 });
 		AndyIdleM.PushBack({ 1868, 150, 60, 150 });
@@ -384,14 +384,14 @@ ModulePlayer::ModulePlayer()
 
 		AndyIdleBM.PushBack({ 1025, 150, 60, 150 });
 
-		// WALK FORWARD 
+		// WALK FORWARD--------------------------IMPL 
 		AndyForwardM.PushBack({ 1441, 150, 63, 150 });
 		AndyForwardM.PushBack({ 1378, 150, 63, 150 });
 		AndyForwardM.PushBack({ 1315, 150, 63, 150 });
 		AndyForwardM.PushBack({ 1252, 150, 63, 150 });
 		AndyForwardM.speed = 0.05f;
 
-		// WALK BACKWARDS
+		// WALK BACKWARDS--------------------------IMPL 
 		AndyBackwardsM.PushBack({ 1504, 150, 61, 150 });
 		AndyBackwardsM.PushBack({ 1565, 150, 61, 150 });
 		AndyBackwardsM.PushBack({ 1626, 150, 61, 150 });
@@ -417,13 +417,16 @@ ModulePlayer::ModulePlayer()
 			AndyGoingDownM.speed = 0.08f;
 		}
 
-		// KICK
-		AndyKickM.PushBack({   0, 137, 116, 112 });
-		AndyKickM.PushBack({ 116, 137, 116, 112 });
-		AndyKickM.PushBack({ 232, 137, 116, 112 });
-		AndyKickM.PushBack({ 348, 137, 116, 112 });
-		AndyKickM.PushBack({ 464, 137, 116, 112 });
-		AndyKickM.speed = 0.1f;
+		//KICK--------------------------IMPL 
+		{
+			AndyKick.PushBack({ 1709, 0, 113, 150 });
+			AndyKick.PushBack({ 1596, 0, 113, 150 });
+			AndyKick.PushBack({ 1483, 0, 113, 150 });
+			AndyKick.PushBack({ 1370, 0, 113, 150 });
+			AndyKick.PushBack({ 1257, 0, 113, 150 });
+			AndyKick.PushBack({ 1144, 0, 113, 150 });
+			AndyKick.speed = 0.1f;
+		}
 
 		//PUNCH
 		{
@@ -443,19 +446,19 @@ ModulePlayer::ModulePlayer()
 		AndyPWM.PushBack({ 198, 683, 60, 112 });
 		AndyPWM.speed = 0.1f;
 
-		//DAMAGED BY PUNCH
-		AndyDPM.PushBack({  0, 912, 59, 112 });
-		AndyDPM.PushBack({ 64, 912, 67, 112 });
+		//DAMAGED BY PUNCH--------------------------IMPL 
+		AndyDPM.PushBack({ 1983, 1650, 65, 150 });
+		AndyDPM.PushBack({ 1918, 1650, 65, 150 });
 		AndyDPM.speed = 0.1f;
 
-		//DAMAGED BY KICK
-		AndyDKM.PushBack({ 136, 912, 63, 112 });
-		AndyDKM.PushBack({ 211, 912, 68, 112 });
+		//DAMAGED BY KICK--------------------------IMPL 
+		AndyDKM.PushBack({ 1854, 1650, 64, 150 });
+		AndyDKM.PushBack({ 1790, 1650, 64, 150 });
 		AndyDKM.speed = 0.1f;
 
-		//CROUCH
-		AndyCrouchM.PushBack({ 488, 912, 57, 112 });
-		AndyCrouchM.PushBack({ 545, 912, 52, 112 });
+		//CROUCH--------------------------IMPL 
+		AndyCrouch.PushBack({ 1083, 0, 59, 150 });
+		AndyCrouch.PushBack({ 1024, 0, 59, 150 });
 		AndyCrouchM.speed = 0.2f;
 		AndyCrouchM.loop = false;
 
@@ -472,11 +475,12 @@ ModulePlayer::ModulePlayer()
 		AndyCrouchPunchM.PushBack({ 416, 912, 49, 112 }); //Riposte x2
 		AndyCrouchPunchM.speed = 0.1f;
 
-		//CROUCHKICK
-		AndyCrouchKickM.PushBack({   0, 788, 56, 112 });   //Charge
-		AndyCrouchKickM.PushBack({  56, 788, 58, 112 });  //Riposte
-		AndyCrouchKickM.PushBack({ 114, 788, 92, 112 }); //Punch
-		AndyCrouchKickM.PushBack({ 206, 788, 58, 112 }); //Riposte x2
+		//CROUCHKICK--------------------------IMPL 
+		AndyCrouchKick.PushBack({ 1884, 600, 119, 150 });   //Charge
+		AndyCrouchKick.PushBack({ 1765, 600, 119, 150 });  //Riposte
+		AndyCrouchKick.PushBack({ 1246, 600, 119, 150 }); //Punch
+		AndyCrouchKick.PushBack({ 1765, 600, 119, 150 });
+		AndyCrouchKick.PushBack({ 1884, 600, 119, 150 });
 		AndyCrouchKickM.speed = 0.1f;
 
 		//JUMPPUNCH
@@ -733,32 +737,78 @@ update_status ModulePlayer::Update()
 
 	if (currentstate == ST_IDLE)
 		if (inputAndy.J_DOWN || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN)
-			counterdown = 60;
+			counterdown = 20;
 	counterdown--;
 	if (currentstate == ST_CROUCH && mirror && counterdown > 0)
 	{
-		if ((inputAndy.J_DOWN && inputAndy.J_LEFT) || (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN))
+		if ((inputAndy.J_DOWN && inputAndy.J_LEFT) || (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN))
 		{
-			counterdownleft = 60;
+			counterdownleft = 20;
 		}
 	}
 	else if (currentstate == ST_CROUCH && counterdown > 0)
 	{
-		if ((inputAndy.J_DOWN && inputAndy.J_RIGHT) || (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN))
+		if ((inputAndy.J_DOWN && inputAndy.J_RIGHT) || (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN))
 		{
-			counterdownright = 60;
+			counterdownright = 20;
 		}
 	}
 	counterdownleft--;
 	counterdownright--;
 
-	if (currentstate == ST_CROUCH && mirror && counterdownleft > 0)
+	if ((currentstate == ST_CROUCH && counterdownleft > 0 || counterdownright > 0) && (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_REPEAT || inputAndy.J_B))
 	{
-		//hacer hadouken hacia la izquierda
+		currentstate = ST_POWER_WAVE;
+		current_animation = &AndyPW;
+		App->audio->PlayFX("Assets/FX/Voice/Special Attacks/FX_HishokenAttackAndyBogardVoice/FX_HishokenAttackAndyBogardVoice.wav");
+		colc->rect.y = 10000;
+		if (!gmode)
+			col->rect.y = Andyposition.y + 50;
 	}
-	else if (currentstate == ST_CROUCH && counterdownright > 0)
+	if (AndyPW.Finished() == true)
 	{
-		//hacer hadouken hacia la derecha
+		Uint32 inittime = 200;
+		if (SDL_GetTicks() >= inittime && counterdownright && !mirror)
+		{
+			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x + 60, Andyposition.y + 12);
+			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x + 76, Andyposition.y + 12, 200);
+			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x + 92, Andyposition.y + 12, 400);
+			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x + 108, Andyposition.y + 12, 600);
+			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x + 124, Andyposition.y + 12, 800);
+			App->particles->terryenergy.col->to_delete == true;
+		}
+		else if (SDL_GetTicks() >= inittime && counterdownleft && mirror)
+		{
+			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x - 60, Andyposition.y - 12);
+			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x - 76, Andyposition.y - 12, 200);
+			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x - 92, Andyposition.y - 12, 400);
+			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x - 108, Andyposition.y - 12, 600);
+			App->particles->AddParticle(App->particles->terryenergy, Andyposition.x - 124, Andyposition.y - 12, 800);
+			App->particles->terryenergy.col->to_delete == true;
+		}
+		AndyPW.resetLoops(0);
+		if (inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_WALK_RIGHT;
+			current_animation = &AndyForward;
+		}
+		else if (inputAndy.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_WALK_LEFT;
+			current_animation = &AndyBackwards;
+		}
+		else
+		{
+			currentstate = ST_IDLE;
+			current_animation = &AndyIdle;
+		}
+		if (inputAndy.J_DOWN || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		{
+			col->rect.y = 10000;
+			if (!gmode)
+				colc->rect.y = Andyposition.y + 91;
+		}
+		AndyPW.resetLoops(0);
 	}
 
 	//IDLE
@@ -1234,7 +1284,8 @@ update_status ModulePlayer::Update()
 			col->rect.y = 10000;
 			if (gmode != true)	colc->rect.y = Andyposition.y + 91;
 		}
-		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) < 14000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTY) > 4000 || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP) && currentstate == ST_CROUCH)
+
+		if (App->input->gController1 != NULL)
 		{
 			if (inputAndy.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 			{
@@ -1351,7 +1402,7 @@ update_status ModulePlayer::Update()
 	}
 
 	//POWER WAVE
-	{
+	/*{
 		if (currentstate == ST_SD && App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN)
 		{
 			currentstate = ST_POWER_WAVE;
@@ -1399,7 +1450,7 @@ update_status ModulePlayer::Update()
 			}
 			AndyPW.resetLoops(0);
 		}
-	}
+	}*/
 
 	//THROW
 	{
@@ -1605,6 +1656,10 @@ update_status ModulePlayer::Update()
 			App->render->Blit(UI, 9, 49, &(ball.GetCurrentFrame()), 0);
 		}
 	}
+	/*if (App->scene_2->p1won2)
+	{
+		App->render->Blit(UI, 25, 49, &(ball.GetCurrentFrame()), 0);
+	}*/
 
 	if (currentstate == ST_PUNCH_STANDING && mirror)
 		col->rect.x = Andyposition.x + 58;
@@ -1650,8 +1705,39 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (!invencible && c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY_SHOT && !collided && App->player2->currentstate == ST_PUNCH_STANDING2)
 	{
-		life_score -= 14;
-		App->player2->p_score += 100;
+		//if (ST_WALK_LEFT && !mirror)
+		//{
+		//	//block
+		//}
+		//else if (ST_WALK_RIGHT && mirror)
+		//{
+		//	//block
+		//}
+		//else
+		{
+			life_score -= 14;
+			App->player2->p_score += 100;
+		}
+		collided = true;
+		//currentstate = ST_BEING_PUNCHED;
+		//if(mirror) App->player2->current_animation = &AndyPunchLongM;
+		//else App->player2->current_animation = &AndyPunchLong;
+	}
+
+	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY_SHOT && !collided && App->player2->currentstate == ST_PUNCH_CROUCH2)
+	{
+		if (ST_WALK_LEFT && !mirror)
+		{
+			//block
+		}
+		else if (ST_WALK_RIGHT && mirror)
+		{
+			//block
+		}
+		else
+		{
+			life_score -= 14;
+		}
 		collided = true;
 		invencible = true;
 		currentstate = ST_BEING_PUNCHED;
@@ -1661,7 +1747,38 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	if (!invencible && c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY_SHOT && !collided && App->player2->currentstate == ST_KICK_STANDING2)
 	{
-		life_score -= 16;
+		if (ST_WALK_LEFT && !mirror)
+		{
+			//block
+		}
+		else if (ST_WALK_RIGHT && mirror)
+		{
+			//block
+		}
+		else
+		{
+			life_score -= 16;
+		}
+		collided = true;
+		//currentstate = ST_BEING_PUNCHED;
+		//if(mirror) App->player2->current_animation = &AndyPunchLongM;
+		//else App->player2->current_animation = &AndyPunchLong;
+	}
+
+	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY_SHOT && !collided && App->player2->currentstate == ST_KICK_CROUCH2)
+	{
+		if (ST_WALK_LEFT && !mirror)
+		{
+			//block
+		}
+		else if (ST_WALK_RIGHT && mirror)
+		{
+			//block
+		}
+		else
+		{
+			life_score -= 16;
+		}
 		collided = true;
 		invencible = true;
 		currentstate = ST_BEING_KICKED;

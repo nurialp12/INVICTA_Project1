@@ -134,7 +134,7 @@ ModuleScene2::ModuleScene2()
 	people1.speed = 0.05f;
 
 	people2.PushBack({ 143, 411, 65, 97 });  
-	people2.PushBack({ 143, 518, 65, 97 });
+	people2.PushBack({ 143, 520, 65, 97 });
 	people2.speed = 0.05f;
 
 	people3.PushBack({ 246, 404, 62, 99 }); 
@@ -206,6 +206,8 @@ bool ModuleScene2::Start()
 	App->player2->life_score = 94;
 	p1won = false;
 	p2won = false;
+	p1won2 = false;
+	p2won2 = false;
 
 	// TODO 1: Add colliders for the first columns of the level
 	
@@ -390,15 +392,15 @@ update_status ModuleScene2::Update()
 		App->fade->Reboot(1.5);
 		timer_num = 93;
 	}
-	else if ((App->player->life_score <= 0 (App->player2->life_score > App->player->life_score && timer_num <= 0)) && !p2won)
+	else if ((App->player->life_score <= 0 (App->player2->life_score > App->player->life_score && timer_num <= 0)) && p2won)
 	{
+		p2won2 = true;
 		App->fade->FadeToBlack(App->scene_2, App->end_game2, 2.5);
 	}
-	else if ((App->player2->life_score <= 0 || (App->player2->life_score < App->player->life_score && timer_num <= 0)) && !p1won)
+	else if ((App->player2->life_score <= 0 || (App->player2->life_score < App->player->life_score && timer_num <= 0)) && p1won)
 	{
-	
+		p1won2 = true;
 		App->fade->FadeToBlack(App->scene_2, App->end_game1, 2.5);
-		timer_num = 93;
 	}
 	else if (App->player2->life_score <= 0 && App->player->life_score <= 0 || (timer_num <= 0 && App->player2->life_score == App->player->life_score))
 	{

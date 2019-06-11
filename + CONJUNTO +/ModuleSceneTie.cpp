@@ -67,7 +67,7 @@ update_status ModuleSceneTie::Update()
 	App->render->camera.y = -10;
 
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	if (App->input->gpad[SDL_CONTROLLER_BUTTON_B][1] == KEY_DOWN || App->input->gpad[SDL_CONTROLLER_BUTTON_B][2] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(App->tie, App->intro, 2.5);
 	}
