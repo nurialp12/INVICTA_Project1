@@ -17,7 +17,7 @@ private:
 	int loops = 0;
 
 public:
-	void resetLoops(int a)
+	void resetLoops(const int a) 
 	{
 		loops = a;
 	}

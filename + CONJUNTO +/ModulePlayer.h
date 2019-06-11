@@ -17,8 +17,8 @@ enum terry_states
 	ST_UNKNOWN,
 
 	ST_IDLE,
-	ST_WALK_FORWARD,
-	ST_WALK_BACKWARD,
+	ST_WALK_RIGHT,
+	ST_WALK_LEFT,
 	ST_GOING_UP,
 	ST_GOING_UP_FORWARD,
 	ST_GOING_UP_BACKWARD,
@@ -80,10 +80,26 @@ public:
 public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* UI = nullptr;
+	SDL_Texture* score = nullptr;
 	SDL_Rect lifebar;
 	SDL_Rect life1;
 	SDL_Rect life2;
 	SDL_Rect lifered;
+	SDL_Rect zero;
+	SDL_Rect one;
+	SDL_Rect two;
+	SDL_Rect three;
+	SDL_Rect four;
+	SDL_Rect five;
+	SDL_Rect six;
+	SDL_Rect seven;
+	SDL_Rect eight;
+	SDL_Rect nine;
+	iPoint position;
+	int n[5];
+	SDL_Rect r[5];
+	int pastscore;
+	int player;
 	float life_score = 92;
 	int font_score = -1;
 	char score_text[10];
@@ -272,7 +288,6 @@ public:
 	Uint32 jump_timer = 0;
 	Uint32 punch_timer = 0;
 
-	InputP1 inputTerry;
 	InputP1 inputAndy;
 	terry_states currentstate; //Terry and Andy's states are the same
 
