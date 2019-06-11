@@ -57,8 +57,14 @@ A sneak peak to our tribute game featuring main debug functionality.
 
 [ORIGINAL GAME GAMEPLAY](https://www.youtube.com/watch?reload=9&v=HaGLQx7gU8U)
 
+[![Neo Geo](https://user-images.githubusercontent.com/45202069/54490964-e1262080-48ba-11e9-9417-95b7d2374868.png)
+](https://youtu.be/EdcM2x3tSDQ)
+
 
 [OUR VERSION OF THE GAME GAMEPLAY _(Under construction!)_](https://www.youtube.com/watch?reload=9&v=HaGLQx7gU8U)
+
+[![Neo Geo](https://user-images.githubusercontent.com/45202069/54490964-e1262080-48ba-11e9-9417-95b7d2374868.png)
+](https://youtu.be/EdcM2x3tSDQ)
 
 
 
