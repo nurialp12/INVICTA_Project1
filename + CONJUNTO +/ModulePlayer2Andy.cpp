@@ -631,12 +631,12 @@ update_status ModulePlayer2::Update()
 			}
 			App->audio->PlayFX("Assets/FX/Voice/Attacks/FX_Attack4/FX_Attack4.wav");
 		}
-		if (AndyKickM.Finished())Andy2position.x += 50;
 		if (AndyKick.Finished() == true || AndyKickM.Finished() == true)
 		{
+			if(mirror2)Andy2position.x += 50;
 			colk->to_delete = true;
+			AndyKickM.resetLoops(0); 
 			AndyKick.resetLoops(0);
-			AndyKickM.resetLoops(0);
 			if (inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 			{
 				currentstate = ST_WALK_RIGHT2;
@@ -650,7 +650,7 @@ update_status ModulePlayer2::Update()
 				else current_animation = &AndyBackwards;
 			}
 			else currentstate = ST_IDLE2;
-			App->player2->collided = false;
+			App->player->collided = false;
 		}
 	}
 
