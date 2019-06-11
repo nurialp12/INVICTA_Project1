@@ -23,21 +23,37 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("Assets/Sprites/spritesTerryBogard.png");
+	graphics = App->textures->Load("Assets/Sprites/Sprites_AndyBogard_ok.png");
 
 	// TODO 2: Create the template for a new particle "laser"
-	terryenergy.anim.PushBack({ 978, 695, 16, 105 });
-	terryenergy.anim.PushBack({ 956, 695, 16, 105 });
-	terryenergy.anim.PushBack({ 934, 695, 16, 105 });
-	terryenergy.anim.PushBack({ 956, 695, 16, 105 });
-	terryenergy.anim.PushBack({ 978, 695, 16, 105 });
-	terryenergy.anim.loop = false;
-	terryenergy.anim.speed = 0.05f;
-	if ((App->player->mirror && App->player->currentstate == ST_POWER_WAVE) || (App->player->mirror2 && App->player2->currentstate == ST_POWER_WAVE2))
-		terryenergy.speed.x = -1;
-	else
-		terryenergy.speed.x = 1;
+	//terryenergy.anim.PushBack({ 978, 695, 16, 105 });
+	//terryenergy.anim.PushBack({ 956, 695, 16, 105 });
+	//terryenergy.anim.PushBack({ 934, 695, 16, 105 });
+	//terryenergy.anim.PushBack({ 956, 695, 16, 105 });
+	//terryenergy.anim.PushBack({ 978, 695, 16, 105 });
+	//terryenergy.anim.loop = false;
+	//terryenergy.anim.speed = 0.05f;
+	//if ((App->player->mirror && App->player->currentstate == ST_POWER_WAVE) || (App->player2->mirror2 && App->player2->currentstate == ST_POWER_WAVE2))
+	//	terryenergy.speed.x = -1;
+	//else
+	//	terryenergy.speed.x = 1;
 
+	andyenergy.anim.PushBack({ 263, 330, 22, 91 });
+	andyenergy.anim.PushBack({ 286, 330, 35, 91 });
+	andyenergy.anim.PushBack({ 322, 330, 48, 91 });
+	andyenergy.anim.PushBack({ 371, 330, 61, 91 });
+	andyenergy.anim.PushBack({ 433, 330, 46, 91 });
+	andyenergy.anim.PushBack({ 480, 330, 61, 91 });
+	andyenergy.anim.PushBack({ 542, 330, 46, 91 });
+	andyenergy.anim.PushBack({ 589, 330, 60, 91 });
+	andyenergy.anim.loop = false;
+	andyenergy.anim.speed = 0.05f;
+	andyenergy.life = 1000;
+	/*if ((App->player->mirror && App->player->currentstate == ST_POWER_WAVE) || (App->player2->mirror2 && App->player2->currentstate == ST_POWER_WAVE2))
+		andyenergy.speed.x = -100;
+	else
+		andyenergy.speed.x = 100;*/
+	andyenergy.speed.x = 2;
 	return true;
 }
 
@@ -139,12 +155,16 @@ bool Particle::Update()
 			
 			ret = false;
 		}
+	position.x += speed.x;
+	position.y += speed.y;
 
+	/*if (col != NULL)
+		col->SetPos(position.x, position.y);*/
 
 	return ret;
 }
 
-void OnCollision(Collider* c1, Collider* c2)
+void ModuleParticles :: OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_PLAYER && App->player->collided == false)
 	{
