@@ -87,9 +87,7 @@ Instructions can be found in this same web page or in the readme.md file include
 
 [Releases](https://github.com/nurialp12/INVICTA_Project1/releases)
 
-[Release 1.0 _(Under construction!)_](https://github.com/nurialp12/INVICTA_Project1/releases/tag/0.8)
-
-[Download here _(Under construction!)_](https://github.com/nurialp12/INVICTA_Project1/releases)
+[Release 1.0 _(Under construction!)_](https://github.com/nurialp12/INVICTA_Project1/releases/tag/0.1-test)
 
 
 
@@ -184,14 +182,14 @@ COMBOS:
 | Attack | Command (Computer P1) | Command (Computer P2) | Command (Gamepad) | Command (Neo Geo) |
 |:------:|:---------------------:|:---------------------:|:-----------------:|:-----------------:|
 | Backdrop* (Throw) | Moving towards P2 and H | Moving towards P1 and L | Moving towards P1 and X |  ![Arcade-Stick-Right](https://user-images.githubusercontent.com/45202050/54491003-1af72700-48bb-11e9-9593-95881a8e5f0e.png)  ![Arcade-NeoGeo-C](https://user-images.githubusercontent.com/45202050/54490997-1a5e9080-48bb-11e9-8479-c703c08b09d8.png)  |
-| Hishoken | S->SD(->D)->F | down->down/right->right->J | down->down/right->right->B |  ![Arcade-Stick-Qcf](https://user-images.githubusercontent.com/45202050/54491002-1af72700-48bb-11e9-823e-3b330a736b66.png)  ![Arcade-Button-APunch](https://user-images.githubusercontent.com/45202050/54490991-19c5fa00-48bb-11e9-917a-b3aa9c2b2146.png)  |
+| Hishoken | S->SD->F | down->down/right->J | down->down/right->right->B |  ![Arcade-Stick-Qcf](https://user-images.githubusercontent.com/45202050/54491002-1af72700-48bb-11e9-823e-3b330a736b66.png)  ![Arcade-Button-APunch](https://user-images.githubusercontent.com/45202050/54490991-19c5fa00-48bb-11e9-917a-b3aa9c2b2146.png)  |
 | Zaneiken | A->D->F | left->right->J | left->right->B |  ![Arcade-Stick-Left](https://user-images.githubusercontent.com/45202050/54491117-1717d480-48bc-11e9-8680-528b2c4572ab.png)  ![Arcade-Stick-Right](https://user-images.githubusercontent.com/45202050/54491120-17b06b00-48bc-11e9-906b-d4ee258ff0e0.png)  ![Arcade-Button-APunch](https://user-images.githubusercontent.com/45202050/54491106-15e6a780-48bc-11e9-93fe-170360e1c713.png)  |
 | Shoryudan | S(hold)->W->F | down(hold)->up->J | down(hold)->up->B |  ![Arcade-Stick-CDU](https://user-images.githubusercontent.com/45202050/54491115-1717d480-48bc-11e9-9a93-ba39c49e155e.png)  ![Arcade-Button-APunch](https://user-images.githubusercontent.com/45202050/54491106-15e6a780-48bc-11e9-93fe-170360e1c713.png)  |
 | Kuhadan | AS(hold)->WD->G | left/down(hold)->right/up->K | left/down(hold)->right/up->A |  ![Arcade-Stick-CDb](https://user-images.githubusercontent.com/45202050/54491114-1717d480-48bc-11e9-9036-d57c6bef3ed9.png)  ![Arcade-Stick-UR](https://user-images.githubusercontent.com/45202050/54491121-17b06b00-48bc-11e9-9d9e-12bea84ce886.png)  ![Arcade-Button-BKick](https://user-images.githubusercontent.com/45202050/54491108-15e6a780-48bc-11e9-8aee-c2e9ab3a13a8.png)  |
 
 *The player has to be close to the enemy.
 
-Combos implemented: Throw (midways), Hishoken P1
+Combos implemented: Throw, Hishoken
 
 
 
