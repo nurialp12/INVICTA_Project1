@@ -41,7 +41,6 @@ CONTROLS:
 	L throw
 
 
-
 	GAMEPAD
 
 	PLAYER 1 and 2
@@ -69,14 +68,17 @@ CONTROLS:
 COMBOS:
 				Command (Computer P1)		Command (Computer P2)		Command (Gamepad) 
 	Backdrop* (Throw)	Moving towards P2 and H		Moving towards P1 and L		Moving towards P1 and X
-	Hishoken		
+	Hishoken		S->SD(->D)->F			(down->down/right->right->B)	
 	Zaneiken		
 	Shoryudan		
 	Kuhadan			
 
+Combos implemented: Throw (midways), Hishoken
+
 
 
 DEBUG:
+
 	F1 collisions
 	F2 direct win (PLAYER 1)
 	F3 direct lose (PLAYER 1)
@@ -92,10 +94,11 @@ DEBUG:
 	CAMERA
 	, to move up the camera
 	. to move down the camera
-		7 to move left the camera
-		8 to move right the camera
-		9 to move up the camera
-		0 to move down the camera
+
+	7 to move left the camera
+	8 to move right the camera
+	9 to move up the camera
+	0 to move down the camera
 
 
 
@@ -165,6 +168,7 @@ TODO: Write history
 		Play in Full Screen
 		Gamepad or keyboard to play
 		Combos
+		Collisions
 
 
 
