@@ -96,6 +96,12 @@ public:
 	char score_text[10];
 	int p_score = 0;
 	Animation* current_animation;
+	bool punched = false;
+	bool kicked = false;
+	bool thrown = false;
+	int counterdown = 0;
+	int counterdownleft = 0;
+	int counterdownright = 0;
 
 	//TERRY-------------------------------------
 	/*Animation TerryidleM;

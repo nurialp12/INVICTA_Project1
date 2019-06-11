@@ -26,6 +26,7 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* score = nullptr;
+	SDL_Texture* timer = nullptr;
 
 	//SCORE
 	SDL_Rect zero;
@@ -44,6 +45,24 @@ public:
 	SDL_Rect r[5];
 	int currentscore;
 	int player;
+
+	//TIMER
+	SDL_Rect tzero;
+	SDL_Rect tone;
+	SDL_Rect ttwo;
+	SDL_Rect tthree;
+	SDL_Rect tfour;
+	SDL_Rect tfive;
+	SDL_Rect tsix;
+	SDL_Rect tseven;
+	SDL_Rect teight;
+	SDL_Rect tnine;
+	int tpositionx;
+	int tpositiony;
+	int tn[2];
+	SDL_Rect tr[2];
+	int timer_num = 90;
+	int timer_counter = 0;
 
 	Animation bus;
 	Animation busT;
