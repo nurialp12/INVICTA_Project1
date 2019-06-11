@@ -1543,8 +1543,16 @@ update_status ModulePlayer::Update()
 	{
 		if (currentstate == ST_BEING_PUNCHED)
 		{
-			if (mirror) current_animation = &AndyDPM;
-			else current_animation = &AndyDP;
+			if (mirror)
+			{
+				current_animation = &AndyDPM;
+				Andyposition.x++;
+			}
+			else
+			{
+				current_animation = &AndyDP;
+				Andyposition.x--;
+			}
 		}
 		if (AndyDP.Finished() || AndyDPM.Finished())
 			currentstate = ST_IDLE;
