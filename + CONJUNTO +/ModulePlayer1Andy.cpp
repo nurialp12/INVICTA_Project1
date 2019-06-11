@@ -1536,7 +1536,10 @@ update_status ModulePlayer::Update()
 			else current_animation = &AndyGetUp;
 		}
 		if (AndyGetUp.Finished() || AndyGetUpM.Finished())
+		{
 			currentstate = ST_IDLE;
+			cold->to_delete = true;
+		}
 	}
 
 	//GETTING PUNCHED
