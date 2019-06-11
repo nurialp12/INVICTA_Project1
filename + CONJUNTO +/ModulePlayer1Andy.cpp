@@ -518,8 +518,9 @@ ModulePlayer::ModulePlayer()
 
 		//THROW ---- SPRITES NEEDED KAWWAKS
 		{
-			AndyThrowM.PushBack({ 0, 0, 0, 0 });
-			AndyThrowM.PushBack({ 0, 0, 0, 0 });
+			AndyThrowM.PushBack({ 1977, 0, 71, 150 });
+			AndyThrowM.PushBack({ 1864, 0, 71, 150 });
+			AndyThrowM.PushBack({ 1977, 0, 71, 150 });
 			AndyThrowM.speed = 0.1f;
 		}
 
