@@ -142,6 +142,12 @@ ModulePlayer::ModulePlayer()
 		AndyPW.PushBack({  65, 300, 48, 150 });
 		AndyPW.PushBack({ 113, 300, 48, 150 });
 		AndyPW.PushBack({ 161, 300, 98, 150 });
+		AndyPW.PushBack({ 161, 300, 98, 150 });
+		AndyPW.PushBack({ 161, 300, 98, 150 });
+		AndyPW.PushBack({ 161, 300, 98, 150 });
+		AndyPW.PushBack({ 161, 300, 98, 150 });
+		AndyPW.PushBack({ 161, 300, 98, 150 });
+
 		AndyPW.speed = 0.07f;
 	}
 
@@ -579,14 +585,14 @@ ModulePlayer::ModulePlayer()
 			AndyPunchJumpM.speed = 0.1f;
 		}
 
-		//HURT--------------------------IMPL 
+		//HURT
 		{
-			AndyHurtM.PushBack({ 1579, 750, 111, 150 });
-			AndyHurtM.PushBack({ 1468, 750, 111, 150 });
-			AndyHurtM.PushBack({ 1357, 750, 111, 150 });
-			AndyHurtM.PushBack({ 1246, 750, 111, 150 });
-			AndyHurtM.PushBack({ 1135, 750, 111, 150 });
-			AndyHurtM.PushBack({ 1024, 750, 111, 150 });//906
+			AndyHurtM.PushBack({ 311, 750,  91, 150 });
+			AndyHurtM.PushBack({ 402, 750,  98, 150 });
+			AndyHurtM.PushBack({ 500, 750,  88, 150 });
+			AndyHurtM.PushBack({ 588, 750,  99, 150 });
+			AndyHurtM.PushBack({ 687, 750, 111, 150 });
+			AndyHurtM.PushBack({ 798, 750, 108, 150 });//906
 			AndyHurtM.speed = 0.1f;
 		}
 
@@ -784,32 +790,29 @@ update_status ModulePlayer::Update()
 			App->particles->AddParticle(App->particles->andyenergy, Andyposition.x - 10, Andyposition.y + 12);
 			App->particles->andyenergy.speed.x = -2;
 		}
-		if (/*TODO*/)
+		AndyPW.resetLoops(0);
+		if (inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		{
-			if (inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-			{
-				currentstate = ST_WALK_RIGHT;
-				current_animation = &AndyForward;
-			}
-			else if (inputAndy.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
-			{
-				currentstate = ST_WALK_LEFT;
-				current_animation = &AndyBackwards;
-			}
-			else
-			{
-				currentstate = ST_IDLE;
-				current_animation = &AndyIdle;
-			}
-			if (inputAndy.J_DOWN || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
-			{
-				col->rect.y = 10000;
-				if (!gmode)
-					colc->rect.y = Andyposition.y + 91;
-			}
-			AndyPW.resetLoops(0);
-			AndyPWM.resetLoops(0);
+			currentstate = ST_WALK_RIGHT;
+			current_animation = &AndyForward;
 		}
+		else if (inputAndy.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		{
+			currentstate = ST_WALK_LEFT;
+			current_animation = &AndyBackwards;
+		}
+		else
+		{
+			currentstate = ST_IDLE;
+			current_animation = &AndyIdle;
+		}
+		if (inputAndy.J_DOWN || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		{
+			col->rect.y = 10000;
+			if (!gmode)
+				colc->rect.y = Andyposition.y + 91;
+		}
+		AndyPW.resetLoops(0);
 	}
 
 
@@ -1669,12 +1672,12 @@ update_status ModulePlayer::Update()
 		{
 			App->render->Blit(UI, 9, 49, &(ball.GetCurrentFrame()), 0);
 		}
-
-		if (App->scene_2->p1won2)
-		{
-			App->render->Blit(UI, 25, 49, &(ball.GetCurrentFrame()), 0);
-		}
 	}
+	/*if (App->scene_2->p1won2)
+	{
+		App->render->Blit(UI, 25, 49, &(ball.GetCurrentFrame()), 0);
+	}*/
+
 	if (currentstate == ST_PUNCH_STANDING && mirror)
 		col->rect.x = Andyposition.x + 58;
 	else if (currentstate == ST_KICK_STANDING && mirror)
