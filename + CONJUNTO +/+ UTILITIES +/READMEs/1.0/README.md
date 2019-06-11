@@ -19,6 +19,8 @@ Enjoy!
 
 CONTROLS:
 
+	COMPUTER
+
 	PLAYER 1
 	A move left
 	S crouch
@@ -39,6 +41,31 @@ CONTROLS:
 	L throw
 
 
+
+	GAMEPAD
+
+	PLAYER 1 and 2
+	(Joystick left) move left
+	(Joystick down) crouch
+	(Joystick right) move right
+	(Joystick uo) jump
+	B punch
+	A kick
+	X throw
+	
+
+	Space to change screens
+	ESC to leave the game	
+
+
+
+*When using one (1) gamepad, it becomes the player 1 and its keyboard keys are disabled.
+*When using two (2) gamepads, their keyboard keys are disabled.
+*When using two (2) gamepads, if you disconnect P2's gamepad, it will enable P2's keys.
+*When using two (2) gamepads, if you disconnect P1's gamepad, it will enable P2's keys.
+
+
+
 COMBOS:
 				Command (Computer P1)		Command (Computer P2)		Command (Gamepad) 
 	Backdrop* (Throw)	Moving towards P2 and H		Moving towards P1 and L		Moving towards P1 and X
@@ -46,11 +73,6 @@ COMBOS:
 	Zaneiken		
 	Shoryudan		
 	Kuhadan			
-
-	
-	
-Space to change screens
-ESC to leave the game
 
 
 
