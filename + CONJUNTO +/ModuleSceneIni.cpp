@@ -220,7 +220,7 @@ update_status ModuleSceneIni::Update()
 	}
 
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->gpad[SDL_CONTROLLER_BUTTON_B][1] == KEY_DOWN || App->input->gpad[SDL_CONTROLLER_BUTTON_B][2] == KEY_DOWN)
 	{
 		App->fade->FadeToBlack(App->ini, App->intro, 2.5);
 	}
