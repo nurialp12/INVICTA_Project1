@@ -594,7 +594,7 @@ update_status ModulePlayer2::Update()
 
 	//KICK
 	{
-		if ((inputAndy.J_A || App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_DOWN) && ((currentstate == ST_IDLE2) || (currentstate == ST_WALK_LEFT2) || (currentstate == ST_WALK_RIGHT2)))
+		if ((inputAndy.J_A || App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN) && ((currentstate == ST_IDLE2) || (currentstate == ST_WALK_LEFT2) || (currentstate == ST_WALK_RIGHT2)))
 		{
 			currentstate = ST_KICK_STANDING2;
 			if (mirror2)

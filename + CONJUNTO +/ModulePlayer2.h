@@ -89,7 +89,6 @@ public:
 	char score_text[10];
 	int p_score = 0;
 	Animation* current_animation;
-	Animation LifeBlink;
 	Animation Terryidle;
 	Animation TerryForward;
 	Animation TerryBackwards;
@@ -110,8 +109,7 @@ public:
 	Animation TerryCrouchKick;
 
 
-	Animation hit;
-
+	Animation LifeBlink;
 	Animation AndyIdle;
 	Animation AndyIdleB;
 	Animation AndyForward;
@@ -133,10 +131,28 @@ public:
 	Animation AndyDP;
 	Animation AndyDK;
 	Animation AndyJumpPunch;
+	Animation AndyPunchJump;
 	Animation AndyJumpKick;
+	Animation AndyKickJump;
 	Animation AndyCrouch;
 	Animation AndyCrouchPunch;
 	Animation AndyCrouchKick;
+	Animation AndyFK;
+	Animation AndyJumpForward;
+	Animation AndyJumpBackwards;
+	Animation AndyThrow;
+	Animation AndyThrowing;
+	Animation AndyBeingThrown;
+	Animation AndyWin;
+	Animation AndyGetUp;
+	Animation AndyHurt;
+	Animation AndyRunning;
+	Animation AndyBlock;
+	Animation AndyDodge;
+
+	Animation hit;
+
+
 
 	Animation TerryidleM;
 	Animation TerryForwardM;
@@ -174,18 +190,30 @@ public:
 	Animation AndyKickM;
 	Animation AndyPunchM;
 	Animation AndyPunchLongM;
-
-	Animation AndyHeliPunchM;
-
 	Animation AndyPWM;
 	Animation AndyDPM;
 	Animation AndyDKM;
 	Animation AndyJumpPunchM;
+	Animation AndyPunchJumpM;
 	Animation AndyJumpKickM;
+	Animation AndyKickJumpM;
 	Animation AndyCrouchM;
 	Animation AndyCrouchPunchM;
 	Animation AndyCrouchKickM;
 	Animation hitM;
+	Animation AndyFKM;
+	Animation AndyJumpForwardM;
+	Animation AndyJumpBackwardsM;
+	Animation AndyThrowM;
+	Animation AndyThrowingM;
+	Animation AndyBeingThrownM;
+	Animation AndyWinM;
+	Animation AndyGetUpM;
+	Animation AndyHurtM;
+	Animation AndyRunningM;
+	Animation AndyBlockM;
+	Animation AndyDodgeM;
+	Animation AndyHeliPunchM;
 	bool mirror2 = true;
 
 	iPoint Andy2position;
