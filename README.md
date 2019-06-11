@@ -101,6 +101,8 @@ Instructions can be found in this same web page or in the readme.md file include
 
 CONTROLS:
 
+	COMPUTER
+
 	PLAYER 1
 	A move left
 	S crouch
@@ -108,7 +110,7 @@ CONTROLS:
 	W jump
 	F punch
 	G kick
-	H Power Wave
+	H throw
 	
 
 	PLAYER 2
@@ -116,16 +118,43 @@ CONTROLS:
 	DOWN KEY crouch
 	RIGHT KEY move right
 	UP KEY jump
-	I punch
-	O kick
-	P Power Wave
+	J punch
+	K kick
+	L throw
+
+
+
+	GAMEPAD
+
+	PLAYER 1 and 2
+	(Joystick left) move left
+	(Joystick down) crouch
+	(Joystick right) move right
+	(Joystick uo) jump
+	B punch
+	A kick
+	X throw
 	
 
 	Space to change screens
-	ESC to leave the game
+	ESC to leave the game	
+
+
+
+
+*When using one (1) gamepad, it becomes the player 1 and its keyboard keys are disabled.
+
+*When using two (2) gamepads, their keyboard keys are disabled.
+
+*When using two (2) gamepads, if you disconnect P2's gamepad, it will enable P2's keys.
+
+*When using two (2) gamepads, if you disconnect P1's gamepad, it will enable P2's keys.
+
+
 
 
 DEBUG:
+
 
 	F1 collisions
 	F2 direct win (PLAYER 1)
@@ -139,6 +168,31 @@ DEBUG:
 
 	F9 mute/unmute sound
 
+	CAMERA
+	, to move up the camera
+	. to move down the camera
+
+	7 to move left the camera
+	8 to move right the camera
+	9 to move up the camera
+	0 to move down the camera
+
+
+
+COMBOS:
+
+| Attack | Command (Computer P1) | Command (Computer P2) | Command (Gamepad) | Command (Neo Geo) |
+|:------:|:---------------------:|:---------------------:|:-----------------:|:-----------------:|
+| Backdrop* (Throw) | Moving towards P2 and H | Moving towards P1 and L | Moving towards P1 and X |  ![Arcade-Stick-Right](https://user-images.githubusercontent.com/45202050/54491003-1af72700-48bb-11e9-9593-95881a8e5f0e.png)  ![Arcade-NeoGeo-C](https://user-images.githubusercontent.com/45202050/54490997-1a5e9080-48bb-11e9-8479-c703c08b09d8.png)  |
+| Hishoken | ... | ... | ... |  ![Arcade-Stick-Qcf](https://user-images.githubusercontent.com/45202050/54491002-1af72700-48bb-11e9-823e-3b330a736b66.png)  ![Arcade-Button-APunch](https://user-images.githubusercontent.com/45202050/54490991-19c5fa00-48bb-11e9-917a-b3aa9c2b2146.png)  |
+| Zaneiken | ... | ... | ... |  ![Arcade-Stick-Left](https://user-images.githubusercontent.com/45202050/54491117-1717d480-48bc-11e9-8680-528b2c4572ab.png)  ![Arcade-Stick-Right](https://user-images.githubusercontent.com/45202050/54491120-17b06b00-48bc-11e9-906b-d4ee258ff0e0.png)  ![Arcade-Button-APunch](https://user-images.githubusercontent.com/45202050/54491106-15e6a780-48bc-11e9-93fe-170360e1c713.png)  |
+| Shoryudan | ... | ... | ... |  ![Arcade-Stick-CDU](https://user-images.githubusercontent.com/45202050/54491115-1717d480-48bc-11e9-9a93-ba39c49e155e.png)  ![Arcade-Button-APunch](https://user-images.githubusercontent.com/45202050/54491106-15e6a780-48bc-11e9-93fe-170360e1c713.png)  |
+| Kuhadan | ... | ... | ... |  ![Arcade-Stick-CDb](https://user-images.githubusercontent.com/45202050/54491114-1717d480-48bc-11e9-9036-d57c6bef3ed9.png)  ![Arcade-Stick-UR](https://user-images.githubusercontent.com/45202050/54491121-17b06b00-48bc-11e9-9d9e-12bea84ce886.png)  ![Arcade-Button-BKick](https://user-images.githubusercontent.com/45202050/54491108-15e6a780-48bc-11e9-8aee-c2e9ab3a13a8.png)  |
+
+*The player has to be close to the enemy.
+
+Combos implemented: Throw (midways), Hishoken
+
 
 
 ## Content
@@ -146,11 +200,13 @@ DEBUG:
 	Introduction sequence
 	Andy Bogard as Player 1 and 2
 	Sound Beach Stage
-	Sound effects and music
+	Sound effects and mmusic
 	Debug functionality
-	Score and UI
+	Score and Fonts
 	Play in Full Screen
 	Gamepad or keyboard to play
+	Combos
+	Collisions
 
 
 
