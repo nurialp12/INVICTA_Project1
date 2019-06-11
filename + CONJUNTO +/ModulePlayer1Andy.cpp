@@ -365,8 +365,10 @@ ModulePlayer::ModulePlayer()
 
 	//DODGE ---- SPRITES NEEDED KAWWAKS
 	{
-		AndyDodge.PushBack({ 0, 0,  61, 50 });
-		AndyDodge.speed = 0.1f;
+		AndyDodgeM.PushBack({ 1207, 1200,  61, 150 });
+		AndyDodgeM.PushBack({ 1146, 1200,  61, 150 });
+		AndyDodgeM.PushBack({ 1024, 1200,  61, 150 });
+		AndyDodgeM.speed = 0.1f;
 	}
 
 	//------------------------------------------------------------
@@ -401,20 +403,20 @@ ModulePlayer::ModulePlayer()
 		// JUMP 
 		{
 			//LAUNCH AND UP
-			AndyGoingUpM.PushBack({ 1331, 300, 53, 150 });
-			AndyGoingUpM.PushBack({ 1278, 300, 53, 150 });
-			AndyGoingUpM.speed = 0.1f;
+			AndyGoingUpM.PushBack({ 1331/*1716*/, 300/*800*/, 53, 150 });
+			AndyGoingUpM.PushBack({ 1278/*1663*/, 300/*800*/, 53, 150 });
+			AndyGoingUpM.speed = 0.1f/*0.05f*/;
 			AndyGoingUpM.loop = false;
 
 			//GOING DOWN AND LAND
-			AndyGoingDownM.PushBack({ 1225, 300, 53, 150 });
-			AndyGoingDownM.PushBack({ 1172, 300, 53, 150 });
-			AndyGoingDownM.PushBack({ 1172, 300, 53, 150 });
-			AndyGoingDownM.PushBack({ 1172, 300, 53, 150 });
-			AndyGoingDownM.PushBack({ 1172, 300, 53, 150 });
-			AndyGoingDownM.PushBack({ 1172, 300, 53, 150 });
-			AndyGoingDownM.PushBack({ 1172, 300, 53, 150 });
-			AndyGoingDownM.speed = 0.08f;
+			AndyGoingDownM.PushBack({ 1225/*1610*/, 300/*800*/, 53, 150 });
+			AndyGoingDownM.PushBack({ 1172/*1557*/, 300/*800*/, 53, 150 });
+			AndyGoingDownM.PushBack({ 1172/*1557*/, 300/*800*/, 53, 150 });
+			AndyGoingDownM.PushBack({ 1172/*1557*/, 300/*800*/, 53, 150 });
+			AndyGoingDownM.PushBack({ 1172/*1557*/, 300/*800*/, 53, 150 });
+			AndyGoingDownM.PushBack({ 1172/*1557*/, 300/*800*/, 53, 150 });
+			AndyGoingDownM.PushBack({ 1172/*1557*/, 300/*800*/, 53, 150 });
+			AndyGoingDownM.speed = 0.08f/*0.05f*/;
 		}
 
 		//KICK--------------------------IMPL 
@@ -428,23 +430,27 @@ ModulePlayer::ModulePlayer()
 			AndyKick.speed = 0.1f;
 		}
 
-		//PUNCH
+		//PUNCH--------------------------IMPL 
 		{
-			AndyPunchM.PushBack({ 453, 910, 95, 112 });
-			AndyPunchM.PushBack({ 358, 911, 95, 112 });
-			AndyPunchM.PushBack({ 263, 911, 95, 112 });
-			AndyPunchM.speed = 0.1f;
+			AndyPunch.PushBack({ 1955, 1800, 93, 150 });
+			AndyPunch.PushBack({ 1862, 1800, 93, 150 });
+			AndyPunch.PushBack({ 1769, 1800, 93, 150 });//
+			AndyPunch.PushBack({ 1769, 1800, 93, 150 });//
+			AndyPunch.PushBack({ 1769, 1800, 93, 150 });//
+			AndyPunch.PushBack({ 1862, 1800, 93, 150 });
+			AndyPunch.PushBack({ 1862, 1800, 93, 150 });
+			AndyPunch.speed = 0.15f;
 		}
 
-		// POWER WAVE 
-		AndyPWM.PushBack({ 623, 683, 51, 112 });
-		AndyPWM.PushBack({ 550, 683, 54, 112 });
-		AndyPWM.PushBack({ 485, 683, 60, 112 });
-		AndyPWM.PushBack({ 402, 683, 79, 112 });
-		AndyPWM.PushBack({ 330, 683, 67, 112 });
-		AndyPWM.PushBack({ 263, 683, 65, 112 });
-		AndyPWM.PushBack({ 198, 683, 60, 112 });
-		AndyPWM.speed = 0.1f;
+
+		// POWER WAVE animation of Andy        ///HISHOKEN--------------------------IMPL 
+		{
+			AndyPW.PushBack({ 1876, 300, 98, 150 });
+			AndyPW.PushBack({ 1778, 300, 98, 150 });
+			AndyPW.PushBack({ 1680, 300, 98, 150 });
+			AndyPW.PushBack({ 1582, 300, 98, 150 });
+			AndyPW.speed = 0.07f;
+		}
 
 		//DAMAGED BY PUNCH--------------------------IMPL 
 		AndyDPM.PushBack({ 1983, 1650, 65, 150 });
@@ -469,11 +475,11 @@ ModulePlayer::ModulePlayer()
 		
 
 		//CROUCHPUNCH
-		AndyCrouchPunchM.PushBack({ 279, 912, 56, 112 }); //Charge
-		AndyCrouchPunchM.PushBack({ 416, 912, 49, 112 }); //Riposte
-		AndyCrouchPunchM.PushBack({ 335, 912, 81, 112 }); //Punch
-		AndyCrouchPunchM.PushBack({ 416, 912, 49, 112 }); //Riposte x2
-		AndyCrouchPunchM.speed = 0.1f;
+		{
+			AndyCrouchPunch.PushBack({ 1102, 600, 78, 150 }); //Charge
+			AndyCrouchPunch.PushBack({ 1024, 600, 78, 150 }); //Riposte //751
+			AndyCrouchPunch.speed = 0.1f;
+		}
 
 		//CROUCHKICK--------------------------IMPL 
 		AndyCrouchKick.PushBack({ 1884, 600, 119, 150 });   //Charge
@@ -533,15 +539,19 @@ ModulePlayer::ModulePlayer()
 			AndyBeingThrownM.PushBack({ 0, 0, 0, 0 });
 			AndyBeingThrownM.speed = 0.1f;
 		}
-		//WIN ---- SPRITES NEEDED KAWWAKS
+		//WIN ---- SPRITES NEEDED KAWWAKS ------------------ IMPL
 		{
-			AndyWinM.PushBack({ 0, 0, 0, 0 });
+			AndyWinM.PushBack({ 1993, 1200, 55, 150 });
+			AndyWinM.PushBack({ 1938, 1200, 55, 150 });
 			AndyWinM.speed = 0.1f;
 		}
 
-		//GET UP ---- SPRITES NEEDED KAWWAKS
+		//GET UP ---- SPRITES NEEDED KAWWAKS --------------- IMPL
 		{
-			AndyGetUpM.PushBack({ 0, 0, 0, 0 });
+			AndyGetUpM.PushBack({ 1285, 1350, 87, 150 });
+			AndyGetUpM.PushBack({ 1198, 1350, 87, 150 });
+			AndyGetUpM.PushBack({ 1111, 1350, 87, 150 });
+			AndyGetUpM.PushBack({ 1058, 1350, 87, 150 });
 			AndyGetUpM.speed = 0.1f;
 		}
 
@@ -586,17 +596,17 @@ ModulePlayer::ModulePlayer()
 			AndyHurtM.speed = 0.1f;
 		}
 
-		//RUNNING        ///ZAINEKEN
+		//RUNNING        ///ZAINEKEN--------------------------IMPL 
 		{
-			AndyRunningM.PushBack({ 0, 450,  53, 150 });
-			AndyRunningM.PushBack({ 53, 450,  59, 150 });
-			AndyRunningM.PushBack({ 112, 450,  55, 150 });
-			AndyRunningM.PushBack({ 167, 450,  57, 150 });
-			AndyRunningM.PushBack({ 224, 450,  57, 150 });//SE SUPERPONEN
-			AndyRunningM.PushBack({ 281, 450,  75, 150 });
-			AndyRunningM.PushBack({ 356, 450,  89, 150 });
-			AndyRunningM.PushBack({ 445, 450,  87, 150 });
-			AndyRunningM.PushBack({ 532, 450,  53, 150 });//585
+			AndyRunningM.PushBack({ 1921, 450,  89, 150 });
+			AndyRunningM.PushBack({ 1832, 450,  89, 150 });
+			AndyRunningM.PushBack({ 1743, 450,  89, 150 });
+			AndyRunningM.PushBack({ 1654, 450,  89, 150 });
+			AndyRunningM.PushBack({ 1565, 450,  89, 150 });//SE SUPERPONEN
+			AndyRunningM.PushBack({ 1476, 450,  89, 150 });
+			AndyRunningM.PushBack({ 1387, 450,  89, 150 });
+			AndyRunningM.PushBack({ 1298, 450,  89, 150 });
+			AndyRunningM.PushBack({ 1209, 450,  89, 150 });//585
 			AndyRunningM.speed = 0.1f;
 		}
 
@@ -606,9 +616,11 @@ ModulePlayer::ModulePlayer()
 			AndyBlockM.speed = 0.1f;
 		}
 
-		//DODGE ---- SPRITES NEEDED KAWWAKS
+		//DODGE--------------------------IMPL 
 		{
-			AndyDodgeM.PushBack({ 0, 0,  61, 50 });
+			AndyDodgeM.PushBack({ 1207, 449,  61, 150 });
+			AndyDodgeM.PushBack({ 1146, 449,  61, 150 });
+			AndyDodgeM.PushBack({ 1024, 449,  61, 150 });
 			AndyDodgeM.speed = 0.1f;
 		}
 
@@ -1519,6 +1531,7 @@ update_status ModulePlayer::Update()
 	{
 		if (currentstate == ST_DOWN)
 		{
+			cold = App->collisions->AddCollider({ Andyposition.x, Andyposition.y, 50, 10 }, COLLIDER_PLAYER, App->player);
 			if (mirror) current_animation = &AndyGetUpM;
 			else current_animation = &AndyGetUp;
 		}

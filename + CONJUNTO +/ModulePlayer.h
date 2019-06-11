@@ -275,6 +275,7 @@ public:
 	Collider* coljk;
 	Collider* colt;
 	Collider* colb;
+	Collider* cold;
 
 	bool collided = false;
 	bool gmode = false;
