@@ -382,7 +382,7 @@ bool ModulePlayer2::Start()
 	Andy2position.x = 215 + (250)							/*uncomment for full screen*/ -130;
 	Andy2position.y = 60;
 	p_score = 0;
-	col   = App->collisions->AddCollider({    -2000, Andy2position.y+50, 31, 101 }, COLLIDER_ENEMY, App->player2);
+	col   = App->collisions->AddCollider({-2000, Andy2position.y + 50, 31, 101 }, COLLIDER_ENEMY, App->player2);
 	colc  = App->collisions->AddCollider({    0, 1000, 36, 60 }, COLLIDER_ENEMY, App->player2);
 	colj  = App->collisions->AddCollider({    0, 1000, 36, 60 }, COLLIDER_ENEMY, App->player2);
 	colcp = App->collisions->AddCollider({ 1000, 1000, 25, 20 }, COLLIDER_ENEMY_SHOT, App->player2);
@@ -476,15 +476,7 @@ update_status ModulePlayer2::PreUpdate()
 update_status ModulePlayer2::Update()
 {
 	// MIRROR
-	if (App->player2->col->rect.x < App->player->col->rect.x ||
-		App->player2->colc->rect.x < App->player->col->rect.x ||
-		App->player2->colj->rect.x < App->player->col->rect.x ||
-		App->player2->col->rect.x < App->player->colc->rect.x ||
-		App->player2->colj->rect.x < App->player->colc->rect.x ||
-		App->player2->col->rect.x < App->player->colj->rect.x ||
-		App->player2->colc->rect.x < App->player->colj->rect.x ||
-		App->player2->colj->rect.x < App->player->colj->rect.x)
-		mirror2 = false;
+	if (App->player->mirror) mirror2 = false;
 	else mirror2 = true;
 
 	//HADOUKEN
@@ -945,17 +937,54 @@ update_status ModulePlayer2::Update()
 		
 	}
 	//POWER WAVE
-	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
-	{
-		App->particles->AddEnemyParticle(App->particles->terryenergy, Andy2position.x + 40, Andy2position.y + 12);
-		App->audio->PlayFX("Assets/FX/Voice/Special Attacks/FX_PowerWaveAttackTerryBogardVoice/FX_PowerWaveAttackTerryBogardVoice.wav");
-	}
+	////THROW
+	//{
+	//	if (App->input->keyboard[SDL_SCANCODE_H] == KEY_STATE::KEY_DOWN && (currentstate == ST_WALK_RIGHT || currentstate == ST_WALK_LEFT || currentstate == ST_IDLE))
+	//	{
+	//		if (currentstate != ST_IDLE) colt = App->collisions->AddCollider({ Andyposition.x + 65, Andyposition.y + 65, 16, 55 }, COLLIDER_PLAYER_SHOT, App->player);
+	//		Andyposition.x += 25;
+	//		currentstate = ST_THROWING;
+	//		if (mirror) current_animation = &AndyThrowM;
+	//		else current_animation = &AndyThrow;
+	//	}
+	//	if (AndyThrow.Finished())
+	//	{
+	//		Andyposition.x -= 25;
+
+	//		AndyThrow.resetLoops(0);
+	//		colt->to_delete = true;
+	//		if (inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+	//		{
+	//			currentstate = ST_WALK_RIGHT;
+	//			current_animation = &AndyForward;
+	//		}
+	//		else if (inputAndy.J_LEFT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+	//		{
+	//			currentstate = ST_WALK_LEFT;
+	//			current_animation = &AndyBackwards;
+	//		}
+	//		else
+	//			currentstate = ST_IDLE;
+	//		App->player2->collided = false;
+	//	}
+	//}
 
 
-	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_REPEAT)
+	////THROWING
+	//{
+	//	if (currentstate == ST_THROWING)
+	//	{
+
+	//	}
+	//}
+
+
+	//VOLANDING
 	{
-		if (mirror2) { current_animation = &TerryPWM; }
-		else { current_animation = &TerryPW; }
+		if (currentstate == ST_BEING_THROWN2)
+		{
+			current_animation = &AndyBeingThrownM;
+		}
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN)
@@ -1093,6 +1122,15 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 		//currentstate = ST_BEING_PUNCHED;
 		//if(mirror) App->player2->current_animation = &AndyPunchLongM;
 		//else App->player2->current_animation = &AndyPunchLong;
+	}
+	if (c1->type == COLLIDER_ENEMY && c2->type == COLLIDER_PLAYER_SHOT && !collided && App->player->currentstate == ST_THROW)
+	{
+		if (c1 != colj && c2 == App->player->colt)
+		{
+			currentstate = ST_BEING_THROWN2;
+			App->player->currentstate = ST_THROWING;
+			collided = true;
+		}
 	}
 }
 //#endif;
