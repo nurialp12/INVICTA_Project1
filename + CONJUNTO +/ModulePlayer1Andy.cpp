@@ -33,6 +33,12 @@ ModulePlayer::ModulePlayer()
 	life2 = { 11, 77, 4, 6 };
 	lifered = { 42, 149, 94, 5 };
 
+	ball.PushBack({ 86, 161, 16, 16 });
+	ball.PushBack({ 54, 161, 16, 16 });
+	ball.PushBack({ 86, 161, 16, 16 });
+	ball.PushBack({ 70, 161, 16, 16 });
+	ball.speed = 0.07f;
+
 	//LIFE BLINK
 	{
 		LifeBlink.PushBack(lifered);
@@ -1486,6 +1492,12 @@ update_status ModulePlayer::Update()
 		App->render->Blit(UI, 115, 26, &life2, 0);
 		App->render->Blit(UI, 119, 26, &life1, 0);
 	}
+
+	if (App->scene_2->p1won)
+	{
+		App->render->Blit(UI, 9, 49, &(ball.GetCurrentFrame()), 0);
+	}
+
 
 	if (currentstate == ST_PUNCH_STANDING && mirror)
 		col->rect.x = Andyposition.x + 58;
