@@ -1383,6 +1383,11 @@ update_status ModulePlayer::Update()
 	return UPDATE_CONTINUE;
 }
 
+int ModulePlayer::Score()
+{
+	return p_score;
+}
+
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY_SHOT && !collided && App->player2->currentstate == ST_PUNCH_STANDING2)

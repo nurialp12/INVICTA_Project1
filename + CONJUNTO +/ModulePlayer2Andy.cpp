@@ -393,7 +393,7 @@ bool ModulePlayer2::Start()
 	destroyed = false;
 	Andy2position.x = 215 + (250)							/*uncomment for full screen*/ -130;
 	Andy2position.y = 60;
-	score = 0;
+	p_score = 0;
 	col   = App->collisions->AddCollider({    -2000, Andy2position.y+50, 31, 101 }, COLLIDER_ENEMY, App->player2);
 	colc  = App->collisions->AddCollider({    0, 1000, 36, 60 }, COLLIDER_ENEMY, App->player2);
 	colj  = App->collisions->AddCollider({    0, 1000, 36, 60 }, COLLIDER_ENEMY, App->player2);
@@ -921,8 +921,13 @@ update_status ModulePlayer2::Update()
 	}
 
 	// Draw UI (score) --------------------------------------
-	sprintf_s(score_text, 10, "%7d", score);
+	sprintf_s(score_text, 10, "%7d", p_score);
 	return UPDATE_CONTINUE;
+}
+
+int ModulePlayer2::Score()
+{
+	return p_score;
 }
 
 void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
