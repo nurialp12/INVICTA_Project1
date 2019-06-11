@@ -431,15 +431,11 @@ ModulePlayer::ModulePlayer()
 		}
 
 		// POWER WAVE 
-		AndyPWM.PushBack({ 623, 683, 51, 112 });
-		AndyPWM.PushBack({ 550, 683, 54, 112 });
-		AndyPWM.PushBack({ 485, 683, 60, 112 });
-		AndyPWM.PushBack({ 402, 683, 79, 112 });
-		AndyPWM.PushBack({ 330, 683, 67, 112 });
-		AndyPWM.PushBack({ 263, 683, 65, 112 });
-		AndyPWM.PushBack({ 198, 683, 60, 112 });
-		AndyPWM.speed = 0.1f;
-
+		AndyPW.PushBack({ 0, 300, 65, 150 });
+		AndyPW.PushBack({ 65, 300, 48, 150 });
+		AndyPW.PushBack({ 113, 300, 48, 150 });
+		AndyPW.PushBack({ 161, 300, 98, 150 });
+		AndyPW.speed = 0.07f;
 		//DAMAGED BY PUNCH--------------------------IMPL 
 		AndyDPM.PushBack({ 1983, 1650, 65, 150 });
 		AndyDPM.PushBack({ 1918, 1650, 65, 150 });
@@ -772,7 +768,7 @@ update_status ModulePlayer::Update()
 			App->particles->AddParticle(App->particles->andyenergy, Andyposition.x - 10, Andyposition.y + 12);
 			App->particles->andyenergy.speed.x = -2;
 		}
-		if (//TODO)
+		if (/*TODO*/)
 		{
 			if (inputAndy.J_RIGHT || App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 			{
@@ -1516,6 +1512,7 @@ update_status ModulePlayer::Update()
 	{
 		if (currentstate == ST_DOWN)
 		{
+			cold = App->collisions->AddCollider({ Andyposition.x, Andyposition.y, 50, 10 }, COLLIDER_PLAYER, App->player);
 			if (mirror) current_animation = &AndyGetUpM;
 			else current_animation = &AndyGetUp;
 		}
