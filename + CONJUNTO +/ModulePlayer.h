@@ -86,6 +86,7 @@ public:
 	SDL_Rect life1;
 	SDL_Rect life2;
 	SDL_Rect lifered;
+	Animation ball;
 	iPoint position;
 	int n[5];
 	SDL_Rect r[5];
