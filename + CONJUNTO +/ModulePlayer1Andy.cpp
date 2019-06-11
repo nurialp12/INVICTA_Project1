@@ -374,7 +374,7 @@ ModulePlayer::ModulePlayer()
 
 //MIRROR -----------------------------------------------------------------------------------------				
 	{
-		//IDLE
+		//IDLE                                                IMPL
 		AndyIdleM.PushBack({ 1748, 150, 60, 150 });
 		AndyIdleM.PushBack({ 1808, 150, 60, 150 });
 		AndyIdleM.PushBack({ 1868, 150, 60, 150 });
@@ -384,14 +384,14 @@ ModulePlayer::ModulePlayer()
 
 		AndyIdleBM.PushBack({ 1025, 150, 60, 150 });
 
-		// WALK FORWARD 
+		// WALK FORWARD                                                IMPL
 		AndyForwardM.PushBack({ 1441, 150, 63, 150 });
 		AndyForwardM.PushBack({ 1378, 150, 63, 150 });
 		AndyForwardM.PushBack({ 1315, 150, 63, 150 });
 		AndyForwardM.PushBack({ 1252, 150, 63, 150 });
 		AndyForwardM.speed = 0.05f;
 
-		// WALK BACKWARDS
+		// WALK BACKWARDS                                                IMPL
 		AndyBackwardsM.PushBack({ 1504, 150, 61, 150 });
 		AndyBackwardsM.PushBack({ 1565, 150, 61, 150 });
 		AndyBackwardsM.PushBack({ 1626, 150, 61, 150 });
