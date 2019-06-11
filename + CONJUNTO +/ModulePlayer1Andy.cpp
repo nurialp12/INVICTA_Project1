@@ -523,15 +523,19 @@ ModulePlayer::ModulePlayer()
 			AndyBeingThrownM.PushBack({ 0, 0, 0, 0 });
 			AndyBeingThrownM.speed = 0.1f;
 		}
-		//WIN ---- SPRITES NEEDED KAWWAKS
+		//WIN ---- SPRITES NEEDED KAWWAKS ------------------ IMPL
 		{
-			AndyWinM.PushBack({ 0, 0, 0, 0 });
+			AndyWinM.PushBack({ 1993, 1200, 55, 150 });
+			AndyWinM.PushBack({ 1938, 1200, 55, 150 });
 			AndyWinM.speed = 0.1f;
 		}
 
-		//GET UP ---- SPRITES NEEDED KAWWAKS
+		//GET UP ---- SPRITES NEEDED KAWWAKS --------------- IMPL
 		{
-			AndyGetUpM.PushBack({ 0, 0, 0, 0 });
+			AndyGetUpM.PushBack({ 1285, 1350, 87, 150 });
+			AndyGetUpM.PushBack({ 1198, 1350, 87, 150 });
+			AndyGetUpM.PushBack({ 1111, 1350, 87, 150 });
+			AndyGetUpM.PushBack({ 1058, 1350, 87, 150 });
 			AndyGetUpM.speed = 0.1f;
 		}
 
