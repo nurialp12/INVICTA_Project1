@@ -7,10 +7,12 @@ Each of the playable characters has special techniques that are performed by inp
 Fatal Fury was developed around the same time as Street Fighter II but Fatal Fury focused more on the timing of special moves and storytelling instead of the combos which Street Fighter II emphasised.
 
 
+
 ## Installation
 Download the .zip (which can be found in our Github Project -link below- in releases and in our github wewb page).
 Go to the file "Game" and click "SDL5 Handout"
 Enjoy!
+
 
 
 ## Usage
@@ -36,15 +38,21 @@ CONTROLS:
 	K kick
 	L throw
 
+
 COMBOS:
 				Command (Computer P1)		Command (Computer P2)		Command (Gamepad) 
 	Backdrop* (Throw)	Moving towards P2 and H		Moving towards P1 and L		Moving towards P1 and X
-	
+	Hishoken		
+	Zaneiken		
+	Shoryudan		
+	Kuhadan			
 
 	
 	
 Space to change screens
 ESC to leave the game
+
+
 
 DEBUG:
 	F1 collisions
@@ -59,13 +67,13 @@ DEBUG:
 
 	F9 mute/unmute sound
 
-	CAMERA:
-	7 to move left the camera
-	8 to move right the camera
-	9 to move up the camera
-	0 to move down the camera
+	CAMERA
 	, to move up the camera
 	. to move down the camera
+		7 to move left the camera
+		8 to move right the camera
+		9 to move up the camera
+		0 to move down the camera
 
 
 
@@ -122,7 +130,7 @@ TODO: Write history
 	Note: 
 0.5
 	Playable version of the game to try it out with Terry Bogard in the Stage Pao Pao Café. 
-	This content (the player and stage) shall be removed upon the next release.
+	This content (the player ans stage) shall be removed upon the next release.
 1.0
 	Attempt to make an exact copy of the game in the Stage Sound Beach with Andy Bogard as the only player
 	CONTENT:
@@ -135,7 +143,6 @@ TODO: Write history
 		Play in Full Screen
 		Gamepad or keyboard to play
 		Combos
-		Collisions
 
 
 
@@ -150,7 +157,7 @@ Alex Lopez
 Github: https://github.com/nurialp12/INVICTA_Project1
 Releases: https://github.com/nurialp12/INVICTA_Project1/releases
 Wiki: https://github.com/nurialp12/INVICTA_Project1/wiki
-Our Web Page: https://nurialp12.github.io/INVICTA_Project1/
+Our web page: https://nurialp12.github.io/INVICTA_Project1/
 
 
 
