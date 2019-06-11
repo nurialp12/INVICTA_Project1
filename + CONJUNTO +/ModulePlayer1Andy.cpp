@@ -12,7 +12,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
 #include "ModuleFonts.h"
-
+#include "ModuleScene2.h"
 #include "p2Qeue.h"
 #include "SDL\include\SDL.h"
 #include <stdio.h>
@@ -746,7 +746,10 @@ update_status ModulePlayer::Update()
 				if (Andyposition.x < 700 && App->player2->Andy2position.x + SCREEN_WIDTH - 60 > Andyposition.x)	Andyposition.x += 2;
 			}
 		}
-		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < 14000 && SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) > 4000 
+
+		
+
+		if ((SDL_GameControllerGetAxis(App->input->gController1, SDL_CONTROLLER_AXIS_LEFTX) < 14000
 			|| App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP) && currentstate == ST_WALK_RIGHT)
 		{
 			AndyForward.resetLoops(0);
@@ -1022,11 +1025,17 @@ update_status ModulePlayer::Update()
 
 	//PUNCH
 	{
-		if ((inputAndy.J_B || App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN) && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_RIGHT) || (currentstate == ST_WALK_LEFT)) && (current_animation != &AndyPunch) && (current_animation != &AndyPunchM))
+		if (punch_controller != 0 && !((inputAndy.J_B || App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN) && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_RIGHT) || (currentstate == ST_WALK_LEFT)) && (current_animation != &AndyPunch) && (current_animation != &AndyPunchM))) {
+			punch_controller = 0;
+		}
+
+		if ((punch_controller == 0) && (inputAndy.J_B || App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN) && ((currentstate == ST_IDLE) || (currentstate == ST_WALK_RIGHT) || (currentstate == ST_WALK_LEFT)) && (current_animation != &AndyPunch) && (current_animation != &AndyPunchM))
 		{
+			punch_controller++;
 			currentstate = ST_PUNCH_STANDING;
 			if (mirror)
 			{
+			
 				Andyposition.x -= 38;
 				current_animation = &AndyPunchM;
 				colp = App->collisions->AddCollider({ Andyposition.x + 10, Andyposition.y + 65, 43, 20 }, COLLIDER_PLAYER_SHOT, App->player);

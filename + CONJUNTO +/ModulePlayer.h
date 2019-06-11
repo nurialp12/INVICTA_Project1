@@ -96,6 +96,7 @@ public:
 	char score_text[10];
 	int p_score = 0;
 	Animation* current_animation;
+	int punch_controller = 0;
 
 	//TERRY-------------------------------------
 	/*Animation TerryidleM;
