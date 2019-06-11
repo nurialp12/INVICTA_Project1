@@ -140,13 +140,16 @@ CONTROLS:
 	ESC to leave the game	
 
 
+
 *When using one (1) gamepad, it becomes the player 1 and its keyboard keys are disabled.
 *When using two (2) gamepads, their keyboard keys are disabled.
 *When using two (2) gamepads, if you disconnect P2's gamepad, it will enable P2's keys.
 *When using two (2) gamepads, if you disconnect P1's gamepad, it will enable P2's keys.
 
 
+
 DEBUG:
+
 
 	F1 collisions
 	F2 direct win (PLAYER 1)
@@ -163,14 +166,15 @@ DEBUG:
 	CAMERA
 	, to move up the camera
 	. to move down the camera
-		7 to move left the camera
-		8 to move right the camera
-		9 to move up the camera
-		0 to move down the camera
+
+	7 to move left the camera
+	8 to move right the camera
+	9 to move up the camera
+	0 to move down the camera
 
 
 
-COMBOS
+COMBOS:
 
 | Attack | Command (Computer P1) | Command (Computer P2) | Command (Gamepad) | Command (Neo Geo) |
 |:------:|:---------------------:|:---------------------:|:-----------------:|:-----------------:|
@@ -181,6 +185,8 @@ COMBOS
 | Kuhadan | ... | ... | ... |  ![Arcade-Stick-CDb](https://user-images.githubusercontent.com/45202050/54491114-1717d480-48bc-11e9-9036-d57c6bef3ed9.png)  ![Arcade-Stick-UR](https://user-images.githubusercontent.com/45202050/54491121-17b06b00-48bc-11e9-9d9e-12bea84ce886.png)  ![Arcade-Button-BKick](https://user-images.githubusercontent.com/45202050/54491108-15e6a780-48bc-11e9-8aee-c2e9ab3a13a8.png)  |
 
 *The player has to be close to the enemy.
+
+Combos implemented: Throw (midways), Hishoken
 
 
 
@@ -195,6 +201,7 @@ COMBOS
 	Play in Full Screen
 	Gamepad or keyboard to play
 	Combos
+	Collisions
 
 
 
