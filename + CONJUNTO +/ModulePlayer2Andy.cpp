@@ -386,7 +386,7 @@ bool ModulePlayer2::Start()
 {
 	LOG("Loading player 2");
 	bool ret = true;
-	graphics = App->textures->Load("Assets/Sprites/Sprites_AndyBogard_ok.png");
+	graphics = App->textures->Load("Assets/Sprites/Sprites_Andy2Bogard_ok.png");
 
 	UI = App->textures->Load("Assets/Sprites/UI.png");
 
