@@ -367,7 +367,7 @@ bool ModulePlayer2::Start()
 {
 	LOG("Loading player 2");
 	bool ret = true;
-	graphics = App->textures->Load("Assets/Sprites/Sprites_AndyBogard_ok.png");
+	graphics = App->textures->Load("Assets/Sprites/Sprites_Andy2Bogard_ok.png");
 
 	UI = App->textures->Load("Assets/Sprites/UI.png");
 
@@ -858,7 +858,7 @@ update_status ModulePlayer2::Update()
 
 	App->render->Blit(UI, 165, 0, &lifebar, 0);
 	if (life_score <= 24)
-		App->render->Blit(UI, 27, 27, &(LifeBlink.GetCurrentFrame()), 0);
+		App->render->Blit(UI, 264, 27, &(LifeBlink.GetCurrentFrame()), 0);
 
 	if (life_score >= 4)
 	{
@@ -948,7 +948,7 @@ int ModulePlayer2::Score()
 
 void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == COLLIDER_ENEMY && c2->type == COLLIDER_PLAYER_SHOT && !collided && App->player2->currentstate == ST_PUNCH_STANDING2)
+	if (c1->type == COLLIDER_ENEMY && c2->type == COLLIDER_PLAYER_SHOT && !collided && App->player->currentstate == ST_PUNCH_STANDING2)
 	{
 		life_score -= 14;
 		collided = true;
@@ -957,7 +957,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 		//else App->player2->current_animation = &AndyPunchLong;
 	}
 
-	if (c1->type == COLLIDER_ENEMY && c2->type == COLLIDER_PLAYER_SHOT && !collided && App->player2->currentstate == ST_KICK_STANDING2)
+	if (c1->type == COLLIDER_ENEMY && c2->type == COLLIDER_PLAYER_SHOT && !collided && App->player->currentstate == ST_KICK_STANDING2)
 	{
 		life_score -= 16;
 		collided = true;

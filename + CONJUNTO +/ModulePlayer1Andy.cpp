@@ -1400,6 +1400,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY_SHOT && !collided && App->player2->currentstate == ST_PUNCH_STANDING2)
 	{
 		life_score -= 14;
+		App->player2->p_score += 100;
 		collided = true;
 		//currentstate = ST_BEING_PUNCHED;
 		//if(mirror) App->player2->current_animation = &AndyPunchLongM;
