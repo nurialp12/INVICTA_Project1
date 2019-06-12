@@ -86,7 +86,7 @@ Instructions can be found in this same web page or in the readme.md file include
 [Releases](https://github.com/nurialp12/INVICTA_Project1/releases)
 
 
-[Release 1.0](https://github.com/nurialp12/INVICTA_Project1/releases/tag/0.1)
+[Release 1.0](https://github.com/nurialp12/INVICTA_Project1/releases/tag/1.0)
 
 
 ## Usage
